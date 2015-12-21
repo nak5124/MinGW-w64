@@ -105,7 +105,8 @@ AS_CASE([$enable_sdk],
 AC_MSG_RESULT([$enable_sdk])
 
 AS_VAR_IF([enable_directx],[yes],[
-    DXHEAD_LIST=$srcdir/direct-x/include/*.[[hi]]*
+    DXHEAD_LIST="$srcdir/direct-x/include/*.h $srcdir/direct-x/include/*.inl"
+    DXIDL_LIST=$srcdir/direct-x/include/*.idl
     MINGW_HAS_DX=1
   ],[
     MINGW_HAS_DX=0
@@ -130,7 +131,7 @@ AC_ARG_ENABLE([idl],
     [enable_idl=no])
 AC_MSG_RESULT([$enable_idl])
 AS_VAR_IF([enable_idl],[yes],
-    [IDLHEAD_LIST=$srcdir/include/*.idl" "$srcdir/tlb/*.tlb],
+    [IDLHEAD_LIST="$srcdir/include/*.idl $srcdir/tlb/*.tlb $DXIDL_LIST"],
     [IDLHEAD_LIST=""])
 AC_SUBST([IDLHEAD_LIST])
 
