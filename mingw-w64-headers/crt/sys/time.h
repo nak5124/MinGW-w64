@@ -9,26 +9,25 @@
 
 #include <time.h>
 
-#ifdef  __cplusplus
+#ifdef __cplusplus
 extern "C" {
-#endif
+#endif  /* __cplusplus */
 
 #include <_timeval.h>
 
-#ifndef _TIMEZONE_DEFINED /* also in sys/time.h */
-#define _TIMEZONE_DEFINED
+#ifndef _TIMEZONE_DEFINED  /* also in sys/time.h */
 /* Provided for compatibility with code that assumes that
    the presence of gettimeofday function implies a definition
    of struct timezone. */
-struct timezone
-{
-  int tz_minuteswest; /* of Greenwich */
-  int tz_dsttime;     /* type of dst correction to apply */
-};
+  struct timezone {
+    int tz_minuteswest;  /* of Greenwich */
+    int tz_dsttime;      /* type of dst correction to apply */
+  };
 
-  extern int __cdecl mingw_gettimeofday (struct timeval *p, struct timezone *z);
+  extern int __cdecl mingw_gettimeofday(struct timeval *p, struct timezone *z);  /* Provided in libmingwex. */
 
-#endif /* _TIMEZONE_DEFINED */
+#define _TIMEZONE_DEFINED
+#endif  /* !_TIMEZONE_DEFINED */
 
 /*
    Implementation as per:
@@ -38,17 +37,15 @@ struct timezone
    The timezone pointer arg is ignored.  Errors are ignored.
 */
 #ifndef _GETTIMEOFDAY_DEFINED
+  int __cdecl gettimeofday(struct timeval *__restrict__, void *__restrict__  /* tzp (unused) */);  /* Provided in libmingwex. */
 #define _GETTIMEOFDAY_DEFINED
-int __cdecl gettimeofday(struct timeval *__restrict__,
-                         void *__restrict__  /* tzp (unused) */);
-#endif
+#endif  /* !_GETTIMEOFDAY_DEFINED */
 
 #ifdef  __cplusplus
 }
-#endif
+#endif  /* __cplusplus */
 
 /* Adding timespec definition.  */
 #include <sys/timeb.h>
 
-
-#endif /* _SYS_TIME_H_ */
+#endif  /* _SYS_TIME_H_ */
