@@ -8,472 +8,652 @@
 #define _INC_CRTDEFS
 
 #include <_mingw.h>
+#include <sal.h>
 
 #ifndef __WIDL__
 #undef _CRT_PACKING
 #define _CRT_PACKING 8
-#pragma pack(push,_CRT_PACKING)
-#endif
+#pragma pack(push, _CRT_PACKING)
+#endif  /* !__WIDL__ */
+
+#include <vadefs.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif  /* __cplusplus */
+
+#ifndef _CRT_STRINGIZE
+#define __CRT_STRINGIZE(_Value) #_Value
+#define _CRT_STRINGIZE(_Value) __CRT_STRINGIZE(_Value)
+#endif  /* !_CRT_STRINGIZE */
+
+#ifndef _CRT_WIDE
+#define __CRT_WIDE(_String) L ## _String
+#define _CRT_WIDE(_String) __CRT_WIDE(_String)
+#endif  /* !_CRT_WIDE */
+
+#ifndef _W64
+#define _W64
+#endif  /* !_W64 */
+
+#ifndef _CRTIMP2
+#define _CRTIMP2 _CRTIMP
+#endif  /* !_CRTIMP2 */
+
+#ifndef _CRTIMP_ALTERNATIVE
+#define _CRTIMP_ALTERNATIVE _CRTIMP
+#define _CRT_ALTERNATIVE_IMPORTED
+#endif  /* !_CRTIMP_ALTERNATIVE */
+
+#ifndef _MRTIMP2
+#define _MRTIMP2 _CRTIMP
+#endif  /* !_MRTIMP2 */
+
+#ifndef _CRTIMP_PURE
+#define _CRTIMP_PURE _CRTIMP
+#endif  /* !_CRTIMP_PURE */
+
+#ifndef _PGLOBAL
+#define _PGLOBAL
+#endif  /* !_PGLOBAL */
+
+#ifndef _AGLOBAL
+#define _AGLOBAL
+#endif  /* !_AGLOBAL */
+
+#define _CRT_DEPRECATE_TEXT(_Text)     __declspec(deprecated)
+
+#ifndef _CRT_INSECURE_DEPRECATE_MEMORY
+#define _CRT_INSECURE_DEPRECATE_MEMORY(_Replacement)
+#endif  /* !_CRT_INSECURE_DEPRECATE_MEMORY */
+
+#ifndef _CRT_INSECURE_DEPRECATE_GLOBALS
+#define _CRT_INSECURE_DEPRECATE_GLOBALS(_Replacement)
+#endif  /* !_CRT_INSECURE_DEPRECATE_GLOBALS */
+
+#ifndef _CRT_MANAGED_HEAP_DEPRECATE
+#define _CRT_MANAGED_HEAP_DEPRECATE
+#endif  /* !_CRT_MANAGED_HEAP_DEPRECATE */
+
+#define _SECURECRT_FILL_BUFFER_PATTERN 0xFD
+
+#ifndef _CRT_OBSOLETE
+#define _CRT_OBSOLETE(_NewItem)
+#endif  /* !_CRT_OBSOLETE */
+
+#ifndef _CRT_SECURE_CPP_NOTHROW
+#define _CRT_SECURE_CPP_NOTHROW throw()
+#endif  /* !_CRT_SECURE_CPP_NOTHROW */
+
 
 #ifdef __ERRCODE_DEFINED_MS
-/* #define __ERRCODE_DEFINED_MS */
-typedef int errcode;
-#endif
-
-#ifndef _CRTNOALIAS
-#define _CRTNOALIAS
-#endif
-
-#ifndef _CRTRESTRICT
-#define _CRTRESTRICT
-#endif
+  typedef int errcode;
+#endif  /* __ERRCODE_DEFINED_MS */
 
 #ifndef _SIZE_T_DEFINED
-#define _SIZE_T_DEFINED
 #undef size_t
 #ifdef _WIN64
-__MINGW_EXTENSION typedef unsigned __int64 size_t;
-#else
-typedef unsigned int size_t;
-#endif /* _WIN64 */
-#endif /* _SIZE_T_DEFINED */
+  __MINGW_EXTENSION typedef unsigned __int64 size_t;
+#else  /* _WIN64 */
+  typedef unsigned int size_t;
+#endif  /* _WIN64 */
+#define _SIZE_T_DEFINED
+#endif  /* !_SIZE_T_DEFINED */
 
 #ifndef _SSIZE_T_DEFINED
-#define _SSIZE_T_DEFINED
 #undef ssize_t
 #ifdef _WIN64
-__MINGW_EXTENSION typedef __int64 ssize_t;
-#else
-typedef int ssize_t;
-#endif /* _WIN64 */
-#endif /* _SSIZE_T_DEFINED */
+  __MINGW_EXTENSION typedef __int64 ssize_t;
+#else  /* _WIN64 */
+  typedef int ssize_t;
+#endif  /* _WIN64 */
+#define _SSIZE_T_DEFINED
+#endif  /* !_SSIZE_T_DEFINED */
 
 #ifndef _RSIZE_T_DEFINED
-typedef size_t rsize_t;
+  typedef size_t rsize_t;
 #define _RSIZE_T_DEFINED
-#endif
+#endif  /* !_RSIZE_T_DEFINED */
 
 #ifndef _INTPTR_T_DEFINED
-#define _INTPTR_T_DEFINED
 #ifndef __intptr_t_defined
-#define __intptr_t_defined
 #undef intptr_t
 #ifdef _WIN64
-__MINGW_EXTENSION typedef __int64 intptr_t;
-#else
-typedef int intptr_t;
-#endif /* _WIN64 */
-#endif /* __intptr_t_defined */
-#endif /* _INTPTR_T_DEFINED */
+  __MINGW_EXTENSION typedef __int64 intptr_t;
+#else  /* _WIN64 */
+  typedef int intptr_t;
+#endif  /* _WIN64 */
+#define __intptr_t_defined
+#endif  /* !__intptr_t_defined */
+#define _INTPTR_T_DEFINED
+#endif  /* !_INTPTR_T_DEFINED */
 
 #ifndef _UINTPTR_T_DEFINED
-#define _UINTPTR_T_DEFINED
 #ifndef __uintptr_t_defined
-#define __uintptr_t_defined
 #undef uintptr_t
 #ifdef _WIN64
-__MINGW_EXTENSION typedef unsigned __int64 uintptr_t;
-#else
-typedef unsigned int uintptr_t;
-#endif /* _WIN64 */
-#endif /* __uintptr_t_defined */
-#endif /* _UINTPTR_T_DEFINED */
+  __MINGW_EXTENSION typedef unsigned __int64 uintptr_t;
+#else  /* _WIN64 */
+  typedef unsigned int uintptr_t;
+#endif  /* _WIN64 */
+#define __uintptr_t_defined
+#endif  /* !__uintptr_t_defined */
+#define _UINTPTR_T_DEFINED
+#endif  /* !_UINTPTR_T_DEFINED */
 
 #ifndef _PTRDIFF_T_DEFINED
-#define _PTRDIFF_T_DEFINED
 #ifndef _PTRDIFF_T_
-#define _PTRDIFF_T_
 #undef ptrdiff_t
 #ifdef _WIN64
-__MINGW_EXTENSION typedef __int64 ptrdiff_t;
-#else
-typedef int ptrdiff_t;
-#endif /* _WIN64 */
-#endif /* _PTRDIFF_T_ */
-#endif /* _PTRDIFF_T_DEFINED */
+  __MINGW_EXTENSION typedef __int64 ptrdiff_t;
+#else  /* _WIN64 */
+  typedef int ptrdiff_t;
+#endif  /* _WIN64 */
+#define _PTRDIFF_T_
+#endif  /* !_PTRDIFF_T_ */
+#define _PTRDIFF_T_DEFINED
+#endif  /* !_PTRDIFF_T_DEFINED */
 
 #ifndef _WCHAR_T_DEFINED
-#define _WCHAR_T_DEFINED
 #if !defined(__cplusplus) && !defined(__WIDL__)
-typedef unsigned short wchar_t;
-#endif /* C++ */
-#endif /* _WCHAR_T_DEFINED */
+  typedef unsigned short wchar_t;
+#endif  /* !defined(__cplusplus) && !defined(__WIDL__) */
+#define _WCHAR_T_DEFINED
+#endif  /* !_WCHAR_T_DEFINED */
 
 #ifndef _WCTYPE_T_DEFINED
-#define _WCTYPE_T_DEFINED
 #ifndef _WINT_T
+  typedef unsigned short wint_t;
+  typedef unsigned short wctype_t;
 #define _WINT_T
-typedef unsigned short wint_t;
-typedef unsigned short wctype_t;
-#endif /* _WINT_T */
-#endif /* _WCTYPE_T_DEFINED */
-
-#ifndef _ERRCODE_DEFINED
-#define _ERRCODE_DEFINED
-typedef int errno_t;
-#endif
-
-#ifndef _TIME32_T_DEFINED
-#define _TIME32_T_DEFINED
-typedef long __time32_t;
-#endif
-
-#ifndef _TIME64_T_DEFINED
-#define _TIME64_T_DEFINED
-__MINGW_EXTENSION typedef __int64 __time64_t;
-#endif /* _TIME64_T_DEFINED */
+#endif  /* !_WINT_T */
+#define _WCTYPE_T_DEFINED
+#endif  /* !_WCTYPE_T_DEFINED */
 
 #ifdef _USE_32BIT_TIME_T
 #ifdef _WIN64
 #error You cannot use 32-bit time_t (_USE_32BIT_TIME_T) with _WIN64
 #undef _USE_32BIT_TIME_T
-#endif
-#endif /* _USE_32BIT_TIME_T */
+#endif  /* _WIN64 */
+#endif  /* _USE_32BIT_TIME_T */
+
+#ifndef _ERRCODE_DEFINED
+  typedef int errno_t;
+#define _ERRCODE_DEFINED
+#endif  /* !_ERRCODE_DEFINED */
+
+#ifndef _TIME32_T_DEFINED
+  typedef long __time32_t;
+#define _TIME32_T_DEFINED
+#endif  /* !_TIME32_T_DEFINED */
+
+#ifndef _TIME64_T_DEFINED
+  __MINGW_EXTENSION typedef __int64 __time64_t;
+#define _TIME64_T_DEFINED
+#endif  /* !_TIME64_T_DEFINED */
 
 #ifndef _TIME_T_DEFINED
-#define _TIME_T_DEFINED
 #ifdef _USE_32BIT_TIME_T
-typedef __time32_t time_t;
-#else
-typedef __time64_t time_t;
-#endif
-#endif /* _TIME_T_DEFINED */
+  typedef __time32_t time_t;
+#else  /* _USE_32BIT_TIME_T */
+  typedef __time64_t time_t;
+#endif  /* _USE_32BIT_TIME_T */
+#define _TIME_T_DEFINED
+#endif  /* _TIME_T_DEFINED */
 
-#ifndef _CRT_SECURE_CPP_NOTHROW
-#define _CRT_SECURE_CPP_NOTHROW throw()
-#endif
 
+#ifndef __WIDL__
+
+#ifndef _CONST_RETURN
+#ifdef __cplusplus
+#define _CONST_RETURN const
+#define _CRT_CONST_CORRECT_OVERLOADS
+#else  /* __cplusplus */
+#define _CONST_RETURN
+#endif  /* __cplusplus */
+#endif  /* !_CONST_RETURN */
+
+#ifndef UNALIGNED
+#if defined(_M_IA64) || defined(_M_AMD64)
+#define UNALIGNED __unaligned
+#else  /* defined(_M_IA64) || defined(_M_AMD64) */
+#define UNALIGNED
+#endif  /* defined(_M_IA64) || defined(_M_AMD64) */
+#endif  /* !UNALIGNED */
+
+#ifndef _CRT_ALIGN
+#ifdef _MSC_VER
+#define _CRT_ALIGN(x) __declspec(align(x))
+#else  /* _MSC_VER */
+#define _CRT_ALIGN(x) __attribute__((__aligned__ (x)))
+#endif  /* _MSC_VER */
+#endif  /* !_CRT_ALIGN */
+
+#endif  /* !__WIDL__ */
+
+#ifndef _CRTNOALIAS
+#define _CRTNOALIAS
+#endif  /* !_CRTNOALIAS */
+
+#ifndef _CRTRESTRICT
+#define _CRTRESTRICT
+#endif  /* !_CRTRESTRICT */
+
+#ifndef __CRTDECL
+#define __CRTDECL __cdecl
+#endif  /* !__CRTDECL */
+
+#define _ARGMAX 100
+
+#ifndef _TRUNCATE
+#define _TRUNCATE ((size_t)-1)
+#endif  /* !_TRUNCATE */
+
+#ifndef RC_INVOKED
 #if defined(__cplusplus) && _CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES
 
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(__ret,__func,__dsttype,__dst) \
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(_ReturnType, _FuncName, _DstType, _Dst) \
   extern "C++" { \
-    template <size_t __size> \
-    inline __ret __cdecl __func(__dsttype (&__dst)[__size]) { \
-        return __func(__dst,__size); \
+    template <size_t _Size> \
+    inline _ReturnType __CRTDECL _FuncName(_DstType (&_Dst)[_Size]) _CRT_SECURE_CPP_NOTHROW { \
+      return _FuncName(_Dst, _Size); \
     } \
   }
 
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(__ret,__func,__dsttype,__dst,__type1,__arg1) \
-  extern "C++" {\
-    template <size_t __size> \
-    inline __ret __cdecl __func(__dsttype (&__dst)[__size], __type1 __arg1) { \
-        return __func(__dst,__size,__arg1);  \
-    }\
-  }
-
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(__ret,__func,__dsttype,__dst,__type1,__arg1,__type2,__arg2)\
-  extern "C++" {\
-    template <size_t __size> inline\
-    __ret __cdecl __func(__dsttype (&__dst)[__size], __type1 __arg1, __type2 __arg2) { \
-        return __func(__dst,__size,__arg1,__arg2);  \
-    }\
-  }
-
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_3(__ret,__func,__dsttype,__dst,__type1,__arg1,__type2,__arg2,__type3,__arg3) \
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(_ReturnType, _FuncName, _DstType, _Dst, _TType1, _TArg1) \
   extern "C++" { \
-    template <size_t __size> inline \
-    __ret __cdecl __func(__dsttype (&__dst)[__size], __type1 __arg1, __type2 __arg2, __type3 __arg3) { \
-        return __func(__dst,__size,__arg1,__arg2,__arg3); \
-    }\
-  }
-
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_4(__ret,__func,__dsttype,__dst,__type1,__arg1,__type2,__arg2,__type3,__arg3,__type4,__arg4) \
-  extern "C++" { \
-    template <size_t __size> inline \
-    __ret __cdecl __func(__dsttype (&__dst)[__size], __type1 __arg1, __type2 __arg2, __type3 __arg3, __type4 __arg4) { \
-        return __func(__dst,__size,__arg1,__arg2,__arg3,__arg4); \
-    }\
-  }
-
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_1(__ret,__func,__type0,__arg0,__dsttype,__dst,__type1,__arg1) \
-  extern "C++" { \
-    template <size_t __size> inline \
-      __ret __cdecl __func(__type0 __arg0, __dsttype (&__dst)[__size], __type1 __arg1) { \
-      return __func(__arg0, __dst, __size, __arg1); \
+    template <size_t _Size> \
+    inline _ReturnType __CRTDECL _FuncName(_DstType (&_Dst)[_Size], _TType1 _TArg1) _CRT_SECURE_CPP_NOTHROW { \
+      return _FuncName(_Dst, _Size, _TArg1); \
     } \
   }
 
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_2(__ret,__func,__type0,__arg0,__dsttype,__dst,__type1,__arg1,__type2,__arg2) \
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(_ReturnType, _FuncName, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2) \
   extern "C++" { \
-    template <size_t __size> inline \
-    __ret __cdecl __func(__type0 __arg0, __dsttype (&__dst)[__size], __type1 __arg1, __type2 __arg2) { \
-      return __func(__arg0, __dst, __size, __arg1, __arg2); \
+    template <size_t _Size> \
+    inline _ReturnType __CRTDECL _FuncName(_DstType (&_Dst)[_Size], _TType1 _TArg1, _TType2 _TArg2) _CRT_SECURE_CPP_NOTHROW { \
+      return _FuncName(_Dst, _Size, _TArg1, _TArg2); \
     } \
   }
 
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_3(__ret,__func,__type0,__arg0,__dsttype,__dst,__type1,__arg1,__type2,__arg2,__type3,__arg3) \
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_3(_ReturnType, _FuncName, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2, _TType3, _TArg3) \
   extern "C++" { \
-    template <size_t __size> inline \
-      __ret __cdecl __func(__type0 __arg0, __dsttype (&__dst)[__size], __type1 __arg1, __type2 __arg2, __type3 __arg3) { \
-      return __func(__arg0, __dst, __size, __arg1, __arg2, __arg3); \
+    template <size_t _Size> \
+    inline _ReturnType __CRTDECL _FuncName(_DstType (&_Dst)[_Size], _TType1 _TArg1, _TType2 _TArg2, _TType3 _TArg3) _CRT_SECURE_CPP_NOTHROW { \
+      return _FuncName(_Dst, _Size, _TArg1, _TArg2, _TArg3); \
     } \
   }
 
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_2_0(__ret,__func,__type1,__arg1,__type2,__arg2,__dsttype,__dst) \
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_4(_ReturnType, _FuncName, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2, _TType3, _TArg3, _TType4, _TArg4) \
   extern "C++" { \
-    template <size_t __size> inline \
-    __ret __cdecl __func(__type1 __arg1, __type2 __arg2, __dsttype (&__dst)[__size]) { \
-      return __func(__arg1, __arg2, __dst, __size); \
+    template <size_t _Size> \
+    inline _ReturnType __CRTDECL _FuncName(_DstType (&_Dst)[_Size], _TType1 _TArg1, _TType2 _TArg2, _TType3 _TArg3, _TType4 _TArg4) _CRT_SECURE_CPP_NOTHROW { \
+      return _FuncName(_Dst, _Size, _TArg1, _TArg2, _TArg3, _TArg4); \
     } \
   }
 
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1_ARGLIST(__ret,__func,__vfunc,__dsttype,__dst,__type1,__arg1) \
-  extern "C++" {\
-    template <size_t __size> \
-    inline __ret __cdecl __func(__dsttype (&__dst)[__size], __type1 __arg1, ...) { \
-      va_list __vaargs; \
-      _crt_va_start(__vaargs, __arg1); \
-      __ret __retval = __vfunc(__dst,__size,__arg1,__vaargs); \
-      _crt_va_end(__vaargs); \
-      return __retval; \
-    }\
-  }
-
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2_ARGLIST(__ret,__func,__vfunc,__dsttype,__dst,__type1,__arg1,__type2,__arg2) \
-  extern "C++" {\
-    template <size_t __size> \
-    inline __ret __cdecl __func(__dsttype (&__dst)[__size], __type1 __arg1, __type2 __arg2, ...) { \
-      va_list __vaargs; \
-      _crt_va_start(__vaargs, __arg2); \
-      __ret __retval = __vfunc(__dst,__size,__arg1,__arg2,__vaargs); \
-      _crt_va_end(__vaargs); \
-      return __retval; \
-    }\
-  }
-
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_SPLITPATH(__ret,__func,__dsttype,__src) \
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_1(_ReturnType, _FuncName, _HType1, _HArg1, _DstType, _Dst, _TType1, _TArg1) \
   extern "C++" { \
-    template <size_t __drive_size, size_t __dir_size, size_t __name_size, size_t __ext_size> inline \
-    __ret __cdecl __func(const __dsttype *__src, __dsttype (&__drive)[__drive_size], __dsttype (&__dir)[__dir_size], __dsttype (&__name)[__name_size], __dsttype (&__ext)[__ext_size]) { \
-        return __func(__src, __drive, __drive_size, __dir, __dir_size, __name, __name_size, __ext, __ext_size); \
+    template <size_t _Size> \
+    inline _ReturnType __CRTDECL _FuncName(_HType1 _HArg1, _DstType (&_Dst)[_Size], _TType1 _TArg1) _CRT_SECURE_CPP_NOTHROW { \
+      return _FuncName(_HArg1, _Dst, _Size, _TArg1); \
     } \
   }
 
-#else
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_2(_ReturnType, _FuncName, _HType1, _HArg1, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2) \
+  extern "C++" { \
+    template <size_t _Size> \
+    inline _ReturnType __CRTDECL _FuncName(_HType1 _HArg1, _DstType (&_Dst)[_Size], _TType1 _TArg1, _TType2 _TArg2) _CRT_SECURE_CPP_NOTHROW { \
+      return _FuncName(_HArg1, _Dst, _Size, _TArg1, _TArg2); \
+    } \
+  }
 
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(__ret,__func,__dsttype,__dst)
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(__ret,__func,__dsttype,__dst,__type1,__arg1)
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(__ret,__func,__dsttype,__dst,__type1,__arg1,__type2,__arg2)
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_3(__ret,__func,__dsttype,__dst,__type1,__arg1,__type2,__arg2,__type3,__arg3)
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_4(__ret,__func,__dsttype,__dst,__type1,__arg1,__type2,__arg2,__type3,__arg3,__type4,__arg4)
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_1(__ret,__func,__type0,__arg0,__dsttype,__dst,__type1,__arg1)
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_2(__ret,__func,__type0,__arg0,__dsttype,__dst,__type1,__arg1,__type2,__arg2)
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_3(__ret,__func,__type0,__arg0,__dsttype,__dst,__type1,__arg1,__type2,__arg2,__type3,__arg3)
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_2_0(__ret,__func,__type1,__arg1,__type2,__arg2,__dsttype,__dst)
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1_ARGLIST(__ret,__func,__vfunc,__dsttype,__dst,__type1,__arg1)
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2_ARGLIST(__ret,__func,__vfunc,__dsttype,__dst,__type1,__arg1,__type2,__arg2)
-#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_SPLITPATH(__ret,__func,__dsttype,__src)
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_3(_ReturnType, _FuncName, _HType1, _HArg1, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2, _TType3, _TArg3) \
+  extern "C++" { \
+    template <size_t _Size> \
+    inline _ReturnType __CRTDECL _FuncName(_HType1 _HArg1, _DstType (&_Dst)[_Size], _TType1 _TArg1, _TType2 _TArg2, _TType3 _TArg3) _CRT_SECURE_CPP_NOTHROW { \
+      return _FuncName(_HArg1, _Dst, _Size, _TArg1, _TArg2, _TArg3); \
+    } \
+  }
 
-#endif
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_2_0(_ReturnType, _FuncName, _HType1, _HArg1, _HType2, _HArg2, _DstType, _Dst) \
+  extern "C++" { \
+    template <size_t _Size> \
+    inline _ReturnType __CRTDECL _FuncName(_HType1 _HArg1, _HType2 _HArg2, _DstType (&_Dst)[_Size]) _CRT_SECURE_CPP_NOTHROW { \
+      return _FuncName(_HArg1, _HArg2, _Dst, _Size); \
+    } \
+  }
 
-#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_0(__ret_type, __ret_policy, __decl_spec, __name, __dst_attr, __dst_type, __dst) \
-    __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_0_EX(__ret_type, __ret_policy, __decl_spec, __func_name, __func_name##_s, __dst_attr, __dst_type, __dst)
-#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_1(__ret_type, __ret_policy, __decl_spec, __name, __dst_attr, __dst_type, __dst, __arg1_type, __arg1) \
-    __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_2_EX(__ret_type, __ret_policy, __decl_spec, __func_name, __func_name##_s, __dst_attr, __dst_type, __dst, __arg1_type, __arg1, __arg2_type, __arg2)
-#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_2(__ret_type, __ret_policy, __decl_spec, __name, __dst_attr, __dst_type, __dst, __arg1_type, __arg1, __arg2_type, __arg2) \
-    __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_2_EX(__ret_type, __ret_policy, __decl_spec, __func_name, __func_name##_s, __dst_attr, __dst_type, __dst, __arg1_type, __arg1, __arg2_type, __arg2)
-#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_3(__ret_type, __ret_policy, __decl_spec, __name, __dst_attr, __dst_type, __dst, __arg1_type, __arg1, __arg2_type, __arg2, __arg3_type, __arg3) \
-    __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_3_EX(__ret_type, __ret_policy, __decl_spec, __func_name, __func_name##_s, __dst_attr, __dst_type, __dst, __arg1_type, __arg1, __arg2_type, __arg2, __arg3_type, __arg3)
-#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_4(__ret_type, __ret_policy, __decl_spec, __name, __dst_attr, __dst_type, __dst, __arg1_type, __arg1, __arg2_type, __arg2, __arg3_type, __arg3, __arg4_type, __arg4) \
-    __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_4_EX(__ret_type, __ret_policy, __decl_spec, __func_name, __func_name##_s, __dst_attr, __dst_type, __dst, __arg1_type, __arg1, __arg2_type, __arg2, __arg3_type, __arg3, __arg4_type, __arg4)
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1_ARGLIST(_ReturnType, _FuncName, _VFuncName, _DstType, _Dst, _TType1, _TArg1) \
+  extern "C++" { \
+    template <size_t _Size> \
+    inline _ReturnType __CRTDECL _FuncName(_DstType (&_Dst)[_Size], _TType1 _TArg1, ...) _CRT_SECURE_CPP_NOTHROW { \
+      va_list _ArgList; \
+      _crt_va_start(_ArgList, _TArg1); \
+      return _VFuncName(_Dst, _Size, _TArg1, _ArgList); \
+    } \
+  }
 
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2_ARGLIST(_ReturnType, _FuncName, _VFuncName, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2) \
+  extern "C++" { \
+    template <size_t _Size> \
+    inline _ReturnType __CRTDECL _FuncName(_DstType (&_Dst)[_Size], _TType1 _TArg1, _TType2 _TArg2, ...) _CRT_SECURE_CPP_NOTHROW { \
+      va_list _ArgList; \
+      _crt_va_start(_ArgList, _TArg2); \
+      return _VFuncName(_Dst, _Size, _TArg1, _TArg2, _ArgList); \
+    } \
+  }
+
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_SPLITPATH(_ReturnType, _FuncName, _DstType, _Src) \
+  extern "C++" { \
+    template <size_t _DriveSize, size_t _DirSize, size_t _NameSize, size_t _ExtSize> \
+    inline _ReturnType __CRTDECL _FuncName(_In_z_ const _DstType *_Src, _Post_z_ _DstType (&_Drive)[_DriveSize], _Post_z_ _DstType (&_Dir)[_DirSize], _Post_z_ _DstType (&_Name)[_NameSize], _Post_z_ _DstType (&_Ext)[_ExtSize]) _CRT_SECURE_CPP_NOTHROW { \
+      return _FuncName(_Src, _Drive, _DriveSize, _Dir, _DirSize, _Name, _NameSize, _Ext, _ExtSize); \
+    } \
+  }
+
+#else  /* defined(__cplusplus) && _CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES */
+
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(_ReturnType, _FuncName, _DstType, _Dst)
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(_ReturnType, _FuncName, _DstType, _Dst, _TType1, _TArg1)
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(_ReturnType, _FuncName, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2)
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_3(_ReturnType, _FuncName, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2, _TType3, _TArg3)
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_4(_ReturnType, _FuncName, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2, _TType3, _TArg3, _TType4, _TArg4)
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_1(_ReturnType, _FuncName, _HType1, _HArg1, _DstType, _Dst, _TType1, _TArg1)
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_2(_ReturnType, _FuncName, _HType1, _HArg1, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2)
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_1_3(_ReturnType, _FuncName, _HType1, _HArg1, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2, _TType3, _TArg3)
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_2_0(_ReturnType, _FuncName, _HType1, _HArg1, _HType2, _HArg2, _DstType, _Dst)
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1_ARGLIST(_ReturnType, _FuncName, _VFuncName, _DstType, _Dst, _TType1, _TArg1)
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2_ARGLIST(_ReturnType, _FuncName, _VFuncName, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2)
+#define __DEFINE_CPP_OVERLOAD_SECURE_FUNC_SPLITPATH(_ReturnType, _FuncName, _DstType, _Src)
+
+#endif  /* defined(__cplusplus) && _CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES */
+#endif  /* !RC_INVOKED */
+
+#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_0(_ReturnType, _ReturnPolicy, _DeclSpec, _FuncName, _SalAttributeDst, _DstType, _Dst) \
+  __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_0_EX(_ReturnType, _ReturnPolicy, _DeclSpec, _FuncName, _FuncName##_s, _SalAttributeDst, _DstType, _Dst)
+
+#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_1(_ReturnType, _ReturnPolicy, _DeclSpec, _FuncName, _SalAttributeDst, _DstType, _Dst, _TType1, _TArg1) \
+  __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_1_EX(_ReturnType, _ReturnPolicy, _DeclSpec, _FuncName, _FuncName##_s, _DstType, _SalAttributeDst, _DstType, _Dst, _TType1, _TArg1)
+
+#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_2(_ReturnType, _ReturnPolicy, _DeclSpec, _FuncName, _SalAttributeDst, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2) \
+  __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_2_EX(_ReturnType, _ReturnPolicy, _DeclSpec, _FuncName, _FuncName##_s, _DstType, _SalAttributeDst, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2)
+
+#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_3(_ReturnType, _ReturnPolicy, _DeclSpec, _FuncName, _SalAttributeDst, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2, _TType3, _TArg3) \
+  __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_3_EX(_ReturnType, _ReturnPolicy, _DeclSpec, _FuncName, _FuncName##_s, _DstType, _SalAttributeDst, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2, _TType3, _TArg3)
+
+#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_4(_ReturnType, _ReturnPolicy, _DeclSpec, _FuncName, _SalAttributeDst, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2, _TType3, _TArg3, _TType4, _TArg4) \
+  __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_4_EX(_ReturnType, _ReturnPolicy, _DeclSpec, _FuncName, _FuncName##_s, _SalAttributeDst, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2, _TType3, _TArg3, _TType4, _TArg4)
+
+#ifndef RC_INVOKED
 #if defined(__cplusplus) && _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES
 
-#define __RETURN_POLICY_SAME(__func_call, __dst) return (__func_call)
-#define __RETURN_POLICY_DST(__func_call, __dst) return ((__func_call) == 0 ? __dst : 0)
-#define __RETURN_POLICY_VOID(__func_call, __dst) (__func_call); return
+#define __RETURN_POLICY_SAME(_FunctionCall, _Dst) return (_FunctionCall)
+#define __RETURN_POLICY_DST(_FunctionCall, _Dst)  return ((_FunctionCall) == 0 ? _Dst : 0)
+#define __RETURN_POLICY_VOID(_FunctionCall, _Dst) (_FunctionCall); return
 #define __EMPTY_DECLSPEC
 
-#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_0_EX(__ret_type, __ret_policy, __decl_spec, __name, __sec_name, __dst_attr, __dst_type, __dst) \
-    __inline __ret_type __CRTDECL __insecure_##__name(__dst_attr __dst_type *__dst) \
-    { \
-        __decl_spec __ret_type __cdecl __name(__dst_type *__dst); \
-        return __name(__dst); \
-    } \
-    extern "C++" { \
+#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_0_EX(_ReturnType, _ReturnPolicy, _DeclSpec, _FuncName, _SecureFuncName, _SalAttributeDst, _DstType, _Dst) \
+  __inline _ReturnType __CRTDECL __insecure_##_FuncName(_SalAttributeDst _DstType *_Dst) { \
+    _DeclSpec _ReturnType __cdecl _FuncName(_DstType *_Dst); \
+    return _FuncName(_Dst); \
+  } \
+  extern "C++" { \
     template <typename _T> \
-    inline __ret_type __CRTDECL __name(_T &__dst) _CRT_SECURE_CPP_NOTHROW { \
-        return __insecure_##__name(static_cast<__dst_type*>(__dst)); \
+    inline _CRT_INSECURE_DEPRECATE(_SecureFuncName) _ReturnType __CRTDECL _FuncName(_T &_Dst) _CRT_SECURE_CPP_NOTHROW { \
+      return __insecure_##_FuncName(static_cast<_DstType *>(_Dst)); \
     } \
     template <typename _T> \
-    inline __ret_type __CRTDECL __name(const _T &__dst) _CRT_SECURE_CPP_NOTHROW { \
-        return __insecure_##__name(static_cast<__dst_type *>(__dst)); \
+    inline _CRT_INSECURE_DEPRECATE(_SecureFuncName) _ReturnType __CRTDECL _FuncName(const _T &_Dst) _CRT_SECURE_CPP_NOTHROW { \
+      return __insecure_##_FuncName(static_cast<_DstType *>(_Dst)); \
     } \
     template <> \
-    inline __ret_type __CRTDECL __name(__dst_type *&__dst) _CRT_SECURE_CPP_NOTHROW { \
-        return __insecure_##__name(__dst); \
+    inline _CRT_INSECURE_DEPRECATE(_SecureFuncName) _ReturnType __CRTDECL _FuncName(_DstType * &_Dst) _CRT_SECURE_CPP_NOTHROW { \
+      return __insecure_##_FuncName(_Dst); \
     } \
-    template <size_t __size> \
-    inline __ret_type __CRTDECL __name(__dst_type (&__dst)[__size]) _CRT_SECURE_CPP_NOTHROW { \
-        __ret_policy(__sec_name(__dst, __size), __dst); \
-    } \
-    }
-
-#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_2_EX(__ret_type, __ret_policy, __decl_spec, __name, __sec_name, __sec_dst_type, __dst_attr, __dst_type, __dst, __arg1_type, __arg1, __arg2_type, __arg2) \
-    __inline __ret_type __CRTDECL __insecure_##__name(__dst_attr __dst_type *__dst, __arg1_type __arg1, __arg2_type __arg2) \
-    { \
-        __decl_spec __ret_type __cdecl __name(__dst_type *__dst, __arg1_type, __arg2_type); \
-        return __name(__dst, __arg1, __arg2); \
-    } \
-    extern "C++" { \
-    template <typename _T> \
-    inline __ret_type __CRTDECL __name(_T &__dst, __arg1_type __arg1, __arg2_type __arg2) _CRT_SECURE_CPP_NOTHROW { \
-        return __insecure_##__name(static_cast<__dst_type*>(__dst), __arg1, __arg2); \
-    } \
-    template <typename _T> \
-    inline __ret_type __CRTDECL __name(const _T &__dst, __arg1_type __arg1, __arg2_type __arg2) _CRT_SECURE_CPP_NOTHROW { \
-        return __insecure_##__name(static_cast<__dst_type *>(__dst), __arg1, __arg2); \
+    template <size_t _Size> \
+    inline _ReturnType __CRTDECL _FuncName(_DstType (&_Dst)[_Size]) _CRT_SECURE_CPP_NOTHROW { \
+      _ReturnPolicy(_SecureFuncName(_Dst, _Size), _Dst); \
     } \
     template <> \
-    inline __ret_type __CRTDECL __name(__dst_type *&__dst, __arg1_type __arg1, __arg2_type __arg2) _CRT_SECURE_CPP_NOTHROW { \
-        return __insecure_##__name(__dst, __arg1, __arg2); \
+    inline _CRT_INSECURE_DEPRECATE(_SecureFuncName) _ReturnType __CRTDECL _FuncName<1>(_DstType (&_Dst)[1]) _CRT_SECURE_CPP_NOTHROW { \
+      _ReturnPolicy(_SecureFuncName(_Dst, 1), _Dst); \
     } \
-    template <size_t __size> \
-    inline __ret_type __CRTDECL __name(__sec_dst_type (&__dst)[__size], __arg1_type __arg1, __arg2_type __arg2) _CRT_SECURE_CPP_NOTHROW { \
-        __ret_policy(__sec_name(__dst, __size), __dst); \
-    } \
-    }
+  }
 
-#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_1_EX(__ret_type, __ret_policy, __decl_spec, __name, __sec_name, __sec_dst_type, __dst_attr, __dst_type, __dst, __arg1_type, __arg1) \
-    __inline __ret_type __CRTDECL __insecure_##__name(__dst_attr __dst_type *__dst, __arg1_type __arg1) \
-    { \
-        __decl_spec __ret_type __cdecl __name(__dst_type *__dst, __arg1_type); \
-        return __name(__dst, __arg1); \
-    } \
-    extern "C++" { \
+#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_1_EX(_ReturnType, _ReturnPolicy, _DeclSpec, _FuncName, _SecureFuncName, _SecureDstType, _SalAttributeDst, _DstType, _Dst, _TType1, _TArg1) \
+  __inline _ReturnType __CRTDECL __insecure_##_FuncName(_SalAttributeDst _DstType *_Dst, _TType1 _TArg1) { \
+    _DeclSpec _ReturnType __cdecl _FuncName(_SalAttributeDst _DstType *_Dst, _TType1 _TArg1); \
+    return _FuncName(_Dst, _TArg1); \
+  } \
+  extern "C++" { \
     template <typename _T> \
-    inline __ret_type __CRTDECL __name(_T &__dst, __arg1_type __arg1) _CRT_SECURE_CPP_NOTHROW { \
-        return __insecure_##__name(static_cast<__dst_type*>(__dst), __arg1); \
+    inline _CRT_INSECURE_DEPRECATE(_SecureFuncName) _ReturnType __CRTDECL _FuncName(_T &_Dst, _TType1 _TArg1) _CRT_SECURE_CPP_NOTHROW { \
+      return __insecure_##_FuncName(static_cast<_DstType *>(_Dst), _TArg1); \
     } \
     template <typename _T> \
-    inline __ret_type __CRTDECL __name(const _T &__dst, __arg1_type __arg1) _CRT_SECURE_CPP_NOTHROW { \
-        return __insecure_##__name(static_cast<__dst_type *>(__dst), __arg1); \
+    inline _CRT_INSECURE_DEPRECATE(_SecureFuncName) _ReturnType __CRTDECL _FuncName(const _T &_Dst, _TType1 _TArg1) _CRT_SECURE_CPP_NOTHROW { \
+      return __insecure_##_FuncName(static_cast<_DstType *>(_Dst), _TArg1); \
     } \
     template <> \
-    inline __ret_type __CRTDECL __name(__dst_type *&__dst, __arg1_type __arg1) _CRT_SECURE_CPP_NOTHROW { \
-        return __insecure_##__name(__dst, __arg1); \
+    inline _CRT_INSECURE_DEPRECATE(_SecureFuncName) _ReturnType __CRTDECL _FuncName(_DstType * &_Dst, _TType1 _TArg1) _CRT_SECURE_CPP_NOTHROW { \
+      return __insecure_##_FuncName(_Dst, _TArg1); \
     } \
-    template <size_t __size> \
-    inline __ret_type __CRTDECL __name(__sec_dst_type (&__dst)[__size], __arg1_type __arg1) _CRT_SECURE_CPP_NOTHROW { \
-        __ret_policy(__sec_name(__dst, __size), __dst); \
-    } \
-    }
-
-#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_3_EX(__ret_type, __ret_policy, __decl_spec, __name, __sec_name, __sec_dst_type, __dst_attr, __dst_type, __dst, __arg1_type, __arg1, __arg2_type, __arg2, __arg3_type, __arg3) \
-    __inline __ret_type __CRTDECL __insecure_##__name(__dst_attr __dst_type *__dst, __arg1_type __arg1, __arg2_type __arg2, __arg3_type __arg3) \
-    { \
-        __decl_spec __ret_type __cdecl __name(__dst_type *__dst, __arg1_type, __arg2_type, __arg3_type); \
-        return __name(__dst, __arg1, __arg2, __arg3); \
-    } \
-    extern "C++" { \
-    template <typename _T> \
-    inline __ret_type __CRTDECL __name(_T &__dst, __arg1_type __arg1, __arg2_type __arg2, __arg3_type __arg3) _CRT_SECURE_CPP_NOTHROW { \
-        return __insecure_##__name(static_cast<__dst_type*>(__dst), __arg1, __arg2, __arg3); \
-    } \
-    template <typename _T> \
-    inline __ret_type __CRTDECL __name(const _T &__dst, __arg1_type __arg1, __arg2_type __arg2, __arg3_type __arg3) _CRT_SECURE_CPP_NOTHROW { \
-        return __insecure_##__name(static_cast<__dst_type *>(__dst), __arg1, __arg2, __arg3); \
+    template <size_t _Size> \
+    inline _ReturnType __CRTDECL _FuncName(_SecureDstType (&_Dst)[_Size], _TType1 _TArg1) _CRT_SECURE_CPP_NOTHROW { \
+      _ReturnPolicy(_SecureFuncName(_Dst, _Size, _TArg1), _Dst); \
     } \
     template <> \
-    inline __ret_type __CRTDECL __name(__dst_type *&__dst, __arg1_type __arg1, __arg2_type __arg2, __arg3_type __arg3) _CRT_SECURE_CPP_NOTHROW { \
-        return __insecure_##__name(__dst, __arg1, __arg2, __arg3); \
+    inline _CRT_INSECURE_DEPRECATE(_SecureFuncName) _ReturnType __CRTDECL _FuncName<1>(_DstType (&_Dst)[1], _TType1 _TArg1) _CRT_SECURE_CPP_NOTHROW { \
+      _ReturnPolicy(_SecureFuncName(_Dst, 1, _TArg1), _Dst); \
     } \
-    template <size_t __size> \
-    inline __ret_type __CRTDECL __name(__sec_dst_type (&__dst)[__size], __arg1_type __arg1, __arg2_type __arg2, __arg3_type __arg3) _CRT_SECURE_CPP_NOTHROW { \
-        __ret_policy(__sec_name(__dst, __size), __dst); \
-    } \
-    }
+  }
 
-#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_4_EX(__ret_type, __ret_policy, __decl_spec, __name, __sec_name, __sec_dst_type, __dst_attr, __dst_type, __dst, __arg1_type, __arg1, __arg2_type, __arg2, __arg3_type, __arg3, __arg4_type, __arg4) \
-    __inline __ret_type __CRTDECL __insecure_##__name(__dst_attr __dst_type *__dst, __arg1_type __arg1, __arg2_type __arg2, __arg3_type __arg3, __arg4_type __arg4) \
-    { \
-        __decl_spec __ret_type __cdecl __name(__dst_type *__dst, __arg1_type, __arg2_type, __arg3_type, __arg4_type); \
-        return __name(__dst, __arg1, __arg2, __arg3, __arg4); \
-    } \
-    extern "C++" { \
+#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_2_EX(_ReturnType, _ReturnPolicy, _DeclSpec, _FuncName, _SecureFuncName, _SecureDstType, _SalAttributeDst, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2) \
+  __inline _ReturnType __CRTDECL __insecure_##_FuncName(_SalAttributeDst _DstType *_Dst, _TType1 _TArg1, _TType2 _TArg2) _CRT_SECURE_CPP_NOTHROW { \
+    _DeclSpec _ReturnType __cdecl _FuncName(_DstType *_Dst, _TType1 _TArg1, _TType2 _TArg2); \
+    return _FuncName(_Dst, _TArg1, _TArg2); \
+  } \
+  extern "C++" { \
     template <typename _T> \
-    inline __ret_type __CRTDECL __name(_T &__dst, __arg1_type __arg1, __arg2_type __arg2, __arg3_type __arg3, __arg4_type __arg4) _CRT_SECURE_CPP_NOTHROW { \
-        return __insecure_##__name(static_cast<__dst_type*>(__dst), __arg1, __arg2, __arg3, __arg4); \
+    inline _CRT_INSECURE_DEPRECATE(_SecureFuncName) _ReturnType __CRTDECL _FuncName(_T &_Dst, _TType1 _TArg1, _TType2 _TArg2) _CRT_SECURE_CPP_NOTHROW { \
+      return __insecure_##_FuncName(static_cast<_DstType *>(_Dst), _TArg1, _TArg2); \
     } \
     template <typename _T> \
-    inline __ret_type __CRTDECL __name(const _T &__dst, __arg1_type __arg1, __arg2_type __arg2, __arg3_type __arg3, __arg4_type __arg4) _CRT_SECURE_CPP_NOTHROW { \
-        return __insecure_##__name(static_cast<__dst_type *>(__dst), __arg1, __arg2, __arg3, __arg4); \
+    inline _CRT_INSECURE_DEPRECATE(_SecureFuncName) _ReturnType __CRTDECL _FuncName(const _T &_Dst, _TType1 _TArg1, _TType2 _TArg2) _CRT_SECURE_CPP_NOTHROW { \
+      return __insecure_##_FuncName(static_cast<_DstType *>(_Dst), _TArg1, _TArg2); \
     } \
     template <> \
-    inline __ret_type __CRTDECL __name(__dst_type *&__dst, __arg1_type __arg1, __arg2_type __arg2, __arg3_type __arg3, __arg4_type __arg4) _CRT_SECURE_CPP_NOTHROW { \
-        return __insecure_##__name(__dst, __arg1, __arg2, __arg3, __arg4); \
+    inline _CRT_INSECURE_DEPRECATE(_SecureFuncName) _ReturnType __CRTDECL _FuncName(_DstType * &_Dst, _TType1 _TArg1, _TType2 _TArg2) _CRT_SECURE_CPP_NOTHROW { \
+      return __insecure_##_FuncName(_Dst, _TArg1, _TArg2); \
     } \
-    template <size_t __size> \
-    inline __ret_type __CRTDECL __name(__sec_dst_type (&__dst)[__size], __arg1_type __arg1, __arg2_type __arg2, __arg3_type __arg3, __arg4_type __arg4) _CRT_SECURE_CPP_NOTHROW { \
-        __ret_policy(__sec_name(__dst, __size)); \
+    template <size_t _Size> \
+    inline _ReturnType __CRTDECL _FuncName(_SecureDstType (&_Dst)[_Size], _TType1 _TArg1, _TType2 _TArg2) _CRT_SECURE_CPP_NOTHROW { \
+      _ReturnPolicy(_SecureFuncName(_Dst, _Size, _TArg1, _TArg2), _Dst); \
     } \
-    }
+    template <> \
+    inline _CRT_INSECURE_DEPRECATE(_SecureFuncName) _ReturnType __CRTDECL _FuncName<1>(_DstType (&_Dst)[1], _TType1 _TArg1, _TType2 _TArg2) _CRT_SECURE_CPP_NOTHROW { \
+      _ReturnPolicy(_SecureFuncName(_Dst, 1, _TArg1, _TArg2), _Dst); \
+    } \
+  }
 
-#else
+#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_3_EX(_ReturnType, _ReturnPolicy, _DeclSpec, _FuncName, _SecureFuncName, _SecureDstType, _SalAttributeDst, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2, _TType3, _TArg3) \
+  __inline _ReturnType __CRTDECL __insecure_##_FuncName(_SalAttributeDst _DstType *_Dst, _TType1 _TArg1, _TType2 _TArg2, _TType3 _TArg3) { \
+    _DeclSpec _ReturnType __cdecl _FuncName(_DstType *_Dst, _TType1 _TArg1, _TType2 _TArg2, _TType3 _TArg3); \
+    return _FuncName(_Dst, _TArg1, _TArg2, _TArg3); \
+  } \
+  extern "C++" { \
+    template <typename _T> \
+    inline _CRT_INSECURE_DEPRECATE(_SecureFuncName) _ReturnType __CRTDECL _FuncName(_T &_Dst, _TType1 _TArg1, _TType2 _TArg2, _TType3 _TArg3) _CRT_SECURE_CPP_NOTHROW { \
+      return __insecure_##_FuncName(static_cast<_DstType *>(_Dst), _TArg1, _TArg2, _TArg3); \
+    } \
+    template <typename _T> \
+    inline _CRT_INSECURE_DEPRECATE(_SecureFuncName) _ReturnType __CRTDECL _FuncName(const _T &_Dst, _TType1 _TArg1, _TType2 _TArg2, _TType3 _TArg3) _CRT_SECURE_CPP_NOTHROW { \
+      return __insecure_##_FuncName(static_cast<_DstType *>(_Dst), _TArg1, _TArg2, _TArg3); \
+    } \
+    template <> \
+    inline _CRT_INSECURE_DEPRECATE(_SecureFuncName) _ReturnType __CRTDECL _FuncName(_DstType * &_Dst, _TType1 _TArg1, _TType2 _TArg2, _TType3 _TArg3) _CRT_SECURE_CPP_NOTHROW { \
+      return __insecure_##_FuncName(_Dst, _TArg1, _TArg2, _TArg3); \
+    } \
+    template <size_t _Size> \
+    inline _ReturnType __CRTDECL _FuncName(_SecureDstType (&_Dst)[_Size], _TType1 _TArg1, _TType2 _TArg2, _TType3 _TArg3) _CRT_SECURE_CPP_NOTHROW { \
+      _ReturnPolicy(_SecureFuncName(_Dst, _Size, _TArg1, _TArg2, _TArg3), _Dst); \
+    } \
+    template <> \
+    inline _CRT_INSECURE_DEPRECATE(_SecureFuncName) _ReturnType __CRTDECL _FuncName<1>(_DstType (&_Dst)[1], _TType1 _TArg1, _TType2 _TArg2, _TType3 _TArg3) _CRT_SECURE_CPP_NOTHROW { \
+      _ReturnPolicy(_SecureFuncName(_Dst, 1, _TArg1, _TArg2, _TArg3), _Dst); \
+    } \
+  }
 
-#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_0_EX(__ret_type, __ret_policy, __decl_spec, __name, __sec_name, __dst_attr, __dst_type, __dst)
-#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_1_EX(__ret_type, __ret_policy, __decl_spec, __name, __sec_name, __dst_attr, __dst_type, __dst, __arg1_type, __arg1)
-#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_2_EX(__ret_type, __ret_policy, __decl_spec, __name, __sec_name, __dst_attr, __dst_type, __dst, __arg1_type, __arg1, __arg2_type, __arg2)
-#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_3_EX(__ret_type, __ret_policy, __decl_spec, __name, __sec_name, __dst_attr, __dst_type, __dst, __arg1_type, __arg1, __arg2_type, __arg2, __arg3_type, __arg3)
-#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_4_EX(__ret_type, __ret_policy, __decl_spec, __name, __sec_name, __dst_attr, __dst_type, __dst, __arg1_type, __arg1, __arg2_type, __arg2, __arg3_type, __arg3, __arg4_type, __arg4)
+#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_4_EX(_ReturnType, _ReturnPolicy, _DeclSpec, _FuncName, _SecureFuncName, _SalAttributeDst, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2, _TType3, _TArg3, _TType4, _TArg4) \
+  __inline _ReturnType __CRTDECL __insecure_##_FuncName(_SalAttributeDst _DstType *_Dst, _TType1 _TArg1, _TType2 _TArg2, _TType3 _TArg3, _TType4 _TArg4) { \
+    _DeclSpec _ReturnType __cdecl _FuncName(_DstType *_Dst, _TType1 _TArg1, _TType2 _TArg2, _TType3 _TArg3, _TType4 _TArg4); \
+    return _FuncName(_Dst, _TArg1, _TArg2, _TArg3, _TArg4); \
+  } \
+  extern "C++" { \
+    template <typename _T> \
+    inline _CRT_INSECURE_DEPRECATE(_SecureFuncName) _ReturnType __CRTDECL _FuncName(_T &_Dst, _TType1 _TArg1, _TType2 _TArg2, _TType3 _TArg3, _TType4 _TArg4) _CRT_SECURE_CPP_NOTHROW { \
+      return __insecure_##_FuncName(static_cast<_DstType *>(_Dst), _TArg1, _TArg2, _TArg3, _TArg4); \
+    } \
+    template <typename _T> \
+    inline _CRT_INSECURE_DEPRECATE(_SecureFuncName) _ReturnType __CRTDECL _FuncName(const _T &_Dst, _TType1 _TArg1, _TType2 _TArg2, _TType3 _TArg3, _TType4 _TArg4) _CRT_SECURE_CPP_NOTHROW { \
+      return __insecure_##_FuncName(static_cast<_DstType *>(_Dst), _TArg1, _TArg2, _TArg3, _TArg4); \
+    } \
+    template <> \
+    inline _CRT_INSECURE_DEPRECATE(_SecureFuncName) _ReturnType __CRTDECL _FuncName(_DstType * &_Dst, _TType1 _TArg1, _TType2 _TArg2, _TType3 _TArg3, _TType4 _TArg4) _CRT_SECURE_CPP_NOTHROW { \
+      return __insecure_##_FuncName(_Dst, _TArg1, _TArg2, _TArg3, _TArg4); \
+    } \
+    template <size_t _Size> \
+    inline _ReturnType __CRTDECL _FuncName(_DstType (&_Dst)[_Size], _TType1 _TArg1, _TType2 _TArg2, _TType3 _TArg3, _TType4 _TArg4) _CRT_SECURE_CPP_NOTHROW { \
+      _ReturnPolicy(_SecureFuncName(_Dst, _Size, _TArg1, _TArg2, _TArg3, _TArg4), _Dst); \
+    } \
+    template <> \
+    inline _CRT_INSECURE_DEPRECATE(_SecureFuncName) _ReturnType __CRTDECL _FuncName<1>(_DstType (&_Dst)[1], _TType1 _TArg1, _TType2 _TArg2, _TType3 _TArg3, _TType4 _TArg4) _CRT_SECURE_CPP_NOTHROW { \
+      _ReturnPolicy(_SecureFuncName(_Dst, 1, _TArg1, _TArg2, _TArg3, _TArg4), _Dst); \
+    } \
+  }
 
-#endif
+#else  /* defined(__cplusplus) && _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES */
 
-struct threadlocaleinfostruct;
-struct threadmbcinfostruct;
-typedef struct threadlocaleinfostruct *pthreadlocinfo;
-typedef struct threadmbcinfostruct *pthreadmbcinfo;
-struct __lc_time_data;
+#define __RETURN_POLICY_SAME(_FunctionCall)
+#define __RETURN_POLICY_DST(_FunctionCall)
+#define __RETURN_POLICY_VOID(_FunctionCall)
+#define __EMPTY_DECLSPEC
 
-typedef struct localeinfo_struct {
-  pthreadlocinfo locinfo;
-  pthreadmbcinfo mbcinfo;
-} _locale_tstruct,*_locale_t;
+#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_0_EX(_ReturnType, _ReturnPolicy, _DeclSpec, _FuncName, _SecureFuncName, _SalAttributeDst, _DstType, _Dst) \
+  _CRT_INSECURE_DEPRECATE(_SecureFuncName) _DeclSpec _ReturnType __cdecl _FuncName(_SalAttributeDst _DstType *_Dst);
 
+#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_1_EX(_ReturnType, _ReturnPolicy, _DeclSpec, _FuncName, _SecureFuncName, _SecureDstType, _SalAttributeDst, _DstType, _Dst, _TType1, _TArg1) \
+  _CRT_INSECURE_DEPRECATE(_SecureFuncName) _DeclSpec _ReturnType __cdecl _FuncName(_SalAttributeDst _DstType *_Dst, _TType1 _TArg1);
+
+#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_2_EX(_ReturnType, _ReturnPolicy, _DeclSpec, _FuncName, _SecureFuncName, _SecureDstType, _SalAttributeDst, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2) \
+  _CRT_INSECURE_DEPRECATE(_SecureFuncName) _DeclSpec _ReturnType __cdecl _FuncName(_SalAttributeDst _DstType *_Dst, _TType1 _TArg1, _TType2 _TArg2);
+
+#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_3_EX(_ReturnType, _ReturnPolicy, _DeclSpec, _FuncName, _SecureFuncName, _SecureDstType, _SalAttributeDst, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2, _TType3, _TArg3) \
+  _CRT_INSECURE_DEPRECATE(_SecureFuncName) _DeclSpec _ReturnType __cdecl _FuncName(_SalAttributeDst _DstType *_Dst, _TType1 _TArg1, _TType2 _TArg2, _TType3 _TArg3);
+
+#define __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_4_EX(_ReturnType, _ReturnPolicy, _DeclSpec, _FuncName, _SecureFuncName, _SalAttributeDst, _DstType, _Dst, _TType1, _TArg1, _TType2, _TArg2, _TType3, _TArg3, _TType4, _TArg4) \
+  _CRT_INSECURE_DEPRECATE(_SecureFuncName) _DeclSpec _ReturnType __cdecl _FuncName(_SalAttributeDst _DstType *_Dst, _TType1 _TArg1, _TType2 _TArg2, _TType3 _TArg3, _TType4 _TArg4);
+
+#endif  /* defined(__cplusplus) && _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES */
+#endif  /* !RC_INVOKED */
+
+  struct threadlocaleinfostruct;
+  struct threadmbcinfostruct;
+  typedef struct threadlocaleinfostruct *pthreadlocinfo;
+  typedef struct threadmbcinfostruct    *pthreadmbcinfo;
+  struct __lc_time_data;
+
+  typedef struct localeinfo_struct {
+    pthreadlocinfo locinfo;
+    pthreadmbcinfo mbcinfo;
+  } _locale_tstruct, *_locale_t;
+
+#if __MSVCRT_VERSION__ >= 0x0800
+#ifndef _THREADLOCALEINFO
+  typedef struct localerefcount {
+    char    *locale;
+    wchar_t *wlocale;
+    int     *refcount;
+    int     *wrefcount;
+  } locrefcount;
+
+  typedef struct threadlocaleinfostruct {
+    int                    refcount;
+    unsigned int           lc_codepage;
+    unsigned int           lc_collate_cp;
+    unsigned int           lc_time_cp;
+    locrefcount            lc_category[6];
+    int                    lc_clike;
+    int                    mb_cur_max;
+    int                   *lconv_intl_refcount;
+    int                   *lconv_num_refcount;
+    int                   *lconv_mon_refcount;
+    struct lconv          *lconv;
+    int                   *ctype1_refcount;
+    unsigned short        *ctype1;
+    const unsigned short  *pctype;
+    const unsigned char   *pclmap;
+    const unsigned char   *pcumap;
+    struct __lc_time_data *lc_time_curr;
+    wchar_t               *locale_name[6];
+  } threadlocinfo;
+#define _THREADLOCALEINFO
+#endif  /* !_THREADLOCALEINFO */
+#else  /* __MSVCRT_VERSION__ >= 0x0800 */
 #ifndef _TAGLC_ID_DEFINED
+  typedef struct tagLC_ID {
+    unsigned short wLanguage;
+    unsigned short wCountry;
+    unsigned short wCodePage;
+  } LC_ID, *LPLC_ID;
 #define _TAGLC_ID_DEFINED
-typedef struct tagLC_ID {
-  unsigned short wLanguage;
-  unsigned short wCountry;
-  unsigned short wCodePage;
-} LC_ID,*LPLC_ID;
-#endif /* _TAGLC_ID_DEFINED */
+#endif  /* !_TAGLC_ID_DEFINED */
 
 #ifndef _THREADLOCALEINFO
+  typedef struct threadlocaleinfostruct {
+    int refcount;
+    unsigned int           lc_codepage;
+    unsigned int           lc_collate_cp;
+    unsigned long          lc_handle[6];
+    LC_ID                  lc_id[6];
+    struct {
+      char                *locale;
+      wchar_t             *wlocale;
+      int                 *refcount;
+      int                 *wrefcount;
+    } lc_category[6];
+    int                    lc_clike;
+    int                    mb_cur_max;
+    int                   *lconv_intl_refcount;
+    int                   *lconv_num_refcount;
+    int                   *lconv_mon_refcount;
+    struct lconv          *lconv;
+    int                   *ctype1_refcount;
+    unsigned short        *ctype1;
+    const unsigned short  *pctype;
+    const unsigned char   *pclmap;
+    const unsigned char   *pcumap;
+    struct __lc_time_data *lc_time_curr;
+  } threadlocinfo;
 #define _THREADLOCALEINFO
-typedef struct threadlocaleinfostruct {
-  int refcount;
-  unsigned int lc_codepage;
-  unsigned int lc_collate_cp;
-  unsigned long lc_handle[6];
-  LC_ID lc_id[6];
-  struct {
-    char *locale;
-    wchar_t *wlocale;
-    int *refcount;
-    int *wrefcount;
-  } lc_category[6];
-  int lc_clike;
-  int mb_cur_max;
-  int *lconv_intl_refcount;
-  int *lconv_num_refcount;
-  int *lconv_mon_refcount;
-  struct lconv *lconv;
-  int *ctype1_refcount;
-  unsigned short *ctype1;
-  const unsigned short *pctype;
-  const unsigned char *pclmap;
-  const unsigned char *pcumap;
-  struct __lc_time_data *lc_time_curr;
-} threadlocinfo;
-#endif /* _THREADLOCALEINFO */
+#endif  /* !_THREADLOCALEINFO */
+#endif  /* __MSVCRT_VERSION__ >= 0x0800 */
+
+#ifdef __cplusplus
+}
+#endif  /* __cplusplus */
 
 #ifndef __crt_typefix
 #define __crt_typefix(ctype)
-#endif
+#endif  /* !__crt_typefix */
+
+#ifndef _CRT_UNUSED
+#define _CRT_UNUSED(x) (void)x
+#endif  /* !_CRT_UNUSED */
 
 #ifndef __WIDL__
 #pragma pack(pop)
-#endif
+#endif  /* !__WIDL__ */
 
 #endif /* _INC_CRTDEFS */

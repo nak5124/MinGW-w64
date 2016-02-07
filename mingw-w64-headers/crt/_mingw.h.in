@@ -268,22 +268,6 @@
 #endif  /* __cplusplus */
 #endif  /* !__nothrow */
 
-#include <vadefs.h>  /* other headers depend on this include */
-
-#ifndef _CRT_STRINGIZE
-#define __CRT_STRINGIZE(_Value) #_Value
-#define _CRT_STRINGIZE(_Value) __CRT_STRINGIZE(_Value)
-#endif  /* !_CRT_STRINGIZE */
-
-#ifndef _CRT_WIDE
-#define __CRT_WIDE(_String) L ## _String
-#define _CRT_WIDE(_String) __CRT_WIDE(_String)
-#endif  /* !_CRT_WIDE */
-
-#ifndef _W64
-#define _W64
-#endif  /* !_W64 */
-
 #ifndef _CRTIMP_NOIA64
 #ifdef __ia64__
 #define _CRTIMP_NOIA64
@@ -291,19 +275,6 @@
 #define _CRTIMP_NOIA64 _CRTIMP
 #endif  /* __ia64__ */
 #endif  /* !_CRTIMP_NOIA64 */
-
-#ifndef _CRTIMP2
-#define _CRTIMP2 _CRTIMP
-#endif  /* !_CRTIMP2 */
-
-#ifndef _CRTIMP_ALTERNATIVE
-#define _CRTIMP_ALTERNATIVE _CRTIMP
-#define _CRT_ALTERNATIVE_IMPORTED
-#endif  /* !_CRTIMP_ALTERNATIVE */
-
-#ifndef _MRTIMP2
-#define _MRTIMP2 _CRTIMP
-#endif  /* !_MRTIMP2 */
 
 /* We have to define _DLL for gcc based mingw version. This define is set
    by VC, when DLL-based runtime is used. So, gcc based runtime just have
@@ -321,75 +292,6 @@
 #ifndef _MCRTIMP
 #define _MCRTIMP _CRTIMP
 #endif  /* !_MCRTIMP */
-
-#ifndef _CRTIMP_PURE
-#define _CRTIMP_PURE _CRTIMP
-#endif  /* !_CRTIMP_PURE */
-
-#ifndef _PGLOBAL
-#define _PGLOBAL
-#endif  /* !_PGLOBAL */
-
-#ifndef _AGLOBAL
-#define _AGLOBAL
-#endif  /* !_AGLOBAL */
-
-#define _SECURECRT_FILL_BUFFER_PATTERN 0xFD
-#define _CRT_DEPRECATE_TEXT(_Text)     __declspec(deprecated)
-
-#ifndef _CRT_INSECURE_DEPRECATE_MEMORY
-#define _CRT_INSECURE_DEPRECATE_MEMORY(_Replacement)
-#endif  /* !_CRT_INSECURE_DEPRECATE_MEMORY */
-
-#ifndef _CRT_INSECURE_DEPRECATE_GLOBALS
-#define _CRT_INSECURE_DEPRECATE_GLOBALS(_Replacement)
-#endif  /* !_CRT_INSECURE_DEPRECATE_GLOBALS */
-
-#ifndef _CRT_MANAGED_HEAP_DEPRECATE
-#define _CRT_MANAGED_HEAP_DEPRECATE
-#endif  /* !_CRT_MANAGED_HEAP_DEPRECATE */
-
-#ifndef _CRT_OBSOLETE
-#define _CRT_OBSOLETE(_NewItem)
-#endif  /* !_CRT_OBSOLETE */
-
-#ifndef __WIDL__
-
-#ifndef _CONST_RETURN
-#define _CONST_RETURN
-#endif  /* !_CONST_RETURN */
-
-#ifndef UNALIGNED
-#if defined(_M_IA64) || defined(_M_AMD64)
-#define UNALIGNED __unaligned
-#else  /* defined(_M_IA64) || defined(_M_AMD64) */
-#define UNALIGNED
-#endif  /* defined(_M_IA64) || defined(_M_AMD64) */
-#endif  /* !UNALIGNED */
-
-#ifndef _CRT_ALIGN
-#ifdef _MSC_VER
-#define _CRT_ALIGN(x) __declspec(align(x))
-#else  /* _MSC_VER */
-#define _CRT_ALIGN(x) __attribute__((__aligned__ (x)))
-#endif  /* _MSC_VER */
-#endif  /* !_CRT_ALIGN */
-
-#endif  /* !__WIDL__ */
-
-#ifndef __CRTDECL
-#define __CRTDECL __cdecl
-#endif  /* !__CRTDECL */
-
-#define _ARGMAX 100
-
-#ifndef _TRUNCATE
-#define _TRUNCATE ((size_t)-1)
-#endif  /* !_TRUNCATE */
-
-#ifndef _CRT_UNUSED
-#define _CRT_UNUSED(x) (void)x
-#endif  /* !_CRT_UNUSED */
 
 /* MSVC defines _NATIVE_NULLPTR_SUPPORTED when nullptr is supported. We emulate it here for GCC. */
 #if __MINGW_GNUC_PREREQ(4, 6)
