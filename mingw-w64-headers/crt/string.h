@@ -80,6 +80,14 @@ extern "C" {
   size_t __cdecl strcspn(const char *_Str,const char *_Control);
   _CRTIMP char *__cdecl _strerror(const char *_ErrMsg) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   char *__cdecl strerror(int) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+#if (_POSIX_C_SOURCE >= 200112L || _XOPEN_SOURCE >= 600) /* && !defined(_GNU_SOURCE) */
+  int strerror_r(int _ErrNum, char *_Buf, size_t _SizeInBytes);
+#ifndef __CRT__NO_INLINE
+  __CRT_INLINE int strerror_r(int _ErrNum, char *_Buf, size_t _SizeInBytes) {
+    return strerror_s(_Buf, _SizeInBytes, _ErrNum);
+  }
+#endif  /* !__CRT__NO_INLINE */
+#endif  /* (_POSIX_C_SOURCE >= 200112L || _XOPEN_SOURCE >= 600) */
   _CRTIMP char *__cdecl _strlwr(char *_String) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   char *strlwr_l(char *_String,_locale_t _Locale) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   char *__cdecl strncat(char * __restrict__ _Dest,const char * __restrict__ _Source,size_t _Count) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
