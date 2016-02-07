@@ -59,6 +59,10 @@ extern "C" {
   char * __cdecl _strset(char *_Str,int _Val) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   char * __cdecl _strset_l(char *_Str,int _Val,_locale_t _Locale) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   char * __cdecl strcpy(char * __restrict__ _Dest,const char * __restrict__ _Source);
+#if _POSIX_C_SOURCE >= 200809L || _XOPEN_SOURCE >= 700
+  char * stpcpy(char * __restrict__ _Dest, const char * __restrict__ _Source);
+  char * stpncpy(char * __restrict__ _Dest, const char * __restrict__ _Source, size_t n);
+#endif  /* _POSIX_C_SOURCE >= 200809L || _XOPEN_SOURCE >= 700 */
   char * __cdecl strcat(char * __restrict__ _Dest,const char * __restrict__ _Source);
   int __cdecl strcmp(const char *_Str1,const char *_Str2);
   size_t __cdecl strlen(const char *_Str);
