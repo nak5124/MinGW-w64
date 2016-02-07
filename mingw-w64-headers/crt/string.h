@@ -69,6 +69,9 @@ extern "C" {
   size_t __cdecl strnlen(const char *_Str,size_t _MaxCount);
   void *__cdecl memmove(void *_Dst,const void *_Src,size_t _Size) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP char *__cdecl _strdup(const char *_Src);
+#if _POSIX_C_SOURCE >= 200809L || _XOPEN_SOURCE >= 700
+  char * strndup(const char *_Str, size_t n);
+#endif  /* _POSIX_C_SOURCE >= 200809L || _XOPEN_SOURCE >= 700 */
   _CONST_RETURN char *__cdecl strchr(const char *_Str,int _Val);
   _CRTIMP int __cdecl _stricmp(const char *_Str1,const char *_Str2);
   _CRTIMP int __cdecl _strcmpi(const char *_Str1,const char *_Str2);
