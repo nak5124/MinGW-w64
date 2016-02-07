@@ -1,1 +1,12 @@
 autom4te.cache
+Makefile
+*.a
+*.diff
+*.orig
+*.rej
+*.dll*
+*.exe
+*.lib
+*.o
+*.patch
+*~
