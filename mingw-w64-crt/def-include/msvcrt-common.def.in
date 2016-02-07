@@ -11,11 +11,15 @@ strcasecmp == _stricmp
 strncasecmp == _strnicmp
 
 ADD_UNDERSCORE(access)
+ADD_UNDERSCORE(cgets)
 ADD_UNDERSCORE(chdir)
 ADD_UNDERSCORE(chmod)
 ADD_UNDERSCORE(chsize)
 ADD_UNDERSCORE(close)
+ADD_UNDERSCORE(cprintf)
+ADD_UNDERSCORE(cputs)
 ADD_UNDERSCORE(creat)
+ADD_UNDERSCORE(cscanf)
 ADD_UNDERSCORE(cwait)
 ADD_UNDERSCORE(dup)
 ADD_UNDERSCORE(dup2)

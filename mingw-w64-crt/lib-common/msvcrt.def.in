@@ -644,6 +644,9 @@ _initterm_e
 F_I386(_inp)
 F_I386(_inpd)
 F_I386(_inpw)
+F_I386(inp == _inp)
+F_I386(inpd == _inpd)
+F_I386(inpw == _inpw)
 _invalid_parameter
 _iob DATA
 _isalnum_l
@@ -945,6 +948,9 @@ _osver DATA
 F_I386(_outp)
 F_I386(_outpd)
 F_I386(_outpw)
+F_I386(outp == _outp)
+F_I386(outpd == _outpd)
+F_I386(outpw == _outpw)
 _pclose
 _pctype DATA
 _pgmptr DATA
