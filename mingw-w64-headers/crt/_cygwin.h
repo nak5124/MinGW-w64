@@ -8,7 +8,7 @@
 
 #ifndef __CYGWIN__
 #error Only Cygwin target is supported!
-#endif
+#endif  /* !__CYGWIN__ */
 
 /* This includes the Cygwin gcc definitions for types like wchar_t or size_t. */
 #include <stddef.h>
@@ -31,6 +31,6 @@
    is only defined if Windows headers are included. */
 #ifdef __x86_64__
 #define _WIN64
-#endif
+#endif  /* __x86_64__ */
 
 #endif /* _INC_CYGWIN */

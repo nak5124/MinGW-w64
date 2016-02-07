@@ -5,28 +5,24 @@
  */
 
 #ifndef _BSDTYPES_DEFINED
-#define _BSDTYPES_DEFINED
 
-/* Make sure __LONG32 is defined.  */
+/* Make sure __LONG32 is defined. */
 #include <_mingw.h>
 
-typedef unsigned char	u_char;
-typedef unsigned short	u_short;
-typedef unsigned int	u_int;
+  typedef unsigned char  u_char;
+  typedef unsigned short u_short;
+  typedef unsigned int   u_int;
+
 #pragma push_macro("u_long")
 #undef u_long
-typedef unsigned long u_long;
+  typedef unsigned long u_long;
 #pragma pop_macro("u_long")
 
-#if defined(__GNUC__) || \
-    defined(__GNUG__)
-__extension__
-#endif /* gcc / g++ */
-typedef unsigned long long u_int64;
+  __MINGW_EXTENSION typedef unsigned long long u_int64;
 
-#endif /* _BSDTYPES_DEFINED */
+#define _BSDTYPES_DEFINED
+#endif  /* !_BSDTYPES_DEFINED */
 
-#if defined (__LP64__) && defined (u_long)
-typedef unsigned __LONG32 u_long;
-#endif
-
+#if defined(__LP64__) && defined(u_long)
+  typedef unsigned __LONG32 u_long;
+#endif  /* defined(__LP64__) && defined(u_long) */
