@@ -56,6 +56,9 @@ extern "C" {
   int __cdecl memicmp(const void *_Buf1,const void *_Buf2,size_t _Size) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 #endif
 #endif
+#ifdef _GNU_SOURCE
+  void * memmem(const void *_block, size_t _blen, const void *_pat, size_t _plen);
+#endif  /* _GNU_SOURCE */
   char * __cdecl _strset(char *_Str,int _Val) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   char * __cdecl _strset_l(char *_Str,int _Val,_locale_t _Locale) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   char * __cdecl strcpy(char * __restrict__ _Dest,const char * __restrict__ _Source);
