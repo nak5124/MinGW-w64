@@ -163,6 +163,7 @@ src_msvcrt=\
   misc/invalid_parameter_handler.c \
   misc/output_format.c \
   misc/purecall.c \
+  misc/recalloc.c \
   secapi/_access_s.c \
   secapi/_cgets_s.c \
   secapi/_cgetws_s.c \
