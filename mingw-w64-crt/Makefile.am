@@ -300,7 +300,7 @@ src_libmingwex=\
   misc/wcstoimax.c       misc/wcstold.c             misc/wcstoumax.c        misc/wctob.c                 misc/wctrans.c         \
   misc/wctype.c          misc/wdirent.c             misc/winbs_uint64.c     misc/winbs_ulong.c           misc/winbs_ushort.c    \
   misc/wmemchr.c         misc/wmemcmp.c             misc/wmemcpy.c          misc/wmemmove.c              misc/wmempcpy.c        \
-  misc/wmemset.c         misc/ftw.c                 misc/ftw64.c          \
+  misc/wmemset.c         misc/ftw.c                 misc/ftw64.c            \
   \
   stdio/mingw_pformat.h   \
   stdio/scanf.S           stdio/vfscanf2.S        stdio/vfwscanf2.S       stdio/vscanf2.S          stdio/vsscanf2.S         \
@@ -318,8 +318,8 @@ src_libmingwex=\
   stdio/mingw_vsprintf.c  stdio/mingw_vsprintfw.c stdio/mingw_wscanf.c    stdio/mingw_wvfscanf.c   stdio/snprintf.c         \
   stdio/snwprintf.c       stdio/strtof.c          stdio/truncate.c        stdio/ulltoa.c           stdio/ulltow.c           \
   stdio/vasprintf.c       stdio/vfscanf.c         stdio/vfwscanf.c        stdio/vscanf.c           stdio/vsnprintf.c        \
-  stdio/vsnprintf_s.c     stdio/vsnwprintf.c      stdio/vsscanf.c         stdio/vswscanf.c         stdio/vwscanf.c          \
-  stdio/wtoll.c           stdio/mingw_asprintf.c  stdio/mingw_vasprintf.c stdio/isatty.c
+  stdio/vsnwprintf.c      stdio/vsscanf.c         stdio/vswscanf.c         stdio/vwscanf.c         stdio/wtoll.c            \
+  stdio/mingw_asprintf.c  stdio/mingw_vasprintf.c stdio/isatty.c
 
 # these go into both 32 and 64 bit x86 versions:
 src_libmingwex_x86=\

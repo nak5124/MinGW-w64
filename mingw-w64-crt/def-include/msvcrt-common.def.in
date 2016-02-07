@@ -152,5 +152,5 @@ __ms_fwprintf == fwprintf
 ADD_UNDERSCORE(snprintf)
 ADD_UNDERSCORE(snwprintf)
 ADD_UNDERSCORE(vsnwprintf)
-; ADD_UNDERSCORE(vsnprintf_s) We provide vsnprintf_s in libmingwex now, we should remove that implemention and enable this
+ADD_UNDERSCORE(vsnprintf_s)
 #endif
