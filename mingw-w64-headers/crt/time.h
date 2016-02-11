@@ -293,6 +293,11 @@ struct timezone {
 #endif
 
 #ifdef _POSIX_THREAD_SAFE_FUNCTIONS
+struct tm * __cdecl localtime_r(const time_t *_Time, struct tm *_Tm);
+struct tm * __cdecl gmtime_r(const time_t *_Time, struct tm *_Tm);
+char * __cdecl ctime_r(const time_t *_Time, char * _Str);
+char * __cdecl asctime_r(const struct tm *_Tm, char * _Str);
+
 __forceinline struct tm *__cdecl localtime_r(const time_t *_Time, struct tm *_Tm) {
   return localtime_s(_Tm, _Time) ? NULL : _Tm;
 }
