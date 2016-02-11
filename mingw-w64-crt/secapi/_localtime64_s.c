@@ -49,3 +49,7 @@ _int_localtime64_s (struct tm *ptm, const __time64_t *pt)
   *ptm = *ltm;
   return 0;
 }
+
+#ifdef _WIN64
+errno_t __cdecl localtime_s(struct tm *ptm, const __time64_t *pt) __attribute__((alias("_localtime64_s")));
+#endif  /* _WIN64 */

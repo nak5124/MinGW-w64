@@ -49,3 +49,7 @@ _int_gmtime32_s (struct tm *ptm, const __time32_t *pt)
   *ptm = *ltm;
   return 0;
 }
+
+#ifndef _WIN64
+errno_t __cdecl gmtime_s(struct tm *ptm, const __time32_t *pt) __attribute__((alias("_gmtime32_s")));
+#endif  /* !_WIN64 */

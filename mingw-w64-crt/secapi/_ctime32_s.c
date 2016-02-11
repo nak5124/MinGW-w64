@@ -54,3 +54,7 @@ _int_ctime32_s (char *d, size_t dn, const __time32_t *pt)
     return e;  
   return asctime_s (d, dn, &ltm);
 }
+
+#ifndef _WIN64
+errno_t __cdecl ctime_s(char *d, size_t dn, const __time32_t *pt) __attribute__((alias("_ctime32_s")));
+#endif  /* !_WIN64 */
