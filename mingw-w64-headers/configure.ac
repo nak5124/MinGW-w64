@@ -3,7 +3,6 @@
 
 AC_PREREQ([2.69])
 AC_INIT([mingw-w64-headers],[4.0b],[mingw-w64-public@lists.sourceforge.net])
-AC_CONFIG_SRCDIR([crt/_mingw.h.in])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_HEADERS([config.h])
 
@@ -39,8 +38,7 @@ AM_CONDITIONAL([HAVE_WIDL],[AS_VAR_TEST_SET([WIDL])])
 
 # Checks for header files.
 
-BASEHEAD_LIST="crt/_bsd_types.h crt/_cygwin.h crt/_mingw.h crt/_mingw_mac.h crt/_mingw_print_push.h crt/_mingw_print_pop.h crt/_mingw_secapi.h crt/_mingw_unicode.h crt/_timeval.h crt/crtdefs.h crt/excpt.h crt/intrin.h crt/vadefs.h crt/tchar.h "$srcdir/include/*.h
-SECHEAD_LIST="$srcdir/crt/sec_api/stralign_s.h"
+BASEHEAD_LIST="crt/_bsd_types.h crt/_cygwin.h crt/_mingw.h crt/_mingw_mac.h crt/_mingw_print_push.h crt/_mingw_print_pop.h crt/_mingw_unicode.h crt/_timeval.h crt/crtdefs.h crt/excpt.h crt/intrin.h crt/vadefs.h crt/tchar.h "$srcdir/include/*.h
 for i in c dlg h16 hxx rh ver; do
   BASEHEAD_LIST="$BASEHEAD_LIST "$srcdir/include/*.$i
 done
@@ -72,7 +70,6 @@ AC_MSG_RESULT([$enable_crt])
 AS_VAR_IF([enable_crt],[yes],[
   BASEHEAD_LIST="$BASEHEAD_LIST "$srcdir/crt/*.h" "$srcdir/crt/*.inl
   SYSHEAD_LIST=$srcdir/crt/sys/*.h
-  SECHEAD_LIST=$srcdir/crt/sec_api/*.h
 ])
 GDIPLUSHEAD_LIST=$srcdir/include/gdiplus/*.h
 WRLHEAD_LIST=$srcdir/include/wrl/*.h
@@ -86,7 +83,6 @@ AC_SUBST([WRLWRAPPERSHEAD_LIST])
 AC_SUBST([GLHEAD_LIST])
 AC_SUBST([MINGWHELPERHEAD_LIST])
 AC_SUBST([SYSHEAD_LIST])
-AC_SUBST([SECHEAD_LIST])
 
 AC_MSG_CHECKING([for optional sdk headers])
 AC_ARG_ENABLE([sdk],
@@ -137,18 +133,6 @@ AS_VAR_IF([enable_idl],[yes],
     [IDLHEAD_LIST=$srcdir/include/*.idl" "$srcdir/tlb/*.tlb],
     [IDLHEAD_LIST=""])
 AC_SUBST([IDLHEAD_LIST])
-
-AC_MSG_CHECKING([whether to enable the secure API])
-AC_ARG_ENABLE([secure-api],
-  [AS_HELP_STRING([--enable-secure-api],
-    [Expose secure API prototypes])],
-  [],
-  [enable_secure_api=no])
-AC_MSG_RESULT([$enable_secure_api])
-AS_VAR_IF([enable_secure_api],[yes],
-  [MINGW_HAS_SECURE_API="#define MINGW_HAS_SECURE_API 1"],
-  [MINGW_HAS_SECURE_API=""])
-AC_SUBST([MINGW_HAS_SECURE_API])
 
 AC_MSG_CHECKING([default _WIN32_WINNT version])
 AC_ARG_WITH([default-win32-winnt],

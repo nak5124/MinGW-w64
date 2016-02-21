@@ -1,7 +1,6 @@
 
 baseheaddir = $(includedir)
 sysheaddir = $(baseheaddir)/sys
-secheaddir = $(baseheaddir)/sec_api
 glheaddir = $(baseheaddir)/GL
 gdiplusheaddir = $(baseheaddir)/gdiplus
 wrlheaddir = $(baseheaddir)/wrl
@@ -11,7 +10,6 @@ sdksheaddir = $(baseheaddir)/sdks
 
 basehead_HEADERS = @BASEHEAD_LIST@
 syshead_HEADERS = @SYSHEAD_LIST@
-sechead_HEADERS = @SECHEAD_LIST@
 glhead_HEADERS = @GLHEAD_LIST@
 gdiplushead_HEADERS = @GDIPLUSHEAD_LIST@
 wrlhead_HEADERS = @WRLHEAD_LIST@
@@ -54,7 +52,6 @@ EXTRA_HEADERS = \
   crt/*.h \
   crt/*.inl \
   crt/sys/*.h \
-  crt/sec_api/*.h \
   direct-x/include/*.h \
   direct-x/include/*.idl \
   ddk/include/ddk/*.h \
