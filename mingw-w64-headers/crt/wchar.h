@@ -1192,6 +1192,13 @@ int vsnwprintf (wchar_t *__stream, size_t __n, const wchar_t *__format, __builti
   }
 #endif /* !__CRT__NO_INLINE */
 
+#ifdef _XOPEN_SOURCE
+  int wcwidth(wchar_t c);
+  int wcswidth(const wchar_t *s, size_t n);
+  int wcwidth_cjk(wchar_t c);
+  int wcswidth_cjk(const wchar_t *s, size_t n);
+#endif  /* _XOPEN_SOURCE */
+
 #ifndef __MINGW_MBWC_CONVERT_DEFINED
 #define __MINGW_MBWC_CONVERT_DEFINED
 
