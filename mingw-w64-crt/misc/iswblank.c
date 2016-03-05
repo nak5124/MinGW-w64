@@ -1,4 +1,4 @@
-#define _CRT_WCTYPE_NOINLINE
+#define _WCTYPE_INLINE_DEFINED
 #include <ctype.h>
 
 int __cdecl iswblank (wint_t _C)
