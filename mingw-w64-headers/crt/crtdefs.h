@@ -235,6 +235,7 @@ extern "C" {
 
 #ifndef __WIDL__
 
+#ifdef __MINGW_USE_CONST_RETURN
 #ifndef _CONST_RETURN
 #ifdef __cplusplus
 #define _CONST_RETURN const
@@ -243,6 +244,9 @@ extern "C" {
 #define _CONST_RETURN
 #endif  /* __cplusplus */
 #endif  /* !_CONST_RETURN */
+#else  /* __MINGW_USE_CONST_RETURN */
+#define _CONST_RETURN
+#endif  /* __MINGW_USE_CONST_RETURN */
 
 #ifndef UNALIGNED
 #if defined(_M_IA64) || defined(_M_AMD64)

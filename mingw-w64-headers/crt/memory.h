@@ -12,6 +12,7 @@
 extern "C" {
 #endif  /* __cplusplus */
 
+#ifdef __MINGW_USE_CONST_RETURN
 #ifndef _CONST_RETURN
 #ifdef __cplusplus
 #define _CONST_RETURN const
@@ -20,6 +21,9 @@ extern "C" {
 #define _CONST_RETURN
 #endif  /* __cplusplus */
 #endif  /* !_CONST_RETURN */
+#else  /* __MINGW_USE_CONST_RETURN */
+#define _CONST_RETURN
+#endif  /* __MINGW_USE_CONST_RETURN */
 
 #define _WConst_return _CONST_RETURN
 
