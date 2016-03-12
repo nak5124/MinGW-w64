@@ -68,6 +68,9 @@ extern "C" {
   double _Complex __cdecl csqrt(double _Complex _Z);
   double _Complex __cdecl ctan(double _Complex _Z);
   double _Complex __cdecl ctanh(double _Complex _Z);
+#if __MSVCRT_VERSION__ >= 0x1200
+  /* _CRTIMP */ double __cdecl norm(double _Complex _Z);
+#endif  /* __MSVCRT_VERSION__ >= 0x1200 */
 
   /* Provided in libmingwex. */
   float          __cdecl cabsf(float _Complex _Z) __MINGW_ATTRIB_CONST;
@@ -95,6 +98,9 @@ extern "C" {
   float _Complex __cdecl csqrtf(float _Complex _Z);
   float _Complex __cdecl ctanf(float _Complex _Z);
   float _Complex __cdecl ctanhf(float _Complex _Z);
+#if __MSVCRT_VERSION__ >= 0x1200
+  /* _CRTIMP */ float __cdecl normf(float _Complex _Z);
+#endif  /* __MSVCRT_VERSION__ >= 0x1200 */
 
   /* Provided in libmingwex. */
   long double          __cdecl cabsl(long double _Complex _Z) __MINGW_ATTRIB_CONST;
@@ -122,6 +128,24 @@ extern "C" {
   long double _Complex __cdecl csqrtl(long double _Complex _Z);
   long double _Complex __cdecl ctanl(long double _Complex _Z);
   long double _Complex __cdecl ctanhl(long double _Complex _Z);
+#if __MSVCRT_VERSION__ >= 0x1200
+  /* _CRTIMP */ long double __cdecl norml(long double _Complex _Z);
+#endif  /* __MSVCRT_VERSION__ >= 0x1200 */
+
+#if __MSVCRT_VERSION__ >= 0x1200
+  _CRTIMP double      _Complex __cdecl _Cbuild(double _X, double _Y);
+  _CRTIMP float       _Complex __cdecl _FCbuild(float _X, float _Y);
+  _CRTIMP long double _Complex __cdecl _LCbuild(long double _X, long double _Y);
+#endif  /* __MSVCRT_VERSION__ >= 0x1200 */
+
+#if __MSVCRT_VERSION__ >= 0x1400
+  _CRTIMP double      _Complex __cdecl _Cmulcc(double _Complex _X, double _Complex _Y);
+  _CRTIMP double      _Complex __cdecl _Cmulcr(double _Complex _X, double _Y);
+  _CRTIMP float       _Complex __cdecl _FCmulcc(float _Complex _X, float _Complex _Y);
+  _CRTIMP float       _Complex __cdecl _FCmulcr(float _Complex _X, float _Y);
+  _CRTIMP long double _Complex __cdecl _LCmulcc(long double _Complex _X, long double _Complex _Y);
+  _CRTIMP long double _Complex __cdecl _LCmulcr(long double _Complex _X, long double _Y);
+#endif  /* __MSVCRT_VERSION__ >= 0x1400 */
 
 #ifdef __GNUC__
 #if !defined(__CRT__NO_INLINE) && defined(_MATH_H_)
