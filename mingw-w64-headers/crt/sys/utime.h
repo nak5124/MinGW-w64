@@ -90,15 +90,9 @@ extern "C" {
   _CRTIMP int __cdecl _wutime64(const wchar_t *_Filename, struct __utimbuf64 *_Time);
 
 #ifndef RC_INVOKED
-#ifdef _WIN64
-  _CRTIMP int __cdecl _utime(const char *_Filename, struct __utimbuf64 *_Time);
-  _CRTIMP int __cdecl _futime(int _FileDes, struct __utimbuf64 *_Time);
-  _CRTIMP int __cdecl _wutime(const wchar_t *_Filename, struct __utimbuf64 *_Time);
-#else  /* _WIN64 */
-  _CRTIMP int __cdecl _utime(const char *_Filename, struct __utimbuf32 *_Time);
-  _CRTIMP int __cdecl _futime(int _FileDes, struct __utimbuf32 *_Time);
-  _CRTIMP int __cdecl _wutime(const wchar_t *_Filename, struct __utimbuf32 *_Time);
-#endif  /* _WIN64 */
+  _CRTIMP int __cdecl _utime(const char *_Filename, struct _utimbuf *_Time);
+  _CRTIMP int __cdecl _futime(int _FileDes, struct _utimbuf *_Time);
+  _CRTIMP int __cdecl _wutime(const wchar_t *_Filename, struct _utimbuf *_Time);
 
 #ifndef __CRT__NO_INLINE
 
@@ -143,11 +137,8 @@ extern "C" {
 #ifndef NO_OLDNAMES
 
   /* utime in MSVCRT.DLL has the same entry point as _utime. */
-#ifdef _WIN64
-  /* _CRTIMP */ int __cdecl utime(const char *_Filename, struct __utimbuf64 * _Time);
-#else  /* _WIN64 */
-  /* _CRTIMP */ int __cdecl utime(const char *_Filename, struct __utimbuf32 * _Time);
-#endif  /* _WIN64 */
+  /* _CRTIMP */ int __cdecl utime(const char *_Filename, struct utimbuf * _Time);
+
 
 #ifndef __CRT__NO_INLINE
 
