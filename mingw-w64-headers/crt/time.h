@@ -111,10 +111,15 @@ extern "C" {
 #define _daylight (*__daylight())
   _CRTIMP long *  __cdecl __dstbias(void) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 #define _dstbias  (*__dstbias())
+#if __MSVCRT_VERSION__ >= 0x0800
   _CRTIMP long *  __cdecl __timezone(void) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-#define _timezone (*__timezone())
+# define _timezone (*__timezone())
   _CRTIMP char ** __cdecl __tzname(void) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-#define _tzname   (__tzname())
+# define _tzname   (__tzname())
+#else  /* __MSVCRT_VERSION__ >= 0x0800 */
+  __MINGW_IMPORT long   _timezone;
+  __MINGW_IMPORT char * _tzname[2];
+#endif  /* __MSVCRT_VERSION__ >= 0x0800 */
 
   _CRTIMP       errno_t     __cdecl _get_daylight(int *_Daylight);
   _CRTIMP       errno_t     __cdecl _get_dstbias(long *_Daylight_savings_bias);
