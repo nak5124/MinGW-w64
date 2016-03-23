@@ -38,19 +38,11 @@ extern "C" {
 #define _CRTDBG_MODE_WNDW   0x4
 #define _CRTDBG_REPORT_MODE -1
 
-#if defined(_X86_) && !defined(__x86_64)
-#define _CRTDBG_INVALID_HFILE ((_HFILE)-1)
-#define _CRTDBG_HFILE_ERROR   ((_HFILE)-2)
-#define _CRTDBG_FILE_STDOUT   ((_HFILE)-4)
-#define _CRTDBG_FILE_STDERR   ((_HFILE)-5)
-#define _CRTDBG_REPORT_FILE   ((_HFILE)-6)
-#else  /* defined(_X86_) && !defined(__x86_64) */
-#define _CRTDBG_INVALID_HFILE ((_HFILE)(__int64)-1)
-#define _CRTDBG_HFILE_ERROR   ((_HFILE)(__int64)-2)
-#define _CRTDBG_FILE_STDOUT   ((_HFILE)(__int64)-4)
-#define _CRTDBG_FILE_STDERR   ((_HFILE)(__int64)-5)
-#define _CRTDBG_REPORT_FILE   ((_HFILE)(__int64)-6)
-#endif  /* defined(_X86_) && !defined(__x86_64) */
+#define _CRTDBG_INVALID_HFILE ((_HFILE)(intptr_t)-1)
+#define _CRTDBG_HFILE_ERROR   ((_HFILE)(intptr_t)-2)
+#define _CRTDBG_FILE_STDOUT   ((_HFILE)(intptr_t)-4)
+#define _CRTDBG_FILE_STDERR   ((_HFILE)(intptr_t)-5)
+#define _CRTDBG_REPORT_FILE   ((_HFILE)(intptr_t)-6)
 
   typedef int (__cdecl *_CRT_REPORT_HOOK)(int, char *, int *);
   typedef int (__cdecl *_CRT_REPORT_HOOKW)(int, wchar_t *, int *);
