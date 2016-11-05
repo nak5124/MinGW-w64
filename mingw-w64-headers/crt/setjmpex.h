@@ -8,17 +8,18 @@
 
 #ifndef _WIN32
 #error Only Win32 target is supported!
-#endif
+#endif  /* !_WIN32 */
 
-#if (defined(_X86_) && !defined(__x86_64))
-#define setjmp _setjmp
+#if defined(_X86_) && !defined(__x86_64)
+#define setjmp  _setjmp
 #define longjmp _longjmpex
-#else
+#else  /* defined(_X86_) && !defined(__x86_64) */
 #ifdef setjmp
 #undef setjmp
-#endif
+#endif  /* setjmp */
 #define setjmp _setjmpex
-#endif
+#endif  /* defined(_X86_) && !defined(__x86_64) */
 
 #include <setjmp.h>
-#endif
+
+#endif  /* _INC_SETJMPEX */

@@ -17,29 +17,31 @@
 
 #ifndef __NOTHROW_T_DEFINED
 #define __NOTHROW_T_DEFINED
-#endif
+#endif  /* !__NOTHROW_T_DEFINED */
 
 #ifndef __PLACEMENT_NEW_INLINE
 #define __PLACEMENT_NEW_INLINE
-#endif
+#endif  /* !__PLACEMENT_NEW_INLINE */
 
-_CRTIMP int __cdecl _query_new_mode(void);
-_CRTIMP int __cdecl _set_new_mode(int _NewMode);
+  _CRTIMP int __cdecl _query_new_mode(void);
+  _CRTIMP int __cdecl _set_new_mode(int _NewMode);
 
 #ifndef _PNH_DEFINED
-typedef int (__cdecl *_PNH)(size_t);
+  typedef int (__cdecl *_PNH)(size_t);
 #define _PNH_DEFINED
-#endif
+#endif  /* !_PNH_DEFINED */
 
-_CRTIMP _PNH __cdecl _query_new_handler(void);
-_CRTIMP _PNH __cdecl _set_new_handler(_PNH _NewHandler);
+  _CRTIMP _PNH __cdecl _query_new_handler(void);
+  _CRTIMP _PNH __cdecl _set_new_handler(_PNH _NewHandler);
 
 #ifndef _NO_ANSI_NH_DEFINED
-#define _NO_ANSI_NEW_HANDLER ((new_handler)-1)
+#define _NO_ANSI_NEW_HANDLER   ((new_handler)-1)
 #define _NO_ANSI_NEW_HANDLER_M ((_new_handler_m)-1)
 #define _NO_ANSI_NH_DEFINED
-#endif
+#endif  /* !_NO_ANSI_NH_DEFINED */
 
 #pragma pop_macro("new")
-#endif
-#endif
+
+#endif  /* __cplusplus */
+
+#endif  /* _INC_NEW */

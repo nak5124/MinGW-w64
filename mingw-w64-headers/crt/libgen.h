@@ -11,14 +11,14 @@
 
 #ifdef __cplusplus
 extern "C" {
-#endif
+#endif  /* __cplusplus */
 
- char * __cdecl __MINGW_NOTHROW basename (char *);
- char * __cdecl __MINGW_NOTHROW dirname (char *);
+  /* Provided in libmingwex. */
+  char * __cdecl basename(char *) __MINGW_NOTHROW;
+  char * __cdecl dirname(char *) __MINGW_NOTHROW;
 
 #ifdef __cplusplus
 }
-#endif
+#endif  /* __cplusplus */
 
-#endif
-
+#endif  /* _LIBGEN_H_ */

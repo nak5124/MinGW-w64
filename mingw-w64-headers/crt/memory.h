@@ -8,44 +8,41 @@
 
 #include <crtdefs.h>
 
-#if defined(__LIBMSVCRT__)
-/* When building mingw-w64, this should be blank.  */
-#define _SECIMP
-#else
-#ifndef _SECIMP
-#define _SECIMP __declspec(dllimport)
-#endif /* _SECIMP */
-#endif /* defined(_CRTBLD) || defined(__LIBMSVCRT__) */
-
 #ifdef __cplusplus
 extern "C" {
-#endif
+#endif  /* __cplusplus */
 
 #ifndef _CONST_RETURN
+#ifdef __cplusplus
+#define _CONST_RETURN const
+#define _CRT_CONST_CORRECT_OVERLOADS
+#else  /* __cplusplus */
 #define _CONST_RETURN
-#endif
+#endif  /* __cplusplus */
+#endif  /* !_CONST_RETURN */
 
 #define _WConst_return _CONST_RETURN
 
 #ifndef _CRT_MEMORY_DEFINED
-#define _CRT_MEMORY_DEFINED
-  _CRTIMP void *__cdecl _memccpy(void *_Dst,const void *_Src,int _Val,size_t _MaxCount);
-  _CONST_RETURN void *__cdecl memchr(const void *_Buf ,int _Val,size_t _MaxCount);
-  _CRTIMP int __cdecl _memicmp(const void *_Buf1,const void *_Buf2,size_t _Size);
-  _CRTIMP int __cdecl _memicmp_l(const void *_Buf1,const void *_Buf2,size_t _Size,_locale_t _Locale);
-  int __cdecl memcmp(const void *_Buf1,const void *_Buf2,size_t _Size);
-  void * __cdecl memcpy(void * __restrict__ _Dst,const void * __restrict__ _Src,size_t _Size) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _SECIMP errno_t __cdecl memcpy_s (void *_dest,size_t _numberOfElements,const void *_src,size_t _count);
-  void * __cdecl mempcpy (void *_Dst, const void *_Src, size_t _Size);
-  void * __cdecl memset(void *_Dst,int _Val,size_t _Size);
+  _CRTIMP                     void *  __cdecl _memccpy(void *_Dst, const void *_Src, int _Val, size_t _MaxCount);
+  /* _CRTIMP */ _CONST_RETURN void *  __cdecl  memchr(const void *_Buf, int _Val, size_t _MaxCount);
+  _CRTIMP                     int     __cdecl _memicmp(const void *_Buf1, const void *_Buf2, size_t _Size);
+  _CRTIMP                     int     __cdecl _memicmp_l(const void *_Buf1, const void *_Buf2, size_t _Size, _locale_t _Locale);
+  /* _CRTIMP */               int     __cdecl  memcmp(const void *_Buf1, const void *_Buf2, size_t _Size);
+  /* _CRTIMP */               void *  __cdecl  memcpy(void * __restrict__ _Dst, const void * __restrict__ _Src, size_t _Size) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+  _CRTIMP                     errno_t __cdecl  memcpy_s(void *_Dst, rsize_t _DstSize, const void *_Src, rsize_t _MaxCount);  /* We provide emu. */
+                              void *  __cdecl  mempcpy(void *_Dst, const void *_Src, size_t _Size);                          /* Provided in libmingwex. */
+  /* _CRTIMP */               void *  __cdecl  memset(void *_Dst, int _Val, size_t _Size);
 
-#ifndef	NO_OLDNAMES
-  void * __cdecl memccpy(void *_Dst,const void *_Src,int _Val,size_t _Size) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  int __cdecl memicmp(const void *_Buf1,const void *_Buf2,size_t _Size) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-#endif
-#endif
+#ifndef NO_OLDNAMES
+  /* _CRTIMP */               void *  __cdecl  memccpy(void *_Dst, const void *_Src, int _Val, size_t _Size) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  /* _CRTIMP */               int     __cdecl  memicmp(const void *_Buf1, const void *_Buf2, size_t _Size) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+#endif  /* !NO_OLDNAMES */
+#define _CRT_MEMORY_DEFINED
+#endif  /* !_CRT_MEMORY_DEFINED */
 
 #ifdef __cplusplus
 }
-#endif
-#endif
+#endif  /* __cplusplus */
+
+#endif  /* _INC_MEMORY */

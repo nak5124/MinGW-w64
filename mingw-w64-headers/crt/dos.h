@@ -9,14 +9,13 @@
 #include <crtdefs.h>
 #include <io.h>
 
-#pragma pack(push,_CRT_PACKING)
+#pragma pack(push, _CRT_PACKING)
 
 #ifdef __cplusplus
 extern "C" {
-#endif
+#endif  /* __cplusplus */
 
 #ifndef _DISKFREE_T_DEFINED
-#define _DISKFREE_T_DEFINED
 
   struct _diskfree_t {
     unsigned total_clusters;
@@ -24,7 +23,9 @@ extern "C" {
     unsigned sectors_per_cluster;
     unsigned bytes_per_sector;
   };
-#endif
+
+#define _DISKFREE_T_DEFINED
+#endif  /* !_DISKFREE_T_DEFINED */
 
 #define _A_NORMAL 0x00
 #define _A_RDONLY 0x01
@@ -35,22 +36,24 @@ extern "C" {
 #define _A_ARCH   0x20
 
 #ifndef _GETDISKFREE_DEFINED
+  _CRTIMP unsigned __cdecl _getdiskfree(unsigned _Drive, struct _diskfree_t *_DiskFree);
 #define _GETDISKFREE_DEFINED
-  _CRTIMP unsigned __cdecl _getdiskfree(unsigned _Drive,struct _diskfree_t *_DiskFree);
-#endif
+#endif  /* !_GETDISKFREE_DEFINED */
 
-#if (defined(_X86_) && !defined(__x86_64))
+/* Intrinsic */
+#if defined(_X86_) && !defined(__x86_64)
   void __cdecl _disable(void);
   void __cdecl _enable(void);
-#endif
+#endif  /* defined(_X86_) && !defined(__x86_64) */
 
-#ifndef	NO_OLDNAMES
+#ifndef NO_OLDNAMES
 #define diskfree_t _diskfree_t
-#endif
+#endif  /* !NO_OLDNAMES */
 
 #ifdef __cplusplus
 }
-#endif
+#endif  /* __cplusplus */
 
 #pragma pack(pop)
-#endif
+
+#endif  /* _INC_DOS */

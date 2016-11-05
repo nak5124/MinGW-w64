@@ -12,6 +12,6 @@
     libraries.
 */
 #ifndef _STRINGS_H_
-#define _STRINGS_H_ 1
+#define _STRINGS_H_
 #include <string.h>
-#endif
+#endif  /* _STRINGS_H_ */

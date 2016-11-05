@@ -10,6 +10,6 @@
 
 #ifdef __cplusplus
 #include <exception>
-#endif
+#endif  /* __cplusplus */
 
-#endif
+#endif  /* _INC_STDEXCPT */

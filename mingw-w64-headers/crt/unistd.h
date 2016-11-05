@@ -16,14 +16,14 @@
 #define SEEK_SET 0
 #define SEEK_CUR 1
 #define SEEK_END 2
-#endif
+#endif  /* !SEEK_SET */
 
 /* These are also defined in stdio.h. */
 #ifndef STDIN_FILENO
 #define STDIN_FILENO  0
 #define STDOUT_FILENO 1
 #define STDERR_FILENO 2
-#endif
+#endif  /* !STDIN_FILENO */
 
 /* Used by shutdown(2). */
 #ifdef _POSIX_SOURCE
@@ -33,77 +33,68 @@
 #define SHUT_RD   0x00
 #define SHUT_WR   0x01
 #define SHUT_RDWR 0x02
-#endif
+#endif  /* !SHUT_RDWR */
 
-#endif
+#endif  /* _POSIX_SOURCE */
 
 #ifdef __cplusplus
 extern "C" {
-#endif
+#endif  /* __cplusplus */
 
 #pragma push_macro("sleep")
 #undef sleep
-unsigned int __cdecl sleep (unsigned int);
+  /* Provided in libmingwex. */
+  unsigned int __cdecl sleep(unsigned int seconds);
 #pragma pop_macro("sleep")
 
-#if !defined __NO_ISOCEXT
-#include <sys/types.h> /* For useconds_t. */
+#include <sys/types.h>  /* For useconds_t. */
 
-int __cdecl __MINGW_NOTHROW usleep(useconds_t);
-#endif  /* Not __NO_ISOCEXT */
+  /* Provided in libmingwex. */
+  int __cdecl __MINGW_NOTHROW usleep(useconds_t us);
 
-#ifndef FTRUNCATE_DEFINED
-#define FTRUNCATE_DEFINED
+#ifndef TRUNCATE_DEFINED
 /* This is defined as a real library function to allow autoconf
    to verify its existence. */
-#if !defined(NO_OLDNAMES) || defined(_POSIX)
-int ftruncate(int, off32_t);
-int ftruncate64(int, off64_t);
-int truncate(const char *, off32_t);
-int truncate64(const char *, off64_t);
+#if defined(_BSD_SOURCE) || (_XOPEN_SOURCE >= 500) || (defined(_XOPEN_SOURCE) && defined(_XOPEN_SOURCE_EXTENDED)) || _POSIX_C_SOURCE >= 200809L
+  int truncate(const char *path, off_t length);
+  int truncate64(const char *path, off64_t length);
+#endif  /* defined(_BSD_SOURCE) || ... */
+#if defined(_BSD_SOURCE) || (_XOPEN_SOURCE >= 500) || (defined(_XOPEN_SOURCE) && defined(_XOPEN_SOURCE_EXTENDED)) || _POSIX_C_SOURCE >= 200112L
+  int ftruncate(int fd, off_t length);
+  int ftruncate64(int fd, off64_t length);
 #ifndef __CRT__NO_INLINE
-__CRT_INLINE int ftruncate(int __fd, off32_t __length)
-{
-  return _chsize (__fd, __length);
-}
-#endif /* !__CRT__NO_INLINE */
-#else
-int ftruncate(int, _off_t);
-int ftruncate64(int, _off64_t);
-int truncate(const char *, _off_t);
-int truncate64(const char *, _off64_t);
-#ifndef __CRT__NO_INLINE
-__CRT_INLINE int ftruncate(int __fd, _off_t __length)
-{
-  return _chsize (__fd, __length);
-}
-#endif /* !__CRT__NO_INLINE */
-#endif
-#endif /* FTRUNCATE_DEFINED */
+  __CRT_INLINE int ftruncate(int __fd, off_t __length) {
+    return _chsize(__fd, (off_t)__length);
+  }
+#endif  /* !__CRT__NO_INLINE */
+#endif  /* defined(_BSD_SOURCE) || ... */
+#define TRUNCATE_DEFINED
+#endif  /* !TRUNCATE_DEFINED */
 
-#ifndef _FILE_OFFSET_BITS_SET_FTRUNCATE
-#define _FILE_OFFSET_BITS_SET_FTRUNCATE
-#if (defined(_FILE_OFFSET_BITS) && (_FILE_OFFSET_BITS == 64))
+#ifndef _FILE_OFFSET_BITS_SET_TRUNCATE
+#if defined(_FILE_OFFSET_BITS) && (_FILE_OFFSET_BITS == 64)
+#define truncate  truncate64
 #define ftruncate ftruncate64
-#endif /* _FILE_OFFSET_BITS_SET_FTRUNCATE */
-#endif /* _FILE_OFFSET_BITS_SET_FTRUNCATE */
+#endif  /* defined(_FILE_OFFSET_BITS) && (_FILE_OFFSET_BITS == 64) */
+#define _FILE_OFFSET_BITS_SET_TRUNCATE
+#endif  /* !_FILE_OFFSET_BITS_SET_TRUNCATE */
 
 #ifndef _CRT_SWAB_DEFINED
-#define _CRT_SWAB_DEFINED /* Also in stdlib.h */
-  void __cdecl swab(char *_Buf1,char *_Buf2,int _SizeInBytes) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-#endif
+  /* _CRTIMP */ void __cdecl swab(char *_Buf1, char *_Buf2, int _SizeInBytes) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+#define _CRT_SWAB_DEFINED  /* Also in stdlib.h */
+#endif  /* !_CRT_SWAB_DEFINED */
 
 #ifndef _CRT_GETPID_DEFINED
-#define _CRT_GETPID_DEFINED /* Also in process.h */
-  int __cdecl getpid(void) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-#endif
+  /* _CRTIMP */ int  __cdecl getpid(void) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+#define _CRT_GETPID_DEFINED  /* Also in process.h */
+#endif  /* !_CRT_GETPID_DEFINED */
 
 #ifdef __cplusplus
 }
-#endif
+#endif  /* __cplusplus */
 
 #include <pthread_unistd.h>
 
 #undef __UNISTD_H_SOURCED__
-#endif /* _UNISTD_H */
 
+#endif /* _UNISTD_H */

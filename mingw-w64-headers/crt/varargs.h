@@ -9,4 +9,4 @@
 #error "GCC no longer implements <varargs.h>."
 #error "Revise your code to use <stdarg.h>."
 
-#endif
+#endif  /* _VARARGS_H */

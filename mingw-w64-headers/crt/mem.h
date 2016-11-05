@@ -9,4 +9,3 @@
  * mem.h maps to string.h
  */
 #include <string.h>
-

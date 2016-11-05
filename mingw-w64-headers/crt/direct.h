@@ -9,60 +9,67 @@
 #include <crtdefs.h>
 #include <io.h>
 
-#pragma pack(push,_CRT_PACKING)
+#pragma pack(push, _CRT_PACKING)
 
 #ifdef __cplusplus
 extern "C" {
-#endif
+#endif  /* __cplusplus */
 
 #ifndef _DISKFREE_T_DEFINED
-#define _DISKFREE_T_DEFINED
+
   struct _diskfree_t {
     unsigned total_clusters;
     unsigned avail_clusters;
     unsigned sectors_per_cluster;
     unsigned bytes_per_sector;
   };
-#endif
 
-  _CRTIMP char *__cdecl _getcwd(char *_DstBuf,int _SizeInBytes);
-  _CRTIMP char *__cdecl _getdcwd(int _Drive,char *_DstBuf,int _SizeInBytes);
-  char *__cdecl _getdcwd_nolock(int _Drive,char *_DstBuf,int _SizeInBytes);
-  _CRTIMP int __cdecl _chdir(const char *_Path);
-  _CRTIMP int __cdecl _mkdir(const char *_Path);
-  _CRTIMP int __cdecl _rmdir(const char *_Path);
-  _CRTIMP int __cdecl _chdrive(int _Drive);
-  _CRTIMP int __cdecl _getdrive(void);
+#define _DISKFREE_T_DEFINED
+#endif  /* !_DISKFREE_T_DEFINED */
+
+  _CRTIMP char *        __cdecl _getcwd(char *_DstBuf, int _SizeInBytes);
+  _CRTIMP char *        __cdecl _getdcwd(int _Drive, char *_DstBuf,int _SizeInBytes);
+#define _getdcwd_nolock _getdcwd
+  _CRTIMP int           __cdecl _chdir(const char *_Path);
+  _CRTIMP int           __cdecl _mkdir(const char *_Path);
+  _CRTIMP int           __cdecl _rmdir(const char *_Path);
+  _CRTIMP int           __cdecl _chdrive(int _Drive);
+  _CRTIMP int           __cdecl _getdrive(void);
   _CRTIMP unsigned long __cdecl _getdrives(void);
 
 #ifndef _GETDISKFREE_DEFINED
+  _CRTIMP unsigned __cdecl _getdiskfree(unsigned _Drive, struct _diskfree_t *_DiskFree);
 #define _GETDISKFREE_DEFINED
-  _CRTIMP unsigned __cdecl _getdiskfree(unsigned _Drive,struct _diskfree_t *_DiskFree);
-#endif
+#endif  /* !_GETDISKFREE_DEFINED */
 
 #ifndef _WDIRECT_DEFINED
-#define _WDIRECT_DEFINED
-  _CRTIMP wchar_t *__cdecl _wgetcwd(wchar_t *_DstBuf,int _SizeInWords);
-  _CRTIMP wchar_t *__cdecl _wgetdcwd(int _Drive,wchar_t *_DstBuf,int _SizeInWords);
-  wchar_t *__cdecl _wgetdcwd_nolock(int _Drive,wchar_t *_DstBuf,int _SizeInWords);
-  _CRTIMP int __cdecl _wchdir(const wchar_t *_Path);
-  _CRTIMP int __cdecl _wmkdir(const wchar_t *_Path);
-  _CRTIMP int __cdecl _wrmdir(const wchar_t *_Path);
-#endif
 
-#ifndef	NO_OLDNAMES
+  _CRTIMP wchar_t * __cdecl _wgetcwd(wchar_t *_DstBuf, int _SizeInWords);
+  _CRTIMP wchar_t * __cdecl _wgetdcwd(int _Drive, wchar_t *_DstBuf, int _SizeInWords);
+#define _wgetdcwd_nolock _wgetdcwd
+
+  _CRTIMP int       __cdecl _wchdir(const wchar_t *_Path);
+  _CRTIMP int       __cdecl _wmkdir(const wchar_t *_Path);
+  _CRTIMP int       __cdecl _wrmdir(const wchar_t *_Path);
+
+#define _WDIRECT_DEFINED
+#endif  /* !_WDIRECT_DEFINED */
+
+#ifndef NO_OLDNAMES
+
+  /* _CRTIMP */ char * __cdecl getcwd(char *_DstBuf, int _SizeInBytes) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  /* _CRTIMP */ int    __cdecl chdir(const char *_Path) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  /* _CRTIMP */ int    __cdecl mkdir(const char *_Path) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
+  /* _CRTIMP */ int    __cdecl rmdir(const char *_Path) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 
 #define diskfree_t _diskfree_t
 
-  char *__cdecl getcwd(char *_DstBuf,int _SizeInBytes) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  int __cdecl chdir(const char *_Path) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  int __cdecl mkdir(const char *_Path) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-  int __cdecl rmdir(const char *_Path) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-#endif
+#endif  /* !NO_OLDNAMES */
 
 #ifdef __cplusplus
 }
-#endif
+#endif  /* __cplusplus */
 
 #pragma pack(pop)
-#endif
+
+#endif  /* _INC_DIRECT */

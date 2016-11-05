@@ -16,7 +16,7 @@ ADD_UNDERSCORE(chdir)
 ADD_UNDERSCORE(chmod)
 ADD_UNDERSCORE(chsize)
 ADD_UNDERSCORE(close)
-; ADD_UNDERSCORE(control87) We should add declaration into float.h
+ADD_UNDERSCORE(control87)
 ADD_UNDERSCORE(cprintf)
 ADD_UNDERSCORE(cputs)
 ADD_UNDERSCORE(creat)

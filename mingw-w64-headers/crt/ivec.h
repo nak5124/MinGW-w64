@@ -5,22 +5,23 @@
  */
 #ifndef _IVEC_H_INCLUDED
 #define _IVEC_H_INCLUDED
+
 #ifndef RC_INVOKED
 
-#if !defined __cplusplus
+#ifndef __cplusplus
 #error This file is only supported in C++ compilations!
-#endif
+#endif  /* __cplusplus */
 
 #include <intrin.h>
 #include <assert.h>
 #include <dvec.h>
 #include <crtdefs.h>
 
-#pragma pack(push,_CRT_PACKING)
+#pragma pack(push, _CRT_PACKING)
 
-#if defined(_ENABLE_VEC_DEBUG)
+#ifdef _ENABLE_VEC_DEBUG
 #include <iostream>
-#endif
+#endif  /* _ENABLE_VEC_DEBUG */
 
 #pragma pack(pop)
 
@@ -28,29 +29,28 @@
 
 #define _MM_QW (*((__int64*)&vec))
 
-#pragma pack(push,16)
+#pragma pack(push, 16)
 
-class M64
-{
-protected:
-    __m64 vec;
-public:
-    M64() {}
-    M64(__m64 mm) { vec = mm; }
-    M64(__int64 mm) { _MM_QW = mm; }
-    M64(int i) { vec = _m_from_int(i); }
-
-    operator __m64() const { return vec; }
-
-    M64& operator&=(const M64 &a) { return *this = (M64) _m_pand(vec,a); }
-    M64& operator|=(const M64 &a) { return *this = (M64) _m_por(vec,a); }
-    M64& operator^=(const M64 &a) { return *this = (M64) _m_pxor(vec,a); }
-};
+  class M64 {
+    protected:
+      __m64 vec;
+    public:
+      M64()                         {}
+      M64(__m64 mm)                 { vec = mm; }
+      M64(__int64 mm)               { _MM_QW = mm; }
+      M64(int i)                    { vec = _m_from_int(i); }
+    
+      operator __m64() const        { return vec; }
+    
+      M64& operator&=(const M64 &a) { return *this = (M64)_m_pand(vec,a); }
+      M64& operator|=(const M64 &a) { return *this = (M64)_m_por(vec,a); }
+      M64& operator^=(const M64 &a) { return *this = (M64)_m_pxor(vec,a); }
+  };
 
 #pragma pack(pop)
 
-#endif /* ifdef __SSE__ */
+#endif  /* __SSE__ */
 
-#endif
-#endif
+#endif  /* !RC_INVOKED */
 
+#endif  /* _IVEC_H_INCLUDED */

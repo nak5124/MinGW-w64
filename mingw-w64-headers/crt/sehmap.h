@@ -8,8 +8,8 @@
 #undef except
 #undef finally
 #undef leave
-#define try __try
-#define except __except
+#define try     __try
+#define except  __except
 #define finally __finally
-#define leave __leave
-#endif
+#define leave   __leave
+#endif  /* !__cplusplus */

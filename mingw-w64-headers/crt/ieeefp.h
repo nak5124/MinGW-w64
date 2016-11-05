@@ -4,5 +4,4 @@
 #include <crtdefs.h>
 #include <math.h>
 
-#endif /* _IEEE_FP_H_ */
-
+#endif  /* _IEEE_FP_H_ */

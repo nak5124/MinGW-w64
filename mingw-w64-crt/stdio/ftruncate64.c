@@ -16,9 +16,9 @@
   We check disk space as truncating more than the allowed space results
   in file getting mysteriously deleted
  */
-#define _CHECK_SPACE_BY_VOLUME_METHOD_ 1 /* Needs to walk through all volumes */
+#define _CHECK_SPACE_BY_VOLUME_METHOD_ 0 /* Needs to walk through all volumes */
 #define _CHECK_SPACE_BY_PSAPI_METHOD_ 0 /* Requires psapi.dll */
-#define _CHECK_SPACE_BY_VISTA_METHOD_ 0 /* Won't work on XP */
+#define _CHECK_SPACE_BY_VISTA_METHOD_ 1 /* Won't work on XP */
 
 #if (_CHECK_SPACE_BY_PSAPI_METHOD_ == 1) /* Retrive actual volume path */
 static LPWSTR getdirpath(const LPWSTR __str){

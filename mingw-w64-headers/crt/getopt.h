@@ -1,4 +1,3 @@
-#ifndef __GETOPT_H__
 /**
  * DISCLAIMER
  * This file has no copyright assigned and is placed in the Public Domain.
@@ -10,23 +9,23 @@
  * warranties of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 
+#ifndef __GETOPT_H__
 #define __GETOPT_H__
 
-/* All the headers include this file. */
 #include <crtdefs.h>
 
 #ifdef __cplusplus
 extern "C" {
-#endif
+#endif  /* __cplusplus */
 
-extern int optind;		/* index of first non-option in argv      */
-extern int optopt;		/* single option character, as parsed     */
-extern int opterr;		/* flag to enable built-in diagnostics... */
-				/* (user may set to zero, to suppress)    */
+  extern int optind;  /* index of first non-option in argv */
+  extern int optopt;  /* single option character, as parsed */
+  extern int opterr;  /* flag to enable built-in diagnostics... */
+                      /* (user may set to zero, to suppress) */
 
-extern char *optarg;		/* pointer to argument of current option  */
+  extern char *optarg;  /* pointer to argument of current option */
 
-extern int getopt(int nargc, char * const *nargv, const char *options);
+  extern int getopt(int nargc, char * const *nargv, const char *options);  /* Provided in libmingwex. */
 
 #ifdef _BSD_SOURCE
 /*
@@ -35,12 +34,12 @@ extern int getopt(int nargc, char * const *nargv, const char *options);
  * proclaim their BSD heritage, before including this header; however,
  * to maintain portability, developers are advised to avoid it.
  */
-# define optreset  __mingw_optreset
-extern int optreset;
-#endif
+#define optreset __mingw_optreset
+  extern int optreset;
+#endif  /* _BSD_SOURCE */
 #ifdef __cplusplus
 }
-#endif
+#endif  /* __cplusplus */
 /*
  * POSIX requires the `getopt' API to be specified in `unistd.h';
  * thus, `unistd.h' includes this header.  However, we do not want
@@ -50,34 +49,33 @@ extern int optreset;
  * specific block, only when *not* __UNISTD_H_SOURCED__, in which
  * to declare the extended API.
  */
-#endif /* !defined(__GETOPT_H__) */
+#endif  /* __GETOPT_H__ */
 
 #if !defined(__UNISTD_H_SOURCED__) && !defined(__GETOPT_LONG_H__)
 #define __GETOPT_LONG_H__
 
 #ifdef __cplusplus
 extern "C" {
-#endif
+#endif  /* __cplusplus */
 
-struct option		/* specification for a long form option...	*/
-{
-  const char *name;		/* option name, without leading hyphens */
-  int         has_arg;		/* does it take an argument?		*/
-  int        *flag;		/* where to save its status, or NULL	*/
-  int         val;		/* its associated status value		*/
-};
+  /* specification for a long form option... */
+  struct option {
+    const char *name;     /* option name, without leading hyphens */
+    int         has_arg;  /* does it take an argument? */
+    int        *flag;     /* where to save its status, or NULL */
+    int         val;      /* its associated status value */
+  };
 
-enum    		/* permitted values for its `has_arg' field...	*/
-{
-  no_argument = 0,      	/* option never takes an argument	*/
-  required_argument,		/* option always requires an argument	*/
-  optional_argument		/* option may take an argument		*/
-};
+  /* permitted values for its `has_arg' field... */
+  enum {
+    no_argument = 0,    /* option never takes an argument */
+    required_argument,  /* option always requires an argument */
+    optional_argument   /* option may take an argument */
+  };
 
-extern int getopt_long(int nargc, char * const *nargv, const char *options,
-    const struct option *long_options, int *idx);
-extern int getopt_long_only(int nargc, char * const *nargv, const char *options,
-    const struct option *long_options, int *idx);
+  /* Provided in libmingwex. */
+  extern int getopt_long(int nargc, char * const *nargv, const char *options, const struct option *long_options, int *idx);
+  extern int getopt_long_only(int nargc, char * const *nargv, const char *options, const struct option *long_options, int *idx);
 /*
  * Previous MinGW implementation had...
  */
@@ -85,11 +83,11 @@ extern int getopt_long_only(int nargc, char * const *nargv, const char *options,
 /*
  * ...for the long form API only; keep this for compatibility.
  */
-# define HAVE_DECL_GETOPT	1
-#endif
+#define HAVE_DECL_GETOPT 1
+#endif  /* HAVE_DECL_GETOPT */
 
 #ifdef __cplusplus
 }
-#endif
+#endif  /* __cplusplus */
 
 #endif /* !defined(__UNISTD_H_SOURCED__) && !defined(__GETOPT_LONG_H__) */

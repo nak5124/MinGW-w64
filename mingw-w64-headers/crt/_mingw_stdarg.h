@@ -13,6 +13,10 @@
 
 #include <vadefs.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif  /* __cplusplus */
+
 #ifndef va_start
 #define va_start _crt_va_start
 #endif  /* !va_start */
@@ -29,8 +33,16 @@
 #define __va_copy _crt_va_copy
 #endif  /* !__va_copy */
 
+#if __MSVCRT_VERSION__ == 0x1200
+  _CRTIMP void __cdecl _vacopy(va_list *, va_list);
+#endif /* __MSVCRT_VERSION__ >= 0x1200 */
+
 #if !defined(va_copy) && (!defined(__STRICT_ANSI__) || __STDC_VERSION__ + 0 >= 199900L || defined(__GXX_EXPERIMENTAL_CXX0X__))
 #define va_copy _crt_va_copy
 #endif  /* !defined(va_copy) && (!defined(__STRICT_ANSI__) || ...) */
+
+#ifdef __cplusplus
+}
+#endif  /* __cplusplus */
 
 #endif  /* _INC_STDARG */
