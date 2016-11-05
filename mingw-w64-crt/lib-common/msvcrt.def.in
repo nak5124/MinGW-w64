@@ -466,6 +466,7 @@ _cscanf_s
 _cscanf_s_l
 _ctime32
 ; _ctime32_s Replaced by emu
+; ctime_s MSVCRT.DLL (Win10) does not export this function, so we provide alias for _ctime32_s
 _ctime64
 ; _ctime64_s Replaced by emu
 _ctype F_X64(DATA)
@@ -626,6 +627,7 @@ _getws
 F_I386(_global_unwind2)
 _gmtime32
 ; _gmtime32_s Replaced by emu
+; gmtime_s MSVCRT.DLL (Win10) does not export this function, so we provide alias for _gmtime32_s
 _gmtime64
 ; _gmtime64_s Replaced by emu
 F32(_heapadd)
@@ -765,6 +767,7 @@ _local_unwind4
 F_X64(_local_unwind)
 _localtime32
 ; _localtime32_s Replaced by emu
+; localtime_s MSVCRT.DLL (Win10) does not export this function, so we provide alias for _localtime32_s
 _localtime64
 ; _localtime64_s Replaced by emu
 _lock
@@ -975,9 +978,9 @@ _resetstkoflw
 _rmdir
 _rmtmp
 _rotl
-_rotl64
+_rotl64 DATA ; Provided in libkernel32
 _rotr
-_rotr64
+_rotr64 DATA ; Provided in libkernel32
 #ifdef DEF_I386
 _safe_fdiv
 _safe_fdivr

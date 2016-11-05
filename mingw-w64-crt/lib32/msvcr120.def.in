@@ -8,652 +8,329 @@ EXPORTS
 
 #include "msvcrt-common.def.in"
 
-; public: __thiscall Concurrency::details::<0x1ULL>::<0x1ULL>(void(__cdecl *)(void))
 ??0?$_SpinWait@$00@details@Concurrency@@QAE@P6AXXZ@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::details::<0x0ULL>::<0x0ULL>(void(__cdecl *)(void))
 ??0?$_SpinWait@$0A@@details@Concurrency@@QAE@P6AXXZ@Z ; has WINAPI (@4)
-; public: __cdecl Concurrency::SchedulerPolicy::SchedulerPolicy(unsigned int,...)
 ??0SchedulerPolicy@Concurrency@@QAA@IZZ
-; public: __thiscall Concurrency::SchedulerPolicy::SchedulerPolicy(class Concurrency::SchedulerPolicy const &)
 ??0SchedulerPolicy@Concurrency@@QAE@ABV01@@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::SchedulerPolicy::SchedulerPolicy(void)
 ??0SchedulerPolicy@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::details::_Cancellation_beacon::_Cancellation_beacon(void)
 ??0_Cancellation_beacon@details@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::details::_Condition_variable::_Condition_variable(void)
 ??0_Condition_variable@details@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::details::_Context::_Context(class Concurrency::Context *)
 ??0_Context@details@Concurrency@@QAE@PAVContext@2@@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::details::_Interruption_exception::_Interruption_exception(char const *)
 ??0_Interruption_exception@details@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::details::_Interruption_exception::_Interruption_exception(void)
 ??0_Interruption_exception@details@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::details::_NonReentrantBlockingLock::_NonReentrantBlockingLock(void)
 ??0_NonReentrantBlockingLock@details@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::details::_NonReentrantPPLLock::_NonReentrantPPLLock(void)
 ??0_NonReentrantPPLLock@details@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::details::_ReaderWriterLock::_ReaderWriterLock(void)
 ??0_ReaderWriterLock@details@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::details::_ReentrantBlockingLock::_ReentrantBlockingLock(void)
 ??0_ReentrantBlockingLock@details@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::details::_ReentrantLock::_ReentrantLock(void)
 ??0_ReentrantLock@details@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::details::_ReentrantPPLLock::_ReentrantPPLLock(void)
 ??0_ReentrantPPLLock@details@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::details::_Scheduler::_Scheduler(class Concurrency::Scheduler *)
 ??0_Scheduler@details@Concurrency@@QAE@PAVScheduler@2@@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::details::_NonReentrantPPLLock::_Scoped_lock::_Scoped_lock(class Concurrency::details::_NonReentrantPPLLock &)
 ??0_Scoped_lock@_NonReentrantPPLLock@details@Concurrency@@QAE@AAV123@@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::details::_ReentrantPPLLock::_Scoped_lock::_Scoped_lock(class Concurrency::details::_ReentrantPPLLock &)
 ??0_Scoped_lock@_ReentrantPPLLock@details@Concurrency@@QAE@AAV123@@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::details::_SpinLock::_SpinLock(long volatile &)
 ??0_SpinLock@details@Concurrency@@QAE@ACJ@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::details::_StructuredTaskCollection::_StructuredTaskCollection(class Concurrency::details::_CancellationTokenState *)
 ??0_StructuredTaskCollection@details@Concurrency@@QAE@PAV_CancellationTokenState@12@@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::details::_TaskCollection::_TaskCollection(class Concurrency::details::_CancellationTokenState *)
 ??0_TaskCollection@details@Concurrency@@QAE@PAV_CancellationTokenState@12@@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::details::_TaskCollection::_TaskCollection(void)
 ??0_TaskCollection@details@Concurrency@@QAE@XZ
-; protected: __thiscall Concurrency::details::_Timer::_Timer(unsigned int,bool)
 ??0_Timer@details@Concurrency@@IAE@I_N@Z ; has WINAPI (@8)
-; public: __thiscall std::__non_rtti_object::__non_rtti_object(class std::__non_rtti_object const &)
 ??0__non_rtti_object@std@@QAE@ABV01@@Z ; has WINAPI (@4)
-; public: __thiscall std::__non_rtti_object::__non_rtti_object(char const *)
 ??0__non_rtti_object@std@@QAE@PBD@Z ; has WINAPI (@4)
-; private: __thiscall std::bad_cast::bad_cast(char const *const *)
 ??0bad_cast@std@@AAE@PBQBD@Z ; has WINAPI (@4)
-; public: __thiscall std::bad_cast::bad_cast(class std::bad_cast const &)
 ??0bad_cast@std@@QAE@ABV01@@Z ; has WINAPI (@4)
-; public: __thiscall std::bad_cast::bad_cast(char const *)
 ??0bad_cast@std@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::bad_target::bad_target(char const *)
 ??0bad_target@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::bad_target::bad_target(void)
 ??0bad_target@Concurrency@@QAE@XZ
-; public: __thiscall std::bad_typeid::bad_typeid(class std::bad_typeid const &)
 ??0bad_typeid@std@@QAE@ABV01@@Z ; has WINAPI (@4)
-; public: __thiscall std::bad_typeid::bad_typeid(char const *)
 ??0bad_typeid@std@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::context_self_unblock::context_self_unblock(char const *)
 ??0context_self_unblock@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::context_self_unblock::context_self_unblock(void)
 ??0context_self_unblock@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::context_unblock_unbalanced::context_unblock_unbalanced(char const *)
 ??0context_unblock_unbalanced@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::context_unblock_unbalanced::context_unblock_unbalanced(void)
 ??0context_unblock_unbalanced@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::critical_section::critical_section(void)
 ??0critical_section@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::default_scheduler_exists::default_scheduler_exists(char const *)
 ??0default_scheduler_exists@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::default_scheduler_exists::default_scheduler_exists(void)
 ??0default_scheduler_exists@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::event::event(void)
 ??0event@Concurrency@@QAE@XZ
-; public: __thiscall std::exception::exception(char const *const &)
 ??0exception@std@@QAE@ABQBD@Z ; has WINAPI (@4)
-; public: __thiscall std::exception::exception(char const *const &,int)
 ??0exception@std@@QAE@ABQBDH@Z ; has WINAPI (@8)
-; public: __thiscall std::exception::exception(class std::exception const &)
 ??0exception@std@@QAE@ABV01@@Z ; has WINAPI (@4)
-; public: __thiscall std::exception::exception(void)
 ??0exception@std@@QAE@XZ
-; public: __thiscall Concurrency::improper_lock::improper_lock(char const *)
 ??0improper_lock@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::improper_lock::improper_lock(void)
 ??0improper_lock@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::improper_scheduler_attach::improper_scheduler_attach(char const *)
 ??0improper_scheduler_attach@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::improper_scheduler_attach::improper_scheduler_attach(void)
 ??0improper_scheduler_attach@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::improper_scheduler_detach::improper_scheduler_detach(char const *)
 ??0improper_scheduler_detach@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::improper_scheduler_detach::improper_scheduler_detach(void)
 ??0improper_scheduler_detach@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::improper_scheduler_reference::improper_scheduler_reference(char const *)
 ??0improper_scheduler_reference@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::improper_scheduler_reference::improper_scheduler_reference(void)
 ??0improper_scheduler_reference@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::invalid_link_target::invalid_link_target(char const *)
 ??0invalid_link_target@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::invalid_link_target::invalid_link_target(void)
 ??0invalid_link_target@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::invalid_multiple_scheduling::invalid_multiple_scheduling(char const *)
 ??0invalid_multiple_scheduling@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::invalid_multiple_scheduling::invalid_multiple_scheduling(void)
 ??0invalid_multiple_scheduling@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::invalid_operation::invalid_operation(char const *)
 ??0invalid_operation@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::invalid_operation::invalid_operation(void)
 ??0invalid_operation@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::invalid_oversubscribe_operation::invalid_oversubscribe_operation(char const *)
 ??0invalid_oversubscribe_operation@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::invalid_oversubscribe_operation::invalid_oversubscribe_operation(void)
 ??0invalid_oversubscribe_operation@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::invalid_scheduler_policy_key::invalid_scheduler_policy_key(char const *)
 ??0invalid_scheduler_policy_key@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::invalid_scheduler_policy_key::invalid_scheduler_policy_key(void)
 ??0invalid_scheduler_policy_key@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::invalid_scheduler_policy_thread_specification::invalid_scheduler_policy_thread_specification(char const *)
 ??0invalid_scheduler_policy_thread_specification@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::invalid_scheduler_policy_thread_specification::invalid_scheduler_policy_thread_specification(void)
 ??0invalid_scheduler_policy_thread_specification@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::invalid_scheduler_policy_value::invalid_scheduler_policy_value(char const *)
 ??0invalid_scheduler_policy_value@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::invalid_scheduler_policy_value::invalid_scheduler_policy_value(void)
 ??0invalid_scheduler_policy_value@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::message_not_found::message_not_found(char const *)
 ??0message_not_found@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::message_not_found::message_not_found(void)
 ??0message_not_found@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::missing_wait::missing_wait(char const *)
 ??0missing_wait@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::missing_wait::missing_wait(void)
 ??0missing_wait@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::nested_scheduler_missing_detach::nested_scheduler_missing_detach(char const *)
 ??0nested_scheduler_missing_detach@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::nested_scheduler_missing_detach::nested_scheduler_missing_detach(void)
 ??0nested_scheduler_missing_detach@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::operation_timed_out::operation_timed_out(char const *)
 ??0operation_timed_out@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::operation_timed_out::operation_timed_out(void)
 ??0operation_timed_out@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::reader_writer_lock::reader_writer_lock(void)
 ??0reader_writer_lock@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::scheduler_not_attached::scheduler_not_attached(char const *)
 ??0scheduler_not_attached@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::scheduler_not_attached::scheduler_not_attached(void)
 ??0scheduler_not_attached@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::scheduler_resource_allocation_error::scheduler_resource_allocation_error(long)
 ??0scheduler_resource_allocation_error@Concurrency@@QAE@J@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::scheduler_resource_allocation_error::scheduler_resource_allocation_error(char const *,long)
 ??0scheduler_resource_allocation_error@Concurrency@@QAE@PBDJ@Z ; has WINAPI (@8)
-; public: __thiscall Concurrency::scheduler_worker_creation_error::scheduler_worker_creation_error(long)
 ??0scheduler_worker_creation_error@Concurrency@@QAE@J@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::scheduler_worker_creation_error::scheduler_worker_creation_error(char const *,long)
 ??0scheduler_worker_creation_error@Concurrency@@QAE@PBDJ@Z ; has WINAPI (@8)
-; public: __thiscall Concurrency::critical_section::scoped_lock::scoped_lock(class Concurrency::critical_section &)
 ??0scoped_lock@critical_section@Concurrency@@QAE@AAV12@@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::reader_writer_lock::scoped_lock::scoped_lock(class Concurrency::reader_writer_lock &)
 ??0scoped_lock@reader_writer_lock@Concurrency@@QAE@AAV12@@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::reader_writer_lock::scoped_lock_read::scoped_lock_read(class Concurrency::reader_writer_lock &)
 ??0scoped_lock_read@reader_writer_lock@Concurrency@@QAE@AAV12@@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::task_canceled::task_canceled(char const *)
 ??0task_canceled@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::task_canceled::task_canceled(void)
 ??0task_canceled@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::unsupported_os::unsupported_os(char const *)
 ??0unsupported_os@Concurrency@@QAE@PBD@Z ; has WINAPI (@4)
-; public: __thiscall Concurrency::unsupported_os::unsupported_os(void)
 ??0unsupported_os@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::SchedulerPolicy::~SchedulerPolicy(void)
 ??1SchedulerPolicy@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::details::_Cancellation_beacon::~_Cancellation_beacon(void)
 ??1_Cancellation_beacon@details@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::details::_Condition_variable::~_Condition_variable(void)
 ??1_Condition_variable@details@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::details::_NonReentrantBlockingLock::~_NonReentrantBlockingLock(void)
 ??1_NonReentrantBlockingLock@details@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::details::_ReentrantBlockingLock::~_ReentrantBlockingLock(void)
 ??1_ReentrantBlockingLock@details@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::details::_NonReentrantPPLLock::_Scoped_lock::~_Scoped_lock(void)
 ??1_Scoped_lock@_NonReentrantPPLLock@details@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::details::_ReentrantPPLLock::_Scoped_lock::~_Scoped_lock(void)
 ??1_Scoped_lock@_ReentrantPPLLock@details@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::details::_SpinLock::~_SpinLock(void)
 ??1_SpinLock@details@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::details::_StructuredTaskCollection::~_StructuredTaskCollection(void)
 ??1_StructuredTaskCollection@details@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::details::_TaskCollection::~_TaskCollection(void)
 ??1_TaskCollection@details@Concurrency@@QAE@XZ
-; protected: virtual __thiscall Concurrency::details::_Timer::~_Timer(void)
 ??1_Timer@details@Concurrency@@MAE@XZ
-; public: virtual __thiscall std::__non_rtti_object::~__non_rtti_object(void)
 ??1__non_rtti_object@std@@UAE@XZ
-; public: virtual __thiscall std::bad_cast::~bad_cast(void)
 ??1bad_cast@std@@UAE@XZ
-; public: virtual __thiscall std::bad_typeid::~bad_typeid(void)
 ??1bad_typeid@std@@UAE@XZ
-; public: __thiscall Concurrency::critical_section::~critical_section(void)
 ??1critical_section@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::event::~event(void)
 ??1event@Concurrency@@QAE@XZ
-; public: virtual __thiscall std::exception::~exception(void)
 ??1exception@std@@UAE@XZ
-; public: __thiscall Concurrency::reader_writer_lock::~reader_writer_lock(void)
 ??1reader_writer_lock@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::critical_section::scoped_lock::~scoped_lock(void)
 ??1scoped_lock@critical_section@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::reader_writer_lock::scoped_lock::~scoped_lock(void)
 ??1scoped_lock@reader_writer_lock@Concurrency@@QAE@XZ
-; public: __thiscall Concurrency::reader_writer_lock::scoped_lock_read::~scoped_lock_read(void)
 ??1scoped_lock_read@reader_writer_lock@Concurrency@@QAE@XZ
-; public: virtual __thiscall type_info::~type_info(void)
 ??1type_info@@UAE@XZ
-; void *__cdecl operator new(unsigned int)
 ??2@YAPAXI@Z
-; void *__cdecl operator new(unsigned int,int,char const *,int)
 ??2@YAPAXIHPBDH@Z
-; void __cdecl operator delete(void *)
 ??3@YAXPAX@Z
-; void __cdecl operator delete(void *,int,char const *,int)
 ??3@YAXPAXHPBDH@Z
-; public: class Concurrency::details::<0x1ULL> &__thiscall Concurrency::details::<0x1ULL>::operator =(class Concurrency::details::<0x1ULL> const &)
 ??4?$_SpinWait@$00@details@Concurrency@@QAEAAV012@ABV012@@Z ; has WINAPI (@4)
-; public: class Concurrency::details::<0x0ULL> &__thiscall Concurrency::details::<0x0ULL>::operator =(class Concurrency::details::<0x0ULL> const &)
 ??4?$_SpinWait@$0A@@details@Concurrency@@QAEAAV012@ABV012@@Z ; has WINAPI (@4)
-; public: class Concurrency::SchedulerPolicy &__thiscall Concurrency::SchedulerPolicy::operator =(class Concurrency::SchedulerPolicy const &)
 ??4SchedulerPolicy@Concurrency@@QAEAAV01@ABV01@@Z ; has WINAPI (@4)
-; public: class std::__non_rtti_object &__thiscall std::__non_rtti_object::operator =(class std::__non_rtti_object const &)
 ??4__non_rtti_object@std@@QAEAAV01@ABV01@@Z ; has WINAPI (@4)
-; public: class std::bad_cast &__thiscall std::bad_cast::operator =(class std::bad_cast const &)
 ??4bad_cast@std@@QAEAAV01@ABV01@@Z ; has WINAPI (@4)
-; public: class std::bad_typeid &__thiscall std::bad_typeid::operator =(class std::bad_typeid const &)
 ??4bad_typeid@std@@QAEAAV01@ABV01@@Z ; has WINAPI (@4)
-; public: class std::exception &__thiscall std::exception::operator =(class std::exception const &)
 ??4exception@std@@QAEAAV01@ABV01@@Z ; has WINAPI (@4)
-; public: bool __thiscall type_info::operator ==(class type_info const &)const 
 ??8type_info@@QBE_NABV0@@Z ; has WINAPI (@4)
-; public: bool __thiscall type_info::operator !=(class type_info const &)const 
 ??9type_info@@QBE_NABV0@@Z ; has WINAPI (@4)
-; const std::__non_rtti_object::$vftable
 ??_7__non_rtti_object@std@@6B@ DATA
-; const std::bad_cast::$vftable
 ??_7bad_cast@std@@6B@ DATA
-; const std::bad_typeid::$vftable
 ??_7bad_typeid@std@@6B@ DATA
-; const std::exception::$vftable
 ??_7exception@std@@6B@ DATA
-; public: void __thiscall Concurrency::details::<0x1ULL>::__dflt_ctor_closure(void)
 ??_F?$_SpinWait@$00@details@Concurrency@@QAEXXZ
-; public: void __thiscall Concurrency::details::<0x0ULL>::__dflt_ctor_closure(void)
 ??_F?$_SpinWait@$0A@@details@Concurrency@@QAEXXZ
-; public: void __thiscall Concurrency::details::_Context::__dflt_ctor_closure(void)
 ??_F_Context@details@Concurrency@@QAEXXZ
-; public: void __thiscall Concurrency::details::_Scheduler::__dflt_ctor_closure(void)
 ??_F_Scheduler@details@Concurrency@@QAEXXZ
-; public: void __thiscall std::bad_cast::__dflt_ctor_closure(void)
 ??_Fbad_cast@std@@QAEXXZ
-; public: void __thiscall std::bad_typeid::__dflt_ctor_closure(void)
 ??_Fbad_typeid@std@@QAEXXZ
-; void *__cdecl operator new[](unsigned int)
 ??_U@YAPAXI@Z
-; void *__cdecl operator new[](unsigned int,int,char const *,int)
 ??_U@YAPAXIHPBDH@Z
-; void __cdecl operator delete[](void *)
 ??_V@YAXPAX@Z
-; void __cdecl operator delete[](void *,int,char const *,int)
 ??_V@YAXPAXHPBDH@Z
-; void *__cdecl Concurrency::Alloc(unsigned int)
 ?Alloc@Concurrency@@YAPAXI@Z
-; public: static void __cdecl Concurrency::Context::Block(void)
-?Block@Context@Concurrency@@SAXXZ ; Check!!! Couldn't determine function argument count. Function doesn't return. 
-; unsigned int __cdecl Concurrency::details::platform::CaptureCallstack(void **,unsigned int,unsigned int)
+?Block@Context@Concurrency@@SAXXZ
 ?CaptureCallstack@platform@details@Concurrency@@YAIPAPAXII@Z
-; public: static void __cdecl Concurrency::CurrentScheduler::Create(class Concurrency::SchedulerPolicy const &)
-?Create@CurrentScheduler@Concurrency@@SAXABVSchedulerPolicy@2@@Z ; Check!!! Couldn't determine function argument count. Function doesn't return. 
-; public: static class Concurrency::Scheduler *__cdecl Concurrency::Scheduler::Create(class Concurrency::SchedulerPolicy const &)
+?Create@CurrentScheduler@Concurrency@@SAXABVSchedulerPolicy@2@@Z
 ?Create@Scheduler@Concurrency@@SAPAV12@ABVSchedulerPolicy@2@@Z
-; struct Concurrency::IResourceManager *__cdecl Concurrency::CreateResourceManager(void)
 ?CreateResourceManager@Concurrency@@YAPAUIResourceManager@1@XZ
-; public: static class Concurrency::ScheduleGroup *__cdecl Concurrency::CurrentScheduler::CreateScheduleGroup(class Concurrency::location &)
 ?CreateScheduleGroup@CurrentScheduler@Concurrency@@SAPAVScheduleGroup@2@AAVlocation@2@@Z
-; public: static class Concurrency::ScheduleGroup *__cdecl Concurrency::CurrentScheduler::CreateScheduleGroup(void)
-?CreateScheduleGroup@CurrentScheduler@Concurrency@@SAPAVScheduleGroup@2@XZ ; Check!!! Couldn't determine function argument count. Function doesn't return. 
-; public: static class Concurrency::Context *__cdecl Concurrency::Context::CurrentContext(void)
+?CreateScheduleGroup@CurrentScheduler@Concurrency@@SAPAVScheduleGroup@2@XZ
 ?CurrentContext@Context@Concurrency@@SAPAV12@XZ
-; public: static void __cdecl Concurrency::CurrentScheduler::Detach(void)
 ?Detach@CurrentScheduler@Concurrency@@SAXXZ
-; long __cdecl Concurrency::DisableTracing(void)
 ?DisableTracing@Concurrency@@YAJXZ
-; long __cdecl Concurrency::EnableTracing(void)
 ?EnableTracing@Concurrency@@YAJXZ
-; void __cdecl Concurrency::Free(void *)
 ?Free@Concurrency@@YAXPAX@Z
-; public: static class Concurrency::Scheduler *__cdecl Concurrency::CurrentScheduler::Get(void)
 ?Get@CurrentScheduler@Concurrency@@SAPAVScheduler@2@XZ
-; long __cdecl Concurrency::details::platform::GetCurrentThreadId(void)
 ?GetCurrentThreadId@platform@details@Concurrency@@YAJXZ ; has WINAPI (@0)
-; unsigned int __cdecl Concurrency::GetExecutionContextId(void)
 ?GetExecutionContextId@Concurrency@@YAIXZ
-; public: static unsigned int __cdecl Concurrency::CurrentScheduler::GetNumberOfVirtualProcessors(void)
 ?GetNumberOfVirtualProcessors@CurrentScheduler@Concurrency@@SAIXZ
-; enum Concurrency::IResourceManager::OSVersion __cdecl Concurrency::GetOSVersion(void)
 ?GetOSVersion@Concurrency@@YA?AW4OSVersion@IResourceManager@1@XZ
-; public: static class Concurrency::SchedulerPolicy __cdecl Concurrency::CurrentScheduler::GetPolicy(void)
 ?GetPolicy@CurrentScheduler@Concurrency@@SA?AVSchedulerPolicy@2@XZ
-; public: unsigned int __thiscall Concurrency::SchedulerPolicy::GetPolicyValue(enum Concurrency::PolicyElementKey)const 
 ?GetPolicyValue@SchedulerPolicy@Concurrency@@QBEIW4PolicyElementKey@2@@Z ; has WINAPI (@4)
-; unsigned int __cdecl Concurrency::GetProcessorCount(void)
 ?GetProcessorCount@Concurrency@@YAIXZ
-; unsigned int __cdecl Concurrency::GetProcessorNodeCount(void)
 ?GetProcessorNodeCount@Concurrency@@YAIXZ
-; unsigned int __cdecl Concurrency::GetSchedulerId(void)
 ?GetSchedulerId@Concurrency@@YAIXZ
-; void *__cdecl Concurrency::details::GetSharedTimerQueue(void)
 ?GetSharedTimerQueue@details@Concurrency@@YAPAXXZ
-; public: static unsigned int __cdecl Concurrency::Context::Id(void)
 ?Id@Context@Concurrency@@SAIXZ
-; public: static unsigned int __cdecl Concurrency::CurrentScheduler::Id(void)
 ?Id@CurrentScheduler@Concurrency@@SAIXZ
-; public: static bool __cdecl Concurrency::CurrentScheduler::IsAvailableLocation(class Concurrency::location const &)
 ?IsAvailableLocation@CurrentScheduler@Concurrency@@SA_NABVlocation@2@@Z
-; public: static bool __cdecl Concurrency::Context::IsCurrentTaskCollectionCanceling(void)
 ?IsCurrentTaskCollectionCanceling@Context@Concurrency@@SA_NXZ
-; unsigned long __cdecl Concurrency::details::Log2(unsigned int)
 ?Log2@details@Concurrency@@YAKI@Z
-; public: static void __cdecl Concurrency::Context::Oversubscribe(bool)
 ?Oversubscribe@Context@Concurrency@@SAX_N@Z
-; public: static void __cdecl Concurrency::CurrentScheduler::RegisterShutdownEvent(void *)
 ?RegisterShutdownEvent@CurrentScheduler@Concurrency@@SAXPAX@Z
-; public: static void __cdecl Concurrency::Scheduler::ResetDefaultSchedulerPolicy(void)
 ?ResetDefaultSchedulerPolicy@Scheduler@Concurrency@@SAXXZ
-; public: static unsigned int __cdecl Concurrency::Context::ScheduleGroupId(void)
 ?ScheduleGroupId@Context@Concurrency@@SAIXZ
-; public: static void __cdecl Concurrency::CurrentScheduler::ScheduleTask(void(__cdecl *)(void *),void *)
 ?ScheduleTask@CurrentScheduler@Concurrency@@SAXP6AXPAX@Z0@Z
-; public: static void __cdecl Concurrency::CurrentScheduler::ScheduleTask(void(__cdecl *)(void *),void *,class Concurrency::location &)
 ?ScheduleTask@CurrentScheduler@Concurrency@@SAXP6AXPAX@Z0AAVlocation@2@@Z
-; public: void __thiscall Concurrency::SchedulerPolicy::SetConcurrencyLimits(unsigned int,unsigned int)
 ?SetConcurrencyLimits@SchedulerPolicy@Concurrency@@QAEXII@Z ; has WINAPI (@8)
-; public: static void __cdecl Concurrency::Scheduler::SetDefaultSchedulerPolicy(class Concurrency::SchedulerPolicy const &)
 ?SetDefaultSchedulerPolicy@Scheduler@Concurrency@@SAXABVSchedulerPolicy@2@@Z
-; public: unsigned int __thiscall Concurrency::SchedulerPolicy::SetPolicyValue(enum Concurrency::PolicyElementKey,unsigned int)
 ?SetPolicyValue@SchedulerPolicy@Concurrency@@QAEIW4PolicyElementKey@2@I@Z ; has WINAPI (@8)
-; public: static unsigned int __cdecl Concurrency::Context::VirtualProcessorId(void)
 ?VirtualProcessorId@Context@Concurrency@@SAIXZ
-; public: static void __cdecl Concurrency::Context::Yield(void)
-?Yield@Context@Concurrency@@SAXXZ ; Check!!! Couldn't determine function argument count. Function doesn't return. 
-; private: void __thiscall Concurrency::details::_StructuredTaskCollection::_Abort(void)
+?Yield@Context@Concurrency@@SAXXZ
 ?_Abort@_StructuredTaskCollection@details@Concurrency@@AAEXXZ
-; public: void __thiscall Concurrency::details::_NonReentrantBlockingLock::_Acquire(void)
 ?_Acquire@_NonReentrantBlockingLock@details@Concurrency@@QAEXXZ
-; public: void __thiscall Concurrency::details::_NonReentrantPPLLock::_Acquire(void *)
 ?_Acquire@_NonReentrantPPLLock@details@Concurrency@@QAEXPAX@Z ; has WINAPI (@4)
-; public: void __thiscall Concurrency::details::_ReentrantBlockingLock::_Acquire(void)
 ?_Acquire@_ReentrantBlockingLock@details@Concurrency@@QAEXXZ
-; public: void __thiscall Concurrency::details::_ReentrantLock::_Acquire(void)
 ?_Acquire@_ReentrantLock@details@Concurrency@@QAEXXZ
-; public: void __thiscall Concurrency::details::_ReentrantPPLLock::_Acquire(void *)
 ?_Acquire@_ReentrantPPLLock@details@Concurrency@@QAEXPAX@Z ; has WINAPI (@4)
-; public: void __thiscall Concurrency::details::_ReaderWriterLock::_AcquireRead(void)
 ?_AcquireRead@_ReaderWriterLock@details@Concurrency@@QAEXXZ
-; public: void __thiscall Concurrency::details::_ReaderWriterLock::_AcquireWrite(void)
 ?_AcquireWrite@_ReaderWriterLock@details@Concurrency@@QAEXXZ
-; public: void __thiscall Concurrency::details::_StructuredTaskCollection::_Cancel(void)
 ?_Cancel@_StructuredTaskCollection@details@Concurrency@@QAEXXZ
-; public: void __thiscall Concurrency::details::_TaskCollection::_Cancel(void)
 ?_Cancel@_TaskCollection@details@Concurrency@@QAEXXZ
-; protected: void __thiscall Concurrency::details::_UnrealizedChore::_CheckTaskCollection(void)
 ?_CheckTaskCollection@_UnrealizedChore@details@Concurrency@@IAEXXZ
-; private: void __thiscall Concurrency::details::_StructuredTaskCollection::_CleanupToken(void)
 ?_CleanupToken@_StructuredTaskCollection@details@Concurrency@@AAEXXZ
-; void __cdecl Concurrency::details::_ConcRT_CoreAssert(char const *,char const *,int)
-?_ConcRT_CoreAssert@details@Concurrency@@YAXPBD0H@Z ; Check!!! Couldn't determine function argument count. Function doesn't return. 
-; void __cdecl Concurrency::details::_ConcRT_Trace(int,wchar_t const *,...)
+?_ConcRT_CoreAssert@details@Concurrency@@YAXPBD0H@Z
 ?_ConcRT_Trace@details@Concurrency@@YAXHPB_WZZ
-; public: bool __thiscall Concurrency::details::_Cancellation_beacon::_Confirm_cancel(void)
 ?_Confirm_cancel@_Cancellation_beacon@details@Concurrency@@QAE_NXZ
-; private: void __thiscall std::exception::_Copy_str(char const *)
 ?_Copy_str@exception@std@@AAEXPBD@Z ; has WINAPI (@4)
-; public: static class Concurrency::details::_Context __cdecl Concurrency::details::_Context::_CurrentContext(void)
 ?_CurrentContext@_Context@details@Concurrency@@SA?AV123@XZ
-; public: static class Concurrency::location __cdecl Concurrency::location::_Current_node(void)
 ?_Current_node@location@Concurrency@@SA?AV12@XZ
-; private: virtual void __thiscall Concurrency::details::_AsyncTaskCollection::_Destroy(void)
 ?_Destroy@_AsyncTaskCollection@details@Concurrency@@EAEXXZ
-; protected: void __thiscall Concurrency::details::<0x1ULL>::_DoYield(void)
-?_DoYield@?$_SpinWait@$00@details@Concurrency@@IAEXXZ ; Check!!! Couldn't determine function argument count. Function doesn't return. 
-; protected: void __thiscall Concurrency::details::<0x0ULL>::_DoYield(void)
+?_DoYield@?$_SpinWait@$00@details@Concurrency@@IAEXXZ
 ?_DoYield@?$_SpinWait@$0A@@details@Concurrency@@IAEXXZ
-; public: static class Concurrency::details::_Scheduler __cdecl Concurrency::details::_CurrentScheduler::_Get(void)
 ?_Get@_CurrentScheduler@details@Concurrency@@SA?AV_Scheduler@23@XZ
-; struct Concurrency::details::_CONCRT_TRACE_INFO const *__cdecl Concurrency::_GetConcRTTraceInfo(void)
 ?_GetConcRTTraceInfo@Concurrency@@YAPBU_CONCRT_TRACE_INFO@details@1@XZ
-; unsigned int __cdecl Concurrency::details::_GetConcurrency(void)
 ?_GetConcurrency@details@Concurrency@@YAIXZ
-; private: static unsigned int &__cdecl Concurrency::details::_StackGuard::_GetCurrentInlineDepth(void)
 ?_GetCurrentInlineDepth@_StackGuard@details@Concurrency@@CAAAIXZ
-; public: static unsigned int __cdecl Concurrency::details::_CurrentScheduler::_GetNumberOfVirtualProcessors(void)
-?_GetNumberOfVirtualProcessors@_CurrentScheduler@details@Concurrency@@SAIXZ ; Check!!! Couldn't determine function argument count. Function doesn't return. 
-; public: class Concurrency::Scheduler *__thiscall Concurrency::details::_Scheduler::_GetScheduler(void)
+?_GetNumberOfVirtualProcessors@_CurrentScheduler@details@Concurrency@@SAIXZ
 ?_GetScheduler@_Scheduler@details@Concurrency@@QAEPAVScheduler@3@XZ
-; public: static unsigned int __cdecl Concurrency::details::_CurrentScheduler::_Id(void)
 ?_Id@_CurrentScheduler@details@Concurrency@@SAIXZ
-; public: bool __thiscall Concurrency::details::_StructuredTaskCollection::_IsCanceling(void)
 ?_IsCanceling@_StructuredTaskCollection@details@Concurrency@@QAE_NXZ
-; public: bool __thiscall Concurrency::details::_TaskCollection::_IsCanceling(void)
 ?_IsCanceling@_TaskCollection@details@Concurrency@@QAE_NXZ
-; public: bool __thiscall Concurrency::details::_Context::_IsSynchronouslyBlocked(void)const 
-?_IsSynchronouslyBlocked@_Context@details@Concurrency@@QBE_NXZ ; Check!!! Couldn't determine function argument count. Function doesn't return. 
-; private: static char const *__cdecl type_info::_Name_base(class type_info const *,struct __type_info_node *)
+?_IsSynchronouslyBlocked@_Context@details@Concurrency@@QBE_NXZ
 ?_Name_base@type_info@@CAPBDPBV1@PAU__type_info_node@@@Z
-; private: static char const *__cdecl type_info::_Name_base_internal(class type_info const *,struct __type_info_node *)
 ?_Name_base_internal@type_info@@CAPBDPBV1@PAU__type_info_node@@@Z
-; public: static class Concurrency::details::_AsyncTaskCollection *__cdecl Concurrency::details::_AsyncTaskCollection::_NewCollection(class Concurrency::details::_CancellationTokenState *)
 ?_NewCollection@_AsyncTaskCollection@details@Concurrency@@SAPAV123@PAV_CancellationTokenState@23@@Z
-; protected: unsigned long __thiscall Concurrency::details::<0x1ULL>::_NumberOfSpins(void)
 ?_NumberOfSpins@?$_SpinWait@$00@details@Concurrency@@IAEKXZ
-; protected: unsigned long __thiscall Concurrency::details::<0x0ULL>::_NumberOfSpins(void)
 ?_NumberOfSpins@?$_SpinWait@$0A@@details@Concurrency@@IAEKXZ
-; public: static void __cdecl Concurrency::details::_Context::_Oversubscribe(bool)
 ?_Oversubscribe@_Context@details@Concurrency@@SAX_N@Z
-; public: unsigned int __thiscall Concurrency::details::_Scheduler::_Reference(void)
-?_Reference@_Scheduler@details@Concurrency@@QAEIXZ ; Check!!! Couldn't determine function argument count. Function doesn't return. 
-; public: void __thiscall Concurrency::details::_NonReentrantBlockingLock::_Release(void)
+?_Reference@_Scheduler@details@Concurrency@@QAEIXZ
 ?_Release@_NonReentrantBlockingLock@details@Concurrency@@QAEXXZ
-; public: void __thiscall Concurrency::details::_NonReentrantPPLLock::_Release(void)
 ?_Release@_NonReentrantPPLLock@details@Concurrency@@QAEXXZ
-; public: void __thiscall Concurrency::details::_ReentrantBlockingLock::_Release(void)
 ?_Release@_ReentrantBlockingLock@details@Concurrency@@QAEXXZ
-; public: void __thiscall Concurrency::details::_ReentrantLock::_Release(void)
 ?_Release@_ReentrantLock@details@Concurrency@@QAEXXZ
-; public: void __thiscall Concurrency::details::_ReentrantPPLLock::_Release(void)
 ?_Release@_ReentrantPPLLock@details@Concurrency@@QAEXXZ
-; public: unsigned int __thiscall Concurrency::details::_Scheduler::_Release(void)
-?_Release@_Scheduler@details@Concurrency@@QAEIXZ ; Check!!! Couldn't determine function argument count. Function doesn't return. 
-; public: void __thiscall Concurrency::details::_ReaderWriterLock::_ReleaseRead(void)
+?_Release@_Scheduler@details@Concurrency@@QAEIXZ
 ?_ReleaseRead@_ReaderWriterLock@details@Concurrency@@QAEXXZ
-; public: void __thiscall Concurrency::details::_ReaderWriterLock::_ReleaseWrite(void)
 ?_ReleaseWrite@_ReaderWriterLock@details@Concurrency@@QAEXXZ
-; void __cdecl Concurrency::details::_ReportUnobservedException(void)
 ?_ReportUnobservedException@details@Concurrency@@YAXXZ
-; protected: void __thiscall Concurrency::details::<0x1ULL>::_Reset(void)
 ?_Reset@?$_SpinWait@$00@details@Concurrency@@IAEXXZ
-; protected: void __thiscall Concurrency::details::<0x0ULL>::_Reset(void)
 ?_Reset@?$_SpinWait@$0A@@details@Concurrency@@IAEXXZ
-; public: enum Concurrency::details::_TaskCollectionStatus __stdcall Concurrency::details::_StructuredTaskCollection::_RunAndWait(class Concurrency::details::_UnrealizedChore *)
 ?_RunAndWait@_StructuredTaskCollection@details@Concurrency@@QAG?AW4_TaskCollectionStatus@23@PAV_UnrealizedChore@23@@Z ; has WINAPI (@8)
-; public: enum Concurrency::details::_TaskCollectionStatus __stdcall Concurrency::details::_TaskCollection::_RunAndWait(class Concurrency::details::_UnrealizedChore *)
 ?_RunAndWait@_TaskCollection@details@Concurrency@@QAG?AW4_TaskCollectionStatus@23@PAV_UnrealizedChore@23@@Z ; has WINAPI (@8)
-; public: void __thiscall Concurrency::details::_StructuredTaskCollection::_Schedule(class Concurrency::details::_UnrealizedChore *)
 ?_Schedule@_StructuredTaskCollection@details@Concurrency@@QAEXPAV_UnrealizedChore@23@@Z ; has WINAPI (@4)
-; public: void __thiscall Concurrency::details::_StructuredTaskCollection::_Schedule(class Concurrency::details::_UnrealizedChore *,class Concurrency::location *)
 ?_Schedule@_StructuredTaskCollection@details@Concurrency@@QAEXPAV_UnrealizedChore@23@PAVlocation@3@@Z ; has WINAPI (@8)
-; public: void __thiscall Concurrency::details::_TaskCollection::_Schedule(class Concurrency::details::_UnrealizedChore *)
 ?_Schedule@_TaskCollection@details@Concurrency@@QAEXPAV_UnrealizedChore@23@@Z ; has WINAPI (@4)
-; public: void __thiscall Concurrency::details::_TaskCollection::_Schedule(class Concurrency::details::_UnrealizedChore *,class Concurrency::location *)
 ?_Schedule@_TaskCollection@details@Concurrency@@QAEXPAV_UnrealizedChore@23@PAVlocation@3@@Z ; has WINAPI (@8)
-; public: static void __cdecl Concurrency::details::_CurrentScheduler::_ScheduleTask(void(__cdecl *)(void *),void *)
 ?_ScheduleTask@_CurrentScheduler@details@Concurrency@@SAXP6AXPAX@Z0@Z
-; public: void __thiscall Concurrency::details::<0x1ULL>::_SetSpinCount(unsigned int)
 ?_SetSpinCount@?$_SpinWait@$00@details@Concurrency@@QAEXI@Z ; has WINAPI (@4)
-; public: void __thiscall Concurrency::details::<0x0ULL>::_SetSpinCount(unsigned int)
 ?_SetSpinCount@?$_SpinWait@$0A@@details@Concurrency@@QAEXI@Z ; has WINAPI (@4)
-; void __cdecl Concurrency::details::_SetUnobservedExceptionHandler(void(__cdecl *)(void))
 ?_SetUnobservedExceptionHandler@details@Concurrency@@YAXP6AXXZ@Z
-; protected: bool __thiscall Concurrency::details::<0x1ULL>::_ShouldSpinAgain(void)
 ?_ShouldSpinAgain@?$_SpinWait@$00@details@Concurrency@@IAE_NXZ
-; protected: bool __thiscall Concurrency::details::<0x0ULL>::_ShouldSpinAgain(void)
 ?_ShouldSpinAgain@?$_SpinWait@$0A@@details@Concurrency@@IAE_NXZ
-; public: bool __thiscall Concurrency::details::<0x1ULL>::_SpinOnce(void)
 ?_SpinOnce@?$_SpinWait@$00@details@Concurrency@@QAE_NXZ
-; public: bool __thiscall Concurrency::details::<0x0ULL>::_SpinOnce(void)
 ?_SpinOnce@?$_SpinWait@$0A@@details@Concurrency@@QAE_NXZ
-; public: static void __cdecl Concurrency::Context::_SpinYield(void)
-?_SpinYield@Context@Concurrency@@SAXXZ ; Check!!! Couldn't determine function argument count. Function doesn't return. 
-; protected: void __thiscall Concurrency::details::_Timer::_Start(void)
+?_SpinYield@Context@Concurrency@@SAXXZ
 ?_Start@_Timer@details@Concurrency@@IAEXXZ
-; protected: void __thiscall Concurrency::details::_Timer::_Stop(void)
 ?_Stop@_Timer@details@Concurrency@@IAEXXZ
-; private: void __thiscall std::exception::_Tidy(void)
 ?_Tidy@exception@std@@AAEXXZ
-; void __cdecl Concurrency::_Trace_agents(enum Concurrency::Agents_EventType,__int64,...)
 ?_Trace_agents@Concurrency@@YAXW4Agents_EventType@1@_JZZ
-; void __cdecl Concurrency::_Trace_ppl_function(struct _GUID const &,unsigned char,enum Concurrency::ConcRT_EventType)
 ?_Trace_ppl_function@Concurrency@@YAXABU_GUID@@EW4ConcRT_EventType@1@@Z
-; public: bool __thiscall Concurrency::details::_NonReentrantBlockingLock::_TryAcquire(void)
 ?_TryAcquire@_NonReentrantBlockingLock@details@Concurrency@@QAE_NXZ
-; public: bool __thiscall Concurrency::details::_ReentrantBlockingLock::_TryAcquire(void)
 ?_TryAcquire@_ReentrantBlockingLock@details@Concurrency@@QAE_NXZ
-; public: bool __thiscall Concurrency::details::_ReentrantLock::_TryAcquire(void)
 ?_TryAcquire@_ReentrantLock@details@Concurrency@@QAE_NXZ
-; public: bool __thiscall Concurrency::details::_ReaderWriterLock::_TryAcquireWrite(void)
 ?_TryAcquireWrite@_ReaderWriterLock@details@Concurrency@@QAE_NXZ
-; private: static void __cdecl type_info::_Type_info_dtor(class type_info *)
 ?_Type_info_dtor@type_info@@CAXPAV1@@Z
-; private: static void __cdecl type_info::_Type_info_dtor_internal(class type_info *)
 ?_Type_info_dtor_internal@type_info@@CAXPAV1@@Z
-; void __cdecl Concurrency::details::_UnderlyingYield(void)
 ?_UnderlyingYield@details@Concurrency@@YAXXZ ; has WINAPI (@0)
-; int __cdecl _ValidateExecute(int(__stdcall *)(void))
 ?_ValidateExecute@@YAHP6GHXZ@Z
-; int __cdecl _ValidateRead(void const *,unsigned int)
 ?_ValidateRead@@YAHPBXI@Z
-; int __cdecl _ValidateWrite(void *,unsigned int)
 ?_ValidateWrite@@YAHPAXI@Z
-; public: static unsigned int __cdecl Concurrency::details::_SpinCount::_Value(void)
 ?_Value@_SpinCount@details@Concurrency@@SAIXZ
-; public: static void __cdecl Concurrency::details::_Context::_Yield(void)
-?_Yield@_Context@details@Concurrency@@SAXXZ ; Check!!! Couldn't determine function argument count. Function doesn't return. 
-; void __cdecl __ExceptionPtrAssign(void *,void const *)
+?_Yield@_Context@details@Concurrency@@SAXXZ
 ?__ExceptionPtrAssign@@YAXPAXPBX@Z
-; bool __cdecl __ExceptionPtrCompare(void const *,void const *)
 ?__ExceptionPtrCompare@@YA_NPBX0@Z
-; void __cdecl __ExceptionPtrCopy(void *,void const *)
 ?__ExceptionPtrCopy@@YAXPAXPBX@Z
-; void __cdecl __ExceptionPtrCopyException(void *,void const *,void const *)
 ?__ExceptionPtrCopyException@@YAXPAXPBX1@Z
-; void __cdecl __ExceptionPtrCreate(void *)
 ?__ExceptionPtrCreate@@YAXPAX@Z
-; void __cdecl __ExceptionPtrCurrentException(void *)
 ?__ExceptionPtrCurrentException@@YAXPAX@Z
-; void __cdecl __ExceptionPtrDestroy(void *)
 ?__ExceptionPtrDestroy@@YAXPAX@Z
-; void __cdecl __ExceptionPtrRethrow(void const *)
 ?__ExceptionPtrRethrow@@YAXPBX@Z
-; void __cdecl __ExceptionPtrSwap(void *,void *)
 ?__ExceptionPtrSwap@@YAXPAX0@Z
-; bool __cdecl __ExceptionPtrToBool(void const *)
 ?__ExceptionPtrToBool@@YA_NPBX@Z
 __uncaught_exception
-; void __cdecl _inconsistency(void)
-?_inconsistency@@YAXXZ ; Check!!! Couldn't determine function argument count. Function doesn't return. 
-; void __cdecl _invalid_parameter(unsigned short const *,unsigned short const *,unsigned short const *,unsigned int,unsigned int)
-?_invalid_parameter@@YAXPBG00II@Z ; Check!!! Couldn't determine function argument count. Function doesn't return. 
-; int __cdecl _is_exception_typeof(class type_info const &,struct _EXCEPTION_POINTERS *)
+?_inconsistency@@YAXXZ
+?_invalid_parameter@@YAXPBG00II@Z
 ?_is_exception_typeof@@YAHABVtype_info@@PAU_EXCEPTION_POINTERS@@@Z
-; public: char const *__thiscall type_info::_name_internal_method(struct __type_info_node *)const 
 ?_name_internal_method@type_info@@QBEPBDPAU__type_info_node@@@Z ; has WINAPI (@4)
-; int __cdecl _open(char const *,int,int)
 ?_open@@YAHPBDHH@Z
-; int(__cdecl *)(unsigned int)__cdecl _query_new_handler(void)
 ?_query_new_handler@@YAP6AHI@ZXZ
-; int __cdecl _query_new_mode(void)
 ?_query_new_mode@@YAHXZ
-; int(__cdecl *)(unsigned int)__cdecl _set_new_handler(int)
 ?_set_new_handler@@YAP6AHI@ZH@Z
-; int(__cdecl *)(unsigned int)__cdecl _set_new_handler(int(__cdecl *)(unsigned int))
 ?_set_new_handler@@YAP6AHI@ZP6AHI@Z@Z
-; int __cdecl _set_new_mode(int)
 ?_set_new_mode@@YAHH@Z
-; void(__cdecl *)(unsigned int,struct _EXCEPTION_POINTERS *)__cdecl _set_se_translator(int)
 ?_set_se_translator@@YAP6AXIPAU_EXCEPTION_POINTERS@@@ZH@Z
-; void(__cdecl *)(unsigned int,struct _EXCEPTION_POINTERS *)__cdecl _set_se_translator(void(__cdecl *)(unsigned int,struct _EXCEPTION_POINTERS *))
 ?_set_se_translator@@YAP6AXIPAU_EXCEPTION_POINTERS@@@ZP6AXI0@Z@Z
-; int __cdecl _sopen(char const *,int,int,int)
 ?_sopen@@YAHPBDHHH@Z
-; public: void __thiscall type_info::_type_info_dtor_internal_method(void)
 ?_type_info_dtor_internal_method@type_info@@QAEXXZ
-; int __cdecl _wopen(wchar_t const *,int,int)
 ?_wopen@@YAHPB_WHH@Z
-; int __cdecl _wsopen(wchar_t const *,int,int,int)
 ?_wsopen@@YAHPB_WHHH@Z
-; public: bool __thiscall type_info::before(class type_info const &)const 
 ?before@type_info@@QBE_NABV1@@Z ; has WINAPI (@4)
-; public: static class Concurrency::location __cdecl Concurrency::location::current(void)
 ?current@location@Concurrency@@SA?AV12@XZ
-; public: static class Concurrency::location __cdecl Concurrency::location::from_numa_node(unsigned short)
 ?from_numa_node@location@Concurrency@@SA?AV12@G@Z
-; public: long __thiscall Concurrency::scheduler_resource_allocation_error::get_error_code(void)const 
 ?get_error_code@scheduler_resource_allocation_error@Concurrency@@QBEJXZ
-; public: void __thiscall Concurrency::critical_section::lock(void)
 ?lock@critical_section@Concurrency@@QAEXXZ
-; public: void __thiscall Concurrency::reader_writer_lock::lock(void)
 ?lock@reader_writer_lock@Concurrency@@QAEXXZ
-; public: void __thiscall Concurrency::reader_writer_lock::lock_read(void)
 ?lock_read@reader_writer_lock@Concurrency@@QAEXXZ
-; public: char const *__thiscall type_info::name(struct __type_info_node *)const 
 ?name@type_info@@QBEPBDPAU__type_info_node@@@Z ; has WINAPI (@4)
-; public: class Concurrency::critical_section &__thiscall Concurrency::critical_section::native_handle(void)
 ?native_handle@critical_section@Concurrency@@QAEAAV12@XZ
-; public: void __thiscall Concurrency::details::_Condition_variable::notify_all(void)
 ?notify_all@_Condition_variable@details@Concurrency@@QAEXXZ
-; public: void __thiscall Concurrency::details::_Condition_variable::notify_one(void)
 ?notify_one@_Condition_variable@details@Concurrency@@QAEXXZ
-; public: char const *__thiscall type_info::raw_name(void)const 
 ?raw_name@type_info@@QBEPBDXZ
-; public: void __thiscall Concurrency::event::reset(void)
 ?reset@event@Concurrency@@QAEXXZ
-; public: void __thiscall Concurrency::event::set(void)
 ?set@event@Concurrency@@QAEXXZ
-; void(__cdecl *)(void)__cdecl set_new_handler(void(__cdecl *)(void))
 ?set_new_handler@@YAP6AXXZP6AXXZ@Z
-; void __cdecl Concurrency::set_task_execution_resources(unsigned short,struct _GROUP_AFFINITY *)
 ?set_task_execution_resources@Concurrency@@YAXGPAU_GROUP_AFFINITY@@@Z
-; void __cdecl Concurrency::set_task_execution_resources(unsigned long)
 ?set_task_execution_resources@Concurrency@@YAXK@Z
-; void(__cdecl *)(void)__cdecl set_terminate(int)
 ?set_terminate@@YAP6AXXZH@Z
-; void(__cdecl *)(void)__cdecl set_terminate(void(__cdecl *)(void))
 ?set_terminate@@YAP6AXXZP6AXXZ@Z
-; void(__cdecl *)(void)__cdecl set_unexpected(int)
 ?set_unexpected@@YAP6AXXZH@Z
-; void(__cdecl *)(void)__cdecl set_unexpected(void(__cdecl *)(void))
 ?set_unexpected@@YAP6AXXZP6AXXZ@Z
-; int __cdecl swprintf(unsigned short *,unsigned int,unsigned short const *,...)
 ?swprintf@@YAHPAGIPBGZZ
-; int __cdecl swprintf(wchar_t *,unsigned int,wchar_t const *,...)
 ?swprintf@@YAHPA_WIPB_WZZ
-; void __cdecl terminate(void)
-?terminate@@YAXXZ ; Check!!! Couldn't determine function argument count. Function doesn't return. 
-; public: bool __thiscall Concurrency::critical_section::try_lock(void)
+?terminate@@YAXXZ
 ?try_lock@critical_section@Concurrency@@QAE_NXZ
-; public: bool __thiscall Concurrency::reader_writer_lock::try_lock(void)
 ?try_lock@reader_writer_lock@Concurrency@@QAE_NXZ
-; public: bool __thiscall Concurrency::critical_section::try_lock_for(unsigned int)
 ?try_lock_for@critical_section@Concurrency@@QAE_NI@Z ; has WINAPI (@4)
-; public: bool __thiscall Concurrency::reader_writer_lock::try_lock_read(void)
 ?try_lock_read@reader_writer_lock@Concurrency@@QAE_NXZ
-; void __cdecl unexpected(void)
-?unexpected@@YAXXZ ; Check!!! Couldn't determine function argument count. Function doesn't return. 
-; public: void __thiscall Concurrency::critical_section::unlock(void)
+?unexpected@@YAXXZ
 ?unlock@critical_section@Concurrency@@QAEXXZ
-; public: void __thiscall Concurrency::reader_writer_lock::unlock(void)
 ?unlock@reader_writer_lock@Concurrency@@QAEXXZ
-; int __cdecl vswprintf(wchar_t *,unsigned int,wchar_t const *,char *)
 ?vswprintf@@YAHPA_WIPB_WPAD@Z
-; void __cdecl Concurrency::wait(unsigned int)
 ?wait@Concurrency@@YAXI@Z
-; public: void __thiscall Concurrency::details::_Condition_variable::wait(class Concurrency::critical_section &)
 ?wait@_Condition_variable@details@Concurrency@@QAEXAAVcritical_section@3@@Z ; has WINAPI (@4)
-; public: unsigned int __thiscall Concurrency::event::wait(unsigned int)
 ?wait@event@Concurrency@@QAEII@Z ; has WINAPI (@4)
-; public: bool __thiscall Concurrency::details::_Condition_variable::wait_for(class Concurrency::critical_section &,unsigned int)
 ?wait_for@_Condition_variable@details@Concurrency@@QAE_NAAVcritical_section@3@I@Z ; has WINAPI (@8)
-; public: static unsigned int __cdecl Concurrency::event::wait_for_multiple(class Concurrency::event **,unsigned int,bool,unsigned int)
 ?wait_for_multiple@event@Concurrency@@SAIPAPAV12@I_NI@Z
-; public: virtual char const *__thiscall std::exception::what(void)const 
 ?what@exception@std@@UBEPBDXZ
 $I10_OUTPUT
 _CIacos
@@ -829,7 +506,7 @@ __pctype_func
 __pioinfo DATA
 __pwctype_func
 __pxcptinfoptrs
-__report_gsfailure
+__report_gsfailure DATA ; Provided in libmingw32
 __set_app_type
 __setlc_active DATA
 __setusermatherr
@@ -854,7 +531,7 @@ __wcsncnt
 __wgetmainargs
 __winitenv DATA
 _abnormal_termination
-_abs64
+_abs64 DATA ; Provided in libmingwex
 _access
 _access_s
 _acmdln DATA
@@ -866,8 +543,8 @@ _aligned_offset_realloc
 _aligned_offset_recalloc
 _aligned_realloc
 _aligned_recalloc
-_amsg_exit ; Check!!! Couldn't determine function argument count. Function doesn't return. 
-_assert
+_amsg_exit
+_assert DATA ; Provided in libmingwex
 _atodbl
 _atodbl_l
 _atof_l
@@ -883,11 +560,11 @@ _atoll_l
 _beep
 _beginthread
 _beginthreadex
-_byteswap_uint64
-_byteswap_ulong
-_byteswap_ushort
+_byteswap_uint64 DATA ; Provided in libmingwex
+_byteswap_ulong DATA ; Provided in libmingwex
+_byteswap_ushort DATA ; Provided in libmingwex
 _c_exit
-_cabs
+_cabs DATA ; Provided in libmingwex
 _callnewh
 _calloc_crt
 _cexit
@@ -929,7 +606,9 @@ _cscanf_l
 _cscanf_s
 _cscanf_s_l
 _ctime32
+ctime == _ctime32 ; Compatibility with MSVCRT.DLL
 _ctime32_s
+ctime_s == _ctime32_s ; MSVCR120.DLL does not export this function, so we provide alias
 _ctime64
 _ctime64_s
 _cwait
@@ -943,8 +622,10 @@ _cwscanf
 _cwscanf_l
 _cwscanf_s
 _cwscanf_s_l
+; _daylight DATA This global variable is described in msvcrt-common.def.in
 _dclass
 _difftime32
+difftime == _difftime32 ; Compatibility with MSVCRT.DLL
 _difftime64
 _dosmaperr
 _dpcomp
@@ -956,9 +637,9 @@ _dup2
 _dupenv_s
 _ecvt
 _ecvt_s
-_endthread ; Check!!! Couldn't determine function argument count. Function doesn't return. 
-_endthreadex ; Check!!! Couldn't determine function argument count. Function doesn't return. 
-_environ DATA
+_endthread
+_endthreadex
+; _environ DATA This global variable is described in msvcrt-common.def.in
 _eof
 _errno
 _except1
@@ -994,13 +675,15 @@ _filelengthi64
 _fileno
 _findclose
 _findfirst32
-_findfirst == _findfirst32
+_findfirst == _findfirst32 ; Compatibility with MSVCRT.DLL, but not used directly
 _findfirst32i64
+_findfirsti64 == _findfirst32i64 ; Compatibility with MSVCRT.DLL, but not used directly
 _findfirst64
 _findfirst64i32
 _findnext32
-_findnext == _findnext32
+_findnext == _findnext32 ; Compatibility with MSVCRT.DLL, but not used directly
 _findnext32i64
+_findnexti64 == _findnext32i64 ; Compatibility with MSVCRT.DLL, but not used directly
 _findnext64
 _findnext64i32
 _finite
@@ -1009,7 +692,7 @@ _flushall
 _fmode DATA
 _fpclass
 _fpieee_flt
-_fpreset
+_fpreset DATA ; Provided in libmingw32
 _fprintf_l
 _fprintf_p
 _fprintf_p_l
@@ -1030,21 +713,24 @@ _fseeki64
 _fseeki64_nolock
 _fsopen
 _fstat32
+_fstat == _fstat32 ; Compatibility with MSVCRT.DLL, but not used directly
 _fstat32i64
+_fstati64 == _fstat32i64 ; Compatibility with MSVCRT.DLL, but not used directly
 _fstat64
 _fstat64i32
-_fstat == _fstat32
-_fstati64 == _fstat32i64
 _ftell_nolock
 _ftelli64
 _ftelli64_nolock
 _ftime32
+_ftime == _ftime32 ; Compatibility with MSVCRT.DLL
 _ftime32_s
+_ftime_s == _ftime32_s ; MSVCR120.DLL does not export this function, so we provide alias
 _ftime64
 _ftime64_s
 _ftol
 _fullpath
 _futime32
+_futime == _futime32 ; Compatibility with MSVCRT.DLL
 _futime64
 _fwprintf_l
 _fwprintf_p
@@ -1059,7 +745,7 @@ _get_current_locale
 _get_daylight
 _get_doserrno
 _get_dstbias
-_get_errno
+_get_errno DATA ; Provided in libmingwex
 _get_fmode
 _get_heap_handle
 _get_invalid_parameter_handler
@@ -1073,7 +759,7 @@ _get_timezone
 _get_tzname
 _get_unexpected
 _get_wpgmptr
-_getc_nolock
+_getc_nolock DATA ; Provided in libmingwex
 _getch
 _getch_nolock
 _getche
@@ -1098,8 +784,9 @@ _getws
 _getws_s
 _global_unwind2
 _gmtime32
-gmtime == _gmtime32
+gmtime == _gmtime32 ; Compatibility with MSVCRT.DLL
 _gmtime32_s
+gmtime_s == _gmtime32_s ; MSVCR120.DLL does not export this function, so we provide alias
 _gmtime64
 _gmtime64_s
 _heapadd
@@ -1117,12 +804,15 @@ _i64tow_s
 _initptd
 _initterm
 _initterm_e
-_inp
-_inpd
-_inpw
-_invalid_parameter ; Check!!! Couldn't determine function argument count. Function doesn't return. 
+_inp ; This function is only for 32bit
+_inpd ; This function is only for 32bit
+_inpw ; This function is only for 32bit
+inp == _inp ; This function is only for 32bit
+inpd == _inpd ; This function is only for 32bit
+inpw == _inpw ; This function is only for 32bit
+_invalid_parameter
 _invalid_parameter_noinfo
-_invalid_parameter_noinfo_noreturn ; Check!!! Couldn't determine function argument count. Function doesn't return. 
+_invalid_parameter_noinfo_noreturn
 _invoke_watson
 _iob DATA
 _isalnum_l
@@ -1248,15 +938,16 @@ _loaddll
 _local_unwind2
 _local_unwind4
 _localtime32
-localtime == _localtime32
+localtime == _localtime32 ; Compatibility with MSVCRT.DLL
 _localtime32_s
+localtime_s == _localtime32_s ; MSVCR120.DLL does not export this function, so we provide alias
 _localtime64
 _localtime64_s
 _lock
 _lock_file
 _locking
 _logb
-_longjmpex ; Check!!! Couldn't determine function argument count. Function doesn't return. 
+_longjmpex
 _lrotl
 _lrotr
 _lsearch
@@ -1411,19 +1102,24 @@ _memicmp
 _memicmp_l
 _mkdir
 _mkgmtime32
+_mkgmtime == _mkgmtime32 ; Compatibility with MSVCRT.DLL
 _mkgmtime64
 _mktemp
 _mktemp_s
 _mktime32
+mktime == _mktime32 ; Compatibility with MSVCRT.DLL
 _mktime64
 _msize
 _nextafter
 _onexit
 _open
 _open_osfhandle
-_outp
-_outpd
-_outpw
+_outp ; This function is only for 32bit
+_outpd ; This function is only for 32bit
+_outpw ; This function is only for 32bit
+outp == _outp ; This function is only for 32bit
+outpd == _outpd ; This function is only for 32bit
+outpw == _outpw ; This function is only for 32bit
 _pclose
 _pctype DATA
 _pgmptr DATA
@@ -1433,7 +1129,7 @@ _printf_l
 _printf_p
 _printf_p_l
 _printf_s_l
-_purecall ; Check!!! Couldn't determine function argument count. Function doesn't return. 
+_purecall
 _putch
 _putch_nolock
 _putenv
@@ -1451,9 +1147,9 @@ _resetstkoflw
 _rmdir
 _rmtmp
 _rotl
-_rotl64
+_rotl64 DATA ; Provided in libkernel32
 _rotr
-_rotr64
+_rotr64 DATA ; Provided in libkernel32
 _scalb
 _scanf_l
 _scanf_s_l
@@ -1473,7 +1169,7 @@ _set_SSE2_enable
 _set_abort_behavior
 _set_controlfp
 _set_doserrno
-_set_errno
+_set_errno DATA ; Provided in libmingwex
 _set_error_mode
 _set_fmode
 _set_invalid_parameter_handler
@@ -1525,12 +1221,12 @@ _sprintf_p_l
 _sprintf_s_l
 _sscanf_l
 _sscanf_s_l
-_stat32
-_stat32i64
-_stat64
-_stat64i32
-_stat == _stat32
-_stati64 == _stat32i64
+_stat32 DATA ; Provided in libmingwex
+_stat == _stat32 ; Compatibility with MSVCRT.DLL, but not used directly
+_stat32i64 DATA ; Provided in libmingwex
+_stati64 == _stat32i64 ; Compatibility with MSVCRT.DLL, but not used directly
+_stat64 DATA ; Provided in libmingwex
+_stat64i32 DATA ; Provided in libmingwex
 _statusfp
 _statusfp2
 _strcoll_l
@@ -1541,6 +1237,7 @@ _strerror
 _strerror_s
 _strftime_l
 _stricmp
+_strcmpi == _stricmp ; Compatibility with MSVCRT.DLL
 _stricmp_l
 _stricoll
 _stricoll_l
@@ -1588,20 +1285,22 @@ _swprintf_p_l
 _swprintf_s_l
 _swscanf_l
 _swscanf_s_l
-_sys_errlist DATA
-_sys_nerr DATA
+; _sys_errlist DATA This global variable is described in msvcrt-common.def.in
+; _sys_nerr DATA This global variable is described in msvcrt-common.def.in
 _tell
 _telli64
 _tempnam
 _time32
+time == _time32 ; Compatibility with MSVCRT.DLL
 _time64
-time == _time32
+; _timezone DATA This global variable is described in msvcrt-common.def.in
 _tolower
 _tolower_l
 _toupper
 _toupper_l
 _towlower_l
 _towupper_l
+; _tzname DATA This global variable is described in msvcrt-common.def.in
 _tzset
 _ui64toa
 _ui64toa_s
@@ -1624,6 +1323,7 @@ _unloaddll@0
 _unlock
 _unlock_file
 _utime32
+_utime == _utime32 ; Compatibility with MSVCRT.DLL
 _utime64
 _vacopy
 _vcprintf
@@ -1659,6 +1359,7 @@ _vscwprintf_l
 _vscwprintf_p
 _vscwprintf_p_l
 _vsnprintf
+vsnprintf == _vsnprintf ; Compatibility with MSVCRT.DLL
 _vsnprintf_c
 _vsnprintf_c_l
 _vsnprintf_l
@@ -1687,7 +1388,7 @@ _waccess
 _waccess_s
 _wasctime
 _wasctime_s
-_wassert
+_wassert DATA ; Provided in libmingwex
 _wchdir
 _wchmod
 _wcmdln DATA
@@ -1756,14 +1457,16 @@ _wexecvp
 _wexecvpe
 _wfdopen
 _wfindfirst32
+_wfindfirst == _wfindfirst32 ; Compatibility with MSVCRT.DLL, but not used directly
 _wfindfirst32i64
+_wfindfirsti64 == _wfindfirst32i64 ; Compatibility with MSVCRT.DLL, but not used directly
 _wfindfirst64
-_wfindfirst == _wfindfirst32
 _wfindfirst64i32
 _wfindnext32
+_wfindnext == _wfindnext32 ; Compatibility with MSVCRT.DLL, but not used directly
 _wfindnext32i64
+_wfindnexti64 == _wfindnext32i64 ; Compatibility with MSVCRT.DLL, but not used directly
 _wfindnext64
-_wfindnext == _wfindnext32
 _wfindnext64i32
 _wfopen
 _wfopen_s
@@ -1811,12 +1514,12 @@ _wspawnvp
 _wspawnvpe
 _wsplitpath
 _wsplitpath_s
-_wstat32
-_wstat32i64
-_wstat64
-_wstat64i32
-_wstat == _wstat32
-_wstati64 == _wstat32i64
+_wstat32 DATA ; Provided in libmingwex
+_wstat == _wstat32 ; Compatibility with MSVCRT.DLL, but not used directly
+_wstat32i64 DATA ; Provided in libmingwex
+_wstati64 == _wstat32i64 ; Compatibility with MSVCRT.DLL, but not used directly
+_wstat64 DATA ; Provided in libmingwex
+_wstat64i32 DATA ; Provided in libmingwex
 _wstrdate
 _wstrdate_s
 _wstrtime
@@ -1837,167 +1540,168 @@ _wtoll
 _wtoll_l
 _wunlink
 _wutime32
+_wutime == _wutime32 ; Compatibility with MSVCRT.DLL
 _wutime64
 _y0
 _y1
 _yn
-abort ; Check!!! Couldn't determine function argument count. Function doesn't return. 
+abort
 abs
 acos
-acosh
-acoshf
-acoshl
+acosh DATA ; Provided in libmingwex
+acoshf DATA ; Provided in libmingwex
+acoshl DATA ; Provided in libmingwex
 asctime
 asctime_s
 asin
-asinh
-asinhf
-asinhl
+asinh DATA ; Provided in libmingwex
+asinhf DATA ; Provided in libmingwex
+asinhl DATA ; Provided in libmingwex
 atan
-atan2
-atanh
-atanhf
-atanhl
-atexit
+atan2 DATA ; Provided in libmingwex
+atanh DATA ; Provided in libmingwex
+atanhf DATA ; Provided in libmingwex
+atanhl DATA ; Provided in libmingwex
+atexit DATA ; Provided in libmingw32
 atof
 atoi
 atol
-atoll
+atoll DATA ; Provided in libmingwex
 bsearch
 bsearch_s
-btowc
-cabs
-cabsf
-cabsl
-cacos
-cacosf
-cacosh
-cacoshf
-cacoshl
-cacosl
+btowc DATA ; Provided in libmingwex
+cabs DATA ; Provided in libmingwex
+cabsf DATA ; Provided in libmingwex
+cabsl DATA ; Provided in libmingwex
+cacos DATA ; Provided in libmingwex
+cacosf DATA ; Provided in libmingwex
+cacosh DATA ; Provided in libmingwex
+cacoshf DATA ; Provided in libmingwex
+cacoshl DATA ; Provided in libmingwex
+cacosl DATA ; Provided in libmingwex
 calloc
-carg
-cargf
-cargl
-casin
-casinf
-casinh
-casinhf
-casinhl
-casinl
-catan
-catanf
-catanh
-catanhf
-catanhl
-catanl
-cbrt
-cbrtf
-cbrtl
-ccos
-ccosf
-ccosh
-ccoshf
-ccoshl
-ccosl
-ceil
-cexp
-cexpf
-cexpl
-cimag
-cimagf
-cimagl
+carg DATA ; Provided in libmingwex
+cargf DATA ; Provided in libmingwex
+cargl DATA ; Provided in libmingwex
+casin DATA ; Provided in libmingwex
+casinf DATA ; Provided in libmingwex
+casinh DATA ; Provided in libmingwex
+casinhf DATA ; Provided in libmingwex
+casinhl DATA ; Provided in libmingwex
+casinl DATA ; Provided in libmingwex
+catan DATA ; Provided in libmingwex
+catanf DATA ; Provided in libmingwex
+catanh DATA ; Provided in libmingwex
+catanhf DATA ; Provided in libmingwex
+catanhl DATA ; Provided in libmingwex
+catanl DATA ; Provided in libmingwex
+cbrt DATA ; Provided in libmingwex
+cbrtf DATA ; Provided in libmingwex
+cbrtl DATA ; Provided in libmingwex
+ccos DATA ; Provided in libmingwex
+ccosf DATA ; Provided in libmingwex
+ccosh DATA ; Provided in libmingwex
+ccoshf DATA ; Provided in libmingwex
+ccoshl DATA ; Provided in libmingwex
+ccosl DATA ; Provided in libmingwex
+ceil DATA ; Provided in libmingwex
+cexp DATA ; Provided in libmingwex
+cexpf DATA ; Provided in libmingwex
+cexpl DATA ; Provided in libmingwex
+cimag DATA ; Provided in libmingwex
+cimagf DATA ; Provided in libmingwex
+cimagl DATA ; Provided in libmingwex
 clearerr
 clearerr_s
 clock
-clog
-clog10
-clog10f
-clog10l
-clogf
-clogl
-conj
-conjf
-conjl
-copysign
-copysignf
-copysignl
-cos
+clog DATA ; Provided in libmingwex
+clog10 DATA ; Provided in libmingwex
+clog10f DATA ; Provided in libmingwex
+clog10l DATA ; Provided in libmingwex
+clogf DATA ; Provided in libmingwex
+clogl DATA ; Provided in libmingwex
+conj DATA ; Provided in libmingwex
+conjf DATA ; Provided in libmingwex
+conjl DATA ; Provided in libmingwex
+copysign DATA ; Provided in libmingwex
+copysignf DATA ; Provided in libmingwex
+copysignl DATA ; Provided in libmingwex
+cos DATA ; Provided in libmingwex
 cosh
-cpow
-cpowf
-cpowl
-cproj
-cprojf
-cprojl
-creal
-crealf
-creall
-csin
-csinf
-csinh
-csinhf
-csinhl
-csinl
-csqrt
-csqrtf
-csqrtl
-ctan
-ctanf
-ctanh
-ctanhf
-ctanhl
-ctanl
+cpow DATA ; Provided in libmingwex
+cpowf DATA ; Provided in libmingwex
+cpowl DATA ; Provided in libmingwex
+cproj DATA ; Provided in libmingwex
+cprojf DATA ; Provided in libmingwex
+cprojl DATA ; Provided in libmingwex
+creal DATA ; Provided in libmingwex
+crealf DATA ; Provided in libmingwex
+creall DATA ; Provided in libmingwex
+csin DATA ; Provided in libmingwex
+csinf DATA ; Provided in libmingwex
+csinh DATA ; Provided in libmingwex
+csinhf DATA ; Provided in libmingwex
+csinhl DATA ; Provided in libmingwex
+csinl DATA ; Provided in libmingwex
+csqrt DATA ; Provided in libmingwex
+csqrtf DATA ; Provided in libmingwex
+csqrtl DATA ; Provided in libmingwex
+ctan DATA ; Provided in libmingwex
+ctanf DATA ; Provided in libmingwex
+ctanh DATA ; Provided in libmingwex
+ctanhf DATA ; Provided in libmingwex
+ctanhl DATA ; Provided in libmingwex
+ctanl DATA ; Provided in libmingwex
 div
-erf
-erfc
-erfcf
-erfcl
-erff
-erfl
+erf DATA ; Provided in libmingwex
+erfc DATA ; Provided in libmingwex
+erfcf DATA ; Provided in libmingwex
+erfcl DATA ; Provided in libmingwex
+erff DATA ; Provided in libmingwex
+erfl DATA ; Provided in libmingwex
 exit
-exp
-exp2
-exp2f
-exp2l
-expm1
-expm1f
-expm1l
-fabs
+exp DATA ; Provided in libmingwex
+exp2 DATA ; Provided in libmingwex
+exp2f DATA ; Provided in libmingwex
+exp2l DATA ; Provided in libmingwex
+expm1 DATA ; Provided in libmingwex
+expm1f DATA ; Provided in libmingwex
+expm1l DATA ; Provided in libmingwex
+fabs DATA ; Provided in libmingwex
 fclose
-fdim
-fdimf
-fdiml
-feclearexcept
-fegetenv
-fegetexceptflag
-fegetround
-feholdexcept
+fdim DATA ; Provided in libmingwex
+fdimf DATA ; Provided in libmingwex
+fdiml DATA ; Provided in libmingwex
+feclearexcept DATA ; Provided in libmingwex
+fegetenv DATA ; Provided in libmingwex
+fegetexceptflag DATA ; Provided in libmingwex
+fegetround DATA ; Provided in libmingwex
+feholdexcept DATA ; Provided in libmingwex
 feof
-feraiseexcept
+feraiseexcept DATA ; Provided in libmingwex
 ferror
-fesetenv
-fesetexceptflag
-fesetround
-fetestexcept
-feupdateenv
+fesetenv DATA ; Provided in libmingwex
+fesetexceptflag DATA ; Provided in libmingwex
+fesetround DATA ; Provided in libmingwex
+fetestexcept DATA ; Provided in libmingwex
+feupdateenv DATA ; Provided in libmingwex
 fflush
 fgetc
 fgetpos
 fgets
 fgetwc
 fgetws
-floor
-fma
-fmaf
-fmal
-fmax
-fmaxf
-fmaxl
-fmin
-fminf
-fminl
-fmod
+floor DATA ; Provided in libmingwex
+fma DATA ; Provided in libmingwex
+fmaf DATA ; Provided in libmingwex
+fmal DATA ; Provided in libmingwex
+fmax DATA ; Provided in libmingwex
+fmaxf DATA ; Provided in libmingwex
+fmaxl DATA ; Provided in libmingwex
+fmin DATA ; Provided in libmingwex
+fminf DATA ; Provided in libmingwex
+fminl DATA ; Provided in libmingwex
+fmod DATA ; Provided in libmingwex
 fopen
 fopen_s
 fprintf
@@ -2018,7 +1722,6 @@ fseek
 fsetpos
 ftell
 fwprintf
-__ms_fwprintf == fwprintf
 fwprintf_s
 fwrite
 fwscanf
@@ -2031,15 +1734,15 @@ gets
 gets_s
 getwc
 getwchar
-ilogb
-ilogbf
-ilogbl
-imaxabs
-imaxdiv
+ilogb DATA ; Provided in libmingwex
+ilogbf DATA ; Provided in libmingwex
+ilogbl DATA ; Provided in libmingwex
+imaxabs DATA ; Provided in libmingwex
+imaxdiv DATA ; Provided in libmingwex
 is_wctype
 isalnum
 isalpha
-isblank
+isblank DATA ; Provided in libmingwex
 iscntrl
 isdigit
 isgraph
@@ -2052,7 +1755,7 @@ isupper
 iswalnum
 iswalpha
 iswascii
-iswblank
+iswblank DATA ; Provided in libmingwex
 iswcntrl
 iswctype
 iswdigit
@@ -2065,42 +1768,43 @@ iswupper
 iswxdigit
 isxdigit
 labs
-ldexp
+ldexp DATA ; Provided in libmingwex
 ldiv
-lgamma
-lgammaf
-lgammal
-llabs
-lldiv
-llrint
-llrintf
-llrintl
-llround
-llroundf
-llroundl
+lgamma DATA ; Provided in libmingwex
+lgammaf DATA ; Provided in libmingwex
+lgammal DATA ; Provided in libmingwex
+llabs DATA ; Provided in libmingwex
+lldiv DATA ; Provided in libmingwex
+llrint DATA ; Provided in libmingwex
+llrintf DATA ; Provided in libmingwex
+llrintl DATA ; Provided in libmingwex
+llround DATA ; Provided in libmingwex
+llroundf DATA ; Provided in libmingwex
+llroundl DATA ; Provided in libmingwex
 localeconv
-log
+log DATA ; Provided in libmingwex
 log10
-log1p
-log1pf
-log1pl
-log2
-log2f
-log2l
-logb
-logbf
-logbl
-lrint
-lrintf
-lrintl
-lround
-lroundf
-lroundl
+log1p DATA ; Provided in libmingwex
+log1pf DATA ; Provided in libmingwex
+log1pl DATA ; Provided in libmingwex
+log2 DATA ; Provided in libmingwex
+log2f DATA ; Provided in libmingwex
+log2l DATA ; Provided in libmingwex
+logb DATA ; Provided in libmingwex
+logbf DATA ; Provided in libmingwex
+logbl DATA ; Provided in libmingwex
+; longjmp This function is described in msvcrt-common.def.in
+lrint DATA ; Provided in libmingwex
+lrintf DATA ; Provided in libmingwex
+lrintl DATA ; Provided in libmingwex
+lround DATA ; Provided in libmingwex
+lroundf DATA ; Provided in libmingwex
+lroundl DATA ; Provided in libmingwex
 malloc
 mblen
-mbrlen
-mbrtowc
-mbsrtowcs
+mbrlen DATA ; Provided in libmingwex
+mbrtowc DATA ; Provided in libmingwex
+mbsrtowcs DATA ; Provided in libmingwex
 mbsrtowcs_s
 mbstowcs
 mbstowcs_s
@@ -2112,23 +1816,24 @@ memcpy_s
 memmove
 memmove_s
 memset
-modf
-nan
-nanf
-nanl
-nearbyint
-nearbyintf
-nearbyintl
-nextafterf
-nextafterl
-nexttoward
-nexttowardf
-nexttowardl
+modf DATA ; Provided in libmingwex
+nan DATA ; Provided in libmingwex
+nanf DATA ; Provided in libmingwex
+nanl DATA ; Provided in libmingwex
+nearbyint DATA ; Provided in libmingwex
+nearbyintf DATA ; Provided in libmingwex
+nearbyintl DATA ; Provided in libmingwex
+nextafter
+nextafterf DATA ; Provided in libmingwex
+nextafterl DATA ; Provided in libmingwex
+nexttoward DATA ; Provided in libmingwex
+nexttowardf DATA ; Provided in libmingwex
+nexttowardl DATA ; Provided in libmingwex
 norm
 normf
 norml
 perror
-pow
+pow DATA ; Provided in libmingwex
 printf
 printf_s
 putc
@@ -2142,38 +1847,38 @@ raise
 rand
 rand_s
 realloc
-remainder
-remainderf
-remainderl
+remainder DATA ; Provided in libmingwex
+remainderf DATA ; Provided in libmingwex
+remainderl DATA ; Provided in libmingwex
 remove
-remquo
-remquof
-remquol
+remquo DATA ; Provided in libmingwex
+remquof DATA ; Provided in libmingwex
+remquol DATA ; Provided in libmingwex
 rename
 rewind
-rint
-rintf
-rintl
-round
-roundf
-roundl
-scalbln
-scalblnf
-scalblnl
-scalbn
-scalbnf
-scalbnl
+rint DATA ; Provided in libmingwex
+rintf DATA ; Provided in libmingwex
+rintl DATA ; Provided in libmingwex
+round DATA ; Provided in libmingwex
+roundf DATA ; Provided in libmingwex
+roundl DATA ; Provided in libmingwex
+scalbln DATA ; Provided in libmingwex
+scalblnf DATA ; Provided in libmingwex
+scalblnl DATA ; Provided in libmingwex
+scalbn DATA ; Provided in libmingwex
+scalbnf DATA ; Provided in libmingwex
+scalbnl DATA ; Provided in libmingwex
 scanf
 scanf_s
 setbuf
 setlocale
 setvbuf
 signal
-sin
+sin DATA ; Provided in libmingwex
 sinh
 sprintf
 sprintf_s
-sqrt
+sqrt DATA ; Provided in libmingwex
 srand
 sscanf
 sscanf_s
@@ -2194,22 +1899,22 @@ strncat_s
 strncmp
 strncpy
 strncpy_s
-strnlen
+strnlen DATA ; Provided in libmingwex
 strpbrk
 strrchr
 strspn
 strstr
 strtod
-strtof
-strtoimax
+strtof DATA ; Provided in libmingwex
+strtoimax DATA ; Provided in libmingwex
 strtok
 strtok_s
 strtol
-strtold
-strtoll
+strtold DATA ; Provided in libmingwex
+strtoll DATA ; Provided in libmingwex
 strtoul
-strtoull
-strtoumax
+strtoull DATA ; Provided in libmingwex
+strtoumax DATA ; Provided in libmingwex
 strxfrm
 swprintf_s
 swscanf
@@ -2217,51 +1922,47 @@ swscanf_s
 system
 tan
 tanh
-tgamma
-tgammaf
-tgammal
+tgamma DATA ; Provided in libmingwex
+tgammaf DATA ; Provided in libmingwex
+tgammal DATA ; Provided in libmingwex
 tmpfile
 tmpfile_s
 tmpnam
 tmpnam_s
 tolower
 toupper
-towctrans
+towctrans DATA ; Provided in libmingwex
 towlower
 towupper
-trunc
-truncf
-truncl
+trunc DATA ; Provided in libmingwex
+truncf DATA ; Provided in libmingwex
+truncl DATA ; Provided in libmingwex
 ungetc
 ungetwc
 vfprintf
 vfprintf_s
-vfscanf
+vfscanf DATA ; Provided in libmingwex
 vfscanf_s
 vfwprintf
 vfwprintf_s
-vfwscanf
+vfwscanf DATA ; Provided in libmingwex
 vfwscanf_s
 vprintf
 vprintf_s
-vsnprintf == _vsnprintf
-snprintf == _snprintf
-snwprintf == _snwprintf
-vsnwprintf == _vsnwprintf
-vscanf
+vscanf DATA ; Provided in libmingwex
 vscanf_s
 vsprintf
 vsprintf_s
-vsscanf
+vsscanf DATA ; Provided in libmingwex
 vsscanf_s
 vswprintf_s
-vswscanf
+vswscanf DATA ; Provided in libmingwex
 vswscanf_s
 vwprintf
 vwprintf_s
-vwscanf
+vwscanf DATA ; Provided in libmingwex
 vwscanf_s
-wcrtomb
+wcrtomb DATA ; Provided in libmingwex
 wcrtomb_s
 wcscat
 wcscat_s
@@ -2278,32 +1979,32 @@ wcsncat_s
 wcsncmp
 wcsncpy
 wcsncpy_s
-wcsnlen
+wcsnlen DATA ; Provided in libmingwex
 wcspbrk
 wcsrchr
-wcsrtombs
+wcsrtombs DATA ; Provided in libmingwex
 wcsrtombs_s
 wcsspn
 wcsstr
 wcstod
-wcstof
-wcstoimax
+wcstof DATA ; Provided in libmingwex
+wcstoimax DATA ; Provided in libmingwex
 wcstok
 wcstok_s
 wcstol
-wcstold
-wcstoll
+wcstold DATA ; Provided in libmingwex
+wcstoll DATA ; Provided in libmingwex
 wcstombs
 wcstombs_s
 wcstoul
-wcstoull
-wcstoumax
+wcstoull DATA ; Provided in libmingwex
+wcstoumax DATA ; Provided in libmingwex
 wcsxfrm
-wctob
+wctob DATA ; Provided in libmingwex
 wctomb
 wctomb_s
-wctrans
-wctype
+wctrans DATA ; Provided in libmingwex
+wctype DATA ; Provided in libmingwex
 wmemcpy_s
 wmemmove_s
 wprintf
