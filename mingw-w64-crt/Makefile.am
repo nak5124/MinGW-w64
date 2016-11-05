@@ -228,10 +228,6 @@ src_msvcrtarm64=\
   $(src_msvcrt) \
   misc/__p___argv.c
 
-src_msvcr80_64=\
-  $(src_msvcrt_common) \
-  misc/__p___argv.c
-
 # These mingwex sources are target independent:
 src_libmingwex=\
   crt/dllentry.c        crt/dllmain.c \
@@ -437,31 +433,23 @@ dx32dir=$(lib32dir)
 
 if !W32API
 crt32_DATA = \
-  lib32/crt1.o    lib32/crt2.o     lib32/crt1u.o   lib32/crt2u.o    lib32/dllcrt1.o    lib32/dllcrt2.o \
-  lib32/CRT_fp8.o lib32/CRT_fp10.o lib32/txtmode.o lib32/binmode.o  lib32/crtbegin.o   lib32/crtend.o \
-  lib32/gcrt0.o   lib32/gcrt1.o    lib32/gcrt2.o   lib32/CRT_glob.o lib32/CRT_noglob.o
+  lib32/crt2.o    lib32/crt2u.o    lib32/dllcrt2.o  \
+  lib32/CRT_fp8.o lib32/CRT_fp10.o lib32/txtmode.o  lib32/binmode.o    lib32/crtbegin.o   lib32/crtend.o \
+  lib32/gcrt0.o   lib32/gcrt2.o    lib32/CRT_glob.o lib32/CRT_noglob.o
 else
 crt32_DATA =
 endif
 
 COMPILE32=$(COMPILE) $(CPPFLAGS32) $(extra_include) -D_SYSCRT=1 -DCRTDLL=1
-lib32/crt1.o: crt/crtexe.c
-	$(COMPILE32) -c $< -o $@ -D__CRTDLL__ -U__MSVCRT__
 lib32/crt2.o: crt/crtexe.c
 	$(COMPILE32) -c $< -o $@ -U__CRTDLL__ -D__MSVCRT__
-lib32/crt1u.o: crt/ucrtexe.c
-	$(COMPILE32) -c $< -o $@ -D__CRTDLL__ -U__MSVCRT__
 lib32/crt2u.o: crt/ucrtexe.c
 	$(COMPILE32) -c $< -o $@ -U__CRTDLL__ -D__MSVCRT__
-lib32/dllcrt1.o: crt/crtdll.c
-	$(COMPILE32) -c $< -o $@ -D__CRTDLL__ -U__MSVCRT__
 lib32/dllcrt2.o: crt/crtdll.c
 	$(COMPILE32) -c $< -o $@ -U__CRTDLL__ -D__MSVCRT__
 
 lib32/gcrt0.o: profile/gcrt0.c
 	$(COMPILE) $(CPPFLAGS32) -c $< -o $@
-lib32/gcrt1.o: profile/gcrt0.c
-	$(COMPILE) $(CPPFLAGS32) -c $< -o $@ -U__MSVCRT__
 lib32/gcrt2.o: profile/gcrt0.c
 	$(COMPILE) $(CPPFLAGS32) -c $< -o $@ -D__MSVCRT__
 
@@ -632,7 +620,7 @@ lib32_LIBRARIES += lib32/libmingwthrd.a
 lib32_libmingwthrd_a_SOURCES = $(src_libmingwthrd)
 lib32_libmingwthrd_a_CPPFLAGS=$(CPPFLAGS32) $(sysincludes)
 
-processed_defs += lib32/msvcrt.def lib32/msvcr80.def lib32/msvcr90.def lib32/msvcr90d.def lib32/msvcr100.def lib32/msvcr110.def lib32/msvcr120.def lib32/msvcr120d.def \
+processed_defs += lib32/msvcrt.def lib32/msvcr80.def lib32/msvcr90.def lib32/msvcr100.def lib32/msvcr110.def lib32/msvcr120.def \
 				  lib32/msvcr120_app.def lib32/msvcp120_app.def lib32/ucrtbase.def
 
 endif
@@ -640,12 +628,7 @@ endif
 include lib32/Makefile.am
 
 if !W32API
-lib32_DATA += lib32/libglut.a lib32/libmsvcp60.a lib32/libmsvcp120_app.a
-
-lib32_LIBRARIES += lib32/libcrtdll.a
-lib32_libcrtdll_a_SOURCES = $(src_msvcrt_common)
-lib32_libcrtdll_a_AR = $(DTDEF32) $(top_srcdir)/lib32/crtdll.def && $(AR) $(ARFLAGS)
-lib32_libcrtdll_a_CPPFLAGS=$(CPPFLAGS32) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
+lib32_DATA += lib32/libglut.a lib32/libmsvcp120_app.a
 
 lib32_LIBRARIES += lib32/libmsvcr80.a
 lib32_libmsvcr80_a_SOURCES = $(src_msvcrt_common) lib32/msvcr80.def.in
@@ -658,12 +641,6 @@ lib32_libmsvcr90_a_SOURCES = $(src_msvcrt_common) lib32/msvcr90.def.in
 lib32_libmsvcr90_a_AR = $(DTDEF32) lib32/msvcr90.def && $(AR) $(ARFLAGS)
 lib32_libmsvcr90_a_CPPFLAGS=$(CPPFLAGS32) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
 EXTRA_lib32_libmsvcr90_a_DEPENDENCIES=lib32/msvcr90.def
-
-lib32_LIBRARIES += lib32/libmsvcr90d.a
-lib32_libmsvcr90d_a_SOURCES = $(src_msvcrt_common) lib32/msvcr90d.def.in
-lib32_libmsvcr90d_a_AR = $(DTDEF32) lib32/msvcr90d.def && $(AR) $(ARFLAGS)
-lib32_libmsvcr90d_a_CPPFLAGS=$(CPPFLAGS32) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-EXTRA_lib32_libmsvcr90d_a_DEPENDENCIES=lib32/msvcr90d.def
 
 lib32_LIBRARIES += lib32/libmsvcr100.a
 lib32_libmsvcr100_a_SOURCES = $(src_msvcrt_common) lib32/msvcr100.def.in
@@ -682,12 +659,6 @@ lib32_libmsvcr120_a_SOURCES = $(src_msvcrt_common) lib32/msvcr120.def.in
 lib32_libmsvcr120_a_AR = $(DTDEF32) lib32/msvcr120.def && $(AR) $(ARFLAGS)
 lib32_libmsvcr120_a_CPPFLAGS=$(CPPFLAGS32) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
 EXTRA_lib32_libmsvcr120_a_DEPENDENCIES=lib32/msvcr120.def
-
-lib32_LIBRARIES += lib32/libmsvcr120d.a
-lib32_libmsvcr120d_a_SOURCES = $(src_msvcrt_common) lib32/msvcr120d.def.in
-lib32_libmsvcr120d_a_AR = $(DTDEF32) lib32/msvcr120d.def && $(AR) $(ARFLAGS)
-lib32_libmsvcr120d_a_CPPFLAGS=$(CPPFLAGS32) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-EXTRA_lib32_libmsvcr120d_a_DEPENDENCIES=lib32/msvcr120d.def
 
 lib32_LIBRARIES += lib32/libmsvcr120_app.a
 lib32_libmsvcr120_app_a_SOURCES = $(src_msvcrt_common) lib32/msvcr120_app.def.in
@@ -796,31 +767,23 @@ dx64dir=$(lib64dir)
 
 if !W32API
 crt64_DATA = \
-  lib64/crt1.o    lib64/crt2.o     lib64/crt1u.o   lib64/crt2u.o   lib64/dllcrt1.o lib64/dllcrt2.o \
-  lib64/CRT_fp8.o lib64/CRT_fp10.o lib64/txtmode.o lib64/binmode.o lib64/crtbegin.o lib64/crtend.o \
-  lib64/gcrt0.o   lib64/gcrt1.o    lib64/gcrt2.o   lib64/CRT_glob.o lib64/CRT_noglob.o
+  lib64/crt2.o    lib64/crt2u.o    lib64/dllcrt2.o  \
+  lib64/CRT_fp8.o lib64/CRT_fp10.o lib64/txtmode.o  lib64/binmode.o lib64/crtbegin.o lib64/crtend.o \
+  lib64/gcrt0.o   lib64/gcrt2.o    lib64/CRT_glob.o lib64/CRT_noglob.o
 else
 crt64_DATA =
 endif
 
 COMPILE64=$(COMPILE) $(CPPFLAGS64) $(extra_include) -D_SYSCRT=1 -DCRTDLL=1
-lib64/crt1.o: crt/crtexe.c
-	$(COMPILE64) -c $< -o $@ -D__CRTDLL__ -U__MSVCRT__
 lib64/crt2.o: crt/crtexe.c
 	$(COMPILE64) -c $< -o $@ -U__CRTDLL__ -D__MSVCRT__
-lib64/crt1u.o: crt/ucrtexe.c
-	$(COMPILE64) -c $< -o $@ -D__CRTDLL__ -U__MSVCRT__
 lib64/crt2u.o: crt/ucrtexe.c
 	$(COMPILE64) -c $< -o $@ -U__CRTDLL__ -D__MSVCRT__
-lib64/dllcrt1.o: crt/crtdll.c
-	$(COMPILE64) -c $< -o $@ -D__CRTDLL__ -U__MSVCRT__
 lib64/dllcrt2.o: crt/crtdll.c
 	$(COMPILE64) -c $< -o $@ -U__CRTDLL__ -D__MSVCRT__
 
 lib64/gcrt0.o: profile/gcrt0.c
 	$(COMPILE) $(CPPFLAGS64) -c $< -o $@
-lib64/gcrt1.o: profile/gcrt0.c
-	$(COMPILE) $(CPPFLAGS64) -c $< -o $@ -U__MSVCRT__
 lib64/gcrt2.o: profile/gcrt0.c
 	$(COMPILE) $(CPPFLAGS64) -c $< -o $@ -D__MSVCRT__
 
@@ -985,8 +948,8 @@ lib64_LIBRARIES += lib64/libmingwthrd.a
 lib64_libmingwthrd_a_SOURCES = $(src_libmingwthrd)
 lib64_libmingwthrd_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
 
-processed_defs += lib64/msvcrt.def lib64/msvcr80.def lib64/msvcr90.def lib64/msvcr90d.def \
-				  lib64/msvcr100.def lib64/msvcr110.def lib64/msvcr120.def lib64/msvcr120d.def \
+processed_defs += lib64/msvcrt.def lib64/msvcr80.def lib64/msvcr90.def \
+				  lib64/msvcr100.def lib64/msvcr110.def lib64/msvcr120.def \
 				  lib64/msvcr120_app.def lib64/msvcp120_app.def lib64/ucrtbase.def \
 				  lib64/advapi32.def lib64/clbcatq.def lib64/kernel32.def lib64/ole32.def \
 				  lib64/oleaut32.def lib64/user32.def lib64/ws2_32.def
@@ -996,15 +959,10 @@ endif
 include lib64/Makefile.am
 
 if !W32API
-lib64_DATA += lib64/libmsvcp60.a lib64/libmsvcp120_app.a
-
-lib64_LIBRARIES += lib64/libcrtdll.a
-lib64_libcrtdll_a_SOURCES = $(src_msvcrt_common)
-lib64_libcrtdll_a_AR = $(DTDEF64) $(top_srcdir)/lib64/crtdll.def && $(AR) $(ARFLAGS)
-lib64_libcrtdll_a_CPPFLAGS=$(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
+lib64_DATA += lib64/libmsvcp120_app.a
 
 lib64_LIBRARIES += lib64/libmsvcr80.a
-lib64_libmsvcr80_a_SOURCES = $(src_msvcr80_64) lib64/msvcr80.def.in
+lib64_libmsvcr80_a_SOURCES = $(src_msvcrt_common) lib64/msvcr80.def.in
 lib64_libmsvcr80_a_AR = $(DTDEF64) lib64/msvcr80.def && $(AR) $(ARFLAGS)
 lib64_libmsvcr80_a_CPPFLAGS=$(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
 EXTRA_lib64_libmsvcr80_a_DEPENDENCIES=lib64/msvcr80.def
@@ -1014,12 +972,6 @@ lib64_libmsvcr90_a_SOURCES = $(src_msvcrt_common) lib64/msvcr90.def.in
 lib64_libmsvcr90_a_AR = $(DTDEF64) lib64/msvcr90.def && $(AR) $(ARFLAGS)
 lib64_libmsvcr90_a_CPPFLAGS=$(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
 EXTRA_lib64_libmsvcr90_a_DEPENDENCIES=lib64/msvcr90.def
-
-lib64_LIBRARIES += lib64/libmsvcr90d.a
-lib64_libmsvcr90d_a_SOURCES = $(src_msvcrt_common) lib64/msvcr90d.def.in
-lib64_libmsvcr90d_a_AR = $(DTDEF64) lib64/msvcr90d.def && $(AR) $(ARFLAGS)
-lib64_libmsvcr90d_a_CPPFLAGS=$(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-EXTRA_lib64_libmsvcr90d_a_DEPENDENCIES=lib64/msvcr90d.def
 
 lib64_LIBRARIES += lib64/libmsvcr100.a
 lib64_libmsvcr100_a_SOURCES = $(src_msvcrt_common) lib64/msvcr100.def.in
@@ -1038,12 +990,6 @@ lib64_libmsvcr120_a_SOURCES = $(src_msvcrt_common) lib64/msvcr120.def.in
 lib64_libmsvcr120_a_AR = $(DTDEF64) lib64/msvcr120.def && $(AR) $(ARFLAGS)
 lib64_libmsvcr120_a_CPPFLAGS=$(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
 EXTRA_lib64_libmsvcr120_a_DEPENDENCIES=lib64/msvcr120.def
-
-lib64_LIBRARIES += lib64/libmsvcr120d.a
-lib64_libmsvcr120d_a_SOURCES = $(src_msvcrt_common) lib64/msvcr120d.def.in
-lib64_libmsvcr120d_a_AR = $(DTDEF64) lib64/msvcr120d.def && $(AR) $(ARFLAGS)
-lib64_libmsvcr120d_a_CPPFLAGS=$(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-EXTRA_lib64_libmsvcr120d_a_DEPENDENCIES=lib64/msvcr120d.def
 
 lib64_LIBRARIES += lib64/libmsvcr120_app.a
 lib64_libmsvcr120_app_a_SOURCES = $(src_msvcrt_common) lib64/msvcr120_app.def.in
@@ -1155,31 +1101,23 @@ dx32dir=$(libarm32dir)
 
 if !W32API
 crt32_DATA = \
-  libarm32/crt1.o    libarm32/crt2.o     libarm32/crt1u.o   libarm32/crt2u.o    libarm32/dllcrt1.o    libarm32/dllcrt2.o \
-  libarm32/CRT_fp8.o libarm32/CRT_fp10.o libarm32/txtmode.o libarm32/binmode.o  libarm32/crtbegin.o   libarm32/crtend.o \
-  libarm32/gcrt0.o   libarm32/gcrt1.o    libarm32/gcrt2.o   libarm32/CRT_glob.o libarm32/CRT_noglob.o
+  libarm32/crt2.o    libarm32/crt2u.o    libarm32/dllcrt2.o  \
+  libarm32/CRT_fp8.o libarm32/CRT_fp10.o libarm32/txtmode.o  libarm32/binmode.o  libarm32/crtbegin.o   libarm32/crtend.o \
+  libarm32/gcrt0.o   libarm32/gcrt2.o    libarm32/CRT_glob.o libarm32/CRT_noglob.o
 else
 crt32_DATA =
 endif
 
 COMPILE32=$(COMPILE) $(CPPFLAGSARM32) $(extra_include) -D_SYSCRT=1 -DCRTDLL=1
-libarm32/crt1.o: crt/crtexe.c
-	$(COMPILE32) -c $< -o $@ -D__CRTDLL__ -U__MSVCRT__
 libarm32/crt2.o: crt/crtexe.c
 	$(COMPILE32) -c $< -o $@ -U__CRTDLL__ -D__MSVCRT__
-libarm32/crt1u.o: crt/ucrtexe.c
-	$(COMPILE32) -c $< -o $@ -D__CRTDLL__ -U__MSVCRT__
 libarm32/crt2u.o: crt/ucrtexe.c
 	$(COMPILE32) -c $< -o $@ -U__CRTDLL__ -D__MSVCRT__
-libarm32/dllcrt1.o: crt/crtdll.c
-	$(COMPILE32) -c $< -o $@ -D__CRTDLL__ -U__MSVCRT__
 libarm32/dllcrt2.o: crt/crtdll.c
 	$(COMPILE32) -c $< -o $@ -U__CRTDLL__ -D__MSVCRT__
 
 libarm32/gcrt0.o: profile/gcrt0.c
 	$(COMPILE) $(CPPFLAGSARM32) -c $< -o $@
-libarm32/gcrt1.o: profile/gcrt0.c
-	$(COMPILE) $(CPPFLAGSARM32) -c $< -o $@ -U__MSVCRT__
 libarm32/gcrt2.o: profile/gcrt0.c
 	$(COMPILE) $(CPPFLAGSARM32) -c $< -o $@ -D__MSVCRT__
 
@@ -1338,7 +1276,7 @@ libarm32_LIBRARIES += libarm32/libmingwthrd.a
 libarm32_libmingwthrd_a_SOURCES = $(src_libmingwthrd)
 libarm32_libmingwthrd_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
 
-processed_defs += libarm32/msvcrt.def libarm32/msvcr80.def libarm32/msvcr90.def libarm32/msvcr90d.def libarm32/msvcr100.def libarm32/msvcr110.def libarm32/ucrtbase.def \
+processed_defs += libarm32/msvcrt.def libarm32/msvcr80.def libarm32/msvcr90.def libarm32/msvcr100.def libarm32/msvcr110.def libarm32/ucrtbase.def \
 				  libarm32/advapi32.def libarm32/clbcatq.def libarm32/kernel32.def libarm32/ole32.def libarm32/oleaut32.def \
 				  libarm32/user32.def libarm32/ws2_32.def
 
@@ -1347,8 +1285,6 @@ endif
 include libarm32/Makefile.am
 
 if !W32API
-libarm32_DATA += libarm32/libmsvcp60.a
-
 libarm32_LIBRARIES += libarm32/libmsvcr110.a
 libarm32_libmsvcr110_a_SOURCES = $(src_msvcrt_common)
 libarm32_libmsvcr110_a_AR = $(DTDEFARM32) $(top_srcdir)/libarm32/msvcr110.def && $(AR) $(ARFLAGS)
@@ -1412,31 +1348,23 @@ dx64dir=$(libarm64dir)
 
 if !W32API
 crt64_DATA = \
-  libarm64/crt1.o    libarm64/crt2.o     libarm64/crt1u.o   libarm64/crt2u.o    libarm64/dllcrt1.o    libarm64/dllcrt2.o \
-  libarm64/CRT_fp8.o libarm64/CRT_fp10.o libarm64/txtmode.o libarm64/binmode.o  libarm64/crtbegin.o   libarm64/crtend.o \
-  libarm64/gcrt0.o   libarm64/gcrt1.o    libarm64/gcrt2.o   libarm64/CRT_glob.o libarm64/CRT_noglob.o
+  libarm64/crt2.o    libarm64/crt2u.o    libarm64/dllcrt2.o  \
+  libarm64/CRT_fp8.o libarm64/CRT_fp10.o libarm64/txtmode.o  libarm64/binmode.o  libarm64/crtbegin.o   libarm64/crtend.o \
+  libarm64/gcrt0.o   libarm64/gcrt2.o    libarm64/CRT_glob.o libarm64/CRT_noglob.o
 else
 crt64_DATA =
 endif
 
 COMPILE64=$(COMPILE) $(CPPFLAGSARM64) $(extra_include) -D_SYSCRT=1 -DCRTDLL=1
-libarm64/crt1.o: crt/crtexe.c
-	$(COMPILE64) -c $< -o $@ -D__CRTDLL__ -U__MSVCRT__
 libarm64/crt2.o: crt/crtexe.c
 	$(COMPILE64) -c $< -o $@ -U__CRTDLL__ -D__MSVCRT__
-libarm64/crt1u.o: crt/ucrtexe.c
-	$(COMPILE64) -c $< -o $@ -D__CRTDLL__ -U__MSVCRT__
 libarm64/crt2u.o: crt/ucrtexe.c
 	$(COMPILE64) -c $< -o $@ -U__CRTDLL__ -D__MSVCRT__
-libarm64/dllcrt1.o: crt/crtdll.c
-	$(COMPILE64) -c $< -o $@ -D__CRTDLL__ -U__MSVCRT__
 libarm64/dllcrt2.o: crt/crtdll.c
 	$(COMPILE64) -c $< -o $@ -U__CRTDLL__ -D__MSVCRT__
 
 libarm64/gcrt0.o: profile/gcrt0.c
 	$(COMPILE) $(CPPFLAGSARM64) -c $< -o $@
-libarm64/gcrt1.o: profile/gcrt0.c
-	$(COMPILE) $(CPPFLAGSARM64) -c $< -o $@ -U__MSVCRT__
 libarm64/gcrt2.o: profile/gcrt0.c
 	$(COMPILE) $(CPPFLAGSARM64) -c $< -o $@ -D__MSVCRT__
 
