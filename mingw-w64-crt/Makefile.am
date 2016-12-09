@@ -206,6 +206,7 @@ src_msvcrt=\
   secapi/vsprintf_s.c \
   secapi/wmemcpy_s.c \
   secapi/wmemmove_s.c \
+  stdio/isatty.c \
   stdio/mingw_lock.c
 
 src_ucrtbase=\

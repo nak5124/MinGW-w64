@@ -64,7 +64,7 @@ getcwd
 getpid
 getw
 heapwalk
-isatty
+;isatty
 itoa
 kbhit
 lfind

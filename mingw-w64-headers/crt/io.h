@@ -200,6 +200,7 @@ _CRTIMP char* __cdecl _getcwd (char*, int);
   _CRTIMP int __cdecl _findnext32(intptr_t _FindHandle,struct _finddata32_t *_FindData);
   _CRTIMP int __cdecl _findclose(intptr_t _FindHandle);
   _CRTIMP int __cdecl _isatty(int _FileHandle);
+  _CRTIMP int __cdecl isatty(int _FileHandle);
   _CRTIMP int __cdecl _locking(int _FileHandle,int _LockMode,long _NumOfBytes);
   _CRTIMP long __cdecl _lseek(int _FileHandle,long _Offset,int _Origin);
   _off64_t lseek64(int fd,_off64_t offset, int whence);
