@@ -206,7 +206,6 @@ src_msvcrt=\
   secapi/vsprintf_s.c \
   secapi/wmemcpy_s.c \
   secapi/wmemmove_s.c \
-  stdio/isatty.c \
   stdio/mingw_lock.c
 
 src_ucrtbase=\
@@ -320,7 +319,7 @@ src_libmingwex=\
   stdio/strtof.c          stdio/truncate.c        stdio/ulltoa.c          stdio/ulltow.c           stdio/vasprintf.c       \
   stdio/vfscanf.c         stdio/vfwscanf.c        stdio/vscanf.c          stdio/vsnprintf.c        stdio/vsnprintf_s.c     \
   stdio/vsnwprintf.c      stdio/vsscanf.c         stdio/vswscanf.c        stdio/vwscanf.c          stdio/wtoll.c           \
-  stdio/mingw_asprintf.c  stdio/mingw_vasprintf.c
+  stdio/mingw_asprintf.c  stdio/mingw_vasprintf.c stdio/isatty.c
 
 # these go into both 32 and 64 bit x86 versions:
 src_libmingwex_x86=\

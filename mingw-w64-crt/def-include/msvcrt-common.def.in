@@ -54,6 +54,7 @@ ADD_UNDERSCORE(getcwd)
 ADD_UNDERSCORE(getpid)
 ADD_UNDERSCORE(getw)
 ADD_UNDERSCORE(heapwalk) ; This symbol is not listed in oldname.lib of MSVC
+; ADD_UNDERSCORE(isatty) ; Provided in libmingwex
 ADD_UNDERSCORE(itoa)
 ADD_UNDERSCORE(kbhit)
 ADD_UNDERSCORE(lfind)
