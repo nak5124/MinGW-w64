@@ -480,7 +480,7 @@ _cwscanf
 _cwscanf_l
 _cwscanf_s
 _cwscanf_s_l
-; _daylight DATA This function is described in msvcrt-common.def.in
+; _daylight DATA This global variable is described in msvcrt-common.def.in
 _difftime32
 _difftime64
 _dstbias DATA
@@ -491,6 +491,7 @@ _ecvt_s
 _endthread
 _endthreadex
 F_X86_ANY(_environ DATA)
+F_X86_ANY(ADD_UNDERSCORE(environ))
 _eof
 _errno
 F_I386(_except_handler2)
@@ -1108,22 +1109,23 @@ _swprintf_p_l
 _swprintf_s_l
 _swscanf_l
 _swscanf_s_l
-_sys_errlist DATA
+; _sys_errlist DATA This global variable is described in msvcrt-common.def.in
 _sys_nerr F_X64(DATA)
+F_X64(ADD_UNDERSCORE(sys_nerr))
 _tell
 _telli64
 _tempnam
 _tempnam_dbg
 _time32
 _time64
-; _timezone DATA This function is described in msvcrt-common.def.in
+; _timezone DATA This global variable is described in msvcrt-common.def.in
 _tolower
 _tolower_l
 _toupper
 _toupper_l
 _towlower_l
 _towupper_l
-; _tzname DATA This function is described in msvcrt-common.def.in
+; _tzname DATA This global variable is described in msvcrt-common.def.in
 _tzset
 _ui64toa
 _ui64toa_s
