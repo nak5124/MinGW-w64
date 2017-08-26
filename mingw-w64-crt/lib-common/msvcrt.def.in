@@ -519,18 +519,18 @@ _filelength
 _filelengthi64
 _fileno
 _findclose
-_findfirst
-; _findfirst32 We should provide emu of this function later
+_findfirst ; This function is not used directly
+F32(_findfirst32 == _findfirst) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias on 32bit and emu on 64bit
 _findfirst64
-_findfirsti64
-; _findfirst32i64 We should provide emu of this function later
-; _findfirst64i32 We should provide emu of this function later
-_findnext
-; _findnext32 We should provide emu of this function later
+_findfirsti64 ; This function is not used directly
+F32(_findfirst32i64 == _findfirsti64) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias on 32bit and emu on 64bit
+F64(_findfirst64i32 == _findfirst) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias on 64bit and emu on 32bit
+_findnext ; This function is not used directly
+F32(_findnext32 == _findnext) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias on 32bit and emu on 64bit
 _findnext64
-_findnexti64
-; _findnext32i64 We should provide emu of this function later
-; _findnext64i32 We should provide emu of this function later
+_findnexti64 ; This function is not used directly
+F32(_findnext32i64 == _findnexti64) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias on 32bit and emu on 64bit
+F64(_findnext64i32 == _findnext) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias on 64bit and emu on 32bit
 _finite
 F_NON_I386(_finitef)
 _flsbuf
@@ -1267,18 +1267,18 @@ _wexecve
 _wexecvp
 _wexecvpe
 _wfdopen
-_wfindfirst
-; _wfindfirst32 We should provide emu of this function later
+_wfindfirst ; This function is not used directly
+F32(_wfindfirst32 == _wfindfirst) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias on 32bit and emu on 64bit
 _wfindfirst64
-_wfindfirsti64
-; _wfindfirst32i64 We should provide emu of this function later
-; _wfindfirst64i32 We should provide emu of this function later
-_wfindnext
-; _wfindnext32 We should provide emu of this function later
+_wfindfirsti64 ; This function is not used directly
+F32(_wfindfirst32i64 == _wfindfirsti64) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias on 32bit and emu on 64bit
+F64(_wfindfirst64i32 == _wfindfirst) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias on 64bit and emu on 32bit
+_wfindnext ; This function is not used directly
+F32(_wfindnext32 == _wfindnext) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias on 32bit and emu on 64bit
 _wfindnext64
-_wfindnexti64
-; _wfindnext32i64 We should provide emu of this function later
-; _wfindnext64i32 We should provide emu of this function later
+_wfindnexti64 ; This function is not used directly
+F32(_wfindnext32i64 == _wfindnexti64) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias on 32bit and emu on 64bit
+F64(_wfindnext64i32 == _wfindnext) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias on 64bit and emu on 32bit
 _wfopen
 _wfopen_s
 _wfreopen
