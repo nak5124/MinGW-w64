@@ -554,12 +554,12 @@ _fscanf_l
 _fscanf_s_l
 ; _fseeki64 We should remove override of this function later
 _fsopen
-_fstat
-; _fstat32 We should provide emu of this function later
-_fstat64
+_fstat ; This function is not used directly
+F32(_fstat32 == _fstat) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias on 32bit and emu on 64bit
+_fstat64 ; This function is not used directly
 _fstati64
-; _fstat32i64 We should provide emu of this function later
-; _fstat64i32 We should provide emu of this function later
+F32(_fstat32i64 == _fstati64) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias on 32bit and emu on 64bit
+F64(_fstat64i32 == _fstat) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias on 64bit and emu on 32bit
 _ftime
 _ftime32
 _ftime32_s
@@ -1046,12 +1046,12 @@ _sprintf_p_l
 _sprintf_s_l
 _sscanf_l
 _sscanf_s_l
-_stat
-; _stat32 We should provide emu of this function later
-_stat64
-_stati64
-; _stat32i64 We should provide emu of this function later
-; _stat64i32 We should provide emu of this function later
+_stat ; This function is not used directly because of trailing slash bug
+; _stat32 MSVCRT.DLL (Win10) does not export this function, so we provide emu in libmingwex for trailing slash bug
+_stat64 DATA ; We provide emu in libmingwex for trailing slash bug
+_stati64 ; This function is not used directly because of trailing slash bug
+; _stat32i64 MSVCRT.DLL (Win10) does not export this function, so we provide emu in libmingwex for trailing slash bug
+; _stat64i32 MSVCRT.DLL (Win10) does not export this function, so we provide emu in libmingwex for trailing slash bug
 _statusfp
 _strcmpi
 _strcoll_l
@@ -1325,12 +1325,12 @@ _wspawnvp
 _wspawnvpe
 _wsplitpath
 _wsplitpath_s
-_wstat
-; _wstat32 We should provide emu of this function later
-_wstat64
-_wstati64
-; _wstat32i64 We should provide emu of this function later
-; _wstat64i32 We should provide emu of this function later
+_wstat ; This function is not used directly because of trailing slash bug
+; _wstat32 MSVCRT.DLL (Win10) does not export this function, so we provide emu in libmingwex for trailing slash bug
+_wstat64 DATA ; We provide emu in libmingwex for trailing slash bug
+_wstati64 ; This function is not used directly because of trailing slash bug
+; _wstat32i64 MSVCRT.DLL (Win10) does not export this function, so we provide emu in libmingwex for trailing slash bug
+; _wstat64i32 MSVCRT.DLL (Win10) does not export this function, so we provide emu in libmingwex for trailing slash bug
 _wstrdate
 ; _wstrdate_s Replaced by emu
 _wstrtime
