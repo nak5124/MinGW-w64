@@ -8,27 +8,27 @@
 
 #include <crtdefs.h>
 
-#pragma pack(push,_CRT_PACKING)
+#pragma pack(push, _CRT_PACKING)
 
 #ifndef NULL
 #ifdef __cplusplus
 #ifndef _WIN64
 #define NULL 0
-#else
+#else  /* !_WIN64 */
 #define NULL 0LL
-#endif  /* W64 */
-#else
+#endif  /* !_WIN64 */
+#else  /* __cplusplus */
 #define NULL ((void *)0)
-#endif
-#endif
+#endif  /* __cplusplus */
+#endif  /* !NULL */
 
 #ifdef __cplusplus
 extern "C" {
-#endif
+#endif  /* __cplusplus */
 
-#if (defined(_X86_) && !defined(__x86_64))
+#if defined(_X86_) && !defined(__x86_64)
 
-#define _JBLEN 16
+#define _JBLEN  16
 #define _JBTYPE int
 
   typedef struct __JUMP_BUFFER {
@@ -56,36 +56,32 @@ extern "C" {
   typedef SETJMP_FLOAT128 _JBTYPE;
 
   typedef struct __JUMP_BUFFER {
-
-    unsigned long iAReserved[6];
-
-    unsigned long Registration;
-    unsigned long TryLevel;
-    unsigned long Cookie;
-    unsigned long UnwindFunc;
-
-    unsigned long UnwindData[6];
-
-    SETJMP_FLOAT128 FltS0;
-    SETJMP_FLOAT128 FltS1;
-    SETJMP_FLOAT128 FltS2;
-    SETJMP_FLOAT128 FltS3;
-    SETJMP_FLOAT128 FltS4;
-    SETJMP_FLOAT128 FltS5;
-    SETJMP_FLOAT128 FltS6;
-    SETJMP_FLOAT128 FltS7;
-    SETJMP_FLOAT128 FltS8;
-    SETJMP_FLOAT128 FltS9;
-    SETJMP_FLOAT128 FltS10;
-    SETJMP_FLOAT128 FltS11;
-    SETJMP_FLOAT128 FltS12;
-    SETJMP_FLOAT128 FltS13;
-    SETJMP_FLOAT128 FltS14;
-    SETJMP_FLOAT128 FltS15;
-    SETJMP_FLOAT128 FltS16;
-    SETJMP_FLOAT128 FltS17;
-    SETJMP_FLOAT128 FltS18;
-    SETJMP_FLOAT128 FltS19;
+    unsigned long             iAReserved[6];
+    unsigned long             Registration;
+    unsigned long             TryLevel;
+    unsigned long             Cookie;
+    unsigned long             UnwindFunc;
+    unsigned long             UnwindData[6];
+    SETJMP_FLOAT128           FltS0;
+    SETJMP_FLOAT128           FltS1;
+    SETJMP_FLOAT128           FltS2;
+    SETJMP_FLOAT128           FltS3;
+    SETJMP_FLOAT128           FltS4;
+    SETJMP_FLOAT128           FltS5;
+    SETJMP_FLOAT128           FltS6;
+    SETJMP_FLOAT128           FltS7;
+    SETJMP_FLOAT128           FltS8;
+    SETJMP_FLOAT128           FltS9;
+    SETJMP_FLOAT128           FltS10;
+    SETJMP_FLOAT128           FltS11;
+    SETJMP_FLOAT128           FltS12;
+    SETJMP_FLOAT128           FltS13;
+    SETJMP_FLOAT128           FltS14;
+    SETJMP_FLOAT128           FltS15;
+    SETJMP_FLOAT128           FltS16;
+    SETJMP_FLOAT128           FltS17;
+    SETJMP_FLOAT128           FltS18;
+    SETJMP_FLOAT128           FltS19;
     __MINGW_EXTENSION __int64 FPSR;
     __MINGW_EXTENSION __int64 StIIP;
     __MINGW_EXTENSION __int64 BrS0;
@@ -104,7 +100,6 @@ extern "C" {
     __MINGW_EXTENSION __int64 IntSp;
     __MINGW_EXTENSION __int64 IntNats;
     __MINGW_EXTENSION __int64 Preds;
-
   } _JUMP_BUFFER;
 
 #elif defined(__x86_64)
@@ -129,42 +124,42 @@ extern "C" {
     __MINGW_EXTENSION unsigned __int64 R15;
     __MINGW_EXTENSION unsigned __int64 Rip;
     __MINGW_EXTENSION unsigned __int64 Spare;
-    SETJMP_FLOAT128 Xmm6;
-    SETJMP_FLOAT128 Xmm7;
-    SETJMP_FLOAT128 Xmm8;
-    SETJMP_FLOAT128 Xmm9;
-    SETJMP_FLOAT128 Xmm10;
-    SETJMP_FLOAT128 Xmm11;
-    SETJMP_FLOAT128 Xmm12;
-    SETJMP_FLOAT128 Xmm13;
-    SETJMP_FLOAT128 Xmm14;
-    SETJMP_FLOAT128 Xmm15;
+    SETJMP_FLOAT128                    Xmm6;
+    SETJMP_FLOAT128                    Xmm7;
+    SETJMP_FLOAT128                    Xmm8;
+    SETJMP_FLOAT128                    Xmm9;
+    SETJMP_FLOAT128                    Xmm10;
+    SETJMP_FLOAT128                    Xmm11;
+    SETJMP_FLOAT128                    Xmm12;
+    SETJMP_FLOAT128                    Xmm13;
+    SETJMP_FLOAT128                    Xmm14;
+    SETJMP_FLOAT128                    Xmm15;
   } _JUMP_BUFFER;
 
 #elif defined(_ARM_)
 
-#define _JBLEN 28
+#define _JBLEN  28
 #define _JBTYPE int
 
   typedef struct __JUMP_BUFFER {
-    unsigned long Frame;
-    unsigned long R4;
-    unsigned long R5;
-    unsigned long R6;
-    unsigned long R7;
-    unsigned long R8;
-    unsigned long R9;
-    unsigned long R10;
-    unsigned long R11;
-    unsigned long Sp;
-    unsigned long Pc;
-    unsigned long Fpscr;
+    unsigned long      Frame;
+    unsigned long      R4;
+    unsigned long      R5;
+    unsigned long      R6;
+    unsigned long      R7;
+    unsigned long      R8;
+    unsigned long      R9;
+    unsigned long      R10;
+    unsigned long      R11;
+    unsigned long      Sp;
+    unsigned long      Pc;
+    unsigned long      Fpscr;
     unsigned long long D[8];
   } _JUMP_BUFFER;
 
 #elif defined(_ARM64_)
 
-#define _JBLEN 24
+#define _JBLEN  24
 #define _JBTYPE unsigned __int64
 
   typedef struct __JUMP_BUFFER {
@@ -183,70 +178,68 @@ extern "C" {
     unsigned __int64 Fp;
     unsigned __int64 Lr;
     unsigned __int64 Sp;
-    unsigned long Fpcr;
-    unsigned long Fpsr;
-    double D[8];
+    unsigned long    Fpcr;
+    unsigned long    Fpsr;
+    double           D[8];
   } _JUMP_BUFFER;
 
 #else
 
-#define _JBLEN 1
+#define _JBLEN  1
 #define _JBTYPE int
 
-#endif
+#endif  /* defined(_X86_) && !defined(__x86_64) */
 
 #ifndef _JMP_BUF_DEFINED
   typedef _JBTYPE jmp_buf[_JBLEN];
 #define _JMP_BUF_DEFINED
-#endif
+#endif  /* !_JMP_BUF_DEFINED */
 
-void * __cdecl __attribute__ ((__nothrow__)) mingw_getsp (void);
+  void * __cdecl mingw_getsp(void) __MINGW_NOTHROW;  /* Provided in libmingwex. */
 
 #if !defined(USE_NO_MINGW_SETJMP_TWO_ARGS) && __MSVCRT_VERSION__ < 0x1400
-#  ifndef _INC_SETJMPEX
-#    if defined(_X86_) || defined(__i386__)
-#      define setjmp(BUF) _setjmp3((BUF), NULL)
-#    else
-#     if (__MINGW_GCC_VERSION < 40702)
-#      define setjmp(BUF) _setjmp((BUF), mingw_getsp())
-#     else
-#      define setjmp(BUF) _setjmp((BUF), __builtin_frame_address (0))
-#     endif
-#    endif
-  int __cdecl __attribute__ ((__nothrow__,__returns_twice__)) _setjmp(jmp_buf _Buf, void *_Ctx);
-  int __cdecl __attribute__ ((__nothrow__,__returns_twice__)) _setjmp3(jmp_buf _Buf, void *_Ctx);
-#  else
-#    undef setjmp
-#    ifdef _WIN64
-#     if (__MINGW_GCC_VERSION < 40702)
-#      define setjmp(BUF) _setjmpex((BUF), mingw_getsp())
-#      define setjmpex(BUF) _setjmpex((BUF), mingw_getsp())
-#     else
-#      define setjmp(BUF) _setjmpex((BUF), __builtin_frame_address (0))
-#      define setjmpex(BUF) _setjmpex((BUF), __builtin_frame_address (0))
-#     endif
-#    else
-#      define setjmp(BUF) _setjmpex((BUF), NULL)
-#      define setjmpex(BUF) _setjmpex((BUF), NULL)
-#    endif
-  int __cdecl __attribute__ ((__nothrow__,__returns_twice__)) _setjmpex(jmp_buf _Buf,void *_Ctx);
-#  endif
+# ifndef _INC_SETJMPEX
+#  if defined(_X86_) || defined(__i386__)
+#   define setjmp(BUF) _setjmp3((BUF), NULL)
+#  else  /* defined(_X86_) || defined(__i386__) */
+#   if (__MINGW_GCC_VERSION < 40702)
+#    define setjmp(BUF) _setjmp((BUF), mingw_getsp())
+#   else  /* (__MINGW_GCC_VERSION < 40702) */
+#    define setjmp(BUF) _setjmp((BUF), __builtin_frame_address(0))
+#   endif  /* (__MINGW_GCC_VERSION < 40702) */
+  int __cdecl __attribute__((__nothrow__, __returns_twice__)) _setjmp3(jmp_buf _Buf, void *_Ctx);
+#  endif  /* defined(_X86_) || defined(__i386__) */
+  int __cdecl __attribute__((__nothrow__, __returns_twice__)) _setjmp(jmp_buf _Buf, void *_Ctx);
+# else  /* !_INC_SETJMPEX */
+#  undef setjmp
+#  ifdef _WIN64
+#   if (__MINGW_GCC_VERSION < 40702)
+#    define setjmp(BUF)   _setjmpex((BUF), mingw_getsp())
+#    define setjmpex(BUF) _setjmpex((BUF), mingw_getsp())
+#   else  /* (__MINGW_GCC_VERSION < 40702) */
+#    define setjmp(BUF)   _setjmpex((BUF), __builtin_frame_address(0))
+#    define setjmpex(BUF) _setjmpex((BUF), __builtin_frame_address(0))
+#   endif  /* (__MINGW_GCC_VERSION < 40702) */
+#  else  /* _WIN64 */
+#   define setjmp(BUF)   _setjmpex((BUF), NULL)
+#   define setjmpex(BUF) _setjmpex((BUF), NULL)
+#  endif  /* _WIN64 */
+  int __cdecl __attribute__((__nothrow__, __returns_twice__)) _setjmpex(jmp_buf _Buf, void *_Ctx);
+# endif  /* !_INC_SETJMPEX */
+#else  /* !defined(USE_NO_MINGW_SETJMP_TWO_ARGS) && __MSVCRT_VERSION__ < 0x1400 */
+# if !defined(_INC_SETJMPEX) && __MSVCRT_VERSION__ < 0x1400
+#  define setjmp _setjmp
+# endif  /* !defined(_INC_SETJMPEX) && __MSVCRT_VERSION__ < 0x1400 */
+  int __cdecl __attribute__((__nothrow__, __returns_twice__)) setjmp(jmp_buf _Buf);
+#endif  /* !defined(USE_NO_MINGW_SETJMP_TWO_ARGS) && __MSVCRT_VERSION__ < 0x1400 */
 
-#else
-
-#  if !defined(_INC_SETJMPEX) && __MSVCRT_VERSION__ < 0x1400
-#    define setjmp _setjmp
-#  endif
-
-  int __cdecl __attribute__ ((__nothrow__,__returns_twice__)) setjmp(jmp_buf _Buf);
-#endif
-
-  __MINGW_ATTRIB_NORETURN __attribute__ ((__nothrow__)) void __cdecl ms_longjmp(jmp_buf _Buf,int _Value)/* throw(...)*/;
-  __MINGW_ATTRIB_NORETURN __attribute__ ((__nothrow__)) void __cdecl longjmp(jmp_buf _Buf,int _Value);
+  __declspec(noreturn) __attribute__((__nothrow__)) void __cdecl ms_longjmp(jmp_buf _Buf,int _Value)  /* throw(...)*/;
+  __declspec(noreturn) __attribute__((__nothrow__)) void __cdecl longjmp(jmp_buf _Buf,int _Value);
 
 #ifdef __cplusplus
 }
-#endif
+#endif  /* __cplusplus */
 
 #pragma pack(pop)
-#endif
+
+#endif  /* _INC_SETJMP */

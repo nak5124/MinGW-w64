@@ -15,65 +15,57 @@
 #include <crtdefs.h>
 #ifdef __cplusplus
 #include <stdlib.h>
-#endif
+#endif  /* __cplusplus */
 
 #ifdef __cplusplus
 extern "C" {
-#endif
+#endif  /* __cplusplus */
 
 #ifndef _CRT_TERMINATE_DEFINED
-#define _CRT_TERMINATE_DEFINED
-  void __cdecl __MINGW_NOTHROW exit(int _Code) __MINGW_ATTRIB_NORETURN;
-  void __cdecl __MINGW_NOTHROW _exit(int _Code) __MINGW_ATTRIB_NORETURN;
+#pragma push_macro("exit")
+#undef exit
+  /* _CRTIMP */ void __cdecl exit(int _Code) __MINGW_NOTHROW __MINGW_ATTRIB_NORETURN;
+#pragma pop_macro("exit")
+  /* _CRTIMP */ void __cdecl _exit(int _Code) __MINGW_NOTHROW __MINGW_ATTRIB_NORETURN;
 
-#if !defined __NO_ISOCEXT /* extern stub in static libmingwex.a */
-  /* C99 function name */
+/* Provided in libmingwex.
+ * C99 function name */
   void __cdecl _Exit(int) __MINGW_ATTRIB_NORETURN;
 #ifndef __CRT__NO_INLINE
-  __CRT_INLINE __MINGW_ATTRIB_NORETURN void  __cdecl _Exit(int status)
-  {  _exit(status); }
-#endif /* !__CRT__NO_INLINE */
-#endif /* Not  __NO_ISOCEXT */
+  __CRT_INLINE void __cdecl __MINGW_ATTRIB_NORETURN _Exit(int status) {
+    _exit(status);
+  }
+#endif  /* !__CRT__NO_INLINE */
 
 #pragma push_macro("abort")
 #undef abort
-  void __cdecl __MINGW_ATTRIB_NORETURN abort(void);
+  /* _CRTIMP */ void __cdecl abort(void) __MINGW_ATTRIB_NORETURN;
 #pragma pop_macro("abort")
+#define _CRT_TERMINATE_DEFINED
+#endif  /* !_CRT_TERMINATE_DEFINED */
 
-#endif /* _CRT_TERMINATE_DEFINED */
-
-extern void __cdecl
-_wassert(const wchar_t *_Message,const wchar_t *_File,unsigned _Line);
-extern void __cdecl
-_assert (const char *_Message, const char *_File, unsigned _Line);
+  /* Provided in libmingwex. */
+  extern void __cdecl _assert(const char *_Message, const char *_File, unsigned _Line);
+  extern void __cdecl _wassert(const wchar_t *_Message, const wchar_t *_File, unsigned _Line);
 
 #ifdef __cplusplus
 }
-#endif
+#endif  /* __cplusplus */
 
-#endif /* !defined (__ASSERT_H_) */
+#endif  /* __ASSERT_H_ */
 
-#if (defined _ISOC11_SOURCE \
-     || (defined __STDC_VERSION__ && __STDC_VERSION__ >= 201112L)) \
-    && !defined (__cplusplus)
+#if (defined(_ISOC11_SOURCE) || (defined __STDC_VERSION__ && __STDC_VERSION__ >= 201112L)) && !defined (__cplusplus)
 /* Static assertion.  Requires support in the compiler.  */
 #undef static_assert
 #define static_assert _Static_assert
-#endif
+#endif  /* (defined(_ISOC11_SOURCE) || (defined __STDC_VERSION__ && __STDC_VERSION__ >= 201112L)) && !defined (__cplusplus) */
 
 #ifdef NDEBUG
 #define assert(_Expression) ((void)0)
-#else /* !defined (NDEBUG) */
+#else  /* NDEBUG */
 #if defined(_UNICODE) || defined(UNICODE)
-#define assert(_Expression) \
- (void) \
- ((!!(_Expression)) || \
-  (_wassert(_CRT_WIDE(#_Expression),_CRT_WIDE(__FILE__),__LINE__),0))
-#else /* not unicode */
-#define assert(_Expression) \
- (void) \
- ((!!(_Expression)) || \
-  (_assert(#_Expression,__FILE__,__LINE__),0))
-#endif /* _UNICODE||UNICODE */
-#endif /* !defined (NDEBUG) */
-
+#define assert(_Expression) (void)((!!(_Expression)) || (_wassert(_CRT_WIDE(#_Expression), _CRT_WIDE(__FILE__), __LINE__), 0))
+#else  /* defined(_UNICODE) || defined(UNICODE) */
+#define assert(_Expression) (void)((!!(_Expression)) || (_assert(#_Expression, __FILE__, __LINE__), 0))
+#endif  /* defined(_UNICODE) || defined(UNICODE) */
+#endif  /* NDEBUG */
