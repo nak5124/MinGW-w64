@@ -220,6 +220,7 @@ IDL_SRCS = \
   direct-x/include/dxgi1_4.idl \
   direct-x/include/dxgi1_5.idl \
   direct-x/include/dxgi1_6.idl \
+  direct-x/include/dxgidebug.idl \
   direct-x/include/dxgicommon.idl \
   direct-x/include/dxgiformat.idl \
   direct-x/include/dxgitype.idl \

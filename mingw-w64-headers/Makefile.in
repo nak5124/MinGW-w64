@@ -520,6 +520,7 @@ EXTRA_HEADERS = \
 @HAVE_WIDL_TRUE@  direct-x/include/dxgi1_4.idl \
 @HAVE_WIDL_TRUE@  direct-x/include/dxgi1_5.idl \
 @HAVE_WIDL_TRUE@  direct-x/include/dxgi1_6.idl \
+@HAVE_WIDL_TRUE@  direct-x/include/dxgidebug.idl \
 @HAVE_WIDL_TRUE@  direct-x/include/dxgicommon.idl \
 @HAVE_WIDL_TRUE@  direct-x/include/dxgiformat.idl \
 @HAVE_WIDL_TRUE@  direct-x/include/dxgitype.idl \
