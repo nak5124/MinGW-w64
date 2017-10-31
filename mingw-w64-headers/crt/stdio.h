@@ -682,7 +682,11 @@ int vsnprintf (char *__stream, size_t __n, const char *__format, __builtin_va_li
   }
 #else
   __MINGW_EXTENSION _CRTIMP int __cdecl _fseeki64(FILE *_File,__int64 _Offset,int _Origin);
+#if __MSVCRT_VERSION__ == 0x0700
   __MINGW_EXTENSION __int64 __cdecl _ftelli64(FILE *_File);
+#else  /* __MSVCRT_VERSION__ == 0x0700 */
+  __MINGW_EXTENSION _CRTIMP __int64 __cdecl _ftelli64(FILE *_File);
+#endif  /* __MSVCRT_VERSION__ == 0x0700 */
   int fseeko64(FILE* stream, _off64_t offset, int whence);
   int fseeko(FILE* stream, _off_t offset, int whence);
   /* Returns truncated 64bit off_t */

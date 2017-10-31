@@ -77,7 +77,6 @@ static struct oserr_map local_errtab[] = {
 };
 
 _CRTIMP __int64 __cdecl _lseeki64(int fh,__int64 pos,int mthd);
-__int64 __cdecl _ftelli64(FILE *str);
 void mingw_dosmaperr (unsigned long oserrno);
 
 int fseeko64 (FILE* stream, _off64_t offset, int whence)
@@ -104,74 +103,6 @@ int fseeko64 (FILE* stream, _off64_t offset, int whence)
       return (-1);
     }
   return fsetpos (stream, &pos);
-}
-
-__int64 __cdecl _ftelli64(FILE *str)
-{
-        FILE *stream;
-        size_t offset;
-        __int64 filepos;
-        register char *p;
-        char *max;
-        int fd;
-        size_t rdcnt = 0;
-
-	errno=0;
-        stream = str;
-        fd = _fileno(stream);
-        if (stream->_cnt < 0ll) stream->_cnt = 0ll;
-    if ((filepos = _lseeki64(fd, 0ll, SEEK_CUR)) < 0L)
-      return -1ll;
-
-    if (!bigbuf(stream))            /* _IONBF or no buffering designated */
-      return (filepos - (__int64) stream->_cnt);
-
-    offset = (size_t)(stream->_ptr - stream->_base);
-
-    if (stream->_flag & (_IOWRT|_IOREAD))
-      {
-        if (_osfile(fd) & FTEXT)
-          for (p = stream->_base; p < stream->_ptr; p++)
-            if (*p == '\n')  /* adjust for '\r' */
-              offset++;
-      }
-      else if (!(stream->_flag & _IORW)) {
-        errno=EINVAL;
-        return -1ll;
-      }
-      if (filepos == 0ll)
-        return ((__int64)offset);
-
-      if (stream->_flag & _IOREAD)    /* go to preceding sector */
-        {
-          if (stream->_cnt == 0ll)  /* filepos holds correct location */
-            offset = 0ll;
-          else
-            {
-	          rdcnt = ((size_t) stream->_cnt) + ((size_t) (size_t)(stream->_ptr - stream->_base));
-		      if (_osfile(fd) & FTEXT) {
-		        if (_lseeki64(fd, 0ll, SEEK_END) == filepos) {
-			      max = stream->_base + rdcnt;
-			    for (p = stream->_base; p < max; p++)
-			      if (*p == '\n') /* adjust for '\r' */
-			        rdcnt++;
-			    if (stream->_flag & _IOCTRLZ)
-			      ++rdcnt;
-		      } else {
-		        _lseeki64(fd, filepos, SEEK_SET);
-		        if ( (rdcnt <= _SMALL_BUFSIZ) && (stream->_flag & _IOMYBUF) &&
-		            !(stream->_flag & _IOSETVBUF))
-			      rdcnt = _SMALL_BUFSIZ;
-		        else
-		          rdcnt = stream->_bufsiz;
-		        if  (_osfile(fd) & FCRLF)
-		          ++rdcnt;
-		      }
-		    } /* end if FTEXT */
-	    }
-	  filepos -= (__int64)rdcnt;
-    } /* end else stream->_cnt != 0 */
-  return (filepos + (__int64)offset);
 }
 
 void mingw_dosmaperr (unsigned long oserrno)
