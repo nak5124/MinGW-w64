@@ -553,7 +553,7 @@ _freea
 F_X86_ANY(_freea_s)
 _fscanf_l
 _fscanf_s_l
-; _fseeki64 We should remove override of this function later
+_fseeki64
 _fsopen
 _fstat ; This function is not used directly
 F32(_fstat32 == _fstat) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias on 32bit and emu on 64bit

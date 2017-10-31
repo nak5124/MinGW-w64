@@ -681,7 +681,7 @@ int vsnprintf (char *__stream, size_t __n, const char *__format, __builtin_va_li
     return _ftelli64(_File);
   }
 #else
-  __MINGW_EXTENSION int __cdecl _fseeki64(FILE *_File,__int64 _Offset,int _Origin);
+  __MINGW_EXTENSION _CRTIMP int __cdecl _fseeki64(FILE *_File,__int64 _Offset,int _Origin);
   __MINGW_EXTENSION __int64 __cdecl _ftelli64(FILE *_File);
   int fseeko64(FILE* stream, _off64_t offset, int whence);
   int fseeko(FILE* stream, _off_t offset, int whence);

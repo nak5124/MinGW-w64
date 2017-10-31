@@ -837,7 +837,7 @@ _freefls
 _fscanf_l
 _fscanf_s_l
 _fseek_nolock
-_fseeki64 DATA
+_fseeki64
 _fseeki64_nolock
 _fsopen
 _fstat32

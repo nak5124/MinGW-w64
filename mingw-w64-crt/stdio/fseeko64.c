@@ -79,30 +79,6 @@ static struct oserr_map local_errtab[] = {
 _CRTIMP __int64 __cdecl _lseeki64(int fh,__int64 pos,int mthd);
 __int64 __cdecl _ftelli64(FILE *str);
 void mingw_dosmaperr (unsigned long oserrno);
-int __cdecl _flush (FILE *str);
-
-int __cdecl _flush (FILE *str)
-{
-  FILE *stream;
-  int rc = 0; /* assume good return */
-  __int64 nchar;
-
-  stream = str;
-  if ((stream->_flag & (_IOREAD | _IOWRT)) == _IOWRT && bigbuf(stream)
-      && (nchar = (__int64) (stream->_ptr - stream->_base)) > 0ll)
-  {
-    if ( _write(_fileno(stream), stream->_base, nchar) == nchar) {
-      if (_IORW & stream->_flag)
-        stream->_flag &= ~_IOWRT;
-    } else {
-      stream->_flag |= _IOERR;
-      rc = EOF;
-    }
-  }
-  stream->_ptr = stream->_base;
-  stream->_cnt = 0ll;
-  return rc;
-}
 
 int fseeko64 (FILE* stream, _off64_t offset, int whence)
 {
@@ -128,43 +104,6 @@ int fseeko64 (FILE* stream, _off64_t offset, int whence)
       return (-1);
     }
   return fsetpos (stream, &pos);
-}
-
-int __cdecl _fseeki64(FILE *str,__int64 offset,int whence)
-{
-        FILE *stream;
-        /* Init stream pointer */
-        stream = str;
-        errno=0;
-        if(!stream || ((whence != SEEK_SET) && (whence != SEEK_CUR) && (whence != SEEK_END)))
-	{
-	  errno=EINVAL;
-	  return -1;
-        }
-        /* Clear EOF flag */
-        stream->_flag &= ~_IOEOF;
-
-        if (whence == SEEK_CUR) {
-	  offset += _ftelli64(stream);
-	  whence = SEEK_SET;
-	}
-        /* Flush buffer as necessary */
-        _flush(stream);
-
-        /* If file opened for read/write, clear flags since we don't know
-           what the user is going to do next. If the file was opened for
-           read access only, decrease _bufsiz so that the next _filbuf
-           won't cost quite so much */
-
-        if (stream->_flag & _IORW)
-                stream->_flag &= ~(_IOWRT|_IOREAD);
-        else if ( (stream->_flag & _IOREAD) && (stream->_flag & _IOMYBUF) &&
-                  !(stream->_flag & _IOSETVBUF) )
-                stream->_bufsiz = _SMALL_BUFSIZ;
-
-        /* Seek to the desired locale and return. */
-
-        return (_lseeki64(_fileno(stream), offset, whence) == -1ll ? -1 : 0);
 }
 
 __int64 __cdecl _ftelli64(FILE *str)
