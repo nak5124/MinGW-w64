@@ -5,136 +5,63 @@ EXPORTS
 #include "msvcrt-common.def.in"
 
 #ifdef DEF_I386
-_CIacos
-_CIasin
-_CIatan
-_CIatan2
-_CIcos
-_CIcosh
-_CIexp
-_CIfmod
-_CIlog
-_CIlog10
-_CIpow
-_CIsin
-_CIsinh
-_CIsqrt
-_CItan
-_CItanh
+??0__non_rtti_object@@QAE@ABV0@@Z
+??0__non_rtti_object@@QAE@PBD@Z
+??0bad_cast@@AAE@PBQBD@Z
+??0bad_cast@@QAE@ABQBD@Z
+??0bad_cast@@QAE@ABV0@@Z
+??0bad_cast@@QAE@PBD@Z
+??0bad_typeid@@QAE@ABV0@@Z
+??0bad_typeid@@QAE@PBD@Z
+??0exception@@QAE@ABQBD@Z
+??0exception@@QAE@ABQBDH@Z
+??0exception@@QAE@ABV0@@Z
+??0exception@@QAE@XZ
+??1__non_rtti_object@@UAE@XZ
+??1bad_cast@@UAE@XZ
+??1bad_typeid@@UAE@XZ
+??1exception@@UAE@XZ
+??1type_info@@UAE@XZ
+??2@YAPAXI@Z
+??2@YAPAXIHPBDH@Z
+??3@YAXPAX@Z
+??4__non_rtti_object@@QAEAAV0@ABV0@@Z
+??4bad_cast@@QAEAAV0@ABV0@@Z
+??4bad_typeid@@QAEAAV0@ABV0@@Z
+??4exception@@QAEAAV0@ABV0@@Z
+??8type_info@@QBEHABV0@@Z
+??9type_info@@QBEHABV0@@Z
 #endif
 
 #ifdef DEF_X64
-$I10_OUTPUT
-; public: __cdecl __non_rtti_object::__non_rtti_object(class __non_rtti_object const & __ptr64) __ptr64
-; GCC = __ZN17__non_rtti_objectC2ERKS_
 ??0__non_rtti_object@@QEAA@AEBV0@@Z
-; public: __cdecl __non_rtti_object::__non_rtti_object(char const * __ptr64) __ptr64
-; GCC = __ZN17__non_rtti_objectC1ERKS_
 ??0__non_rtti_object@@QEAA@PEBD@Z
-; private: __cdecl bad_cast::bad_cast(char const * __ptr64 const * __ptr64) __ptr64
+??0bad_cast@@AAE@PBQBD@Z
 ??0bad_cast@@AEAA@PEBQEBD@Z
-; public: __cdecl bad_cast::bad_cast(char const * __ptr64 const & __ptr64) __ptr64
+??0bad_cast@@QAE@ABQBD@Z
 ??0bad_cast@@QEAA@AEBQEBD@Z
-; public: __cdecl bad_cast::bad_cast(class bad_cast const & __ptr64) __ptr64
 ??0bad_cast@@QEAA@AEBV0@@Z
-; public: __cdecl bad_cast::bad_cast(char const * __ptr64) __ptr64
 ??0bad_cast@@QEAA@PEBD@Z
-; public: __cdecl bad_typeid::bad_typeid(class bad_typeid const & __ptr64) __ptr64
 ??0bad_typeid@@QEAA@AEBV0@@Z
-; public: __cdecl bad_typeid::bad_typeid(char const * __ptr64) __ptr64
 ??0bad_typeid@@QEAA@PEBD@Z
-; public: __cdecl exception::exception(char const * __ptr64 const & __ptr64) __ptr64
 ??0exception@@QEAA@AEBQEBD@Z
-; public: __cdecl exception::exception(char const * __ptr64 const & __ptr64,int) __ptr64
 ??0exception@@QEAA@AEBQEBDH@Z
-; public: __cdecl exception::exception(class exception const & __ptr64) __ptr64
 ??0exception@@QEAA@AEBV0@@Z
-; public: __cdecl exception::exception(void) __ptr64
 ??0exception@@QEAA@XZ
-; public: virtual __cdecl __non_rtti_object::~__non_rtti_object(void) __ptr64
 ??1__non_rtti_object@@UEAA@XZ
-; public: virtual __cdecl bad_cast::~bad_cast(void) __ptr64
 ??1bad_cast@@UEAA@XZ
-; public: virtual __cdecl bad_typeid::~bad_typeid(void) __ptr64
 ??1bad_typeid@@UEAA@XZ
-; public: virtual __cdecl exception::~exception(void) __ptr64
 ??1exception@@UEAA@XZ
-; public: virtual __cdecl type_info::~type_info(void) __ptr64
 ??1type_info@@UEAA@XZ
-; void * __ptr64 __cdecl operator new(unsigned __int64)
-; GCC = __Znwy
 ??2@YAPEAX_K@Z
-; void __cdecl operator delete(void * __ptr64)
-; GCC = __ZdlPv
+??2@YAPEAX_KHPEBDH@Z
 ??3@YAXPEAX@Z
-; public: class __non_rtti_object & __ptr64 __cdecl __non_rtti_object::operator=(class __non_rtti_object const & __ptr64) __ptr64
 ??4__non_rtti_object@@QEAAAEAV0@AEBV0@@Z
-; public: class bad_cast & __ptr64 __cdecl bad_cast::operator=(class bad_cast const & __ptr64) __ptr64
 ??4bad_cast@@QEAAAEAV0@AEBV0@@Z
-; public: class bad_typeid & __ptr64 __cdecl bad_typeid::operator=(class bad_typeid const & __ptr64) __ptr64
 ??4bad_typeid@@QEAAAEAV0@AEBV0@@Z
-; public: class exception & __ptr64 __cdecl exception::operator=(class exception const & __ptr64) __ptr64
 ??4exception@@QEAAAEAV0@AEBV0@@Z
-; public: int __cdecl type_info::operator==(class type_info const & __ptr64)const  __ptr64
 ??8type_info@@QEBAHAEBV0@@Z
-; public: int __cdecl type_info::operator!=(class type_info const & __ptr64)const  __ptr64
 ??9type_info@@QEBAHAEBV0@@Z
-; const  __non_rtti_object::`vftable'
-??_7__non_rtti_object@@6B@
-; const  bad_cast::`vftable'
-??_7bad_cast@@6B@
-; const  bad_typeid::`vftable'
-??_7bad_typeid@@6B@
-; const  exception::`vftable'
-??_7exception@@6B@
-; public: void __cdecl bad_cast::`default constructor closure'(void) __ptr64
-??_Fbad_cast@@QEAAXXZ
-; public: void __cdecl bad_typeid::`default constructor closure'(void) __ptr64
-??_Fbad_typeid@@QEAAXXZ
-; void * __ptr64 __cdecl operator new[](unsigned __int64)
-; GNU = __Znay
-??_U@YAPEAX_K@Z
-; void __cdecl operator delete[](void * __ptr64)
-; GNU = __ZdaPv
-??_V@YAXPEAX@Z
-; int (__cdecl*__cdecl _query_new_handler(void))(unsigned __int64)
-; GNU = __Z18_query_new_handlerv
-?_query_new_handler@@YAP6AH_K@ZXZ
-; int __cdecl _query_new_mode(void)
-; GNU = __Z15_query_new_modev
-?_query_new_mode@@YAHXZ
-; int (__cdecl*__cdecl _set_new_handler(int (__cdecl*)(unsigned __int64)))(unsigned __int64)
-; GNU = __Z16_set_new_handlerPFiyE
-?_set_new_handler@@YAP6AH_K@ZP6AH0@Z@Z
-; int __cdecl _set_new_mode(int)
-; GNU = __Z13_set_new_modei
-?_set_new_mode@@YAHH@Z
-; void (__cdecl*__cdecl _set_se_translator(void (__cdecl*)(unsigned int,struct _EXCEPTION_POINTERS * __ptr64)))(unsigned int,struct _EXCEPTION_POINTERS * __ptr64)
-; GNU = __Z18_set_se_translatorPFvjP19_EXCEPTION_POINTERSE
-?_set_se_translator@@YAP6AXIPEAU_EXCEPTION_POINTERS@@@ZP6AXI0@Z@Z
-; public: int __cdecl type_info::before(class type_info const & __ptr64)const  __ptr64
-?before@type_info@@QEBAHAEBV1@@Z
-; public: char const * __ptr64 __cdecl type_info::name(void)const  __ptr64
-?name@type_info@@QEBAPEBDXZ
-; public: char const * __ptr64 __cdecl type_info::raw_name(void)const  __ptr64
-?raw_name@type_info@@QEBAPEBDXZ
-; void (__cdecl*__cdecl set_new_handler(void (__cdecl*)(void)))(void)
-; GNU = __Z15set_new_handlerPFvvE
-?set_new_handler@@YAP6AXXZP6AXXZ@Z
-; void (__cdecl*__cdecl set_terminate(void (__cdecl*)(void)))(void)
-; GNU = __Z13set_terminatePFvvE
-?set_terminate@@YAP6AXXZP6AXXZ@Z
-; void (__cdecl*__cdecl set_unexpected(void (__cdecl*)(void)))(void)
-; GNU = __Z14set_unexpectedPFvvE
-?set_unexpected@@YAP6AXXZP6AXXZ@Z
-; void __cdecl terminate(void)
-; GNU = __Z9terminatev
-?terminate@@YAXXZ
-; void __cdecl unexpected(void)
-; GNU = __Z10unexpectedv
-?unexpected@@YAXXZ
-; public: virtual char const * __ptr64 __cdecl exception::what(void)const  __ptr64
-?what@exception@@UEBAPEBDXZ
 #endif
 
 #ifdef DEF_ARM32
@@ -163,18 +90,48 @@ $I10_OUTPUT
 ??4exception@@QAAAAV0@ABV0@@Z
 ??8type_info@@QBAHABV0@@Z
 ??9type_info@@QBAHABV0@@Z
+#endif
+
 ??_7__non_rtti_object@@6B@ DATA
 ??_7bad_cast@@6B@ DATA
 ??_7bad_typeid@@6B@ DATA
 ??_7exception@@6B@ DATA
+
+#ifdef DEF_I386
+??_E__non_rtti_object@@UAEPAXI@Z
+??_Ebad_cast@@UAEPAXI@Z
+??_Ebad_typeid@@UAEPAXI@Z
+??_Eexception@@UAEPAXI@Z
+??_Fbad_cast@@QAEXXZ
+??_Fbad_typeid@@QAEXXZ
+??_G__non_rtti_object@@UAEPAXI@Z
+??_Gbad_cast@@UAEPAXI@Z
+??_Gbad_typeid@@UAEPAXI@Z
+??_Gexception@@UAEPAXI@Z
+??_U@YAPAXI@Z
+??_U@YAPAXIHPBDH@Z
+??_V@YAXPAX@Z
+#endif
+
+#ifdef DEF_X64
+??_Fbad_cast@@QEAAXXZ
+??_Fbad_typeid@@QEAAXXZ
+??_U@YAPEAX_K@Z
+??_U@YAPEAX_KHPEBDH@Z
+??_V@YAXPEAX@Z
+#endif
+
+#ifdef DEF_ARM32
 ??_Fbad_cast@@QAAXXZ
 ??_Fbad_typeid@@QAAXXZ
 ??_U@YAPAXI@Z
 ??_U@YAPAXIHPBDH@Z
 ??_V@YAXPAX@Z
-_CallMemberFunction0
-_CallMemberFunction1
-_CallMemberFunction2
+#endif
+
+F32(_CallMemberFunction0)
+F32(_CallMemberFunction1)
+F32(_CallMemberFunction2)
 __ExceptionPtrAssign
 __ExceptionPtrCompare
 __ExceptionPtrCopy
@@ -185,21 +142,65 @@ __ExceptionPtrDestroy
 __ExceptionPtrRethrow
 __ExceptionPtrSwap
 __ExceptionPtrToBool
-?_query_new_handler@@YAP6AHI@ZXZ
-?_set_new_handler@@YAP6AHI@ZP6AHI@Z@Z
+__uncaught_exception
+
+F32(?_query_new_handler@@YAP6AHI@ZXZ)
+F_X64(?_query_new_handler@@YAP6AH_K@ZXZ)
+F_X86_ANY(?_query_new_mode@@YAHXZ)
+F32(?_set_new_handler@@YAP6AHI@ZP6AHI@Z@Z)
+F_X64(?_set_new_handler@@YAP6AH_K@ZP6AH0@Z@Z)
 ?_set_new_mode@@YAHH@Z
+
+#ifdef DEF_I386
+?_set_se_translator@@YAP6AXIPAU_EXCEPTION_POINTERS@@@ZP6AXI0@Z@Z
+?before@type_info@@QBEHABV1@@Z
+?name@type_info@@QBEPBDXZ
+?raw_name@type_info@@QBEPBDXZ
+#endif
+
+#ifdef DEF_X64
+?_set_se_translator@@YAP6AXIPEAU_EXCEPTION_POINTERS@@@ZP6AXI0@Z@Z
+?before@type_info@@QEBAHAEBV1@@Z
+?name@type_info@@QEBAPEBDXZ
+?raw_name@type_info@@QEBAPEBDXZ
+#endif
+
+#ifdef DEF_ARM32
 ?_set_se_translator@@YAP6AXIPAU_EXCEPTION_POINTERS@@@ZP6AXI0@Z@Z
 ?before@type_info@@QBAHABV1@@Z
 ?name@type_info@@QBAPBDXZ
 ?raw_name@type_info@@QBAPBDXZ
+#endif
+
+F_X86_ANY(?set_new_handler@@YAP6AXXZP6AXXZ@Z)
 ?set_terminate@@YAP6AXXZP6AXXZ@Z
 ?set_unexpected@@YAP6AXXZP6AXXZ@Z
 ?terminate@@YAXXZ
 ?unexpected@@YAXXZ
-?what@exception@@UBAPBDXZ
+F_I386(?what@exception@@UBEPBDXZ)
+F_X64(?what@exception@@UEBAPEBDXZ)
+F_ARM32(?what@exception@@UBAPBDXZ)
+
+#ifdef DEF_I386
+$I10_OUTPUT ; On Win64, MSVCRT.DLL does not provide this function
+_CIacos
+_CIasin
+_CIatan
+_CIatan2
+_CIcos
+_CIcosh
+_CIexp
+_CIfmod
+_CIlog
+_CIlog10
+_CIpow
+_CIsin
+_CIsinh
+_CIsqrt
+_CItan
+_CItanh
 #endif
 
-#ifdef DEF_ARM32
 _CrtCheckMemory
 _CrtDbgBreak
 _CrtDbgReport
@@ -225,7 +226,6 @@ _CrtSetReportFile
 _CrtSetReportHook
 _CrtSetReportHook2
 _CrtSetReportMode
-#endif
 _CxxThrowException
 F_I386(_EH_prolog)
 _Getdays
@@ -233,30 +233,36 @@ _Getmonths
 _Gettnames
 _HUGE DATA
 _Strftime
-F_ARM_ANY(_W_Getdays)
-F_ARM_ANY(_W_Getmonths)
-F_ARM_ANY(_W_Gettnames)
-F_ARM_ANY(_Wcsftime)
+_W_Getdays
+_W_Getmonths
+_W_Gettnames
+_Wcsftime
 _XcptFilter
-F_ARM_ANY(__AdjustPointer)
+__AdjustPointer
 F_NON_I386(__C_specific_handler)
 __CppXcptFilter
-F_I386(__CxxCallUnwindDtor)
-F_I386(__CxxCallUnwindVecDtor)
-F_I386(__CxxDetectRethrow)
-F_I386(__CxxExceptionFilter)
+#ifdef DEF_I386
+__CxxCallUnwindDelDtor
+__CxxCallUnwindDtor
+__CxxCallUnwindVecDtor
+__CxxDetectRethrow
+__CxxExceptionFilter
+#endif
 __CxxFrameHandler
-F_ARM_ANY(__CxxFrameHandler3)
-F_I386(__CxxLongjmpUnwind)
-F_I386(__CxxQueryExceptionSize)
-F_I386(__CxxRegisterExceptionObject)
-F_I386(__CxxUnregisterExceptionObject)
+__CxxFrameHandler2
+__CxxFrameHandler3
+#ifdef DEF_I386
+__CxxLongjmpUnwind
+__CxxQueryExceptionSize
+__CxxRegisterExceptionObject
+__CxxUnregisterExceptionObject
+#endif
 __DestructExceptionObject
 __RTCastToVoid
 __RTDynamicCast
 __RTtypeid
 __STRINGTOLD
-F_NON_I386(___lc_codepage_func)
+F_NON_I386(___lc_codepage_func) ; Replaced by emu on i386
 ___lc_collate_cp_func
 ___lc_handle_func
 ___mb_cur_max_func
@@ -265,17 +271,17 @@ ___unguarded_readlc_active_add_func
 __argc DATA
 __argv DATA
 __badioinfo DATA
-F_I386(__buffer_overrun)
+; F_I386(__buffer_overrun) MSVCRT.DLL (Win10) does not provide this function
 __crtCompareStringA
 __crtCompareStringW
 __crtGetLocaleInfoW
 __crtGetStringTypeW
 __crtLCMapStringA
 __crtLCMapStringW
-F_ARM_ANY(__daylight)
+__daylight
 __dllonexit
 __doserrno
-F_ARM_ANY(__dstbias)
+__dstbias
 __fpecode
 __getmainargs
 F_X86_ANY(__initenv DATA)
@@ -283,11 +289,34 @@ __iob_func
 __isascii
 __iscsym
 __iscsymf
-F_I386(__lc_clike)
+; __lc_clike MSVCRT.DLL (Win10) does not provide this function
 __lc_codepage DATA
 __lc_collate_cp DATA
 __lc_handle DATA
 __lconv_init
+#ifdef DEF_I386
+__libm_sse2_acos
+__libm_sse2_acosf
+__libm_sse2_asin
+__libm_sse2_asinf
+__libm_sse2_atan
+__libm_sse2_atan2
+__libm_sse2_atanf
+__libm_sse2_cos
+__libm_sse2_cosf
+__libm_sse2_exp
+__libm_sse2_expf
+__libm_sse2_log
+__libm_sse2_log10
+__libm_sse2_log10f
+__libm_sse2_logf
+__libm_sse2_pow
+__libm_sse2_powf
+__libm_sse2_sin
+__libm_sse2_sinf
+__libm_sse2_tan
+__libm_sse2_tanf
+#endif
 __mb_cur_max DATA
 #ifdef DEF_I386
 __p___argc
@@ -324,27 +353,26 @@ __pctype_func
 __pioinfo DATA
 __pwctype_func
 __pxcptinfoptrs
-F_I386(__security_error_handler)
+; __security_error_handler MSVCRT.DLL (Win10) does not provide this function
 __set_app_type
-F_I386(__set_buffer_overrun_handler)
+; __set_buffer_overrun_handler MSVCRT.DLL (Win10) does not provide this function
 __setlc_active DATA
 __setusermatherr
-F_ARM_ANY(__strncnt)
+__strncnt
 __threadhandle
 __threadid
 __toascii
-__uncaught_exception
 __unDName
 __unDNameEx
 __unguarded_readlc_active DATA
 __wargv DATA
 __wcserror
-F_NON_I386(__wcserror_s)
-F_ARM_ANY(__wcsncnt)
+__wcserror_s
+__wcsncnt
 __wgetmainargs
 F_X86_ANY(__winitenv DATA)
 F_I386(_abnormal_termination)
-F_NON_I386(_abs64)
+_abs64 DATA ; Provided in libmingwex
 _access
 ; _access_s Replaced by emu
 _acmdln DATA
@@ -366,17 +394,17 @@ _adjust_fdiv DATA
 #endif
 _aexit_rtn DATA
 _aligned_free
-F_ARM_ANY(_aligned_free_dbg)
+_aligned_free_dbg
 _aligned_malloc
-F_ARM_ANY(_aligned_malloc_dbg)
+_aligned_malloc_dbg
 _aligned_offset_malloc
-F_ARM_ANY(_aligned_offset_malloc_dbg)
+_aligned_offset_malloc_dbg
 _aligned_offset_realloc
-F_ARM_ANY(_aligned_offset_realloc_dbg)
+_aligned_offset_realloc_dbg
 _aligned_realloc
-F_ARM_ANY(_aligned_realloc_dbg)
+_aligned_realloc_dbg
 _amsg_exit
-_assert DATA
+_assert DATA ; Provided in libmingwex
 _atodbl
 _atodbl_l
 _atof_l
@@ -386,36 +414,36 @@ _atoi64_l
 _atoi_l
 _atol_l
 _atoldbl
-F_NON_I386(_atoldbl_l)
+_atoldbl_l
 _beep
 _beginthread
 _beginthreadex
 _c_exit
-_cabs DATA
+_cabs DATA ; Provided in libmingwex
 _callnewh
-F_ARM_ANY(_calloc_dbg)
+_calloc_dbg
 _cexit
 _cgets
-; _cgets_s replaced by emu
+; _cgets_s Replaced by emu
 _cgetws
-; _cgetws_s replaced by emu
+; _cgetws_s Replaced by emu
 _chdir
 _chdrive
 _chgsign
 F_NON_I386(_chgsignf)
-_chmod
 F_I386(_chkesp)
+_chmod
 _chsize
-; _chsize_s replaced by emu
-F_ARM_ANY(_chvalidator)
-F_ARM_ANY(_chvalidator_l)
+; _chsize_s Replaced by emu
+_chvalidator
+_chvalidator_l
 _clearfp
 _close
 _commit
 _commode DATA
 _control87
 _controlfp
-; _controlfp_s replaced by emu
+; _controlfp_s Replaced by emu
 _copysign
 F_NON_I386(_copysignf)
 _cprintf
@@ -423,40 +451,39 @@ _cprintf_l
 _cprintf_p
 _cprintf_p_l
 ; _cprintf_s Replaced by emu
-; _cprintf_s_l likewise.
+; _cprintf_s_l Replaced by emu
 _cputs
 _cputws
-F_I386(_CRT_RTC_INIT)
+; _CRT_RTC_INIT MSVCRT.DLL (Win10) does not provide this function
 _creat
 _create_locale
-F_ARM32(_crtAssertBusy)
-F_ARM32(_crtBreakAlloc)
-F_ARM32(_crtDbgFlag)
+_crtAssertBusy
+_crtBreakAlloc
+_crtDbgFlag
 _cscanf
 _cscanf_l
 _cscanf_s
 _cscanf_s_l
-F_ARM_ANY(_ctime32)
-F_I386(_ctime32 == ctime)
-; _ctime32_s replaced by emu
+_ctime32
+; _ctime32_s Replaced by emu
 _ctime64
-; _ctime64_s replaced by emu
-_ctype F_I386(DATA)
+; _ctime64_s Replaced by emu
+_ctype F_X64(DATA)
 _cwait
 _cwprintf
 _cwprintf_l
 _cwprintf_p
 _cwprintf_p_l
 ; _cwprintf_s Replaced by emu
-; _cwprintf_s_l Likewise.
+; _cwprintf_s_l Replaced by emu
 _cwscanf
 _cwscanf_l
 _cwscanf_s
 _cwscanf_s_l
+; _daylight DATA This function is described in msvcrt-common.def.in
+_difftime32
+_difftime64
 _dstbias DATA
-F_ARM_ANY(_daylight DATA)
-F_ARM_ANY(_difftime32)
-F_ARM_ANY(_difftime64)
 _dup
 _dup2
 _ecvt
@@ -468,6 +495,7 @@ _eof
 _errno
 F_I386(_except_handler2)
 F_I386(_except_handler3)
+F_I386(_except_handler4_common)
 _execl
 _execle
 _execlp
@@ -478,7 +506,7 @@ _execvp
 _execvpe
 _exit
 _expand
-F_ARM_ANY(_expand_dbg)
+_expand_dbg
 _fcloseall
 _fcvt
 _fcvt_s
@@ -492,57 +520,63 @@ _filelengthi64
 _fileno
 _findclose
 _findfirst
-F_I386(_findfirst32 == _findfirst)
+; _findfirst32 We should provide emu of this function later
 _findfirst64
 _findfirsti64
-F_I386(_findfirst32i64 == _findfirsti64)
-F_X64(_findfirst64i32 == _findfirst)
+; _findfirst32i64 We should provide emu of this function later
+; _findfirst64i32 We should provide emu of this function later
 _findnext
-F_I386(_findnext32 == _findnext)
+; _findnext32 We should provide emu of this function later
 _findnext64
 _findnexti64
-F_I386(_findnext32i64 == _findnexti64)
-F_X64(_findnext64i32 == _findnext)
+; _findnext32i64 We should provide emu of this function later
+; _findnext64i32 We should provide emu of this function later
 _finite
 F_NON_I386(_finitef)
 _flsbuf
 _flushall
 _fmode DATA
 _fpclass
-F_X64(_fpclassf)
-F_I386(_fpieee_flt)
-F_ARM_ANY(_fpieee_flt)
-_fpreset DATA
+F_NON_I386(_fpclassf)
+F32(_fpieee_flt)
+_fpreset DATA ; Provided in libmingw32
 _fprintf_l
 _fprintf_p
 _fprintf_p_l
 _fprintf_s_l
 _fputchar
 _fputwchar
-F_ARM_ANY(_free_dbg)
+_free_dbg
 _free_locale
-F_ARM_ANY(_freea)
-F_NON_I386(_fscanf_l)
-F_NON_I386(_fscanf_s_l)
-F_ARM_ANY(_fseeki64)
+_freea
+F_X86_ANY(_freea_s)
+_fscanf_l
+_fscanf_s_l
+; _fseeki64 We should remove override of this function later
 _fsopen
 _fstat
-F_I386(_fstat32 == _fstat)
+; _fstat32 We should provide emu of this function later
 _fstat64
 _fstati64
-F_X64(_fstat64i32 == _fstat)
+; _fstat32i64 We should provide emu of this function later
+; _fstat64i32 We should provide emu of this function later
 _ftime
-F_ARM_ANY(_ftime32)
+_ftime32
 _ftime32_s
 _ftime64
 _ftime64_s
-F_I386(_ftime_s == _ftime32_s)
-F_X64(_ftime_s == _ftime64_s)
-F_I386(_ftol)
+F_I386(_ftime_s == _ftime32_s) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias
+F_X64(_ftime_s == _ftime64_s) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias
+#ifdef DEF_I386
+_ftol
+_ftol2
+_ftol2_sse
+_ftol2_sse_excpt
+#endif
 _fullpath
-F_ARM_ANY(_fullpath_dbg)
+_fullpath_dbg
 _futime
-F_ARM_ANY(_futime32)
+_futime32
 _futime64
 _fwprintf_l
 _fwprintf_p
@@ -552,23 +586,32 @@ _fwscanf_l
 _fwscanf_s_l
 _gcvt
 _gcvt_s
-F_ARM_ANY(_get_current_locale)
-F_ARM_ANY(_get_doserrno)
-F_ARM_ANY(_get_environ)
-F_ARM_ANY(_get_errno)
-F_ARM_ANY(_get_fileinfo)
-F_ARM_ANY(_get_fmode)
+_get_current_locale
+_get_doserrno
+_get_environ
+_get_errno DATA ; Provided in libmingwex
+_get_fileinfo
+_get_fmode
 _get_heap_handle
 _get_osfhandle
-;_get_output_format provided by emu
+F_X86_ANY(_get_osplatform)
+F_X86_ANY(_get_osver)
+; _get_output_format Replaced by emu
+_get_pgmptr
 _get_sbh_threshold
-F_ARM_ANY(_get_wenviron)
+_get_wenviron
+#ifdef DEF_I386
+_get_winmajor
+_get_winminor
+_get_winver
+_get_wpgmptr
+#endif
 _getch
 _getche
 _getcwd
 _getdcwd
 _getdiskfree
-_getdllprocaddr
+F32(_getdllprocaddr)
 _getdrive
 _getdrives
 _getmaxstdio
@@ -580,15 +623,15 @@ _getwch
 _getwche
 _getws
 F_I386(_global_unwind2)
-_gmtime32 F_I386(== gmtime)
-; _gmtime32_s replaced by emu
+_gmtime32
+; _gmtime32_s Replaced by emu
 _gmtime64
-; _gmtime64_s replaced by emu
-_heapadd
+; _gmtime64_s Replaced by emu
+F32(_heapadd)
 _heapchk
 _heapmin
 _heapset
-_heapused
+F32(_heapused)
 _heapwalk
 _hypot
 F_NON_I386(_hypotf)
@@ -597,11 +640,11 @@ _i64toa_s
 _i64tow
 _i64tow_s
 _initterm
-F_ARM_ANY(_initterm_e)
+_initterm_e
 F_I386(_inp)
 F_I386(_inpd)
 F_I386(_inpw)
-F_ARM_ANY(_invalid_parameter)
+_invalid_parameter
 _iob DATA
 _isalnum_l
 _isalpha_l
@@ -698,15 +741,30 @@ _j1
 _jn
 _kbhit
 _lfind
+_lfind_s
+#ifdef DEF_I386
+_libm_sse2_acos_precise
+_libm_sse2_asin_precise
+_libm_sse2_atan_precise
+_libm_sse2_cos_precise
+_libm_sse2_exp_precise
+_libm_sse2_log10_precise
+_libm_sse2_log_precise
+_libm_sse2_pow_precise
+_libm_sse2_sin_precise
+_libm_sse2_sqrt_precise
+_libm_sse2_tan_precise
 _loaddll
-F_NON_I386(_lfind_s)
+_local_unwind2
+_local_unwind4
+#endif
 F_X64(_local_unwind)
-F_I386(_local_unwind2)
-_localtime32 F_I386(== localtime)
-; _localtime32_s replaced by emu
+_localtime32
+; _localtime32_s Replaced by emu
 _localtime64
-; _localtime64_s replaced by emu
+; _localtime64_s Replaced by emu
 _lock
+; _lock_file MSVCRT.DLL (Win10) does not export this function, so we provide emu
 _locking
 _logb
 F_NON_I386(_logbf)
@@ -714,20 +772,20 @@ F_I386(_longjmpex)
 _lrotl
 _lrotr
 _lsearch
-F_NON_I386(_lsearch_s)
+_lsearch_s
 _lseek
 _lseeki64
 _ltoa
-F_NON_I386(_ltoa_s)
+_ltoa_s
 _ltow
-F_NON_I386(_ltow_s)
+_ltow_s
 _makepath
 _makepath_s
-F_ARM_ANY(_malloc_dbg)
+_malloc_dbg
 _mbbtombc
 _mbbtombc_l
 _mbbtype
-_mbcasemap F_NON_I386(DATA)
+_mbcasemap DATA
 _mbccpy
 _mbccpy_l
 _mbccpy_s
@@ -863,24 +921,23 @@ _mbsupr_s
 _mbsupr_s_l
 _mbtowc_l
 _memccpy
-F_ARM_ANY(_memcpy_strict_align)
+F_ARM32(_memcpy_strict_align)
 _memicmp
 _memicmp_l
 _mkdir
 _mkgmtime
-F_I386(_mkgmtime32)
-F_ARM_ANY(_mkgmtime32)
-F_NON_I386(_mkgmtime64)
+_mkgmtime32
+_mkgmtime64
 _mktemp
-; _mktemp_s replaced by emu
-F_I386(_mktime32 == mktime)
-F_ARM_ANY(_mktime32)
+; _mktemp_s Replaced by emu
+_mktime32
 _mktime64
 _msize
-F_ARM_ANY(_msize_dbg)
+F_I386(_msize_debug)
+F_NON_I386(_msize_dbg)
 _nextafter
 F_X64(_nextafterf)
-_onexit F_I386(DATA)
+_onexit
 _open
 _open_osfhandle
 _osplatform DATA
@@ -906,14 +963,14 @@ _putwch
 _putws
 _pwctype DATA
 _read
-F_ARM_ANY(_realloc_dbg)
+_realloc_dbg
 _resetstkoflw
 _rmdir
 _rmtmp
 _rotl
-F_NON_I386(_rotl64)
+_rotl64
 _rotr
-F_NON_I386(_rotr64)
+_rotr64
 #ifdef DEF_I386
 _safe_fdiv
 _safe_fdivr
@@ -932,19 +989,19 @@ _scwprintf_l
 _scwprintf_p_l
 _searchenv
 _searchenv_s
+F_I386(_seh_longjmp_unwind4)
 F_I386(_seh_longjmp_unwind)
-F_ARM_ANY(_set_controlfp)
-F_ARM_ANY(_set_doserrno)
-F_ARM_ANY(_set_errno)
-_set_error_mode
-F_ARM_ANY(_set_fileinfo)
-F_ARM_ANY(_set_fmode)
-; Does not seem to present even on Win7 msvcrt
-;_set_purecall_handler
-_set_sbh_threshold
-; _set_output_format provided by emu
 F_I386(_set_SSE2_enable)
-F_I386(_set_security_error_handler)
+_set_controlfp
+_set_doserrno
+_set_errno DATA ; Provided in libmingwex
+_set_error_mode
+_set_fileinfo
+_set_fmode
+; _set_output_format Replaced by emu
+; _set_purecall_handler MSVCRT.DLL (Win10) does not export this function, so we provide emu
+_set_sbh_threshold
+; _set_security_error_handler MSVCRT.DLL (Win10) does not export this function
 _seterrormode
 _setjmp
 F_I386(_setjmp3)
@@ -965,7 +1022,6 @@ _snscanf_l
 _snscanf_s
 _snscanf_s_l
 _snwprintf
-snwprintf == _snwprintf
 _snwprintf_l
 _snwprintf_s
 _snwprintf_s_l
@@ -974,7 +1030,7 @@ _snwscanf_l
 _snwscanf_s
 _snwscanf_s_l
 _sopen
-; _sopen_s replaced by emu
+; _sopen_s Replaced by emu
 _spawnl
 _spawnle
 _spawnlp
@@ -991,17 +1047,18 @@ _sprintf_s_l
 _sscanf_l
 _sscanf_s_l
 _stat
+; _stat32 We should provide emu of this function later
 _stat64
 _stati64
-F_I386(_stat32 == _stat)
-F_X64(_stat64i32 == _stat)
+; _stat32i64 We should provide emu of this function later
+; _stat64i32 We should provide emu of this function later
 _statusfp
 _strcmpi
 _strcoll_l
 _strdate
-; _strdate_s replaced by emu
+; _strdate_s Replaced by emu
 _strdup
-F_ARM_ANY(_strdup_dbg)
+_strdup_dbg
 _strerror
 _strerror_s
 _stricmp
@@ -1024,7 +1081,7 @@ _strrev
 _strset
 _strset_s
 _strtime
-; _strtime_s replaced by emu
+; _strtime_s Replaced by emu
 _strtod_l
 _strtoi64
 _strtoi64_l
@@ -1038,28 +1095,29 @@ _strupr_s
 _strupr_s_l
 _strxfrm_l
 _swab
-_swprintf == swprintf
-F_NON_I386(_swprintf_c)
+_swprintf
+_swprintf_c
 _swprintf_c_l
 _swprintf_p_l
 _swprintf_s_l
 _swscanf_l
 _swscanf_s_l
 _sys_errlist DATA
-_sys_nerr DATA
+_sys_nerr F_X64(DATA)
 _tell
 _telli64
 _tempnam
-F_ARM_ANY(_tempnam_dbg)
-F_I386(_time32 == time)
-F_ARM_ANY(_time32)
+_tempnam_dbg
+_time32
 _time64
+; _timezone DATA This function is described in msvcrt-common.def.in
 _tolower
 _tolower_l
 _toupper
 _toupper_l
 _towlower_l
 _towupper_l
+; _tzname DATA This function is described in msvcrt-common.def.in
 _tzset
 _ui64toa
 _ui64toa_s
@@ -1070,27 +1128,28 @@ _ultoa_s
 _ultow
 _ultow_s
 _umask
-; _umask_s replaced by emu
+; _umask_s Replaced by emu
 _ungetch
 _ungetwch
 _unlink
-_unloaddll
+F32(_unloaddll)
 _unlock
+; _unlock_file MSVCRT.DLL (Win10) does not export this function, so we provide emu
 _utime
-F_ARM_ANY(_utime32)
+_utime32
 _utime64
 _vcprintf
 _vcprintf_l
 _vcprintf_p
 _vcprintf_p_l
 ; _vcprintf_s Replaced by emu
-; _vcprintf_s_l Likewise.
+; _vcprintf_s_l Replaced by emu
 _vcwprintf
 _vcwprintf_l
 _vcwprintf_p
 _vcwprintf_p_l
 ; _vcwprintf_s Replaced by emu
-; _vcwprintf_s_l Likewise.
+; _vcwprintf_s_l Replaced by emu
 _vfprintf_l
 _vfprintf_p
 _vfprintf_p_l
@@ -1105,9 +1164,11 @@ _vprintf_p_l
 _vprintf_s_l
 _vscprintf
 _vscprintf_l
+; _vscprintf_p MSVCRT.DLL (Win10) does not export this function, so we provide emu
 _vscprintf_p_l
 _vscwprintf
 _vscwprintf_l
+; _vscwprintf_p MSVCRT.DLL (Win10) does not export this function, so we provide emu
 _vscwprintf_p_l
 _vsnprintf
 _vsnprintf_c
@@ -1116,7 +1177,6 @@ _vsnprintf_l
 _vsnprintf_s
 _vsnprintf_s_l
 _vsnwprintf
-vsnwprintf == _vsnwprintf
 _vsnwprintf_l
 _vsnwprintf_s
 _vsnwprintf_s_l
@@ -1124,10 +1184,11 @@ _vsprintf_l
 _vsprintf_p
 _vsprintf_p_l
 _vsprintf_s_l
-_vswprintf F_I386(== vswprintf)
+_vswprintf
 _vswprintf_c
 _vswprintf_c_l
 _vswprintf_l
+; _vswprintf_p MSVCRT.DLL (Win10) does not export this function, so we provide emu
 _vswprintf_p_l
 _vswprintf_s_l
 _vwprintf_l
@@ -1138,14 +1199,14 @@ _waccess
 ; _waccess_s Replaced by emu
 _wasctime
 ; _wasctime_s Replaced by emu
-F_ARM_ANY(_wassert)
+_wassert DATA ; Provided in libmingwex
 _wchdir
 _wchmod
 _wcmdln DATA
 _wcreat
 _wcscoll_l
 _wcsdup
-F_ARM_ANY(_wcsdup_dbg)
+_wcsdup_dbg
 _wcserror
 _wcserror_s
 _wcsftime_l
@@ -1168,7 +1229,7 @@ _wcsnset_s
 _wcsrev
 _wcsset
 _wcsset_s
-F_ARM_ANY(_wcstod_l)
+_wcstod_l
 _wcstoi64
 _wcstoi64_l
 _wcstol_l
@@ -1183,14 +1244,13 @@ _wcsupr_s
 _wcsupr_s_l
 _wcsxfrm_l
 _wctime
-F_I386(_wctime32 == _wctime)
-F_ARM_ANY(_wctime32)
-; _wctime32_s replaced by emu
+_wctime32
+; _wctime32_s Replaced by emu
 _wctime64
-; _wctime64_s replaced by emu
+; _wctime64_s Replaced by emu
 _wctomb_l
 _wctomb_s_l
-_wctype
+_wctype F_X64(DATA)
 F_X86_ANY(_wenviron DATA)
 _wexecl
 _wexecle
@@ -1202,24 +1262,24 @@ _wexecvp
 _wexecvpe
 _wfdopen
 _wfindfirst
-F_I386(_wfindfirst32 == _wfindfirst)
+; _wfindfirst32 We should provide emu of this function later
 _wfindfirst64
 _wfindfirsti64
-F_I386(_wfindfirst32i64 == _wfindfirsti64)
-F_X64(_wfindfirst64i32 == _wfindfirst)
+; _wfindfirst32i64 We should provide emu of this function later
+; _wfindfirst64i32 We should provide emu of this function later
 _wfindnext
-F_I386(_wfindnext32 == _wfindnext)
+; _wfindnext32 We should provide emu of this function later
 _wfindnext64
 _wfindnexti64
-F_I386(_wfindnext32i64 == _wfindnexti64)
-F_X64(_wfindnext64i32 == _wfindnext)
+; _wfindnext32i64 We should provide emu of this function later
+; _wfindnext64i32 We should provide emu of this function later
 _wfopen
 _wfopen_s
 _wfreopen
 _wfreopen_s
 _wfsopen
 _wfullpath
-F_ARM_ANY(_wfullpath_dbg)
+_wfullpath_dbg
 _wgetcwd
 _wgetdcwd
 _wgetenv
@@ -1232,7 +1292,7 @@ _wmakepath
 _wmakepath_s
 _wmkdir
 _wmktemp
-; _wmktemp_s replaced by emu
+; _wmktemp_s Replaced by emu
 _wopen
 _woutput_s
 _wperror
@@ -1266,17 +1326,18 @@ _wspawnvpe
 _wsplitpath
 _wsplitpath_s
 _wstat
+; _wstat32 We should provide emu of this function later
 _wstat64
 _wstati64
-F_I386(_wstat32 == _wstat)
-F_X64(_wstat64i32 == _wstat)
+; _wstat32i64 We should provide emu of this function later
+; _wstat64i32 We should provide emu of this function later
 _wstrdate
-; _wstrdate_s replaced by emu
+; _wstrdate_s Replaced by emu
 _wstrtime
-; _wstrtime_s replaced by emu
+; _wstrtime_s Replaced by emu
 _wsystem
 _wtempnam
-F_ARM_ANY(_wtempnam_dbg)
+_wtempnam_dbg
 _wtmpnam
 _wtmpnam_s
 _wtof
@@ -1289,7 +1350,7 @@ _wtol
 _wtol_l
 _wunlink
 _wutime
-F_ARM_ANY(_wutime32)
+_wutime32
 _wutime64
 _y0
 _y1
@@ -1297,40 +1358,40 @@ _yn
 abort
 abs
 acos
-F_NON_I386(acosf F_X86_ANY(DATA))
+F_NON_I386(acosf F_X86_ANY(DATA)) ; Provided in libmingwex
 asctime
-; asctime_s replaced by emu
+; asctime_s Replaced by emu
 asin
-F_NON_I386(asinf F_X86_ANY(DATA))
+F_NON_I386(asinf F_X86_ANY(DATA)) ; Provided in libmingwex
 atan
-atan2 F_X86_ANY(DATA)
-F_NON_I386(atan2f F_X86_ANY(DATA))
-F_NON_I386(atanf F_X86_ANY(DATA))
-atexit DATA
+atan2 F_X86_ANY(DATA) ; Provided in libmingwex
+F_NON_I386(atan2f F_X86_ANY(DATA)) ; Provided in libmingwex
+F_NON_I386(atanf F_X86_ANY(DATA)) ; Provided in libmingwex
+atexit DATA ; Provided in libmingw32
 atof
 atoi
 atol
 bsearch
 bsearch_s
-F_ARM_ANY(btowc)
+btowc DATA ; Provided in libmingwex
 calloc
-ceil DATA
-F_NON_I386(ceilf DATA)
+ceil DATA ; Provided in libmingwex
+F_NON_I386(ceilf DATA) ; Provided in libmingwex
 clearerr
 clearerr_s
 clock
-cos F_X86_ANY(DATA)
-F_NON_I386(cosf F_X86_ANY(DATA))
+cos F_X86_ANY(DATA) ; Provided in libmingwex
+F_NON_I386(cosf F_X86_ANY(DATA)) ; Provided in libmingwex
 cosh
-F_NON_I386(coshf DATA)
+F_NON_I386(coshf DATA) ; Provided in libmingwex
 ctime
 difftime
 div
 exit
-exp F_X86_ANY(DATA)
-F_NON_I386(expf F_X86_ANY(DATA))
-fabs DATA
-F_ARM_ANY(fabsf)
+exp F_X86_ANY(DATA) ; Provided in libmingwex
+F_NON_I386(expf F_X86_ANY(DATA)) ; Provided in libmingwex
+fabs DATA ; Provided in libmingwex
+F_ARM_ANY(fabsf DATA) ; Provided in libmingwex
 fclose
 feof
 ferror
@@ -1340,10 +1401,10 @@ fgetpos
 fgets
 fgetwc
 fgetws
-floor DATA
-F_NON_I386(floorf DATA)
-fmod F_X86_ANY(DATA)
-F_NON_I386(fmodf F_X86_ANY(DATA))
+floor DATA ; Provided in libmingwex
+F_NON_I386(floorf DATA) ; Provided in libmingwex
+fmod F_X86_ANY(DATA) ; Provided in libmingwex
+F_NON_I386(fmodf F_X86_ANY(DATA)) ; Provided in libmingwex
 fopen
 fopen_s
 fprintf
@@ -1356,7 +1417,6 @@ fread
 free
 freopen
 freopen_s
-; If we implement frexp, we can set it to DATA only.
 frexp
 fscanf
 fscanf_s
@@ -1404,21 +1464,21 @@ iswupper
 iswxdigit
 isxdigit
 labs
-ldexp F_X86_ANY(DATA)
+ldexp F_X86_ANY(DATA) ; Provided in libmingwex
 ldiv
 localeconv
 localtime
-log F_X86_ANY(DATA)
+log F_X86_ANY(DATA) ; Provided in libmingwex
 log10
-F_NON_I386(log10f F_X86_ANY(DATA))
-F_NON_I386(logf F_X86_ANY(DATA))
-F_ARM_ANY(longjmp)
+F_NON_I386(log10f F_X86_ANY(DATA)) ; Provided in libmingwex
+F_NON_I386(logf F_X86_ANY(DATA)) ; Provided in libmingwex
+; longjmp This function is described in msvcrt-common.def.in
 malloc
 mblen
-F_ARM_ANY(mbrlen)
-F_ARM_ANY(mbrtowc)
-F_ARM_ANY(mbsdup_dbg)
-F_ARM_ANY(mbsrtowcs)
+mbrlen DATA ; Provided in libmingwex
+mbrtowc DATA ; Provided in libmingwex
+mbsdup_dbg
+mbsrtowcs DATA ; Provided in libmingwex
 mbsrtowcs_s
 mbstowcs
 mbstowcs_s
@@ -1426,16 +1486,16 @@ mbtowc
 memchr
 memcmp
 memcpy
-; memcpy_s replaced by emu
+; memcpy_s Replaced by emu
 memmove
-; memmove_s replaced by emu
+; memmove_s Replaced by emu
 memset
 mktime
-modf DATA
-F_NON_I386(modff DATA)
+modf DATA ; Provided in libmingwex
+F_NON_I386(modff DATA) ; Provided in libmingwex
 perror
-pow F_X86_ANY(DATA)
-F_NON_I386(powf F_X86_ANY(DATA))
+pow F_X86_ANY(DATA) ; Provided in libmingwex
+F_NON_I386(powf F_X86_ANY(DATA)) ; Provided in libmingwex
 printf
 printf_s
 putc
@@ -1447,7 +1507,7 @@ qsort
 qsort_s
 raise
 rand
-; rand_s replaced by emu
+; rand_s Replaced by emu
 realloc
 remove
 rename
@@ -1459,15 +1519,14 @@ F_NON_I386(setjmp)
 setlocale
 setvbuf
 signal
-sin F_X86_ANY(DATA)
-F_NON_I386(sinf F_X86_ANY(DATA))
-; if we implement sinh, we can set it DATA only.
+sin F_X86_ANY(DATA) ; Provided in libmingwex
+F_NON_I386(sinf F_X86_ANY(DATA)) ; Provided in libmingwex
 sinh
-F_NON_I386(sinhf DATA)
+F_NON_I386(sinhf DATA) ; Provided in libmingwex
 sprintf
-; sprintf_s replaced by emu
-sqrt DATA
-F_NON_I386(sqrtf DATA)
+; sprintf_s Replaced by emu
+sqrt DATA ; Provided in libmingwex
+F_NON_I386(sqrtf DATA) ; Provided in libmingwex
 srand
 sscanf
 sscanf_s
@@ -1480,7 +1539,7 @@ strcpy
 strcpy_s
 strcspn
 strerror
-; strerror_s replaced by emu
+; strerror_s Replaced by emu
 strftime
 strlen
 strncat
@@ -1488,7 +1547,7 @@ strncat_s
 strncmp
 strncpy
 strncpy_s
-; strnlen replaced by emu
+strnlen DATA ; Provided in libmingwex
 strpbrk
 strrchr
 strspn
@@ -1505,11 +1564,10 @@ swscanf
 swscanf_s
 system
 tan
-F_NON_I386(tanf F_X86_ANY(DATA))
-; if we implement tanh, we can set it to DATA only.
+F_NON_I386(tanf F_X86_ANY(DATA)) ; Provided in libmingwex
 tanh
-F_ARM_ANY(tanhf)
-time F_NON_I386(== _time64)
+F_NON_I386(tanhf DATA) ; Provided in libmingwex
+time
 tmpfile
 tmpfile_s
 tmpnam
@@ -1520,22 +1578,21 @@ towlower
 towupper
 ungetc
 ungetwc
-F_ARM_ANY(utime)
+; utime This function is described in msvcrt-common.def.in
 vfprintf
 vfprintf_s
 vfwprintf
 vfwprintf_s
 vprintf
 vprintf_s
-vsnprintf == _vsnprintf
-snprintf == _snprintf
+vsnprintf
 vsprintf
-; vsprintf_s replaced by emu
+; vsprintf_s Replaced by emu
 vswprintf
 vswprintf_s
 vwprintf
 vwprintf_s
-F_ARM_ANY(wcrtomb)
+wcrtomb DATA ; Provided in libmingwex
 wcrtomb_s
 wcscat
 wcscat_s
@@ -1552,11 +1609,10 @@ wcsncat_s
 wcsncmp
 wcsncpy
 wcsncpy_s
-; We provide replacement implementation in libmingwex
-wcsnlen DATA
+wcsnlen DATA ; Provided in libmingwex
 wcspbrk
 wcsrchr
-F_ARM_ANY(wcsrtombs)
+wcsrtombs DATA ; Provided in libmingwex
 wcsrtombs_s
 wcsspn
 wcsstr
@@ -1568,9 +1624,11 @@ wcstombs
 wcstombs_s
 wcstoul
 wcsxfrm
-F_ARM_ANY(wctob)
+wctob DATA ; Provided in libmingwex
 wctomb
 wctomb_s
+; wmemcpy_s MSVCRT.DLL (Win10) does not export this function, so we provide emu
+; wmemmove_s MSVCRT.DLL (Win10) does not export this function, so we provide emu
 wprintf
 wprintf_s
 wscanf

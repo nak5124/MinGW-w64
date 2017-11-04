@@ -25,21 +25,18 @@ ADD_UNDERSCORE(execl)
 ADD_UNDERSCORE(execle)
 ADD_UNDERSCORE(execlp)
 ADD_UNDERSCORE(execlpe)
-ADD_UNDERSCORE(execv)
-ADD_UNDERSCORE(execve)
-ADD_UNDERSCORE(execvp)
-ADD_UNDERSCORE(execvpe)
+; ADD_UNDERSCORE(execv) Provided in libmingwex
+; ADD_UNDERSCORE(execve) Provided in libmingwex
+; ADD_UNDERSCORE(execvp) Provided in libmingwex
+; ADD_UNDERSCORE(execvpe) Provided in libmingwex
 ADD_UNDERSCORE(fcvt)
 ADD_UNDERSCORE(fdopen)
 ADD_UNDERSCORE(fgetchar)
 ADD_UNDERSCORE(fgetwchar)
 ADD_UNDERSCORE(filelength)
 ADD_UNDERSCORE(fileno)
-; fpreset)
 ADD_UNDERSCORE(fputchar)
 ADD_UNDERSCORE(fputwchar)
-;fstat)
-;ftime)
 ADD_UNDERSCORE(gcvt)
 ADD_UNDERSCORE(getch)
 ADD_UNDERSCORE(getche)
@@ -47,7 +44,6 @@ ADD_UNDERSCORE(getcwd)
 ADD_UNDERSCORE(getpid)
 ADD_UNDERSCORE(getw)
 ADD_UNDERSCORE(heapwalk)
-;isatty
 ADD_UNDERSCORE(itoa)
 ADD_UNDERSCORE(kbhit)
 ADD_UNDERSCORE(lfind)
@@ -74,11 +70,10 @@ ADD_UNDERSCORE(spawnl)
 ADD_UNDERSCORE(spawnle)
 ADD_UNDERSCORE(spawnlp)
 ADD_UNDERSCORE(spawnlpe)
-ADD_UNDERSCORE(spawnv)
-ADD_UNDERSCORE(spawnve)
-ADD_UNDERSCORE(spawnvp)
-ADD_UNDERSCORE(spawnvpe)
-;stat)
+; ADD_UNDERSCORE(spawnv)  Provided in libmingwex
+; ADD_UNDERSCORE(spawnve)  Provided in libmingwex
+; ADD_UNDERSCORE(spawnvp)  Provided in libmingwex
+; ADD_UNDERSCORE(spawnvpe)  Provided in libmingwex
 ADD_UNDERSCORE(strcmpi)
 ADD_UNDERSCORE(strdup)
 ADD_UNDERSCORE(stricmp)
@@ -116,13 +111,12 @@ ADD_UNDERSCORE(y0)
 ADD_UNDERSCORE(y1)
 ADD_UNDERSCORE(yn)
 ADD_UNDERSCORE(chgsign)
-;scalb
 ADD_UNDERSCORE(finite)
 ADD_UNDERSCORE(fpclass)
 ; C99 functions
-;cabs
-ADD_UNDERSCORE(hypot)
-;logb
+; ADD_UNDERSCORE(cabs)  Provided in libmingwex
+; ADD_UNDERSCORE(hypot)  Provided in libmingwex
+; ADD_UNDERSCORE(logb)  Provided in libmingwex
 ADD_UNDERSCORE(nextafter)
 
 #ifndef UCRTBASE
@@ -133,5 +127,12 @@ ADD_UNDERSCORE(daylight)
 ADD_UNDERSCORE(timezone)
 ADD_UNDERSCORE(tzname)
 
-longjmp DATA
+longjmp DATA ; Provided in libmingwex
+
+; printf
+__ms_fwprintf == fwprintf
+ADD_UNDERSCORE(snprintf)
+ADD_UNDERSCORE(snwprintf)
+ADD_UNDERSCORE(vsnwprintf)
+; ADD_UNDERSCORE(vsnprintf_s) We provide vsnprintf_s in libmingwex now, we should remove that implemention and enable this
 #endif
