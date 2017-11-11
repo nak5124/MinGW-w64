@@ -69,31 +69,27 @@ extern "C" {
     short          dstflag;
   };
 
-#if __MSVCRT_VERSION__ > 0x0700
-#ifdef _USE_32BIT_TIME_T
-#define _timeb   __timeb32
-#define _ftime    _ftime32
-#define _ftime_s  _ftime32_s
-#else  /* _USE_32BIT_TIME_T */
-#define _timeb   __timeb64
-#define _ftime    _ftime64
-#define _ftime_s  _ftime64_s
-#endif  /* _USE_32BIT_TIME_T */
-#else  /* __MSVCRT_VERSION__ > 0x0700 */
 #ifdef _WIN64
-#define _timeb __timeb64
   /* _ftime in MSVCRT.DLL of WIN64 has the same entry point as _ftime64. */
   _CRTIMP void    __cdecl _ftime(struct __timeb64 *_Time) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   /* _ftime_s on WIN64 is alias for _ftime64_s. */
   _CRTIMP errno_t __cdecl _ftime_s(struct __timeb64 *_Time);
 #else  /* _WIN64 */
-#define _timeb __timeb32
   /* _ftime in MSVCRT.DLL of WIN32 has the same entry point as _ftime32. */
   _CRTIMP void    __cdecl _ftime(struct __timeb32 *_Time) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   /* _ftime_s on WIN32 is alias for _ftime32_s. */
   _CRTIMP errno_t __cdecl _ftime_s(struct __timeb32 *_Time);
 #endif  /* _WIN64 */
-#endif  /* __MSVCRT_VERSION__ > 0x0700 */
+
+#ifdef _USE_32BIT_TIME_T
+# define _timeb   __timeb32
+# define _ftime    _ftime32
+# define _ftime_s  _ftime32_s
+#else  /* _USE_32BIT_TIME_T */
+# define _timeb   __timeb64
+# define _ftime    _ftime64
+# define _ftime_s  _ftime64_s
+#endif  /* _USE_32BIT_TIME_T */
 
 #define _TIMEB_DEFINED
 #endif  /* !_TIMEB_DEFINED */
