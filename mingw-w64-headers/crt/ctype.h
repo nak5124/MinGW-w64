@@ -89,7 +89,11 @@ extern "C" {
   _CRTIMP       int __cdecl  _isspace_l(int _C, _locale_t _Locale);
   /* _CRTIMP */ int __cdecl   ispunct(int _C);
 #if (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) || _XOPEN_SOURCE >= 600 || _ISOC99_SOURCE || _POSIX_C_SOURCE >= 200112L || defined(__cplusplus)
+#if __MSVCRT_VERSION__ >= 0x1200
+  _CRTIMP       int __cdecl   isblank(int _C);
+#else  /* __MSVCRT_VERSION__ >= 0x1200 */
                 int __cdecl   isblank(int _C);  /* Provided in libmingwex. */
+#endif  /* __MSVCRT_VERSION__ >= 0x1200 */
 #endif  /* (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) || ... */
 #if __MSVCRT_VERSION__ >= 0x0800
   _CRTIMP       int __cdecl  _ispunct_l(int _C, _locale_t _Locale);
@@ -133,7 +137,11 @@ extern "C" {
   /* _CRTIMP */ int __cdecl  iswpunct(wint_t _C);
   _CRTIMP       int __cdecl _iswpunct_l(wint_t _C, _locale_t _Locale);
 #if (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) || _XOPEN_SOURCE >= 600 || _ISOC99_SOURCE || _POSIX_C_SOURCE >= 200112L || defined(__cplusplus)
+#if __MSVCRT_VERSION__ >= 0x1200
+  _CRTIMP       int __cdecl  iswblank(wint_t _C);
+#else  /* __MSVCRT_VERSION__ >= 0x1200 */
                 int __cdecl  iswblank(wint_t _C);  /* Provided in libmingwex. */
+#endif  /* __MSVCRT_VERSION__ >= 0x1200 */
 #endif  /* (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) || ... */
 #if __MSVCRT_VERSION__ >= 0x0800
   _CRTIMP       int __cdecl _iswblank_l(wint_t _C, _locale_t _Locale);

@@ -175,35 +175,32 @@ extern "C" {
 #define _S_IWRITE 0x0080
 #define _S_IEXEC  0x0040
 
-#if __MSVCRT_VERSION__ >= 0x0800
+  /* ucrtbase: emu, msvcrt 64bit: emu, msvcrt 32bit: alias for _fstat */
   _CRTIMP int __cdecl _fstat32(int _FileDes, struct _stat32 *_Stat);
+  /* msvcrt 64bit: emu, msvcrt 32bit: alias for _fstat */
   _CRTIMP int __cdecl _fstat32i64(int _FileDes, struct _stat32i64 *_Stat);
+  /* ucrtbase: emu, msvcrt 64bit: alias for _fstat, msvcrt 32bit: emu */
   _CRTIMP int __cdecl _fstat64i32(int _FileDes, struct _stat64i32 *_Stat);
-#else  /* __MSVCRT_VERSION__ >= 0x0800 */
-#ifdef _WIN64
-          int __cdecl _fstat32(int _FileDes, struct _stat32 *_Stat);        /* On WIN64, we porvide emu. */
-          int __cdecl _fstat32i64(int _FileDes, struct _stat32i64 *_Stat);  /* On WIN64, we porvide emu. */
-  _CRTIMP int __cdecl _fstat64i32(int _FileDes, struct _stat64i32 *_Stat);  /* On WIN64, we provide alias for _fstat. */
-#else  /* _WIN64 */
-  _CRTIMP int __cdecl _fstat32(int _FileDes, struct _stat32 *_Stat);        /* On WIN32, we provide alias for _fstat. */
-  _CRTIMP int __cdecl _fstat32i64(int _FileDes, struct _stat32i64 *_Stat);  /* On WIN32, we provide alias for _fstati64. */
-          int __cdecl _fstat64i32(int _FileDes, struct _stat64i32 *_Stat);  /* On WIN32, we provide emu. */
-#endif  /* _WIN64 */
-#endif  /* __MSVCRT_VERSION__ >= 0x0800 */
   _CRTIMP int __cdecl _fstat64(int _FileDes, struct _stat64 *_Stat);
-          /* We provide emu in libmingwex for trailing slash bug of MSVCR*.DLL _stat*. */
-          int __cdecl _stat32(const char *_Filename, struct _stat32 *_Stat);
-          int __cdecl _stat64(const char *_Filename, struct _stat64 *_Stat);
-          int __cdecl _stat32i64(const char *_Filename, struct _stat32i64 *_Stat);
-          int __cdecl _stat64i32(const char *_Filename, struct _stat64i32 *_Stat);
+  /* all: emu */
+  _CRTIMP int __cdecl _stat32(const char *_Filename, struct _stat32 *_Stat);
+  /* msvcrt: emu, msvcrxxx: emu */
+  _CRTIMP int __cdecl _stat32i64(const char *_Filename, struct _stat32i64 *_Stat);
+  /* all: emu */
+  _CRTIMP int __cdecl _stat64i32(const char *_Filename, struct _stat64i32 *_Stat);
+  /* msvcrt: emu, msvcrxxx: emu */
+  _CRTIMP int __cdecl _stat64(const char *_Filename, struct _stat64 *_Stat);
 
 #ifndef _WSTAT_DEFINED
 
-          /* We provide emu in libmingwex for trailing slash bug of MSVCR*.DLL _stat*. */
-          int __cdecl _wstat32(const wchar_t *_Filename, struct _stat32 *_Stat);
-          int __cdecl _wstat64(const wchar_t *_Filename, struct _stat64 *_Stat);
-          int __cdecl _wstat32i64(const wchar_t *_Filename, struct _stat32i64 *_Stat);
-          int __cdecl _wstat64i32(const wchar_t *_Filename, struct _stat64i32 *_Stat);
+  /* all: emu */
+  _CRTIMP int __cdecl _wstat32(const wchar_t *_Filename, struct _stat32 *_Stat);
+  /* msvcrt: emu, msvcrxxx: emu */
+  _CRTIMP int __cdecl _wstat32i64(const wchar_t *_Filename, struct _stat32i64 *_Stat);
+  /* all: emu */
+  _CRTIMP int __cdecl _wstat64i32(const wchar_t *_Filename, struct _stat64i32 *_Stat);
+  /* msvcrt: emu, msvcrxxx: emu */
+  _CRTIMP int __cdecl _wstat64(const wchar_t *_Filename, struct _stat64 *_Stat);
 
 #define _WSTAT_DEFINED
 #endif  /* !_WSTAT_DEFINED */
@@ -260,11 +257,7 @@ extern "C" {
 #ifndef __CRT__NO_INLINE
 
 #ifndef _STATIC_ASSERT
-#ifdef _MSC_VER
-#define _STATIC_ASSERT(expr) typedef char __static_assert_t[(expr)]
-#else  /* _MSC_VER */
 #define _STATIC_ASSERT(expr) extern void __static_assert_t(int [(expr)?1:-1])
-#endif  /* _MSC_VER */
 #endif  /* !_STATIC_ASSERT */
 
 #ifdef _USE_32BIT_TIME_T

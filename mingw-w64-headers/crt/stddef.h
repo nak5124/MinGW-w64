@@ -17,9 +17,8 @@ extern "C" {
   _CRTIMP extern int * __cdecl _errno(void);
 #define errno (*_errno())
 
-  /* Provided in libmingwex. */
-  errno_t __cdecl _set_errno(int _Value);
-  errno_t __cdecl _get_errno(int *_Value);
+  _CRTIMP errno_t __cdecl _set_errno(int _Value);
+  _CRTIMP errno_t __cdecl _get_errno(int *_Value);
 #define _CRT_ERRNO_DEFINED
 #endif  /* !_CRT_ERRNO_DEFINED */
 

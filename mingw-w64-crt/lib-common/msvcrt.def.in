@@ -591,7 +591,7 @@ _gcvt_s
 _get_current_locale
 _get_doserrno
 _get_environ
-_get_errno DATA ; Provided in libmingwex
+_get_errno
 _get_fileinfo
 _get_fmode
 _get_heap_handle
@@ -978,9 +978,9 @@ _resetstkoflw
 _rmdir
 _rmtmp
 _rotl
-_rotl64 DATA ; Provided in libkernel32
+_rotl64
 _rotr
-_rotr64 DATA ; Provided in libkernel32
+_rotr64
 #ifdef DEF_I386
 _safe_fdiv
 _safe_fdivr
@@ -1004,7 +1004,7 @@ F_I386(_seh_longjmp_unwind)
 F_I386(_set_SSE2_enable)
 _set_controlfp
 _set_doserrno
-_set_errno DATA ; Provided in libmingwex
+_set_errno
 _set_error_mode
 _set_fileinfo
 _set_fmode
@@ -1056,12 +1056,12 @@ _sprintf_p_l
 _sprintf_s_l
 _sscanf_l
 _sscanf_s_l
-_stat ; This function is not used directly because of trailing slash bug
-; _stat32 MSVCRT.DLL (Win10) does not export this function, so we provide emu in libmingwex for trailing slash bug
-_stat64 DATA ; We provide emu in libmingwex for trailing slash bug
-_stati64 ; This function is not used directly because of trailing slash bug
-; _stat32i64 MSVCRT.DLL (Win10) does not export this function, so we provide emu in libmingwex for trailing slash bug
-; _stat64i32 MSVCRT.DLL (Win10) does not export this function, so we provide emu in libmingwex for trailing slash bug
+; _stat Replaced by emu for trailing slash bug, but not used directly
+; _stat32 MSVCRT.DLL (Win10) does not export this function, so we provide emu for trailing slash bug
+; _stat64 Replaced by emu for trailing slash bug
+; _stati64 Replaced by emu for trailing slash bug, but not used directly
+; _stat32i64 MSVCRT.DLL (Win10) does not export this function, so we provide emu for trailing slash bug
+; _stat64i32 MSVCRT.DLL (Win10) does not export this function, so we provide emu for trailing slash bug
 _statusfp
 _strcmpi
 _strcoll_l
@@ -1336,12 +1336,12 @@ _wspawnvp
 _wspawnvpe
 _wsplitpath
 _wsplitpath_s
-_wstat ; This function is not used directly because of trailing slash bug
-; _wstat32 MSVCRT.DLL (Win10) does not export this function, so we provide emu in libmingwex for trailing slash bug
-_wstat64 DATA ; We provide emu in libmingwex for trailing slash bug
-_wstati64 ; This function is not used directly because of trailing slash bug
-; _wstat32i64 MSVCRT.DLL (Win10) does not export this function, so we provide emu in libmingwex for trailing slash bug
-; _wstat64i32 MSVCRT.DLL (Win10) does not export this function, so we provide emu in libmingwex for trailing slash bug
+; _wstat Replaced by emu for trailing slash bug, but not used directly
+; _wstat32 MSVCRT.DLL (Win10) does not export this function, so we provide emu for trailing slash bug
+; _wstat64 Replaced by emu for trailing slash bug
+; _wstati64 Replaced by emu for trailing slash bug, but not used directly
+; _wstat32i64 MSVCRT.DLL (Win10) does not export this function, so we provide emu for trailing slash bug
+; _wstat64i32 MSVCRT.DLL (Win10) does not export this function, so we provide emu for trailing slash bug
 _wstrdate
 ; _wstrdate_s Replaced by emu
 _wstrtime
@@ -1384,7 +1384,7 @@ atoi
 atol
 bsearch
 bsearch_s
-btowc DATA ; Provided in libmingwex
+btowc
 calloc
 ceil DATA ; Provided in libmingwex
 F_NON_I386(ceilf DATA) ; Provided in libmingwex
@@ -1486,10 +1486,10 @@ F_NON_I386(logf F_X86_ANY(DATA)) ; Provided in libmingwex
 ; longjmp This function is described in msvcrt-common.def.in
 malloc
 mblen
-mbrlen DATA ; Provided in libmingwex
-mbrtowc DATA ; Provided in libmingwex
+mbrlen
+mbrtowc
 mbsdup_dbg
-mbsrtowcs DATA ; Provided in libmingwex
+mbsrtowcs
 mbsrtowcs_s
 mbstowcs
 mbstowcs_s
@@ -1558,7 +1558,7 @@ strncat_s
 strncmp
 strncpy
 strncpy_s
-strnlen DATA ; Provided in libmingwex
+strnlen
 strpbrk
 strrchr
 strspn
@@ -1603,7 +1603,7 @@ vswprintf
 vswprintf_s
 vwprintf
 vwprintf_s
-wcrtomb DATA ; Provided in libmingwex
+wcrtomb
 wcrtomb_s
 wcscat
 wcscat_s
@@ -1620,10 +1620,10 @@ wcsncat_s
 wcsncmp
 wcsncpy
 wcsncpy_s
-wcsnlen DATA ; Provided in libmingwex
+wcsnlen
 wcspbrk
 wcsrchr
-wcsrtombs DATA ; Provided in libmingwex
+wcsrtombs
 wcsrtombs_s
 wcsspn
 wcsstr
@@ -1635,7 +1635,7 @@ wcstombs
 wcstombs_s
 wcstoul
 wcsxfrm
-wctob DATA ; Provided in libmingwex
+wctob
 wctomb
 wctomb_s
 ; wmemcpy_s MSVCRT.DLL (Win10) does not export this function, so we provide emu

@@ -21,6 +21,8 @@ int __cdecl _findnext32(intptr_t _FindHandle, struct _finddata32_t *_FindData)
   return ret;
 }
 
+int __cdecl (*__MINGW_IMP_SYMBOL(_findnext32))(intptr_t, struct _finddata32_t *) = _findnext32;
+
 int __cdecl _findnext32i64(intptr_t _FindHandle, struct _finddata32i64_t *_FindData)
 {
   struct __finddata64_t fd64;
@@ -37,6 +39,8 @@ int __cdecl _findnext32i64(intptr_t _FindHandle, struct _finddata32i64_t *_FindD
   strncpy(_FindData->name, fd64.name, 260);
   return ret;
 }
+
+int __cdecl (*__MINGW_IMP_SYMBOL(_findnext32i64))(intptr_t, struct _finddata32i64_t *) = _findnext32i64;
 
 #else  /* _WIN64 */
 
@@ -56,5 +60,7 @@ int __cdecl _findnext64i32(intptr_t _FindHandle, struct _finddata64i32_t *_FindD
   strncpy(_FindData->name, fd64.name, 260);
   return ret;
 }
+
+int __cdecl (*__MINGW_IMP_SYMBOL(_findnext64i32))(intptr_t, struct _finddata64i32_t *) = _findnext64i32;
 
 #endif  /* _WIN64 */

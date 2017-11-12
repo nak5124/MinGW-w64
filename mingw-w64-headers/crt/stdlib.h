@@ -161,9 +161,8 @@ extern "C" {
   _CRTIMP extern int * __cdecl _errno(void);
 #define errno (*_errno())
 
-  /* Provided in libmingwex. */
-  errno_t __cdecl _set_errno(int _Value);
-  errno_t __cdecl _get_errno(int *_Value);
+  _CRTIMP errno_t __cdecl _set_errno(int _Value);
+  _CRTIMP errno_t __cdecl _get_errno(int *_Value);
 #define _CRT_ERRNO_DEFINED
 #endif  /* !_CRT_ERRNO_DEFINED */
 
@@ -279,14 +278,18 @@ extern "C++" {
 #pragma pop_macro("exit")
   /* _CRTIMP */ void __cdecl __MINGW_NOTHROW _exit(int _Code) __MINGW_ATTRIB_NORETURN;
 
-/* Provided in libmingwex.a.
+#if __MSVCRT_VERSION__ >= 0x1400
+  _CRTIMP void __cdecl _Exit(int _Code) __MINGW_ATTRIB_NORETURN;
+#else  /* __MSVCRT_VERSION__ >= 0x1400 */
+/* Provided in libmingwex.
  * C99 function name */
-  void __cdecl _Exit(int) __MINGW_ATTRIB_NORETURN;
+  void __cdecl _Exit(int _Code) __MINGW_ATTRIB_NORETURN;
 #ifndef __CRT__NO_INLINE
-  __CRT_INLINE __MINGW_ATTRIB_NORETURN void __cdecl _Exit(int status) {
+  __CRT_INLINE void __cdecl __MINGW_ATTRIB_NORETURN _Exit(int status) {
     _exit(status);
   }
 #endif  /* !__CRT__NO_INLINE */
+#endif  /* __MSVCRT_VERSION__ >= 0x1400 */
 
 #pragma push_macro("abort")
 #undef abort
@@ -328,8 +331,12 @@ extern "C++" {
                     _CRTIMP       int       __cdecl _atoi_l(const char *_Str, _locale_t _Locale);
                     /* _CRTIMP */ long      __cdecl  atol(const char *_Str);
                     _CRTIMP       long      __cdecl _atol_l(const char *_Str, _locale_t _Locale);
-  __MINGW_EXTENSION               long long __cdecl  atoll(const char *_Str);  /* Provided in libmingwex. */
+#if __MSVCRT_VERSION__ >= 0x1200
+  __MINGW_EXTENSION _CRTIMP       long long __cdecl  atoll(const char *_Str);
   __MINGW_EXTENSION _CRTIMP       long long __cdecl _atoll_l(const char *_Str, _locale_t _Locale);
+#else  /* __MSVCRT_VERSION__ >= 0x1200 */
+  __MINGW_EXTENSION               long long __cdecl  atoll(const char *_Str);  /* Provided in libmingwex. */
+#endif  /* __MSVCRT_VERSION__ >= 0x1200 */
 #ifndef _CRT_ALGO_DEFINED
   /* _CRTIMP */ void * __cdecl  bsearch_s(const void *_Key, const void *_Base, rsize_t _NumOfElements, rsize_t _SizeOfElements, int (__cdecl *_PtFuncCompare)(void *, const void *, const void *), void * _Context);
   /* _CRTIMP */ void * __cdecl  bsearch(const void *_Key, const void *_Base, size_t _NumOfElements, size_t _SizeOfElements, int (__cdecl *_PtFuncCompare)(const void *, const void *));
@@ -338,9 +345,16 @@ extern "C++" {
   /* _CRTIMP */ void   __cdecl  qsort(void *_Base, size_t _NumOfElements, size_t _SizeOfElements, int (__cdecl *_PtFuncCompare)(const void *, const void *));
 #define _CRT_ALGO_DEFINED
 #endif  /* !_CRT_ALGO_DEFINED */
-                                  unsigned short   __cdecl _byteswap_ushort(unsigned short _Short);    /* Provided in libmingwex. */
-                                  unsigned long    __cdecl _byteswap_ulong(unsigned long _Long);       /* Provided in libmingwex. */
-  __MINGW_EXTENSION               unsigned __int64 __cdecl _byteswap_uint64(unsigned __int64 _Int64);  /* Provided in libmingwex. */
+#if __MSVCRT_VERSION__ >= 0x0800
+                    _CRTIMP       unsigned short   __cdecl _byteswap_ushort(unsigned short _Short);
+                    _CRTIMP       unsigned long    __cdecl _byteswap_ulong(unsigned long _Long);
+  __MINGW_EXTENSION _CRTIMP       unsigned __int64 __cdecl _byteswap_uint64(unsigned __int64 _Int64);
+#else  /* __MSVCRT_VERSION__ >= 0x0800 */
+  /* Provided in libmingwex. */
+                                  unsigned short   __cdecl _byteswap_ushort(unsigned short _Short);
+                                  unsigned long    __cdecl _byteswap_ulong(unsigned long _Long);
+  __MINGW_EXTENSION               unsigned __int64 __cdecl _byteswap_uint64(unsigned __int64 _Int64);
+#endif  /* __MSVCRT_VERSION__ >= 0x0800 */
                     /* _CRTIMP */ div_t            __cdecl  div(int _Numerator, int _Denominator);
 
                     /* _CRTIMP */ char *           __cdecl  getenv(const char *_VarName) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;

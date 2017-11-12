@@ -154,7 +154,10 @@ src_libws2_32=libsrc/ws2_32.c \
   libsrc/wspiapi/WspiapiFreeAddrInfo.c
 
 src_msvcrt_common=\
-  stdio/acrt_iob_func.c
+  stdio/_putc_nolock.c \
+  stdio/acrt_iob_func.c \
+  stdio/msvcrt_stat.c \
+  stdio/msvcrt_wstat.c
 
 src_msvcrt=\
   $(src_msvcrt_common) \
@@ -164,6 +167,9 @@ src_msvcrt=\
   misc/output_format.c \
   misc/purecall.c \
   misc/recalloc.c \
+  misc/winbs_uint64.c \
+  misc/winbs_ulong.c \
+  misc/winbs_ushort.c \
   secapi/_access_s.c \
   secapi/_cgets_s.c \
   secapi/_cgetws_s.c \
@@ -207,10 +213,21 @@ src_msvcrt=\
   secapi/vsprintf_s.c \
   secapi/wmemcpy_s.c \
   secapi/wmemmove_s.c \
-  stdio/mingw_lock.c
+  stdio/_findfirst.c \
+  stdio/_findnext.c \
+  stdio/_getc_nolock.c \
+  stdio/_getwc_nolock.c \
+  stdio/_putwc_nolock.c \
+  stdio/_wfindfirst.c \
+  stdio/_wfindnext.c \
+  stdio/mingw_lock.c \
+  stdio/msvcrt_fstat.c
 
 src_ucrtbase=\
-  crt/ucrtbase_compat.c
+  crt/ucrtbase_compat.c \
+  stdio/ucrt_fstat.c \
+  stdio/ucrt_stat.c \
+  stdio/ucrt_wstat.c
 
 src_msvcrt32=\
   $(src_msvcrt) \
@@ -276,26 +293,26 @@ src_libmingwex=\
   math/sqrtf.c          math/sqrtl.c       math/tanhf.c          math/tanhl.c         math/tgamma.c        \
   math/tgammaf.c        math/tgammal.c     math/truncl.c         \
   math/powi.def.h       math/sqrt.def.h       \
-  math/cephes_emath.h   math/cephes_mconf.h math/fp_consts.h     math/abs64.c \
+  math/cephes_emath.h   math/cephes_mconf.h math/fp_consts.h     math/abs64.c         \
   \
   misc/mb_wc_common.h \
   misc/mingw_getsp.S \
-  misc/alarm.c                 misc/basename.c        misc/btowc.c           misc/delay-f.c             misc/delay-n.c          \
-  misc/delayimp.c              misc/dirent.c          misc/dirname.c         misc/execv.c               misc/execve.c           \
+  misc/alarm.c                 misc/basename.c        misc/delay-f.c         misc/delay-n.c             misc/delayimp.c         \
+  misc/dirent.c                misc/dirname.c         misc/execv.c           misc/execve.c              \
   misc/execvp.c                misc/execvpe.c         misc/feclearexcept.c   misc/fegetenv.c            misc/fegetexceptflag.c  \
   misc/fegetround.c            misc/feholdexcept.c    misc/feraiseexcept.c   misc/fesetenv.c            misc/fesetexceptflag.c  \
   misc/fesetround.c            misc/fetestexcept.c    misc/feupdateenv.c     misc/ftruncate.c           misc/fwide.c            \
   misc/getlogin.c              misc/getopt.c          misc/gettimeofday.c    misc/imaxabs.c             misc/imaxdiv.c          \
-  misc/isblank.c               misc/iswblank.c        misc/mbrtowc.c         misc/mbsinit.c             misc/mempcpy.c          \
+  misc/isblank.c               misc/iswblank.c        misc/mbsinit.c         misc/mempcpy.c             \
   misc/mingw-aligned-malloc.c  misc/mingw-fseek.c     misc/mingw_matherr.c   misc/mingw_mbwc_convert.c  misc/mingw_usleep.c     \
-  misc/mingw_wcstod.c          misc/mingw_wcstof.c    misc/mingw_wcstold.c   misc/mkstemp.c             misc/seterrno.c         \
+  misc/mingw_wcstod.c          misc/mingw_wcstof.c    misc/mingw_wcstold.c   misc/mkstemp.c             \
   misc/sleep.c                 misc/spawnv.c          misc/spawnve.c         misc/spawnvp.c             misc/spawnvpe.c         \
-  misc/strnlen.c               misc/strsafe.c         misc/strtoimax.c       misc/strtold.c             misc/strtoumax.c        \
+  misc/strsafe.c               misc/strtoimax.c       misc/strtold.c         misc/strtoumax.c           \
   misc/tdelete.c               misc/tfind.c           misc/tsearch.c         misc/twalk.c               misc/uchar_c16rtomb.c   \
-  misc/uchar_c32rtomb.c        misc/uchar_mbrtoc16.c  misc/uchar_mbrtoc32.c  misc/wassert.c             misc/wcrtomb.c          \
-  misc/wcsnlen.c               misc/wcstof.c          misc/wcstoimax.c       misc/wcstold.c             misc/wcstoumax.c        \
-  misc/wctob.c                 misc/wctrans.c         misc/wctype.c          misc/wdirent.c             misc/winbs_uint64.c     \
-  misc/winbs_ulong.c           misc/winbs_ushort.c    misc/wmemchr.c         misc/wmemcmp.c             misc/wmemcpy.c          \
+  misc/uchar_c32rtomb.c        misc/uchar_mbrtoc16.c  misc/uchar_mbrtoc32.c  misc/wassert.c             \
+  misc/wcstof.c                misc/wcstoimax.c       misc/wcstold.c         misc/wcstoumax.c           \
+  misc/wctrans.c               misc/wctype.c          misc/wdirent.c         \
+  misc/wmemchr.c               misc/wmemcmp.c         misc/wmemcpy.c         \
   misc/wmemmove.c              misc/wmempcpy.c        misc/wmemset.c         misc/ftw.c                 misc/ftw64.c            \
   misc/strerror_r.c            misc/stpcpy.c          misc/strndup.c         misc/memmem.c              misc/time_r.c           \
   misc/wcwidth.c               \
@@ -303,9 +320,9 @@ src_libmingwex=\
   stdio/mingw_pformat.h   \
   stdio/scanf.S           stdio/vfscanf2.S        stdio/vfwscanf2.S       stdio/vscanf2.S          stdio/vsscanf2.S         \
   stdio/vswscanf2.S       stdio/vwscanf2.S        \
-  stdio/strtok_r.c        stdio/_Exit.c           stdio/_findfirst.c      stdio/_findnext.c        stdio/_fstat.c           \
-  stdio/_ftime.c          stdio/_getc_nolock.c    stdio/_getwc_nolock.c   stdio/_putc_nolock.c     stdio/_putwc_nolock.c    \
-  stdio/_stat.c           stdio/_wfindfirst.c     stdio/_wfindnext.c      stdio/_wstat.c           stdio/asprintf.c         \
+  stdio/strtok_r.c        stdio/_Exit.c           stdio/fstat.c           \
+  stdio/_ftime.c          \
+  stdio/stat.c            stdio/wstat.c           stdio/asprintf.c        \
   stdio/atoll.c           stdio/fgetpos64.c       stdio/fopen64.c         stdio/fseeko32.c         stdio/fseeko64.c         \
   stdio/fsetpos64.c       stdio/ftelli64.c        stdio/ftello.c          stdio/ftello64.c         stdio/ftruncate64.c      \
   stdio/lltoa.c           stdio/lltow.c           stdio/lseek64.c         stdio/mingw_fprintf.c    stdio/mingw_fprintfw.c   \
@@ -385,7 +402,7 @@ src_libmingwexarm64=\
 # These intrinsics are target independent:
 src_intrincs= \
   intrincs/__movsb.c        intrincs/__movsd.c        intrincs/__movsw.c         intrincs/__stosb.c       intrincs/__stosd.c        \
-  intrincs/__stosw.c        intrincs/_rotl64.c        intrincs/_rotr64.c         intrincs/bitscanfwd.c    intrincs/bitscanrev.c     \
+  intrincs/__stosw.c        intrincs/bitscanfwd.c     intrincs/bitscanrev.c      \
   intrincs/bittest.c        intrincs/bittestc.c       intrincs/bittestci.c       intrincs/bittestr.c      intrincs/bittestri.c      \
   intrincs/bittests.c       intrincs/bittestsi.c      intrincs/cpuid.c           \
   intrincs/ilockadd.c       intrincs/ilockand.c        intrincs/ilockand64.c \
@@ -621,7 +638,7 @@ lib32_LIBRARIES += lib32/libmingwthrd.a
 lib32_libmingwthrd_a_SOURCES = $(src_libmingwthrd)
 lib32_libmingwthrd_a_CPPFLAGS=$(CPPFLAGS32) $(sysincludes)
 
-processed_defs += lib32/msvcrt.def lib32/msvcr80.def lib32/msvcr90.def lib32/msvcr100.def lib32/msvcr110.def lib32/msvcr120.def \
+processed_defs += lib32/msvcrt.def lib32/msvcr100.def lib32/msvcr110.def lib32/msvcr120.def \
 				  lib32/msvcr120_app.def lib32/msvcp120_app.def lib32/ucrtbase.def
 
 endif
@@ -630,18 +647,6 @@ include lib32/Makefile.am
 
 if !W32API
 lib32_DATA += lib32/libglut.a lib32/libmsvcp120_app.a
-
-lib32_LIBRARIES += lib32/libmsvcr80.a
-lib32_libmsvcr80_a_SOURCES = $(src_msvcrt_common) lib32/msvcr80.def.in
-lib32_libmsvcr80_a_AR = $(DTDEF32) lib32/msvcr80.def && $(AR) $(ARFLAGS)
-lib32_libmsvcr80_a_CPPFLAGS=$(CPPFLAGS32) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-EXTRA_lib32_libmsvcr80_a_DEPENDENCIES=lib32/msvcr80.def
-
-lib32_LIBRARIES += lib32/libmsvcr90.a
-lib32_libmsvcr90_a_SOURCES = $(src_msvcrt_common) lib32/msvcr90.def.in
-lib32_libmsvcr90_a_AR = $(DTDEF32) lib32/msvcr90.def && $(AR) $(ARFLAGS)
-lib32_libmsvcr90_a_CPPFLAGS=$(CPPFLAGS32) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-EXTRA_lib32_libmsvcr90_a_DEPENDENCIES=lib32/msvcr90.def
 
 lib32_LIBRARIES += lib32/libmsvcr100.a
 lib32_libmsvcr100_a_SOURCES = $(src_msvcrt_common) lib32/msvcr100.def.in
@@ -949,7 +954,7 @@ lib64_LIBRARIES += lib64/libmingwthrd.a
 lib64_libmingwthrd_a_SOURCES = $(src_libmingwthrd)
 lib64_libmingwthrd_a_CPPFLAGS=$(CPPFLAGS64) $(sysincludes)
 
-processed_defs += lib64/msvcrt.def lib64/msvcr80.def lib64/msvcr90.def \
+processed_defs += lib64/msvcrt.def \
 				  lib64/msvcr100.def lib64/msvcr110.def lib64/msvcr120.def \
 				  lib64/msvcr120_app.def lib64/msvcp120_app.def lib64/ucrtbase.def \
 				  lib64/advapi32.def lib64/clbcatq.def lib64/kernel32.def lib64/ole32.def \
@@ -961,18 +966,6 @@ include lib64/Makefile.am
 
 if !W32API
 lib64_DATA += lib64/libmsvcp120_app.a
-
-lib64_LIBRARIES += lib64/libmsvcr80.a
-lib64_libmsvcr80_a_SOURCES = $(src_msvcrt_common) lib64/msvcr80.def.in
-lib64_libmsvcr80_a_AR = $(DTDEF64) lib64/msvcr80.def && $(AR) $(ARFLAGS)
-lib64_libmsvcr80_a_CPPFLAGS=$(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-EXTRA_lib64_libmsvcr80_a_DEPENDENCIES=lib64/msvcr80.def
-
-lib64_LIBRARIES += lib64/libmsvcr90.a
-lib64_libmsvcr90_a_SOURCES = $(src_msvcrt_common) lib64/msvcr90.def.in
-lib64_libmsvcr90_a_AR = $(DTDEF64) lib64/msvcr90.def && $(AR) $(ARFLAGS)
-lib64_libmsvcr90_a_CPPFLAGS=$(CPPFLAGS64) -D__LIBMSVCRT__ $(extra_include) $(sysincludes)
-EXTRA_lib64_libmsvcr90_a_DEPENDENCIES=lib64/msvcr90.def
 
 lib64_LIBRARIES += lib64/libmsvcr100.a
 lib64_libmsvcr100_a_SOURCES = $(src_msvcrt_common) lib64/msvcr100.def.in
@@ -1277,7 +1270,7 @@ libarm32_LIBRARIES += libarm32/libmingwthrd.a
 libarm32_libmingwthrd_a_SOURCES = $(src_libmingwthrd)
 libarm32_libmingwthrd_a_CPPFLAGS=$(CPPFLAGSARM32) $(sysincludes)
 
-processed_defs += libarm32/msvcrt.def libarm32/msvcr80.def libarm32/msvcr90.def libarm32/msvcr100.def libarm32/msvcr110.def libarm32/ucrtbase.def \
+processed_defs += libarm32/msvcrt.def libarm32/msvcr110.def libarm32/ucrtbase.def \
 				  libarm32/advapi32.def libarm32/clbcatq.def libarm32/kernel32.def libarm32/ole32.def libarm32/oleaut32.def \
 				  libarm32/user32.def libarm32/ws2_32.def
 

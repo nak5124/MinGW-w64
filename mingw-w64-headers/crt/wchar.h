@@ -251,7 +251,11 @@ extern "C" {
   /* _CRTIMP */ int    __cdecl   iswpunct(wint_t _C);
   _CRTIMP       int    __cdecl  _iswpunct_l(wint_t _C, _locale_t _Locale);
 #if (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) || _XOPEN_SOURCE >= 600 || _ISOC99_SOURCE || _POSIX_C_SOURCE >= 200112L || defined(__cplusplus)
-                int    __cdecl   iswblank(wint_t _C);  /* Provided in libmingwex. */
+#if __MSVCRT_VERSION__ >= 0x1200
+  _CRTIMP       int __cdecl  iswblank(wint_t _C);
+#else  /* __MSVCRT_VERSION__ >= 0x1200 */
+                int __cdecl  iswblank(wint_t _C);  /* Provided in libmingwex. */
+#endif  /* __MSVCRT_VERSION__ >= 0x1200 */
 #endif  /* (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) || ... */
 #if __MSVCRT_VERSION__ >= 0x0800
   _CRTIMP       int    __cdecl  _iswblank_l(wint_t _C, _locale_t _Locale);
@@ -303,31 +307,19 @@ extern "C" {
   _CRTIMP errno_t  __cdecl _waccess_s(const wchar_t *_Filename, int _AccessMode);  /* We provide emu. */
   _CRTIMP int      __cdecl _wchmod(const wchar_t *_Filename, int _Mode);
   _CRTIMP int      __cdecl _wcreat(const wchar_t *_Filename, int _PermissionMode) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-#if __MSVCRT_VERSION__ >= 0x0800
+  /* msvcrt 64bit: emu, msvcrt 32bit: alias for _wfindfirst */
   _CRTIMP intptr_t __cdecl _wfindfirst32(const wchar_t *_Filename, struct _wfinddata32_t *_FindData);
+  /* msvcrt 64bit: emu, msvcrt 32bit: alias for _wfindfirsti64 */
   _CRTIMP intptr_t __cdecl _wfindfirst32i64(const wchar_t *_Filename, struct _wfinddata32i64_t *_FindData);
+  /* msvcrt 64bit: alias for _wfindfirst, msvcrt 32bit: emu */
   _CRTIMP intptr_t __cdecl _wfindfirst64i32(const wchar_t *_Filename, struct _wfinddata64i32_t *_FindData);
-  _CRTIMP int      __cdecl _wfindnext32(intptr_t _FindHandle, struct _wfinddata32_t *_FindData);
-  _CRTIMP int      __cdecl _wfindnext32i64(intptr_t _FindHandle, struct _wfinddata32i64_t *_FindData);
-  _CRTIMP int      __cdecl _wfindnext64i32(intptr_t _FindHandle, struct _wfinddata64i32_t *_FindData);
-#else  /* __MSVCRT_VERSION__ >= 0x0800 */
-#ifdef _WIN64
-          intptr_t __cdecl _wfindfirst32(const wchar_t *_Filename, struct _wfinddata32_t *_FindData);        /* On WIN64, we porvide emu. */
-          intptr_t __cdecl _wfindfirst32i64(const wchar_t *_Filename, struct _wfinddata32i64_t *_FindData);  /* On WIN64, we porvide emu. */
-  _CRTIMP intptr_t __cdecl _wfindfirst64i32(const wchar_t *_Filename, struct _wfinddata64i32_t *_FindData);  /* On WIN64, we provide alias for _wfindfirst. */
-          int      __cdecl _wfindnext32(intptr_t _FindHandle, struct _wfinddata32_t *_FindData);             /* On WIN64, we porvide emu. */
-          int      __cdecl _wfindnext32i64(intptr_t _FindHandle, struct _wfinddata32i64_t *_FindData);       /* On WIN64, we porvide emu. */
-  _CRTIMP int      __cdecl _wfindnext64i32(intptr_t _FindHandle, struct _wfinddata64i32_t *_FindData);       /* On WIN64, we provide alias for _wfindnext. */
-#else  /* _WIN64 */
-  _CRTIMP intptr_t __cdecl _wfindfirst32(const wchar_t *_Filename, struct _wfinddata32_t *_FindData);        /* On WIN32, we provide alias for _wfindfirst. */
-  _CRTIMP intptr_t __cdecl _wfindfirst32i64(const wchar_t *_Filename, struct _wfinddata32i64_t *_FindData);  /* On WIN32, we provide alias for _wfindfirsti64. */
-          intptr_t __cdecl _wfindfirst64i32(const wchar_t *_Filename, struct _wfinddata64i32_t *_FindData);  /* On WIN32, we provide emu. */
-  _CRTIMP int      __cdecl _wfindnext32(intptr_t _FindHandle, struct _wfinddata32_t *_FindData);             /* On WIN32, we provide alias for _wfindnext. */
-  _CRTIMP int      __cdecl _wfindnext32i64(intptr_t _FindHandle, struct _wfinddata32i64_t *_FindData);       /* On WIN32, we provide alias for _wfindnexti64. */
-          int      __cdecl _wfindnext64i32(intptr_t _FindHandle, struct _wfinddata64i32_t *_FindData);       /* On WIN32, we provide emu. */
-#endif  /* _WIN64 */
-#endif  /* __MSVCRT_VERSION__ >= 0x0800 */
   _CRTIMP intptr_t __cdecl _wfindfirst64(const wchar_t *_Filename, struct _wfinddata64_t *_FindData);
+  /* msvcrt 64bit: emu, msvcrt 32bit: alias for _wfindnext */
+  _CRTIMP int      __cdecl _wfindnext32(intptr_t _FindHandle, struct _wfinddata32_t *_FindData);
+  /* msvcrt 64bit: emu, msvcrt 32bit: alias for _wfindnexti64 */
+  _CRTIMP int      __cdecl _wfindnext32i64(intptr_t _FindHandle, struct _wfinddata32i64_t *_FindData);
+  /* msvcrt 64bit: alias for _wfindnext, msvcrt 32bit: emu */
+  _CRTIMP int      __cdecl _wfindnext64i32(intptr_t _FindHandle, struct _wfinddata64i32_t *_FindData);
   _CRTIMP int      __cdecl _wfindnext64(intptr_t _FindHandle, struct _wfinddata64_t *_FindData);
   _CRTIMP int      __cdecl _wunlink(const wchar_t *_Filename);
   _CRTIMP int      __cdecl _wrename(const wchar_t *_OldFilename, const wchar_t *_NewFilename);
@@ -570,11 +562,14 @@ extern "C" {
 
 #ifndef _WSTAT_DEFINED
 
-  /* We provide emu in libmingwex for trailing slash bug of MSVCR*.DLL _stat*. */
-  int __cdecl _wstat32(const wchar_t *_Filename, struct _stat32 *_Stat);
-  int __cdecl _wstat64(const wchar_t *_Filename, struct _stat64 *_Stat);
-  int __cdecl _wstat32i64(const wchar_t *_Filename, struct _stat32i64 *_Stat);
-  int __cdecl _wstat64i32(const wchar_t *_Filename, struct _stat64i32 *_Stat);
+  /* all: emu */
+  _CRTIMP int __cdecl _wstat32(const wchar_t *_Filename, struct _stat32 *_Stat);
+  /* msvcrt: emu, msvcrxxx: emu */
+  _CRTIMP int __cdecl _wstat32i64(const wchar_t *_Filename, struct _stat32i64 *_Stat);
+  /* all: emu */
+  _CRTIMP int __cdecl _wstat64i32(const wchar_t *_Filename, struct _stat64i32 *_Stat);
+  /* msvcrt: emu, msvcrxxx: emu */
+  _CRTIMP int __cdecl _wstat64(const wchar_t *_Filename, struct _stat64 *_Stat);
 
 #define _WSTAT_DEFINED
 #endif  /* !_WSTAT_DEFINED */
@@ -1709,7 +1704,7 @@ extern "C" {
   /* _CRTIMP */               wchar_t * __cdecl   wcscpy(wchar_t * __restrict__ _Dest, const wchar_t * __restrict__ _Source) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   /* _CRTIMP */               size_t    __cdecl   wcscspn(const wchar_t *_Str, const wchar_t *_Control);
   /* _CRTIMP */               size_t    __cdecl   wcslen(const wchar_t *_Str);
-  /* _CRTIMP */               size_t    __cdecl   wcsnlen(const wchar_t *_Src, size_t _MaxCount);
+  _CRTIMP                     size_t    __cdecl   wcsnlen(const wchar_t *_Src, size_t _MaxCount);
   __forceinline size_t __cdecl wcsnlen_s(const wchar_t *_Src, size_t _MaxCount) {
     return (_Src == NULL) ? 0 : wcsnlen(_Src, _MaxCount);
   }
@@ -1841,17 +1836,17 @@ extern "C" {
   typedef int      mbstate_t;
   typedef wchar_t _Wint_t;
 
-                wint_t    __cdecl btowc(int);  /* Provided in libmingwex. */
-                size_t    __cdecl mbrlen(const char * __restrict__ _Ch, size_t _SizeInBytes, mbstate_t * __restrict__ _State);  /* Provided in libmingwex. */
-                size_t    __cdecl mbrtowc(wchar_t * __restrict__ _DstCh, const char * __restrict__ _SrcCh, size_t _SizeInBytes, mbstate_t * __restrict__ _State);  /* Provided in libmingwex. */
+   _CRTIMP      wint_t    __cdecl btowc(int);
+   _CRTIMP      size_t    __cdecl mbrlen(const char * __restrict__ _Ch, size_t _SizeInBytes, mbstate_t * __restrict__ _State);
+   _CRTIMP      size_t    __cdecl mbrtowc(wchar_t * __restrict__ _DstCh, const char * __restrict__ _SrcCh, size_t _SizeInBytes, mbstate_t * __restrict__ _State);  /* Provided in libmingwex. */
   /* _CRTIMP */ errno_t   __cdecl mbsrtowcs_s(size_t *_Retval, wchar_t *_Dst, size_t _Size, const char ** _PSrc, size_t _N, mbstate_t *_State);
-                size_t    __cdecl mbsrtowcs(wchar_t * __restrict__ _Dest, const char ** __restrict__ _PSrc, size_t _Count, mbstate_t * __restrict__ _State) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;  /* Provided in libmingwex. */
+   _CRTIMP      size_t    __cdecl mbsrtowcs(wchar_t * __restrict__ _Dest, const char ** __restrict__ _PSrc, size_t _Count, mbstate_t * __restrict__ _State) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;  /* Provided in libmingwex. */
 
   /* _CRTIMP */ errno_t   __cdecl wcrtomb_s(size_t *_Retval, char *_Dst, size_t _SizeInBytes, wchar_t _Ch, mbstate_t * _State);
-                size_t    __cdecl wcrtomb(char * __restrict__ _Dest, wchar_t _Source, mbstate_t * __restrict__ _State) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;  /* Provided in libmingwex. */
+   _CRTIMP      size_t    __cdecl wcrtomb(char * __restrict__ _Dest, wchar_t _Source, mbstate_t * __restrict__ _State) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   /* _CRTIMP */ errno_t   __cdecl wcsrtombs_s(size_t *_Retval, char *_Dst, size_t _SizeInBytes, const wchar_t ** _Src, size_t _Size, mbstate_t * _State);
-                size_t    __cdecl wcsrtombs(char * __restrict__ _Dest, const wchar_t ** __restrict__ _PSource, size_t _Count, mbstate_t * __restrict__ _State) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;  /* Provided in libmingwex. */
-                int       __cdecl wctob(wint_t _WCh);  /* Provided in libmingwex. */
+   _CRTIMP      size_t    __cdecl wcsrtombs(char * __restrict__ _Dest, const wchar_t ** __restrict__ _PSource, size_t _Count, mbstate_t * __restrict__ _State) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+   _CRTIMP      int       __cdecl wctob(wint_t _WCh);
 
   /* _CRTIMP */ void *    __cdecl memmove(void *_Dst, const void *_Src, size_t _Size) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
                 void *    __cdecl memcpy(void * __restrict__ _Dst, const void * __restrict__ _Src, size_t _Size) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;

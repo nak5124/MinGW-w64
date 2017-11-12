@@ -48,12 +48,20 @@
 extern "C" {
 #endif  /* __cplusplus */
 
-  /* Provided in libmingwex. */
-  size_t mbrtoc16(char16_t * __restrict__ _Pc16, const char * __restrict__ _S, size_t _N, mbstate_t * __restrict__ _Ps);
-  size_t c16rtomb(char * __restrict__ S, char16_t _C16, mbstate_t * __restrict__ _Ps);
+#if __MSVCRT_VERSION__ >= 0x1400
+  _CRTIMP size_t mbrtoc16(char16_t * __restrict__ _Pc16, const char * __restrict__ _S, size_t _N, mbstate_t * __restrict__ _Ps);
+  _CRTIMP size_t c16rtomb(char * __restrict__ S, char16_t _C16, mbstate_t * __restrict__ _Ps);
 
-  size_t mbrtoc32(char32_t * __restrict__ _Pc32, const char * __restrict__ _S, size_t _N, mbstate_t * __restrict__ _Ps);
-  size_t c32rtomb(char * __restrict__ _S, char32_t _C32, mbstate_t * __restrict__ _Ps);
+  _CRTIMP size_t mbrtoc32(char32_t * __restrict__ _Pc32, const char * __restrict__ _S, size_t _N, mbstate_t * __restrict__ _Ps);
+  _CRTIMP size_t c32rtomb(char * __restrict__ _S, char32_t _C32, mbstate_t * __restrict__ _Ps);
+#else  /* __MSVCRT_VERSION__ >= 0x1400 */
+  /* Provided in libmingwex. */
+          size_t mbrtoc16(char16_t * __restrict__ _Pc16, const char * __restrict__ _S, size_t _N, mbstate_t * __restrict__ _Ps);
+          size_t c16rtomb(char * __restrict__ S, char16_t _C16, mbstate_t * __restrict__ _Ps);
+
+          size_t mbrtoc32(char32_t * __restrict__ _Pc32, const char * __restrict__ _S, size_t _N, mbstate_t * __restrict__ _Ps);
+          size_t c32rtomb(char * __restrict__ _S, char32_t _C32, mbstate_t * __restrict__ _Ps);
+#endif  /* __MSVCRT_VERSION__ >= 0x1400 */
 
 #ifdef __cplusplus
 }

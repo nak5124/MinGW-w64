@@ -28,14 +28,18 @@ extern "C" {
 #pragma pop_macro("exit")
   /* _CRTIMP */ void __cdecl _exit(int _Code) __MINGW_NOTHROW __MINGW_ATTRIB_NORETURN;
 
+#if __MSVCRT_VERSION__ >= 0x1400
+  _CRTIMP void __cdecl _Exit(int _Code) __MINGW_ATTRIB_NORETURN;
+#else  /* __MSVCRT_VERSION__ >= 0x1400 */
 /* Provided in libmingwex.
  * C99 function name */
-  void __cdecl _Exit(int) __MINGW_ATTRIB_NORETURN;
+  void __cdecl _Exit(int _Code) __MINGW_ATTRIB_NORETURN;
 #ifndef __CRT__NO_INLINE
   __CRT_INLINE void __cdecl __MINGW_ATTRIB_NORETURN _Exit(int status) {
     _exit(status);
   }
 #endif  /* !__CRT__NO_INLINE */
+#endif  /* __MSVCRT_VERSION__ >= 0x1400 */
 
 #pragma push_macro("abort")
 #undef abort

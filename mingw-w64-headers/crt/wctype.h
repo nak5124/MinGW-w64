@@ -106,7 +106,11 @@ extern "C" {
   /* _CRTIMP */ int    __cdecl   iswspace(wint_t _C);
   /* _CRTIMP */ int    __cdecl   iswpunct(wint_t _C);
 #if (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) || _XOPEN_SOURCE >= 600 || _ISOC99_SOURCE || _POSIX_C_SOURCE >= 200112L || defined(__cplusplus)
-                int    __cdecl   iswblank(wint_t _C);  /* Provided in libmingwex. */
+#if __MSVCRT_VERSION__ >= 0x1200
+  _CRTIMP       int __cdecl  iswblank(wint_t _C);
+#else  /* __MSVCRT_VERSION__ >= 0x1200 */
+                int __cdecl  iswblank(wint_t _C);  /* Provided in libmingwex. */
+#endif  /* __MSVCRT_VERSION__ >= 0x1200 */
 #endif  /* (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) || ... */
   /* _CRTIMP */ int    __cdecl   iswalnum(wint_t _C);
   /* _CRTIMP */ int    __cdecl   iswprint(wint_t _C);
@@ -196,10 +200,16 @@ extern "C" {
 #endif  /* ! _WCTYPE_INLINE_DEFINED */
 
   typedef wchar_t wctrans_t;
+#if __MSVCRT_VERSION__ >= 0x1200
+  _CRTIMP       wint_t    __cdecl towctrans(wint_t wc, wctrans_t desc);
+  _CRTIMP       wctrans_t __cdecl wctrans(const char *property);
+  _CRTIMP       wctype_t  __cdecl wctype(const char *property);
+#else  /* __MSVCRT_VERSION__ >= 0x1200 */
   /* Provided in libmingwex. */
   /* _CRTIMP */ wint_t    __cdecl towctrans(wint_t wc, wctrans_t desc);
   /* _CRTIMP */ wctrans_t __cdecl wctrans(const char *property);
   /* _CRTIMP */ wctype_t  __cdecl wctype(const char *property);
+#endif  /* __MSVCRT_VERSION__ >= 0x1200 */
 
 #ifdef __cplusplus
 }

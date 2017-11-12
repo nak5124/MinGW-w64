@@ -21,6 +21,8 @@ intptr_t __cdecl _findfirst32(const char *_Filename, struct _finddata32_t *_Find
   return ret;
 }
 
+intptr_t __cdecl (*__MINGW_IMP_SYMBOL(_findfirst32))(const char *, struct _finddata32_t *) = _findfirst32;
+
 intptr_t __cdecl _findfirst32i64(const char *_Filename, struct _finddata32i64_t *_FindData)
 {
   struct __finddata64_t fd64;
@@ -37,6 +39,8 @@ intptr_t __cdecl _findfirst32i64(const char *_Filename, struct _finddata32i64_t 
   strncpy(_FindData->name, fd64.name, 260);
   return ret;
 }
+
+intptr_t __cdecl (*__MINGW_IMP_SYMBOL(_findfirst32i64))(const char *, struct _finddata32i64_t *) = _findfirst32i64;
 
 #else  /* _WIN64 */
 
@@ -56,5 +60,7 @@ intptr_t __cdecl _findfirst64i32(const char *_Filename, struct _finddata64i32_t 
   strncpy(_FindData->name, fd64.name, 260);
   return ret;
 }
+
+intptr_t __cdecl (*__MINGW_IMP_SYMBOL(_findfirst64i32))(const char *, struct _finddata64i32_t *) = _findfirst64i32;
 
 #endif  /* _WIN64 */

@@ -215,31 +215,19 @@ extern "C" {
   _CRTIMP int      __cdecl _dup2(int _FileHandleSrc, int _FileHandleDst);
   _CRTIMP int      __cdecl _eof(int _FileHandle);
   _CRTIMP long     __cdecl _filelength(int _FileHandle);
-#if __MSVCRT_VERSION__ >= 0x0800
+  /* msvcrt 64bit: emu, msvcrt 32bit: alias for _findfirst */
   _CRTIMP intptr_t __cdecl _findfirst32(const char *_Filename, struct _finddata32_t *_FindData);
+  /* msvcrt 64bit: emu, msvcrt 32bit: alias for _findfirsti64 */
   _CRTIMP intptr_t __cdecl _findfirst32i64(const char *_Filename, struct _finddata32i64_t *_FindData);
+  /* msvcrt 64bit: alias for _findfirst, msvcrt 32bit: emu */
   _CRTIMP intptr_t __cdecl _findfirst64i32(const char *_Filename, struct _finddata64i32_t *_FindData);
-  _CRTIMP int      __cdecl _findnext32(intptr_t _FindHandle, struct _finddata32_t *_FindData);
-  _CRTIMP int      __cdecl _findnext32i64(intptr_t _FindHandle, struct _finddata32i64_t *_FindData);
-  _CRTIMP int      __cdecl _findnext64i32(intptr_t _FindHandle, struct _finddata64i32_t *_FindData);
-#else  /* __MSVCRT_VERSION__ >= 0x0800 */
-#ifdef _WIN64
-          intptr_t __cdecl _findfirst32(const char *_Filename, struct _finddata32_t *_FindData);        /* On WIN64, we porvide emu. */
-          intptr_t __cdecl _findfirst32i64(const char *_Filename, struct _finddata32i64_t *_FindData);  /* On WIN64, we porvide emu. */
-  _CRTIMP intptr_t __cdecl _findfirst64i32(const char *_Filename, struct _finddata64i32_t *_FindData);  /* On WIN64, we provide alias for _findfirst. */
-          int      __cdecl _findnext32(intptr_t _FindHandle, struct _finddata32_t *_FindData);          /* On WIN64, we porvide emu. */
-          int      __cdecl _findnext32i64(intptr_t _FindHandle, struct _finddata32i64_t *_FindData);    /* On WIN64, we porvide emu. */
-  _CRTIMP int      __cdecl _findnext64i32(intptr_t _FindHandle, struct _finddata64i32_t *_FindData);    /* On WIN64, we provide alias for _findnext. */
-#else  /* _WIN64 */
-  _CRTIMP intptr_t __cdecl _findfirst32(const char *_Filename, struct _finddata32_t *_FindData);        /* On WIN32, we provide alias for _findfirst. */
-  _CRTIMP intptr_t __cdecl _findfirst32i64(const char *_Filename, struct _finddata32i64_t *_FindData);  /* On WIN32, we provide alias for _findfirsti64. */
-          intptr_t __cdecl _findfirst64i32(const char *_Filename, struct _finddata64i32_t *_FindData);  /* On WIN32, we provide emu. */
-  _CRTIMP int      __cdecl _findnext32(intptr_t _FindHandle, struct _finddata32_t *_FindData);          /* On WIN32, we provide alias for _findnext. */
-  _CRTIMP int      __cdecl _findnext32i64(intptr_t _FindHandle, struct _finddata32i64_t *_FindData);    /* On WIN32, we provide alias for _findnexti64. */
-          int      __cdecl _findnext64i32(intptr_t _FindHandle, struct _finddata64i32_t *_FindData);    /* On WIN32, we provide emu. */
-#endif  /* _WIN64 */
-#endif  /* __MSVCRT_VERSION__ >= 0x0800 */
   _CRTIMP intptr_t __cdecl _findfirst64(const char *_Filename, struct __finddata64_t *_FindData);
+  /* msvcrt 64bit: emu, msvcrt 32bit: alias for _findnext */
+  _CRTIMP int      __cdecl _findnext32(intptr_t _FindHandle, struct _finddata32_t *_FindData);
+  /* msvcrt 64bit: emu, msvcrt 32bit: alias for _findnexti64 */
+  _CRTIMP int      __cdecl _findnext32i64(intptr_t _FindHandle, struct _finddata32i64_t *_FindData);
+  /* msvcrt 64bit: alias for _findnext, msvcrt 32bit: emu */
+  _CRTIMP int      __cdecl _findnext64i32(intptr_t _FindHandle, struct _finddata64i32_t *_FindData);
   _CRTIMP int      __cdecl _findnext64(intptr_t _FindHandle, struct __finddata64_t *_FindData);
   _CRTIMP int      __cdecl _findclose(intptr_t _FindHandle);
   _CRTIMP int      __cdecl _isatty(int _FileHandle);
@@ -282,31 +270,19 @@ extern "C" {
   _CRTIMP errno_t  __cdecl _waccess_s(const wchar_t *_Filename, int _AccessMode);  /* We provide emu. */
   _CRTIMP int      __cdecl _wchmod(const wchar_t *_Filename, int _Mode);
   _CRTIMP int      __cdecl _wcreat(const wchar_t *_Filename, int _PermissionMode) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-#if __MSVCRT_VERSION__ >= 0x0800
+  /* msvcrt 64bit: emu, msvcrt 32bit: alias for _wfindfirst */
   _CRTIMP intptr_t __cdecl _wfindfirst32(const wchar_t *_Filename, struct _wfinddata32_t *_FindData);
+  /* msvcrt 64bit: emu, msvcrt 32bit: alias for _wfindfirsti64 */
   _CRTIMP intptr_t __cdecl _wfindfirst32i64(const wchar_t *_Filename, struct _wfinddata32i64_t *_FindData);
+  /* msvcrt 64bit: alias for _wfindfirst, msvcrt 32bit: emu */
   _CRTIMP intptr_t __cdecl _wfindfirst64i32(const wchar_t *_Filename, struct _wfinddata64i32_t *_FindData);
-  _CRTIMP int      __cdecl _wfindnext32(intptr_t _FindHandle, struct _wfinddata32_t *_FindData);
-  _CRTIMP int      __cdecl _wfindnext32i64(intptr_t _FindHandle, struct _wfinddata32i64_t *_FindData);
-  _CRTIMP int      __cdecl _wfindnext64i32(intptr_t _FindHandle, struct _wfinddata64i32_t *_FindData);
-#else  /* __MSVCRT_VERSION__ >= 0x0800 */
-#ifdef _WIN64
-          intptr_t __cdecl _wfindfirst32(const wchar_t *_Filename, struct _wfinddata32_t *_FindData);        /* On WIN64, we porvide emu. */
-          intptr_t __cdecl _wfindfirst32i64(const wchar_t *_Filename, struct _wfinddata32i64_t *_FindData);  /* On WIN64, we porvide emu. */
-  _CRTIMP intptr_t __cdecl _wfindfirst64i32(const wchar_t *_Filename, struct _wfinddata64i32_t *_FindData);  /* On WIN64, we provide alias for _wfindfirst. */
-          int      __cdecl _wfindnext32(intptr_t _FindHandle, struct _wfinddata32_t *_FindData);             /* On WIN64, we porvide emu. */
-          int      __cdecl _wfindnext32i64(intptr_t _FindHandle, struct _wfinddata32i64_t *_FindData);       /* On WIN64, we porvide emu. */
-  _CRTIMP int      __cdecl _wfindnext64i32(intptr_t _FindHandle, struct _wfinddata64i32_t *_FindData);       /* On WIN64, we provide alias for _wfindnext. */
-#else  /* _WIN64 */
-  _CRTIMP intptr_t __cdecl _wfindfirst32(const wchar_t *_Filename, struct _wfinddata32_t *_FindData);        /* On WIN32, we provide alias for _wfindfirst. */
-  _CRTIMP intptr_t __cdecl _wfindfirst32i64(const wchar_t *_Filename, struct _wfinddata32i64_t *_FindData);  /* On WIN32, we provide alias for _wfindfirsti64. */
-          intptr_t __cdecl _wfindfirst64i32(const wchar_t *_Filename, struct _wfinddata64i32_t *_FindData);  /* On WIN32, we provide emu. */
-  _CRTIMP int      __cdecl _wfindnext32(intptr_t _FindHandle, struct _wfinddata32_t *_FindData);             /* On WIN32, we provide alias for _wfindnext. */
-  _CRTIMP int      __cdecl _wfindnext32i64(intptr_t _FindHandle, struct _wfinddata32i64_t *_FindData);       /* On WIN32, we provide alias for _wfindnexti64. */
-          int      __cdecl _wfindnext64i32(intptr_t _FindHandle, struct _wfinddata64i32_t *_FindData);       /* On WIN32, we provide emu. */
-#endif  /* _WIN64 */
-#endif  /* __MSVCRT_VERSION__ >= 0x0800 */
   _CRTIMP intptr_t __cdecl _wfindfirst64(const wchar_t *_Filename, struct _wfinddata64_t *_FindData);
+  /* msvcrt 64bit: emu, msvcrt 32bit: alias for _wfindnext */
+  _CRTIMP int      __cdecl _wfindnext32(intptr_t _FindHandle, struct _wfinddata32_t *_FindData);
+  /* msvcrt 64bit: emu, msvcrt 32bit: alias for _wfindnexti64 */
+  _CRTIMP int      __cdecl _wfindnext32i64(intptr_t _FindHandle, struct _wfinddata32i64_t *_FindData);
+  /* msvcrt 64bit: alias for _wfindnext, msvcrt 32bit: emu */
+  _CRTIMP int      __cdecl _wfindnext64i32(intptr_t _FindHandle, struct _wfinddata64i32_t *_FindData);
   _CRTIMP int      __cdecl _wfindnext64(intptr_t _FindHandle, struct _wfinddata64_t *_FindData);
   _CRTIMP int      __cdecl _wunlink(const wchar_t *_Filename);
   _CRTIMP int      __cdecl _wrename(const wchar_t *_OldFilename, const wchar_t *_NewFilename);

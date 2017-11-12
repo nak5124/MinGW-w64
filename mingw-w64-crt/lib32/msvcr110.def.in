@@ -504,7 +504,7 @@ __pctype_func
 __pioinfo DATA
 __pwctype_func
 __pxcptinfoptrs
-__report_gsfailure DATA ; Provided in libmingw32
+__report_gsfailure
 __set_app_type
 __setlc_active DATA
 __setusermatherr
@@ -557,9 +557,9 @@ _atoldbl_l
 _beep
 _beginthread
 _beginthreadex
-_byteswap_uint64 DATA ; Provided in libmingwex
-_byteswap_ulong DATA ; Provided in libmingwex
-_byteswap_ushort DATA ; Provided in libmingwex
+_byteswap_uint64
+_byteswap_ulong
+_byteswap_ushort
 _c_exit
 _cabs DATA ; Provided in libmingwex
 _callnewh
@@ -731,7 +731,7 @@ _get_current_locale
 _get_daylight
 _get_doserrno
 _get_dstbias
-_get_errno DATA ; Provided in libmingwex
+_get_errno
 _get_fmode
 _get_heap_handle
 _get_invalid_parameter_handler
@@ -745,7 +745,7 @@ _get_timezone
 _get_tzname
 _get_unexpected
 _get_wpgmptr
-_getc_nolock DATA ; Provided in libmingwex
+_getc_nolock
 _getch
 _getch_nolock
 _getche
@@ -762,6 +762,7 @@ _getpid@0
 _getptd
 _getsystime
 _getw
+_getwc_nolock = _fgetwc_nolock
 _getwch
 _getwch_nolock
 _getwche
@@ -1111,6 +1112,7 @@ _putch_nolock
 _putenv
 _putenv_s
 _putw
+_putwc_nolock = _fputwc_nolock
 _putwch
 _putwch_nolock
 _putws
@@ -1123,9 +1125,9 @@ _resetstkoflw
 _rmdir
 _rmtmp
 _rotl
-_rotl64 DATA ; Provided in libkernel32
+_rotl64
 _rotr
-_rotr64 DATA ; Provided in libkernel32
+_rotr64
 _scalb
 _scanf_l
 _scanf_s_l
@@ -1145,7 +1147,7 @@ _set_SSE2_enable
 _set_abort_behavior
 _set_controlfp
 _set_doserrno
-_set_errno DATA ; Provided in libmingwex
+_set_errno
 _set_error_mode
 _set_fmode
 _set_invalid_parameter_handler
@@ -1197,12 +1199,12 @@ _sprintf_p_l
 _sprintf_s_l
 _sscanf_l
 _sscanf_s_l
-_stat32 DATA ; Provided in libmingwex
-_stat == _stat32 ; Compatibility with MSVCRT.DLL, but not used directly
-_stat32i64 DATA ; Provided in libmingwex
-_stati64 == _stat32i64 ; Compatibility with MSVCRT.DLL, but not used directly
-_stat64 DATA ; Provided in libmingwex
-_stat64i32 DATA ; Provided in libmingwex
+; _stat32 Replaced by emu for trailing slash bug
+; _stat We provide alias for _stat32 for compatibility with MSVCRT.DLL, but not used directly
+; _stat32i64 Replaced by emu for trailing slash bug
+; _stati64 We provide alias for _stat32i64 for compatibility with MSVCRT.DLL, but not used directly
+; _stat64 Replaced by emu for trailing slash bug
+; _stat64i32 Replaced by emu for trailing slash bug
 _statusfp
 _statusfp2
 _strcoll_l
@@ -1477,12 +1479,12 @@ _wspawnvp
 _wspawnvpe
 _wsplitpath
 _wsplitpath_s
-_wstat32 DATA ; Provided in libmingwex
-_wstat == _wstat32 ; Compatibility with MSVCRT.DLL, but not used directly
-_wstat32i64 DATA ; Provided in libmingwex
-_wstati64 == _wstat32i64 ; Compatibility with MSVCRT.DLL, but not used directly
-_wstat64 DATA ; Provided in libmingwex
-_wstat64i32 DATA ; Provided in libmingwex
+; _wstat32 Replaced by emu for trailing slash bug
+; _wstat We provide alias for _wstat32 for compatibility with MSVCRT.DLL, but not used directly
+; _wstat32i64 Replaced by emu for trailing slash bug
+; _wstati64 We provide alias for _wstat32i64 for compatibility with MSVCRT.DLL, but not used directly
+; _wstat64 Replaced by emu for trailing slash bug
+; _wstat64i32 Replaced by emu for trailing slash bug
 _wstrdate
 _wstrdate_s
 _wstrtime
@@ -1520,7 +1522,7 @@ atoi
 atol
 bsearch
 bsearch_s
-btowc DATA ; Provided in libmingwex
+btowc
 calloc
 ceil DATA ; Provided in libmingwex
 clearerr
@@ -1612,9 +1614,9 @@ log10
 ; longjmp This function is described in msvcrt-common.def.in
 malloc
 mblen
-mbrlen DATA ; Provided in libmingwex
-mbrtowc DATA ; Provided in libmingwex
-mbsrtowcs DATA ; Provided in libmingwex
+mbrlen
+mbrtowc
+mbsrtowcs
 mbsrtowcs_s
 mbstowcs
 mbstowcs_s
@@ -1676,7 +1678,7 @@ strncat_s
 strncmp
 strncpy
 strncpy_s
-strnlen DATA ; Provided in libmingwex
+strnlen
 strpbrk
 strrchr
 strspn
@@ -1714,7 +1716,7 @@ vsprintf_s
 vswprintf_s
 vwprintf
 vwprintf_s
-wcrtomb DATA ; Provided in libmingwex
+wcrtomb
 wcrtomb_s
 wcscat
 wcscat_s
@@ -1731,10 +1733,10 @@ wcsncat_s
 wcsncmp
 wcsncpy
 wcsncpy_s
-wcsnlen DATA ; Provided in libmingwex
+wcsnlen
 wcspbrk
 wcsrchr
-wcsrtombs DATA ; Provided in libmingwex
+wcsrtombs
 wcsrtombs_s
 wcsspn
 wcsstr
@@ -1746,7 +1748,7 @@ wcstombs
 wcstombs_s
 wcstoul
 wcsxfrm
-wctob DATA ; Provided in libmingwex
+wctob
 wctomb
 wctomb_s
 wmemcpy_s

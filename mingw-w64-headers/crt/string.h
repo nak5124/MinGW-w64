@@ -70,7 +70,7 @@ extern "C" {
                 char *  __cdecl  strcat(char * __restrict__ _Dest, const char * __restrict__ _Source);
                 int     __cdecl  strcmp(const char *_Str1, const char *_Str2);
                 size_t  __cdecl  strlen(const char *_Str);
-  /* _CRTIMP */ size_t  __cdecl  strnlen(const char *_Str, size_t _MaxCount);  /* Provided in libmingwex. */
+  _CRTIMP       size_t  __cdecl  strnlen(const char *_Str, size_t _MaxCount);
   __forceinline size_t __cdecl strnlen_s(const char *_Str, size_t _MaxCount) {
     return (_Str == 0) ? 0 : strnlen(_Str, _MaxCount);
   }
@@ -183,7 +183,7 @@ extern "C" {
   /* _CRTIMP */               wchar_t * __cdecl   wcscpy(wchar_t * __restrict__ _Dest, const wchar_t * __restrict__ _Source) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   /* _CRTIMP */               size_t    __cdecl   wcscspn(const wchar_t *_Str, const wchar_t *_Control);
   /* _CRTIMP */               size_t    __cdecl   wcslen(const wchar_t *_Str);
-  /* _CRTIMP */               size_t    __cdecl   wcsnlen(const wchar_t *_Src, size_t _MaxCount);
+  _CRTIMP                     size_t    __cdecl   wcsnlen(const wchar_t *_Src, size_t _MaxCount);
   __forceinline size_t __cdecl wcsnlen_s(const wchar_t *_Src, size_t _MaxCount) {
     return (_Src == NULL) ? 0 : wcsnlen(_Src, _MaxCount);
   }
