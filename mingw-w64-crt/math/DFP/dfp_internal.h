@@ -50,7 +50,6 @@
 #include <errno.h>
 #include <inttypes.h>
 
-#ifndef _MSC_VER
 #ifndef __DECIMAL_BID_FORMAT__
 #error Only BID DFP supported!
 #endif
@@ -58,7 +57,6 @@
 #if (__BYTE_ORDER__ != __ORDER_LITTLE_ENDIAN__) || (__FLOAT_WORD_ORDER__ != __ORDER_LITTLE_ENDIAN__)
 #error Only little endian supported!
 #endif
-#endif /* _MSC_VER */
 
 /* We need to check the BID encoding format
 
@@ -195,12 +193,6 @@ typedef struct structpack type2d128 {
   uint32_t bits:2;
   uint32_t sign:1;
 } type2d128;
-
-#ifdef _MSC_VER
-typedef type0d32 _Decimal32;
-typedef type0d64 _Decimal64;
-typedef type0d128 _Decimal128;
-#endif /* _MSC_VER */
 
 #include <poppack.h>
 

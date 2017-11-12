@@ -35,9 +35,6 @@ extern "C" {
 #endif
 
 DEFINE_GUID(IID_IUnknown, 0x00000000, 0x0000, 0x0000, 0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46);
-#if defined(__cplusplus) && _MSC_VER >= 1100
-struct __declspec(uuid("00000000-0000-0000-C000-000000000046")) IUnknown;
-#endif
 
 #undef INTERFACE
 #define INTERFACE IUnknown

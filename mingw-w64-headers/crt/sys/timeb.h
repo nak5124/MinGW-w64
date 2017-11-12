@@ -122,11 +122,7 @@ extern "C" {
 #ifndef __CRT__NO_INLINE
 
 #ifndef _STATIC_ASSERT
-#ifdef _MSC_VER
-#define _STATIC_ASSERT(expr) typedef char __static_assert_t[(expr)]
-#else  /* _MSC_VER */
 #define _STATIC_ASSERT(expr) extern void __static_assert_t(int [(expr)?1:-1])
-#endif  /* _MSC_VER */
 #endif  /* !_STATIC_ASSERT */
 
 #ifdef _USE_32BIT_TIME_T

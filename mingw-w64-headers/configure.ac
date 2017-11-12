@@ -135,23 +135,12 @@ AS_VAR_IF([enable_idl],[yes],
     [IDLHEAD_LIST=""])
 AC_SUBST([IDLHEAD_LIST])
 
-AC_MSG_CHECKING([default _WIN32_WINNT version])
-AC_ARG_WITH([default-win32-winnt],
-  [AS_HELP_STRING([--with-default-win32-winnt=VER],
-    [Default value of _WIN32_WINNT (default: 0x502)])],
-  [],
-  [with_default_win32_winnt=0x502])
-AC_MSG_RESULT([$with_default_win32_winnt])
-AS_VAR_SET([DEFAULT_WIN32_WINNT],[$with_default_win32_winnt])
-AC_SUBST([DEFAULT_WIN32_WINNT])
-
 # Checks for typedefs, structures, and compiler characteristics.
 
 # Checks for library functions.
 
 AC_CONFIG_FILES([
   Makefile
-  crt/_mingw.h
 ])
 AC_OUTPUT
 

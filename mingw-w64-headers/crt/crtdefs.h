@@ -257,11 +257,7 @@ extern "C" {
 #endif  /* !UNALIGNED */
 
 #ifndef _CRT_ALIGN
-#ifdef _MSC_VER
-#define _CRT_ALIGN(x) __declspec(align(x))
-#else  /* _MSC_VER */
 #define _CRT_ALIGN(x) __attribute__((__aligned__ (x)))
-#endif  /* _MSC_VER */
 #endif  /* !_CRT_ALIGN */
 
 #endif  /* !__WIDL__ */

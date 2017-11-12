@@ -204,11 +204,7 @@
 #define __MINGW_GNUC_PREREQ(major, minor) 0
 #endif  /* defined(__GNUC__) && defined(__GNUC_MINOR__) */
 
-#ifdef _MSC_VER
-#define __MINGW_MSC_PREREQ(major, minor) (_MSC_VER >= (major * 100 + minor * 10))
-#else  /* _MSC_VER */
 #define __MINGW_MSC_PREREQ(major, minor) 0
-#endif  /* _MSC_VER */
 
 #ifdef __MINGW_MSVC_COMPAT_WARNINGS
 # if __MINGW_GNUC_PREREQ(4, 5)

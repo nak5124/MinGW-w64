@@ -124,42 +124,6 @@ typedef struct sockaddr SOCKADDR;
 # define DPNA_VALUE_MODEMPROVIDER      (const WCHAR []){ 'M','O','D','E','M',0 }
 # define DPNA_VALUE_SERIALPROVIDER     (const WCHAR []){ 'S','E','R','I','A','L',0 }
 
-#elif defined(_MSC_VER)
-
-# define DPNA_HEADER                   L"x-directplay:/"
-# define DPNA_KEY_APPLICATION_INSTANCE L"applicationinstance"
-# define DPNA_KEY_BAUD                 L"baud"
-# define DPNA_KEY_DEVICE               L"device"
-# define DPNA_KEY_FLOWCONTROL          L"flowcontrol"
-# define DPNA_KEY_HOSTNAME             L"hostname"
-# define DPNA_KEY_NAMEINFO             L"nameinfo"
-# define DPNA_KEY_PARITY               L"parity"
-# define DPNA_KEY_PHONENUMBER          L"phonenumber"
-# define DPNA_KEY_PORT                 L"port"
-# define DPNA_KEY_PROCESSOR            L"processor"
-# define DPNA_KEY_PROGRAM              L"program"
-# define DPNA_KEY_PROVIDER             L"provider"
-# define DPNA_KEY_SCOPE                L"scope"
-# define DPNA_KEY_STOPBITS             L"stopbits"
-# define DPNA_KEY_TRAVERSALMODE        L"traversalmode"
-# define DPNA_STOP_BITS_ONE            L"1"
-# define DPNA_STOP_BITS_ONE_FIVE       L"1.5"
-# define DPNA_STOP_BITS_TWO            L"2"
-# define DPNA_PARITY_NONE              L"NONE"
-# define DPNA_PARITY_EVEN              L"EVEN"
-# define DPNA_PARITY_ODD               L"ODD"
-# define DPNA_PARITY_MARK              L"MARK"
-# define DPNA_PARITY_SPACE             L"SPACE"
-# define DPNA_FLOW_CONTROL_NONE        L"NONE"
-# define DPNA_FLOW_CONTROL_XONXOFF     L"XONXOFF"
-# define DPNA_FLOW_CONTROL_RTS         L"RTS"
-# define DPNA_FLOW_CONTROL_DTR         L"DTR"
-# define DPNA_FLOW_CONTROL_RTSDTR      L"RTSDTR"
-# define DPNA_VALUE_TCPIPPROVIDER      L"IP"
-# define DPNA_VALUE_IPXPROVIDER        L"IPX"
-# define DPNA_VALUE_MODEMPROVIDER      L"MODEM"
-# define DPNA_VALUE_SERIALPROVIDER     L"SERIAL"
-
 #else
 
 static const WCHAR DPNA_HEADER[] = { 'x','-','d','i','r','e','c','t','p','l','a','y',':','/',0 };

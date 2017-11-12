@@ -59,11 +59,7 @@ typedef __LONG32 HRESULT;
 #endif
 
 #ifndef C_ASSERT
-#ifdef _MSC_VER
-# define C_ASSERT(e) typedef char __C_ASSERT__[(e)?1:-1]
-#else
-# define C_ASSERT(e) extern void __C_ASSERT__(int [(e)?1:-1])
-#endif
+#define C_ASSERT(e) extern void __C_ASSERT__(int [(e)?1:-1])
 #endif /* C_ASSERT */
 
 /* extern removed for C mode to avoid double extern qualifier from __CRT_INLINE */

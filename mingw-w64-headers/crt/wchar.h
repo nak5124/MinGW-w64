@@ -34,8 +34,6 @@ extern "C" {
 #ifndef _VA_LIST_DEFINED  /* if stdargs.h didn't define it */
 #ifdef __GNUC__
   typedef __gnuc_va_list va_list;
-#elif defined(_MSC_VER)
-  typedef char *         va_list;
 #elif !defined(__WIDL__)
 #error VARARGS not implemented for this compiler
 #endif  /* __GNUC__ */

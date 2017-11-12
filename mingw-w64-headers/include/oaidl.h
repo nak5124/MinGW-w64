@@ -363,7 +363,7 @@ typedef SAFEARRAY *LPSAFEARRAY;
 #define _FORCENAMELESSUNION 1
 #endif
 
-#if (__STDC__ && !defined(__cplusplus) && !defined(_FORCENAMELESSUNION)) || defined(NONAMELESSUNION) || (defined (_MSC_VER) && !defined(_MSC_EXTENSIONS) && !defined(_FORCENAMELESSUNION))
+#if (__STDC__ && !defined(__cplusplus) && !defined(_FORCENAMELESSUNION)) || defined(NONAMELESSUNION)
 #define __VARIANT_NAME_1 n1
 #define __VARIANT_NAME_2 n2
 #define __VARIANT_NAME_3 n3

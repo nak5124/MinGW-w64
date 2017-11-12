@@ -35,7 +35,7 @@ DEFINE_GUIDSTRUCT("72CF721C-525A-11D1-9AA1-00A0C9223196", KoCreateObject);
 #define CLSCTX_KERNEL_SERVER    0x00000200
 #endif
 
-#if !defined(__cplusplus) || _MSC_VER < 1100
+#ifndef __cplusplus
 
 #define STATIC_IID_IKoInitializeParentDeviceObject 0x21B36996, 0x8DE3, 0x11D1, 0x8A, 0xE0, 0x00, 0xA0, 0xC9, 0x22, 0x31, 0x96
 DEFINE_GUIDEX(IID_IKoInitializeParentDeviceObject);

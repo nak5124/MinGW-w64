@@ -24,10 +24,8 @@ extern "C" {
 #define JET_API __stdcall
 #endif
 
-#if defined(_WIN64)
+#ifdef _WIN64
 typedef unsigned __int64 JET_API_PTR;
-#elif !defined(__midl) && (defined(_X86_) || defined(_M_IX86)) && _MSC_VER >= 1300
-typedef __w64 unsigned long JET_API_PTR;
 #else
 typedef unsigned long JET_API_PTR;
 #endif

@@ -4,9 +4,6 @@
  * No warranty is given; refer to the file DISCLAIMER within this package.
  */
 
-#if defined(_MSC_VER) && !defined(_MSC_EXTENSIONS)
-#define NONAMELESSUNION		1
-#endif
 #if defined(NONAMELESSSTRUCT) && \
    !defined(NONAMELESSUNION)
 #define NONAMELESSUNION		1

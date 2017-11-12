@@ -163,11 +163,7 @@
 #endif
 
 /* Returns the type's alignment */
-#if defined(_MSC_VER) && (_MSC_VER >= 1300)
-#define TYPE_ALIGNMENT(t) __alignof(t)
-#else
 #define TYPE_ALIGNMENT(t) FIELD_OFFSET(struct { char x; t test; }, test)
-#endif
 
 #if defined (_X86_) || defined (_AMD64_)
 #define PROBE_ALIGNMENT(v) TYPE_ALIGNMENT(ULONG)
@@ -190,11 +186,7 @@
 
 
 #ifndef NOP_FUNCTION
-#if (_MSC_VER >= 1210)
-#define NOP_FUNCTION __noop
-#else
 #define NOP_FUNCTION (void)0
-#endif
 #endif
 
 /* Import and Export Specifiers */
@@ -204,11 +196,7 @@
 #define DECLSPEC_NORETURN __declspec(noreturn)
 
 #ifndef DECLSPEC_ADDRSAFE
-#if (_MSC_VER >= 1200) && (defined(_M_ALPHA) || defined(_M_AXP64))
-#define DECLSPEC_ADDRSAFE  __declspec(address_safe)
-#else
 #define DECLSPEC_ADDRSAFE
-#endif
 #endif /* DECLSPEC_ADDRSAFE */
 
 #if !defined(_NTSYSTEM_)
@@ -225,17 +213,11 @@
 
 /* Inlines */
 #ifndef FORCEINLINE
-#if !defined(_MSC_VER) || (_MSC_VER >=1200)
 #define FORCEINLINE __forceinline
-#else
-#define FORCEINLINE __inline
-#endif
 #endif /* FORCEINLINE */
 
 #ifndef DECLSPEC_NOINLINE
-#if (_MSC_VER >= 1300)
-#define DECLSPEC_NOINLINE  __declspec(noinline)
-#elif defined(__GNUC__)
+#ifdef __GNUC__
 #define DECLSPEC_NOINLINE __attribute__((noinline))
 #else
 #define DECLSPEC_NOINLINE
@@ -250,9 +232,7 @@
 
 /* Use to specify structure alignment */
 #ifndef DECLSPEC_ALIGN
-#if defined(_MSC_VER) && (_MSC_VER >= 1300) && !defined(MIDL_PASS)
-#define DECLSPEC_ALIGN(x) __declspec(align(x))
-#elif defined(__GNUC__)
+#ifdef __GNUC__
 #define DECLSPEC_ALIGN(x) __attribute__ ((__aligned__ (x)))
 #else
 #define DECLSPEC_ALIGN(x)
@@ -272,7 +252,7 @@
 #endif
 
 #ifndef DECLSPEC_SELECTANY
-#if (_MSC_VER >= 1100) || defined(__GNUC__)
+#ifdef __GNUC__
 #define DECLSPEC_SELECTANY __declspec(selectany)
 #else
 #define DECLSPEC_SELECTANY

@@ -98,25 +98,6 @@ extern "C" {
 #define POINTER_ALIGNMENT
 #endif
 
-#if defined(_MSC_VER)
-/* Disable some warnings */
-#pragma warning(disable:4115) /* Named type definition in parentheses */
-#pragma warning(disable:4201) /* Nameless unions and structs */
-#pragma warning(disable:4214) /* Bit fields of other types than int */
-#pragma warning(disable:4820) /* Padding added, due to alignemnet requirement */
-
-/* Indicate if #pragma alloc_text() is supported */
-#if defined(_M_IX86) || defined(_M_AMD64) || defined(_M_IA64)
-#define ALLOC_PRAGMA 1
-#endif
-
-/* Indicate if #pragma data_seg() is supported */
-#if defined(_M_IX86) || defined(_M_AMD64)
-#define ALLOC_DATA_PRAGMA 1
-#endif
-
-#endif /* _MSC_VER */
-
 #if defined(_WIN64)
 #if !defined(USE_DMA_MACROS) && !defined(_NTHAL_)
 #define USE_DMA_MACROS
@@ -164,11 +145,7 @@ typedef struct _ADAPTER_OBJECT *PADAPTER_OBJECT;
 #endif
 
 #ifndef DEFINE_GUIDEX
-#ifdef _MSC_VER
-#define DEFINE_GUIDEX(name) EXTERN_C const CDECL GUID name
-#else
 #define DEFINE_GUIDEX(name) EXTERN_C const GUID name
-#endif
 #endif /* DEFINE_GUIDEX */
 
 #ifndef STATICGUIDOF
@@ -5692,26 +5669,11 @@ typedef struct _SCATTER_GATHER_ELEMENT {
 
 #if defined(_MSC_EXTENSIONS) || defined(__GNUC__)
 
-#if defined(_MSC_VER)
-#if _MSC_VER >= 1200
-#pragma warning(push)
-#endif
-#pragma warning(disable:4200)
-#endif /* _MSC_VER */
-
 typedef struct _SCATTER_GATHER_LIST {
   ULONG NumberOfElements;
   ULONG_PTR Reserved;
   SCATTER_GATHER_ELEMENT Elements[1];
 } SCATTER_GATHER_LIST, *PSCATTER_GATHER_LIST;
-
-#if defined(_MSC_VER)
-#if _MSC_VER >= 1200
-#pragma warning(pop)
-#else
-#pragma warning(default:4200)
-#endif
-#endif /* _MSC_VER */
 
 #else /* defined(_MSC_EXTENSIONS) || defined(__GNUC__) */
 
@@ -7715,8 +7677,6 @@ KeMemoryBarrier(VOID)
   volatile LONG Barrier;
 #if defined(__GNUC__)
   __asm__ __volatile__ ("xchg %%eax, %0" : : "m" (Barrier) : "%eax");
-#elif defined(_MSC_VER)
-  __asm xchg [Barrier], eax
 #endif
 }
 
@@ -9422,9 +9382,9 @@ RtlCheckBit(
 #endif /* !defined(MIDL_PASS) */
 
 /* Byte Swap Functions */
-#if (defined(_M_IX86) && (_MSC_FULL_VER > 13009037 || defined(__GNUC__))) || \
+#if (defined(_M_IX86) && defined(__GNUC__)) || \
     ((defined(_M_AMD64) || defined(_M_IA64)) \
-        && (_MSC_FULL_VER > 13009175 || defined(__GNUC__)))
+        && defined(__GNUC__))
 
 #define RtlUshortByteSwap(_x) _byteswap_ushort((USHORT)(_x))
 #define RtlUlongByteSwap(_x) _byteswap_ulong((_x))
@@ -9456,37 +9416,12 @@ RtlCheckBit(
 #define RTL_SOFT_VERIFY(exp) RTL_SOFT_ASSERT(exp)
 #define RTL_SOFT_VERIFYMSG(msg, exp) RTL_SOFT_ASSERTMSG(msg, exp)
 
-#if defined(_MSC_VER)
-
-#define NT_ASSERT(exp) \
-   ((!(exp)) ? \
-      (__annotation(L"Debug", L"AssertFail", L#exp), \
-       DbgRaiseAssertionFailure(), FALSE) : TRUE)
-
-#define NT_ASSERTMSG(msg, exp) \
-   ((!(exp)) ? \
-      (__annotation(L"Debug", L"AssertFail", L##msg), \
-      DbgRaiseAssertionFailure(), FALSE) : TRUE)
-
-#define NT_ASSERTMSGW(msg, exp) \
-    ((!(exp)) ? \
-        (__annotation(L"Debug", L"AssertFail", msg), \
-         DbgRaiseAssertionFailure(), FALSE) : TRUE)
-
-#define NT_VERIFY     NT_ASSERT
-#define NT_VERIFYMSG  NT_ASSERTMSG
-#define NT_VERIFYMSGW NT_ASSERTMSGW
-
-#else
-
 /* GCC doesn't support __annotation (nor PDB) */
 #define NT_ASSERT(exp) \
    (VOID)((!(exp)) ? (DbgRaiseAssertionFailure(), FALSE) : TRUE)
 
 #define NT_ASSERTMSG NT_ASSERT
 #define NT_ASSERTMSGW NT_ASSERT
-
-#endif
 
 #else /* !DBG */
 
@@ -14594,13 +14529,9 @@ NTSTATUS
 NTAPI
 KdEnableDebugger(VOID);
 
-#if (_MSC_FULL_VER >= 150030729) && !defined(IMPORT_NATIVE_DBG_BREAK)
-#define DbgBreakPoint __debugbreak
-#else
 VOID
 NTAPI
 DbgBreakPoint(VOID);
-#endif
 
 NTSYSAPI
 VOID

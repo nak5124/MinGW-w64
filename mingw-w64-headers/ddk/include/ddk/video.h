@@ -37,10 +37,6 @@ extern "C" {
 #undef PAGED_CODE
 #endif
 
-#if defined(_MSC_VER)
-#define ALLOC_PRAGMA 1
-#endif
-
 #if defined(_VIDEOPORT_)
 #define VPAPI
 #else

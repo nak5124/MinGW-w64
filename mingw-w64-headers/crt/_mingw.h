@@ -72,21 +72,15 @@
 # endif  /* __declspec */
 #endif  /* !__GNUC__ */
 
-#ifdef _MSC_VER
-#define USE___UUIDOF 1
-#else  /* _MSC_VER */
 #define USE___UUIDOF 0
-#endif  /* _MSC_VER */
 
-#if !defined(_MSC_VER) && !defined(_inline)
+#ifndef _inline
 #define _inline __inline
-#endif  /* !defined(_MSC_VER) && !defined(_inline) */
+#endif  /* !_inline */
 
 #ifdef __cplusplus
 # define __CRT_INLINE inline
-#elif defined(_MSC_VER)
-# define __CRT_INLINE __inline
-#else  /* _MSC_VER */
+#else  /* __cplusplus */
 # if (__MINGW_GNUC_PREREQ(4, 3) && __STDC_VERSION__ >= 199901L) || defined(__clang__)
 #  define __CRT_INLINE extern inline __attribute__((__gnu_inline__))
 # else  /* (__MINGW_GNUC_PREREQ(4, 3) && __STDC_VERSION__ >= 199901L) || defined(__clang__) */
@@ -116,18 +110,12 @@
 #endif  /* __cplusplus */
 
 #ifndef __GNUC__
-# ifdef _MSC_VER
-#  define __restrict__ __restrict
-# else  /* _MSC_VER */
-#  define __restrict__  /* nothing */
-# endif  /* _MSC_VER */
+#define __restrict__  /* nothing */
 #endif  /* !__GNUC__ */
 
 #if __MINGW_GNUC_PREREQ(3, 1) && !defined(__GNUG__)
 # define __restrict_arr __restrict
-#elif defined(_MSC_VER)
-# define __restrict_arr __restrict
-#else  /* _MSC_VER */
+#else  /* __MINGW_GNUC_PREREQ(3, 1) && !defined(__GNUG__) */
 # ifdef __GNUC__
 #  define __restrict_arr  /* Not supported in old GCC.  */
 # else  /* __GNUC__ */
@@ -217,7 +205,7 @@
 #endif  /* !__MSVCRT_VERSION__ */
 
 #ifndef _WIN32_WINNT
-#define _WIN32_WINNT @DEFAULT_WIN32_WINNT@
+#define _WIN32_WINNT 0x0A00
 #endif  /* !_WIN32_WINNT */
 
 #ifndef _INT128_DEFINED
@@ -328,9 +316,6 @@
 #undef _CRT_glob
 #define _CRT_glob _dowildcard
 
-#if defined(_MSC_VER) && !defined(_MSC_EXTENSIONS)
-#define NONAMELESSUNION 1
-#endif  /* defined(_MSC_VER) && !defined(_MSC_EXTENSIONS) */
 #if defined(NONAMELESSSTRUCT) && !defined(NONAMELESSUNION)
 #define NONAMELESSUNION 1
 #endif  /* defined(NONAMELESSSTRUCT) && !defined(NONAMELESSUNION) */
