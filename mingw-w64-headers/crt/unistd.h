@@ -73,6 +73,8 @@ extern "C" {
 
 #ifndef _FILE_OFFSET_BITS_SET_TRUNCATE
 #if defined(_FILE_OFFSET_BITS) && (_FILE_OFFSET_BITS == 64)
+#undef truncate
+#undef ftruncate
 #define truncate  truncate64
 #define ftruncate ftruncate64
 #endif  /* defined(_FILE_OFFSET_BITS) && (_FILE_OFFSET_BITS == 64) */

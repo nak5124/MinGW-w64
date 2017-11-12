@@ -689,6 +689,7 @@ extern "C++" {
 
 #ifndef _FILE_OFFSET_BITS_SET_FSEEKO
 #if defined(_FILE_OFFSET_BITS) && (_FILE_OFFSET_BITS == 64)
+#undef fseeko
 #define fseeko fseeko64
 #endif  /* defined(_FILE_OFFSET_BITS) && (_FILE_OFFSET_BITS == 64) */
 #define _FILE_OFFSET_BITS_SET_FSEEKO
@@ -696,6 +697,7 @@ extern "C++" {
 
 #ifndef _FILE_OFFSET_BITS_SET_FTELLO
 #if defined(_FILE_OFFSET_BITS) && (_FILE_OFFSET_BITS == 64)
+#undef ftello
 #define ftello ftello64
 #endif  /* defined(_FILE_OFFSET_BITS) && (_FILE_OFFSET_BITS == 64) */
 #define _FILE_OFFSET_BITS_SET_FTELLO

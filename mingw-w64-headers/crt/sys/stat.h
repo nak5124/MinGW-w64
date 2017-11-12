@@ -292,6 +292,9 @@ extern "C" {
 #endif  /* !defined(RC_INVOKED) && !defined(NO_OLDNAMES) */
 
 #if defined(_FILE_OFFSET_BITS) && (_FILE_OFFSET_BITS == 64)
+#undef fstat
+#undef stat
+#undef wstat
 #ifdef _USE_32BIT_TIME_T
 #define fstat _fstat32i64
 #define stat  _stat32i64
