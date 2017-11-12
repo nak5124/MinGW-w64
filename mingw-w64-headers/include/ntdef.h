@@ -30,18 +30,11 @@
 #include <_mingw.h>
 
 #if defined(__x86_64) && \
-  !(defined(_X86_) || defined(__i386__) || defined(_IA64_))
+  !(defined(_X86_) || defined(__i386__))
 #if !defined(_AMD64_)
 #define _AMD64_
 #endif
 #endif /* _AMD64_ */
-
-#if defined(__ia64__) && \
-  !(defined(_X86_) || defined(__x86_64) || defined(_AMD64_))
-#if !defined(_IA64_)
-#define _IA64_
-#endif
-#endif /* _IA64_ */
 
 /* Dependencies */
 #include <ctype.h>
@@ -117,7 +110,7 @@
 
 #undef  UNALIGNED	/* avoid redefinition warnings vs _mingw.h */
 #undef  UNALIGNED64
-#if defined(_M_MRX000) || defined(_M_ALPHA) || defined(_M_PPC) || defined(_M_IA64) || defined(_M_AMD64) || defined (_M_ARM)
+#if defined(_M_MRX000) || defined(_M_ALPHA) || defined(_M_PPC) || defined(_M_AMD64) || defined (_M_ARM)
 #define ALIGNMENT_MACHINE
 #define UNALIGNED __unaligned
 #if defined(_WIN64)
@@ -167,7 +160,7 @@
 
 #if defined (_X86_) || defined (_AMD64_)
 #define PROBE_ALIGNMENT(v) TYPE_ALIGNMENT(ULONG)
-#elif defined (_IA64_) || defined (_ARM_)
+#elif defined (_ARM_)
 #define PROBE_ALIGNMENT(v) (TYPE_ALIGNMENT(v) > TYPE_ALIGNMENT(ULONG) ? TYPE_ALIGNMENT(v) : TYPE_ALIGNMENT(ULONG))
 #endif
 

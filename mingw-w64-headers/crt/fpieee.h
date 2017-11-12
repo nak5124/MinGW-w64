@@ -35,9 +35,6 @@ extern "C" {
     _FpFormatBcd80,
     _FpFormatCompare,
     _FpFormatString,
-#ifdef __ia64__
-    _FpFormatFp82
-#endif  /* __ia64__ */
   } _FPIEEE_FORMAT;
 
   typedef enum {
@@ -151,19 +148,6 @@ extern "C" {
     _XMMI2Roundpd,
     _XMMI2Roundsd,
     _XMMI2Dppd,
-#ifdef __ia64__
-    _FpCodeFma,
-    _FpCodeFmaSingle,
-    _FpCodeFmaDouble,
-    _FpCodeFms,
-    _FpCodeFmsSingle,
-    _FpCodeFmsDouble,
-    _FpCodeFnma,
-    _FpCodeFnmaSingle,
-    _FpCodeFnmaDouble,
-    _FpCodeFamin,
-    _FpCodeFamax
-#endif  /* __ia64__ */
   } _FP_OPERATION_CODE;
 
   typedef enum {
@@ -177,10 +161,6 @@ extern "C" {
     _FpPrecisionFull,
     _FpPrecision53,
     _FpPrecision24,
-#if defined(__ia64__)
-    _FpPrecision64,
-    _FpPrecision113
-#endif
   } _FPIEEE_PRECISION;
 
                     typedef float          _FP32;
@@ -192,9 +172,6 @@ extern "C" {
   __MINGW_EXTENSION typedef __int64        _Q64;
 
   typedef struct
-#if defined(__ia64__)
-    _CRT_ALIGN(16)
-#endif
   {
     unsigned short W[5];
   } _FP80;
@@ -212,9 +189,6 @@ extern "C" {
   } _U64;
 
   typedef struct
-#if defined(__ia64__)
-    _CRT_ALIGN(16)
-#endif
   {
     unsigned short W[5];
   } _BCD80;
@@ -264,9 +238,6 @@ extern "C" {
     _FPIEEE_VALUE           Operand1;
     _FPIEEE_VALUE           Operand2;
     _FPIEEE_VALUE           Result;
-#ifdef __ia64__
-    _FPIEEE_VALUE           Operand3;
-#endif
   } _FPIEEE_RECORD, *_PFPIEEE_RECORD;
 
   struct _EXCEPTION_POINTERS;

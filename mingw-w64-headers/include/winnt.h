@@ -28,32 +28,25 @@ extern "C" {
 #endif
 
 #if defined(__x86_64) && \
-  !(defined(_X86_) || defined(__i386__) || defined(_IA64_) || defined (__arm__) || defined(__aarch64__))
+  !(defined(_X86_) || defined(__i386__) || defined (__arm__) || defined(__aarch64__))
 #if !defined(_AMD64_)
 #define _AMD64_
 #endif
 #endif /* _AMD64_ */
 
 #if defined(__arm__) && \
-  !(defined(_X86_) || defined(__x86_64) || defined(_AMD64_) || defined (__ia64__) || defined(__aarch64__))
+  !(defined(_X86_) || defined(__x86_64) || defined(_AMD64_) || defined(__aarch64__))
 #if !defined(_ARM_)
 #define _ARM_
 #endif
 #endif /* _ARM_ */
 
 #if defined(__aarch64__) && \
-  !(defined(_X86_) || defined(__x86_64) || defined(_AMD64_) || defined (__ia64__) || defined(__arm__))
+  !(defined(_X86_) || defined(__x86_64) || defined(_AMD64_) || defined(__arm__))
 #if !defined(_ARM64_)
 #define _ARM64_
 #endif
 #endif /* _ARM64_ */
-
-#if defined(__ia64__) && \
-  !(defined(_X86_) || defined(__x86_64) || defined(_AMD64_) || defined (__arm__) || defined(__aarch64__))
-#if !defined(_IA64_)
-#define _IA64_
-#endif
-#endif /* _IA64_ */
 
 #include <sdkddkver.h>
 
@@ -101,7 +94,7 @@ extern "C" {
 
 #undef  UNALIGNED	/* avoid redefinition warnings vs _mingw.h */
 #undef  UNALIGNED64
-#if defined (__ia64__) || defined (__x86_64__) || defined (__arm__) || defined(__aarch64__)
+#if defined (__x86_64__) || defined (__arm__) || defined(__aarch64__)
 #define ALIGNMENT_MACHINE
 #define UNALIGNED __unaligned
 #if defined (_WIN64)
@@ -131,7 +124,7 @@ extern "C" {
 
 #if defined (__x86_64__) || defined (__i386__)
 #define PROBE_ALIGNMENT(_s) TYPE_ALIGNMENT (DWORD)
-#elif defined (__ia64__) || defined (__arm__) || defined(__aarch64__)
+#elif defined (__arm__) || defined(__aarch64__)
 #define PROBE_ALIGNMENT(_s) (TYPE_ALIGNMENT (_s) > TYPE_ALIGNMENT (DWORD) ? TYPE_ALIGNMENT (_s) : TYPE_ALIGNMENT (DWORD))
 #elif !defined (RC_INVOKED) && !defined (__WIDL__)
 #error No supported target architecture.
@@ -146,7 +139,7 @@ extern "C" {
 #include <basetsd.h>
 
 #ifndef DECLSPEC_IMPORT
-#if (defined (__i386__) || defined (__ia64__) || defined (__x86_64__) || defined (__arm__) || defined(__aarch64__)) && !defined (__WIDL__)
+#if (defined (__i386__) || defined (__x86_64__) || defined (__arm__) || defined(__aarch64__)) && !defined (__WIDL__)
 #define DECLSPEC_IMPORT __declspec (dllimport)
 #else
 #define DECLSPEC_IMPORT
@@ -460,9 +453,6 @@ typedef enum {
 #define ERROR_SEVERITY_WARNING 0x80000000
 #define ERROR_SEVERITY_ERROR 0xC0000000
 
-#if defined (__ia64__) && !defined (__WIDL__)
-  __declspec(align(16))
-#endif
     typedef struct _FLOAT128 {
       __MINGW_EXTENSION __int64 LowPart;
       __MINGW_EXTENSION __int64 HighPart;
@@ -2206,324 +2196,6 @@ __buildmemorybarrier()
     } LDT_ENTRY,*PLDT_ENTRY;
 #endif /* _LDT_ENTRY_DEFINED */
 
-#if defined(__ia64__) && !defined(RC_INVOKED)
-
-#ifdef __cplusplus
-    extern "C" {
-#endif
-
-      BOOLEAN BitScanForward64(DWORD *Index,DWORD64 Mask);
-      BOOLEAN BitScanReverse64(DWORD *Index,DWORD64 Mask);
-
-#ifdef __cplusplus
-    }
-#endif
-#endif /* defined(__ia64__) && !defined(RC_INVOKED) */
-
-#if !defined(GENUTIL) && !defined(_GENIA64_) && defined(_IA64_)
-
-    void *_cdecl _rdteb(void);
-
-#ifdef __ia64__
-#define NtCurrentTeb() ((struct _TEB *)_rdteb())
-#define GetCurrentFiber() (((PNT_TIB)NtCurrentTeb())->FiberData)
-#define GetFiberData() (*(PVOID *)(GetCurrentFiber()))
-
-#ifdef __cplusplus
-    extern "C" {
-#endif
-
-      void __break(int);
-      void __yield(void);
-      void __mf(void);
-      void __lfetch(int Level,VOID CONST *Address);
-      void __lfetchfault(int Level,VOID CONST *Address);
-      void __lfetch_excl(int Level,VOID CONST *Address);
-      void __lfetchfault_excl(int Level,VOID CONST *Address);
-
-#define MD_LFHINT_NONE 0x00
-#define MD_LFHINT_NT1 0x01
-#define MD_LFHINT_NT2 0x02
-#define MD_LFHINT_NTA 0x03
-
-#ifdef __cplusplus
-    }
-#endif
-
-#define YieldProcessor __yield
-#define MemoryBarrier __mf
-#define PreFetchCacheLine __lfetch
-#define ReadForWriteAccess(p) (*(p))
-#define DbgRaiseAssertionFailure() __break(ASSERT_BREAKPOINT)
-
-#define PF_TEMPORAL_LEVEL_1 MD_LFHINT_NONE
-#define PF_NON_TEMPORAL_LEVEL_ALL MD_LFHINT_NTA
-
-#define UnsignedMultiplyHigh __UMULH
-
-    ULONGLONG UnsignedMultiplyHigh(ULONGLONG Multiplier,ULONGLONG Multiplicand);
-#else  /* __ia64__ */
-    struct _TEB *NtCurrentTeb(void);
-#endif /* __ia64__ */
-#endif /* !defined(GENUTIL) && !defined(_GENIA64_) && defined(_IA64_) */
-
-#ifdef _IA64_
-
-#define EXCEPTION_READ_FAULT 0
-#define EXCEPTION_WRITE_FAULT 1
-#define EXCEPTION_EXECUTE_FAULT 2
-
-#if !defined(RC_INVOKED)
-
-#define CONTEXT_IA64 0x00080000
-
-#define CONTEXT_CONTROL (CONTEXT_IA64 | __MSABI_LONG(0x00000001))
-#define CONTEXT_LOWER_FLOATING_POINT (CONTEXT_IA64 | __MSABI_LONG(0x00000002))
-#define CONTEXT_HIGHER_FLOATING_POINT (CONTEXT_IA64 | __MSABI_LONG(0x00000004))
-#define CONTEXT_INTEGER (CONTEXT_IA64 | __MSABI_LONG(0x00000008))
-#define CONTEXT_DEBUG (CONTEXT_IA64 | __MSABI_LONG(0x00000010))
-#define CONTEXT_IA32_CONTROL (CONTEXT_IA64 | __MSABI_LONG(0x00000020))
-
-#define CONTEXT_FLOATING_POINT (CONTEXT_LOWER_FLOATING_POINT | CONTEXT_HIGHER_FLOATING_POINT)
-#define CONTEXT_FULL (CONTEXT_CONTROL | CONTEXT_FLOATING_POINT | CONTEXT_INTEGER | CONTEXT_IA32_CONTROL)
-#define CONTEXT_ALL (CONTEXT_CONTROL | CONTEXT_FLOATING_POINT | CONTEXT_INTEGER | CONTEXT_DEBUG | CONTEXT_IA32_CONTROL)
-
-#define CONTEXT_EXCEPTION_ACTIVE 0x8000000
-#define CONTEXT_SERVICE_ACTIVE 0x10000000
-#define CONTEXT_EXCEPTION_REQUEST 0x40000000
-#define CONTEXT_EXCEPTION_REPORTING 0x80000000
-#endif /* !defined(RC_INVOKED) */
-
-    typedef struct _CONTEXT {
-      DWORD ContextFlags;
-      DWORD Fill1[3];
-      ULONGLONG DbI0;
-      ULONGLONG DbI1;
-      ULONGLONG DbI2;
-      ULONGLONG DbI3;
-      ULONGLONG DbI4;
-      ULONGLONG DbI5;
-      ULONGLONG DbI6;
-      ULONGLONG DbI7;
-      ULONGLONG DbD0;
-      ULONGLONG DbD1;
-      ULONGLONG DbD2;
-      ULONGLONG DbD3;
-      ULONGLONG DbD4;
-      ULONGLONG DbD5;
-      ULONGLONG DbD6;
-      ULONGLONG DbD7;
-      FLOAT128 FltS0;
-      FLOAT128 FltS1;
-      FLOAT128 FltS2;
-      FLOAT128 FltS3;
-      FLOAT128 FltT0;
-      FLOAT128 FltT1;
-      FLOAT128 FltT2;
-      FLOAT128 FltT3;
-      FLOAT128 FltT4;
-      FLOAT128 FltT5;
-      FLOAT128 FltT6;
-      FLOAT128 FltT7;
-      FLOAT128 FltT8;
-      FLOAT128 FltT9;
-      FLOAT128 FltS4;
-      FLOAT128 FltS5;
-      FLOAT128 FltS6;
-      FLOAT128 FltS7;
-      FLOAT128 FltS8;
-      FLOAT128 FltS9;
-      FLOAT128 FltS10;
-      FLOAT128 FltS11;
-      FLOAT128 FltS12;
-      FLOAT128 FltS13;
-      FLOAT128 FltS14;
-      FLOAT128 FltS15;
-      FLOAT128 FltS16;
-      FLOAT128 FltS17;
-      FLOAT128 FltS18;
-      FLOAT128 FltS19;
-      FLOAT128 FltF32;
-      FLOAT128 FltF33;
-      FLOAT128 FltF34;
-      FLOAT128 FltF35;
-      FLOAT128 FltF36;
-      FLOAT128 FltF37;
-      FLOAT128 FltF38;
-      FLOAT128 FltF39;
-      FLOAT128 FltF40;
-      FLOAT128 FltF41;
-      FLOAT128 FltF42;
-      FLOAT128 FltF43;
-      FLOAT128 FltF44;
-      FLOAT128 FltF45;
-      FLOAT128 FltF46;
-      FLOAT128 FltF47;
-      FLOAT128 FltF48;
-      FLOAT128 FltF49;
-      FLOAT128 FltF50;
-      FLOAT128 FltF51;
-      FLOAT128 FltF52;
-      FLOAT128 FltF53;
-      FLOAT128 FltF54;
-      FLOAT128 FltF55;
-      FLOAT128 FltF56;
-      FLOAT128 FltF57;
-      FLOAT128 FltF58;
-      FLOAT128 FltF59;
-      FLOAT128 FltF60;
-      FLOAT128 FltF61;
-      FLOAT128 FltF62;
-      FLOAT128 FltF63;
-      FLOAT128 FltF64;
-      FLOAT128 FltF65;
-      FLOAT128 FltF66;
-      FLOAT128 FltF67;
-      FLOAT128 FltF68;
-      FLOAT128 FltF69;
-      FLOAT128 FltF70;
-      FLOAT128 FltF71;
-      FLOAT128 FltF72;
-      FLOAT128 FltF73;
-      FLOAT128 FltF74;
-      FLOAT128 FltF75;
-      FLOAT128 FltF76;
-      FLOAT128 FltF77;
-      FLOAT128 FltF78;
-      FLOAT128 FltF79;
-      FLOAT128 FltF80;
-      FLOAT128 FltF81;
-      FLOAT128 FltF82;
-      FLOAT128 FltF83;
-      FLOAT128 FltF84;
-      FLOAT128 FltF85;
-      FLOAT128 FltF86;
-      FLOAT128 FltF87;
-      FLOAT128 FltF88;
-      FLOAT128 FltF89;
-      FLOAT128 FltF90;
-      FLOAT128 FltF91;
-      FLOAT128 FltF92;
-      FLOAT128 FltF93;
-      FLOAT128 FltF94;
-      FLOAT128 FltF95;
-      FLOAT128 FltF96;
-      FLOAT128 FltF97;
-      FLOAT128 FltF98;
-      FLOAT128 FltF99;
-      FLOAT128 FltF100;
-      FLOAT128 FltF101;
-      FLOAT128 FltF102;
-      FLOAT128 FltF103;
-      FLOAT128 FltF104;
-      FLOAT128 FltF105;
-      FLOAT128 FltF106;
-      FLOAT128 FltF107;
-      FLOAT128 FltF108;
-      FLOAT128 FltF109;
-      FLOAT128 FltF110;
-      FLOAT128 FltF111;
-      FLOAT128 FltF112;
-      FLOAT128 FltF113;
-      FLOAT128 FltF114;
-      FLOAT128 FltF115;
-      FLOAT128 FltF116;
-      FLOAT128 FltF117;
-      FLOAT128 FltF118;
-      FLOAT128 FltF119;
-      FLOAT128 FltF120;
-      FLOAT128 FltF121;
-      FLOAT128 FltF122;
-      FLOAT128 FltF123;
-      FLOAT128 FltF124;
-      FLOAT128 FltF125;
-      FLOAT128 FltF126;
-      FLOAT128 FltF127;
-      ULONGLONG StFPSR;
-      ULONGLONG IntGp;
-      ULONGLONG IntT0;
-      ULONGLONG IntT1;
-      ULONGLONG IntS0;
-      ULONGLONG IntS1;
-      ULONGLONG IntS2;
-      ULONGLONG IntS3;
-      ULONGLONG IntV0;
-      ULONGLONG IntT2;
-      ULONGLONG IntT3;
-      ULONGLONG IntT4;
-      ULONGLONG IntSp;
-      ULONGLONG IntTeb;
-      ULONGLONG IntT5;
-      ULONGLONG IntT6;
-      ULONGLONG IntT7;
-      ULONGLONG IntT8;
-      ULONGLONG IntT9;
-      ULONGLONG IntT10;
-      ULONGLONG IntT11;
-      ULONGLONG IntT12;
-      ULONGLONG IntT13;
-      ULONGLONG IntT14;
-      ULONGLONG IntT15;
-      ULONGLONG IntT16;
-      ULONGLONG IntT17;
-      ULONGLONG IntT18;
-      ULONGLONG IntT19;
-      ULONGLONG IntT20;
-      ULONGLONG IntT21;
-      ULONGLONG IntT22;
-      ULONGLONG IntNats;
-      ULONGLONG Preds;
-      ULONGLONG BrRp;
-      ULONGLONG BrS0;
-      ULONGLONG BrS1;
-      ULONGLONG BrS2;
-      ULONGLONG BrS3;
-      ULONGLONG BrS4;
-      ULONGLONG BrT0;
-      ULONGLONG BrT1;
-      ULONGLONG ApUNAT;
-      ULONGLONG ApLC;
-      ULONGLONG ApEC;
-      ULONGLONG ApCCV;
-      ULONGLONG ApDCR;
-      ULONGLONG RsPFS;
-      ULONGLONG RsBSP;
-      ULONGLONG RsBSPSTORE;
-      ULONGLONG RsRSC;
-      ULONGLONG RsRNAT;
-      ULONGLONG StIPSR;
-      ULONGLONG StIIP;
-      ULONGLONG StIFS;
-      ULONGLONG StFCR;
-      ULONGLONG Eflag;
-      ULONGLONG SegCSD;
-      ULONGLONG SegSSD;
-      ULONGLONG Cflag;
-      ULONGLONG StFSR;
-      ULONGLONG StFIR;
-      ULONGLONG StFDR;
-      ULONGLONG UNUSEDPACK;
-    } CONTEXT,*PCONTEXT;
-
-    typedef struct _PLABEL_DESCRIPTOR {
-      ULONGLONG EntryPoint;
-      ULONGLONG GlobalPointer;
-    } PLABEL_DESCRIPTOR,*PPLABEL_DESCRIPTOR;
-
-    typedef struct _RUNTIME_FUNCTION {
-      DWORD BeginAddress;
-      DWORD EndAddress;
-      DWORD UnwindInfoAddress;
-    } RUNTIME_FUNCTION,*PRUNTIME_FUNCTION;
-
-    typedef PRUNTIME_FUNCTION (*PGET_RUNTIME_FUNCTION_CALLBACK)(DWORD64 ControlPc,PVOID Context);
-    typedef DWORD (*POUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK)(HANDLE Process,PVOID TableAddress,PDWORD Entries,PRUNTIME_FUNCTION *Functions);
-
-#define OUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK_EXPORT_NAME "OutOfProcessFunctionTableCallback"
-
-    VOID __jump_unwind(ULONGLONG TargetMsFrame,ULONGLONG TargetBsFrame,ULONGLONG TargetPc);
-#endif /* end of _IA64_ */
-
 /* http://www.nynaeve.net/?p=99 */
 
 #define EXCEPTION_NONCONTINUABLE 0x1
@@ -2575,10 +2247,6 @@ __buildmemorybarrier()
       PEXCEPTION_RECORD ExceptionRecord;
       PCONTEXT ContextRecord;
     } EXCEPTION_POINTERS,*PEXCEPTION_POINTERS;
-
-#ifdef __ia64__
-    NTSYSAPI VOID NTAPI RtlUnwind2 (FRAME_POINTERS TargetFrame, PVOID TargetIp, PEXCEPTION_RECORD ExceptionRecord, PVOID ReturnValue, PCONTEXT ContextRecord);
-#endif
 
 #ifdef __x86_64__
 
@@ -3919,7 +3587,7 @@ __buildmemorybarrier()
       DWORD64 Self;
     } NT_TIB64,*PNT_TIB64;
 
-#if !defined(_X86_) && !defined(_IA64_) && !defined(_AMD64_)
+#if !defined(_X86_) && !defined(_AMD64_)
 #define WX86
 #endif
 
@@ -7242,13 +6910,6 @@ __buildmemorybarrier()
     NTSYSAPI VOID __cdecl RtlRestoreContext (PCONTEXT ContextRecord, struct _EXCEPTION_RECORD *ExceptionRecord);
     NTSYSAPI PEXCEPTION_ROUTINE NTAPI RtlVirtualUnwind (DWORD HandlerType, DWORD ImageBase, DWORD ControlPc, PRUNTIME_FUNCTION FunctionEntry, PCONTEXT ContextRecord, PVOID *HandlerData, PDWORD EstablisherFrame, PKNONVOLATILE_CONTEXT_POINTERS ContextPointers);
 #endif
-#if defined (__ia64__)
-    NTSYSAPI BOOLEAN NTAPI RtlAddFunctionTable (PRUNTIME_FUNCTION FunctionTable, DWORD EntryCount, ULONGLONG BaseAddress, ULONGLONG TargetGp);
-    NTSYSAPI BOOLEAN NTAPI RtlDeleteFunctionTable (PRUNTIME_FUNCTION FunctionTable);
-    NTSYSAPI BOOLEAN NTAPI RtlInstallFunctionTableCallback (DWORD64 TableIdentifier, DWORD64 BaseAddress, DWORD Length, DWORD64 TargetGp, PGET_RUNTIME_FUNCTION_CALLBACK Callback, PVOID Context, PCWSTR OutOfProcessCallbackDll);
-    NTSYSAPI VOID NTAPI RtlRestoreContext (PCONTEXT ContextRecord, struct _EXCEPTION_RECORD *ExceptionRecord);
-    NTSYSAPI ULONGLONG NTAPI RtlVirtualUnwind (ULONGLONG ImageBase, ULONGLONG ControlPc, PRUNTIME_FUNCTION FunctionEntry, PCONTEXT ContextRecord, PBOOLEAN InFunction, PFRAME_POINTERS EstablisherFrame, PKNONVOLATILE_CONTEXT_POINTERS ContextPointers);
-#endif
 
 #endif
 
@@ -7262,10 +6923,6 @@ __buildmemorybarrier()
 #if defined (__arm__)
     NTSYSAPI PRUNTIME_FUNCTION NTAPI RtlLookupFunctionEntry (ULONG_PTR ControlPc, PDWORD ImageBase, PUNWIND_HISTORY_TABLE HistoryTable);
     NTSYSAPI VOID NTAPI RtlUnwindEx (PVOID TargetFrame, PVOID TargetIp, PEXCEPTION_RECORD ExceptionRecord, PVOID ReturnValue, PCONTEXT ContextRecord, PUNWIND_HISTORY_TABLE HistoryTable);
-#endif
-#if defined (__ia64__)
-    NTSYSAPI PRUNTIME_FUNCTION NTAPI RtlLookupFunctionEntry (ULONGLONG ControlPc, PULONGLONG ImageBase, PULONGLONG TargetGp);
-    NTSYSAPI VOID NTAPI RtlUnwindEx (FRAME_POINTERS TargetFrame, PVOID TargetIp, PEXCEPTION_RECORD ExceptionRecord, PVOID ReturnValue, PCONTEXT ContextRecord, PUNWIND_HISTORY_TABLE HistoryTable);
 #endif
 #endif
 

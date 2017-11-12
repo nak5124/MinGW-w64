@@ -256,11 +256,7 @@
 #endif  /* !__nothrow */
 
 #ifndef _CRTIMP_NOIA64
-#ifdef __ia64__
-#define _CRTIMP_NOIA64
-#else  /* __ia64__ */
 #define _CRTIMP_NOIA64 _CRTIMP
-#endif  /* __ia64__ */
 #endif  /* !_CRTIMP_NOIA64 */
 
 /* We have to define _DLL for gcc based mingw version. This define is set

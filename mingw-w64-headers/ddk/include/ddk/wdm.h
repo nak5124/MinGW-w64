@@ -1471,8 +1471,6 @@ typedef struct _XSTATE_SAVE {
   struct _KTHREAD* Thread;
   UCHAR Level;
   XSTATE_CONTEXT XStateContext;
-#elif defined(_IA64_)
-  ULONG Dummy;
 #elif defined(_X86_)
   _ANONYMOUS_UNION union {
     _ANONYMOUS_STRUCT struct {
@@ -1813,14 +1811,14 @@ LOOKASIDE_CHECK(Future);
 
 typedef struct _PAGED_LOOKASIDE_LIST {
   GENERAL_LOOKASIDE L;
-#if !defined(_AMD64_) && !defined(_IA64_)
+#if !defined(_AMD64_)
   FAST_MUTEX Lock__ObsoleteButDoNotDelete;
 #endif
 } PAGED_LOOKASIDE_LIST, *PPAGED_LOOKASIDE_LIST;
 
 typedef struct LOOKASIDE_ALIGN _NPAGED_LOOKASIDE_LIST {
   GENERAL_LOOKASIDE L;
-#if !defined(_AMD64_) && !defined(_IA64_)
+#if !defined(_AMD64_)
   KSPIN_LOCK Lock__ObsoleteButDoNotDelete;
 #endif
 } NPAGED_LOOKASIDE_LIST, *PNPAGED_LOOKASIDE_LIST;
@@ -6258,7 +6256,7 @@ typedef struct _ACPI_INTERFACE_STANDARD2 {
   PUNREGISTER_FOR_DEVICE_NOTIFICATIONS2 UnregisterForDeviceNotifications;
 } ACPI_INTERFACE_STANDARD2, *PACPI_INTERFACE_STANDARD2;
 
-#if !defined(_AMD64_) && !defined(_IA64_)
+#if !defined(_AMD64_)
 #include <pshpack4.h>
 #endif
 typedef struct _IO_STACK_LOCATION {
@@ -6444,7 +6442,7 @@ typedef struct _IO_STACK_LOCATION {
   PIO_COMPLETION_ROUTINE CompletionRoutine;
   PVOID Context;
 } IO_STACK_LOCATION, *PIO_STACK_LOCATION;
-#if !defined(_AMD64_) && !defined(_IA64_)
+#if !defined(_AMD64_)
 #include <poppack.h>
 #endif
 
@@ -7895,214 +7893,6 @@ KeGetCurrentThread(VOID)
 /* x86 and x64 performs a 0x2C interrupt */
 #define DbgRaiseAssertionFailure __int2c
 
-#elif defined(_M_IA64)
-/** Kernel definitions for IA64 **/
-
-/* Interrupt request levels */
-#define PASSIVE_LEVEL           0
-#define LOW_LEVEL               0
-#define APC_LEVEL               1
-#define DISPATCH_LEVEL          2
-#define CMC_LEVEL               3
-#define DEVICE_LEVEL_BASE       4
-#define PC_LEVEL                12
-#define IPI_LEVEL               14
-#define DRS_LEVEL               14
-#define CLOCK_LEVEL             13
-#define POWER_LEVEL             15
-#define PROFILE_LEVEL           15
-#define HIGH_LEVEL              15
-
-#define KI_USER_SHARED_DATA ((ULONG_PTR)(KADDRESS_BASE + 0xFFFE0000))
-extern volatile LARGE_INTEGER KeTickCount;
-
-#define PAUSE_PROCESSOR __yield();
-
-FORCEINLINE
-VOID
-KeFlushWriteBuffer(VOID)
-{
-  __mf ();
-  return;
-}
-
-NTSYSAPI
-PKTHREAD
-NTAPI
-KeGetCurrentThread(VOID);
-
-
-#elif defined(_M_PPC)
-
-/* Interrupt request levels */
-#define PASSIVE_LEVEL                      0
-#define LOW_LEVEL                          0
-#define APC_LEVEL                          1
-#define DISPATCH_LEVEL                     2
-#define PROFILE_LEVEL                     27
-#define CLOCK1_LEVEL                      28
-#define CLOCK2_LEVEL                      28
-#define IPI_LEVEL                         29
-#define POWER_LEVEL                       30
-#define HIGH_LEVEL                        31
-
-//
-// Used to contain PFNs and PFN counts
-//
-typedef ULONG PFN_COUNT;
-typedef ULONG PFN_NUMBER, *PPFN_NUMBER;
-typedef LONG SPFN_NUMBER, *PSPFN_NUMBER;
-
-
-typedef struct _KFLOATING_SAVE {
-  ULONG Dummy;
-} KFLOATING_SAVE, *PKFLOATING_SAVE;
-
-typedef struct _KPCR_TIB {
-  PVOID ExceptionList;         /* 00 */
-  PVOID StackBase;             /* 04 */
-  PVOID StackLimit;            /* 08 */
-  PVOID SubSystemTib;          /* 0C */
-  _ANONYMOUS_UNION union {
-    PVOID FiberData;           /* 10 */
-    ULONG Version;             /* 10 */
-  } DUMMYUNIONNAME;
-  PVOID ArbitraryUserPointer;  /* 14 */
-  struct _KPCR_TIB *Self;       /* 18 */
-} KPCR_TIB, *PKPCR_TIB;         /* 1C */
-
-#define PCR_MINOR_VERSION 1
-#define PCR_MAJOR_VERSION 1
-
-typedef struct _KPCR {
-  KPCR_TIB Tib;                /* 00 */
-  struct _KPCR *Self;          /* 1C */
-  struct _KPRCB *Prcb;         /* 20 */
-  KIRQL Irql;                  /* 24 */
-  ULONG IRR;                   /* 28 */
-  ULONG IrrActive;             /* 2C */
-  ULONG IDR;                   /* 30 */
-  PVOID KdVersionBlock;        /* 34 */
-  PUSHORT IDT;                 /* 38 */
-  PUSHORT GDT;                 /* 3C */
-  struct _KTSS *TSS;           /* 40 */
-  USHORT MajorVersion;         /* 44 */
-  USHORT MinorVersion;         /* 46 */
-  KAFFINITY SetMember;         /* 48 */
-  ULONG StallScaleFactor;      /* 4C */
-  UCHAR SpareUnused;           /* 50 */
-  UCHAR Number;                /* 51 */
-} KPCR, *PKPCR;                /* 54 */
-
-#define KeGetPcr()                      PCR
-
-#define YieldProcessor() __asm__ __volatile__("nop");
-
-FORCEINLINE
-ULONG
-NTAPI
-KeGetCurrentProcessorNumber(VOID)
-{
-  ULONG Number;
-  __asm__ __volatile__ (
-    "lwz %0, %c1(12)\n"
-    : "=r" (Number)
-    : "i" (FIELD_OFFSET(KPCR, Number))
-  );
-  return Number;
-}
-
-NTHALAPI
-VOID
-FASTCALL
-KfLowerIrql(
-  IN KIRQL NewIrql);
-#define KeLowerIrql(a) KfLowerIrql(a)
-
-NTHALAPI
-KIRQL
-FASTCALL
-KfRaiseIrql(
-  IN KIRQL NewIrql);
-#define KeRaiseIrql(a,b) *(b) = KfRaiseIrql(a)
-
-NTHALAPI
-KIRQL
-NTAPI
-KeRaiseIrqlToDpcLevel(VOID);
-
-NTHALAPI
-KIRQL
-NTAPI
-KeRaiseIrqlToSynchLevel(VOID);
-
-
-
-#elif defined(_M_MIPS)
-#error MIPS Headers are totally incorrect
-
-//
-// Used to contain PFNs and PFN counts
-//
-typedef ULONG PFN_COUNT;
-typedef ULONG PFN_NUMBER, *PPFN_NUMBER;
-typedef LONG SPFN_NUMBER, *PSPFN_NUMBER;
-
-#define PASSIVE_LEVEL                      0
-#define APC_LEVEL                          1
-#define DISPATCH_LEVEL                     2
-#define PROFILE_LEVEL                     27
-#define IPI_LEVEL                         29
-#define HIGH_LEVEL                        31
-
-typedef struct _KPCR {
-  struct _KPRCB *Prcb;         /* 20 */
-  KIRQL Irql;                  /* 24 */
-  ULONG IRR;                   /* 28 */
-  ULONG IDR;                   /* 30 */
-} KPCR, *PKPCR;
-
-#define KeGetPcr()                      PCR
-
-typedef struct _KFLOATING_SAVE {
-} KFLOATING_SAVE, *PKFLOATING_SAVE;
-
-static __inline
-ULONG
-NTAPI
-KeGetCurrentProcessorNumber(VOID)
-{
-  return 0;
-}
-
-#define YieldProcessor() __asm__ __volatile__("nop");
-
-#define KeLowerIrql(a) KfLowerIrql(a)
-#define KeRaiseIrql(a,b) *(b) = KfRaiseIrql(a)
-
-NTKERNELAPI
-VOID
-NTAPI
-KfLowerIrql(
-  IN KIRQL NewIrql);
-
-NTKERNELAPI
-KIRQL
-NTAPI
-KfRaiseIrql(
-  IN KIRQL NewIrql);
-
-NTKERNELAPI
-KIRQL
-NTAPI
-KeRaiseIrqlToDpcLevel(VOID);
-
-NTKERNELAPI
-KIRQL
-NTAPI
-KeRaiseIrqlToSynchLevel(VOID);
-
-
 #elif defined(_M_ARM)
 #include <armddk.h>
 #else
@@ -8488,7 +8278,7 @@ RtlEqualUnicodeString(
   IN CONST UNICODE_STRING *String2,
   IN BOOLEAN CaseInSensitive);
 
-#if !defined(_AMD64_) && !defined(_IA64_)
+#if !defined(_AMD64_)
 NTSYSAPI
 LARGE_INTEGER
 NTAPI
@@ -8505,7 +8295,7 @@ RtlExtendedLargeIntegerDivide(
   OUT PULONG Remainder OPTIONAL);
 #endif
 
-#if defined(_X86_) || defined(_IA64_)
+#if defined(_X86_)
 NTSYSAPI
 LARGE_INTEGER
 NTAPI
@@ -9208,7 +8998,7 @@ RtlInitEmptyUnicodeString(
   UnicodeString->Buffer = Buffer;
 }
 
-#if defined(_AMD64_) || defined(_IA64_)
+#if defined(_AMD64_)
 
 static __inline
 LARGE_INTEGER
@@ -9237,7 +9027,7 @@ RtlExtendedLargeIntegerDivide(
   return ret;
 }
 
-#endif /* defined(_AMD64_) || defined(_IA64_) */
+#endif /* defined(_AMD64_) */
 
 
 #if defined(_AMD64_)
@@ -9383,7 +9173,7 @@ RtlCheckBit(
 
 /* Byte Swap Functions */
 #if (defined(_M_IX86) && defined(__GNUC__)) || \
-    ((defined(_M_AMD64) || defined(_M_IA64)) \
+    ((defined(_M_AMD64)) \
         && defined(__GNUC__))
 
 #define RtlUshortByteSwap(_x) _byteswap_ushort((USHORT)(_x))
@@ -9466,9 +9256,6 @@ VOID
 InitializeSListHead(
   OUT PSLIST_HEADER SListHead)
 {
-#if defined(_IA64_)
-  ULONG64 FeatureBits;
-#endif
 
 #if defined(_WIN64)
   if (((ULONG_PTR)SListHead & 0xf) != 0) {
@@ -9476,13 +9263,6 @@ InitializeSListHead(
   }
 #endif
   RtlZeroMemory(SListHead, sizeof(SLIST_HEADER));
-#if defined(_IA64_)
-  FeatureBits = __getReg(CV_IA64_CPUID4);
-  if ((FeatureBits & KF_16BYTE_INSTR) != 0) {
-    SListHead->Header16.HeaderType = 1;
-    SListHead->Header16.Init = 1;
-  }
-#endif
 }
 
 #endif
@@ -10387,12 +10167,10 @@ NTAPI
 KeGetProcessorIndexFromNumber(
   IN PPROCESSOR_NUMBER ProcNumber);
 #endif /* (NTDDI_VERSION >= NTDDI_WIN7) */
-#if !defined(_IA64_)
 NTHALAPI
 VOID
 NTAPI
 KeFlushWriteBuffer(VOID);
-#endif
 
 /* VOID
  * KeInitializeCallbackRecord(
@@ -13550,7 +13328,7 @@ ExInterlockedAddUlong(
   IN ULONG Increment,
   IN OUT PKSPIN_LOCK Lock);
 
-#if defined(_AMD64_) || defined(_IA64_)
+#if defined(_AMD64_)
 
 #define ExInterlockedCompareExchange64(Destination, Exchange, Comperand, Lock) \
     InterlockedCompareExchange64(Destination, *(Exchange), *(Comperand))
@@ -13579,7 +13357,7 @@ ExInterlockedCompareExchange64(
   IN PLONGLONG Comparand,
   IN PKSPIN_LOCK Lock);
 
-#endif /* defined(_AMD64_) || defined(_IA64_) */
+#endif /* defined(_AMD64_) */
 
 NTKERNELAPI
 PLIST_ENTRY

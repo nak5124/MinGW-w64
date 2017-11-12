@@ -249,11 +249,11 @@ extern "C" {
 #endif  /* __MINGW_USE_CONST_RETURN */
 
 #ifndef UNALIGNED
-#if defined(_M_IA64) || defined(_M_AMD64)
+#if defined(_M_AMD64)
 #define UNALIGNED __unaligned
-#else  /* defined(_M_IA64) || defined(_M_AMD64) */
+#else  /* defined(_M_AMD64) */
 #define UNALIGNED
-#endif  /* defined(_M_IA64) || defined(_M_AMD64) */
+#endif  /* defined(_M_AMD64) */
 #endif  /* !UNALIGNED */
 
 #ifndef _CRT_ALIGN

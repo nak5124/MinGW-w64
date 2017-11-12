@@ -199,7 +199,6 @@ extern "C" {
   extern double      __cdecl fabs(double _X);
 
 #ifndef __CRT__NO_INLINE
-#ifndef __ia64__
   __CRT_INLINE float __cdecl fabsf(float x) {
 #if defined(__x86_64__) || defined(__arm__) || defined(__aarch64__)
     return __builtin_fabsf(x);  /* GCC builtin */
@@ -228,7 +227,6 @@ extern "C" {
     return res;
 #endif  /* defined(__x86_64__) || defined(__arm__) || defined(__aarch64__) */
   }
-#endif  /* !__ia64__ */
 #endif  /* !__CRT__NO_INLINE */
 
                 double __cdecl ldexp(double _X, int _Y);     /* Provided in libmingwex. */
@@ -1063,7 +1061,6 @@ extern "C" {
   extern long double __cdecl copysignl(long double _X, long double _Y);
 
 #ifndef __CRT__NO_INLINE
-#ifndef __ia64__
   __CRT_INLINE double __cdecl copysign(double _X, double _Y) {
     __mingw_dbl_type_t hx, hy;
     hx.x = _X; hy.x = _Y;
@@ -1076,7 +1073,6 @@ extern "C" {
     hx.val = (hx.val & 0x7fffffff) | (hy.val & 0x80000000);
     return hx.x;
   }
-#endif  /* !__ia64__ */
 #endif  /* !__CRT__NO_INLINE */
 
 /* 7.12.11.2 Return a NaN

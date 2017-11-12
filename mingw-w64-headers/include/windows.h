@@ -54,13 +54,6 @@
 #endif
 #endif /* _AMD64_ */
 
-#if defined(__ia64__) && \
-  !(defined(_X86_) || defined(__x86_64) || defined(_AMD64_))
-#if !defined(_IA64_)
-#define _IA64_
-#endif
-#endif /* _IA64_ */
-
 #ifndef RC_INVOKED
 #include <excpt.h>
 #include <stdarg.h>
