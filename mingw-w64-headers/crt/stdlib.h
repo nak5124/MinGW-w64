@@ -154,6 +154,7 @@ extern "C" {
 
   typedef void (__cdecl *_invalid_parameter_handler)(const wchar_t *, const wchar_t *, const wchar_t *, unsigned int, uintptr_t);
 
+  /* We provide emu. */
   _CRTIMP _invalid_parameter_handler __cdecl _set_invalid_parameter_handler(_invalid_parameter_handler _Handler);
   _CRTIMP _invalid_parameter_handler __cdecl _get_invalid_parameter_handler(void);
 
@@ -403,7 +404,7 @@ extern "C++" {
 
   /* _CRTIMP */ int     __cdecl rand(void);
 #ifdef _CRT_RAND_S
-  _CRTIMP       errno_t __cdecl rand_s(unsigned int *_RandomValue);  /* We provide emu. */
+  _CRTIMP       errno_t __cdecl rand_s(unsigned int *_RandomValue);
 #endif  /* _CRT_RAND_S */
 #if defined(_POSIX) || defined(_POSIX_THREAD_SAFE_FUNCTIONS)
 #ifndef rand_r

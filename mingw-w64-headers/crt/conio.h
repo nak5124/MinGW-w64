@@ -13,10 +13,10 @@ extern "C" {
 #endif  /* __cplusplus */
 
   _CRTIMP char *  __cdecl _cgets(char *_Buffer) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t __cdecl _cgets_s(char *_Buffer, size_t _Size, size_t *_SizeRead);  /* We provide emu. */
+  _CRTIMP errno_t __cdecl _cgets_s(char *_Buffer, size_t _Size, size_t *_SizeRead);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _cgets_s, char, _Buffer, size_t *, _SizeRead)
   _CRTIMP int     __cdecl _cprintf(const char * __restrict__ _Format, ...);
-  _CRTIMP int     __cdecl _cprintf_s(const char * _Format, ...);  /* We provide emu. */
+  _CRTIMP int     __cdecl _cprintf_s(const char * _Format, ...);
   _CRTIMP int     __cdecl _cputs(const char *_Str);
   _CRTIMP int     __cdecl _cscanf(const char * __restrict__ _Format, ...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP int     __cdecl _cscanf_l(const char * __restrict__ _Format, _locale_t _Locale, ...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
@@ -25,15 +25,15 @@ extern "C" {
   _CRTIMP int     __cdecl _getch(void);
   _CRTIMP int     __cdecl _getche(void);
   _CRTIMP int     __cdecl _vcprintf(const char * __restrict__ _Format, va_list _ArgList);
-  _CRTIMP int     __cdecl _vcprintf_s(const char *_Format, va_list _ArgList);  /* We provide emu. */
+  _CRTIMP int     __cdecl _vcprintf_s(const char *_Format, va_list _ArgList);
 
   _CRTIMP int     __cdecl _cprintf_p(const char * __restrict__ _Format, ...);
   _CRTIMP int     __cdecl _vcprintf_p(const char * __restrict__ _Format, va_list _ArgList);
 
   _CRTIMP int     __cdecl _cprintf_l(const char * __restrict__ _Format, _locale_t _Locale, ...);
-  _CRTIMP int     __cdecl _cprintf_s_l(const char *_Format, _locale_t _Locale, ...);  /* We provide emu. */
+  _CRTIMP int     __cdecl _cprintf_s_l(const char *_Format, _locale_t _Locale, ...);
   _CRTIMP int     __cdecl _vcprintf_l(const char * __restrict__ _Format, _locale_t _Locale, va_list _ArgList);
-  _CRTIMP int     __cdecl _vcprintf_s_l(const char *_Format, _locale_t _Locale, va_list _ArgList);  /* We provide emu. */
+  _CRTIMP int     __cdecl _vcprintf_s_l(const char *_Format, _locale_t _Locale, va_list _ArgList);
   _CRTIMP int     __cdecl _cprintf_p_l(const char * __restrict__ _Format, _locale_t _Locale, ...);
   _CRTIMP int     __cdecl _vcprintf_p_l(const char * __restrict__ _Format, _locale_t _Locale, va_list _ArgList);
 
@@ -63,7 +63,7 @@ extern "C" {
 #endif  /* !WEOF */
 
   _CRTIMP wchar_t * __cdecl _cgetws(wchar_t *_Buffer) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t   __cdecl _cgetws_s(wchar_t *_Buffer, size_t _SizeInWords, size_t *_SizeRead);  /* We provide emu. */
+  _CRTIMP errno_t   __cdecl _cgetws_s(wchar_t *_Buffer, size_t _SizeInWords, size_t *_SizeRead);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _cgetws_s, wchar_t, _Buffer, size_t *, _SizeRead)
   _CRTIMP wint_t    __cdecl _getwch(void);
   _CRTIMP wint_t    __cdecl _getwche(void);
@@ -71,21 +71,21 @@ extern "C" {
   _CRTIMP wint_t    __cdecl _ungetwch(wint_t _WCh);
   _CRTIMP int       __cdecl _cputws(const wchar_t *_String);
   _CRTIMP int       __cdecl _cwprintf(const wchar_t * __restrict__ _Format, ...);
-  _CRTIMP int       __cdecl _cwprintf_s(const wchar_t *_Format, ...);  /* We provide emu. */
+  _CRTIMP int       __cdecl _cwprintf_s(const wchar_t *_Format, ...);
   _CRTIMP int       __cdecl _cwscanf(const wchar_t * __restrict__ _Format, ...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP int       __cdecl _cwscanf_l(const wchar_t * __restrict__ _Format, _locale_t _Locale, ...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP int       __cdecl _cwscanf_s(const wchar_t *_Format, ...);
   _CRTIMP int       __cdecl _cwscanf_s_l(const wchar_t *_Format, _locale_t _Locale, ...);
   _CRTIMP int       __cdecl _vcwprintf(const wchar_t * __restrict__ _Format, va_list _ArgList);
-  _CRTIMP int       __cdecl _vcwprintf_s(const wchar_t *_Format, va_list _ArgList);  /* We provide emu. */
+  _CRTIMP int       __cdecl _vcwprintf_s(const wchar_t *_Format, va_list _ArgList);
 
   _CRTIMP int       __cdecl _cwprintf_p(const wchar_t * __restrict__ _Format, ...);
   _CRTIMP int       __cdecl _vcwprintf_p(const wchar_t * __restrict__ _Format, va_list _ArgList);
 
   _CRTIMP int       __cdecl _cwprintf_l(const wchar_t * __restrict__ _Format, _locale_t _Locale, ...);
-  _CRTIMP int       __cdecl _cwprintf_s_l(const wchar_t *_Format, _locale_t _Locale, ...);  /* We provide emu. */
+  _CRTIMP int       __cdecl _cwprintf_s_l(const wchar_t *_Format, _locale_t _Locale, ...);
   _CRTIMP int       __cdecl _vcwprintf_l(const wchar_t * __restrict__ _Format, _locale_t _Locale, va_list _ArgList);
-  _CRTIMP int       __cdecl _vcwprintf_s_l(const wchar_t *_Format, _locale_t _Locale, va_list _ArgList);  /* We provide emu. */
+  _CRTIMP int       __cdecl _vcwprintf_s_l(const wchar_t *_Format, _locale_t _Locale, va_list _ArgList);
   _CRTIMP int       __cdecl _cwprintf_p_l(const wchar_t * __restrict__ _Format, _locale_t _Locale, ...);
   _CRTIMP int       __cdecl _vcwprintf_p_l(const wchar_t * __restrict__ _Format, _locale_t _Locale, va_list _ArgList);
 

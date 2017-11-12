@@ -39,7 +39,7 @@ extern "C" {
   _CRTIMP                     int     __cdecl _memicmp_l(const void *_Buf1, const void *_Buf2, size_t _Size, _locale_t _Locale);
                               int     __cdecl  memcmp(const void *_Buf1, const void *_Buf2, size_t _Size);
                               void *  __cdecl  memcpy(void * __restrict__ _Dst, const void * __restrict__ _Src, size_t _Size) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  /* _CRTIMP */               errno_t __cdecl  memcpy_s(void *_Dst, rsize_t _DstSize, const void *_Src, rsize_t _MaxCount);  /* We provide emu. */
+  /* _CRTIMP */               errno_t __cdecl  memcpy_s(void *_Dst, rsize_t _DstSize, const void *_Src, rsize_t _MaxCount);
                               void *  __cdecl  mempcpy(void *_Dst, const void *_Src, size_t _Size);  /* Provided in libmingwex. */
                               void *  __cdecl  memset(void *_Dst, int _Val, size_t _Size);
 
@@ -74,7 +74,7 @@ extern "C" {
   __forceinline size_t __cdecl strnlen_s(const char *_Str, size_t _MaxCount) {
     return (_Str == 0) ? 0 : strnlen(_Str, _MaxCount);
   }
-  /* We provide emu. */
+
   /* _CRTIMP */ errno_t __cdecl  memmove_s(void *_Dst, rsize_t _DstSize, const void *_Src, rsize_t _MaxCount);
 
   /* _CRTIMP */ void *  __cdecl  memmove(void *_Dst, const void *_Src, size_t _Size) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;

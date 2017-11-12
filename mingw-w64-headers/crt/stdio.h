@@ -784,8 +784,8 @@ extern "C++" {
 #endif  /* __MSVCRT_VERSION__ >= 0x1400 */
   /* _CRTIMP */ void         __cdecl  setbuf(FILE * __restrict__ _File, char * __restrict__ _Buffer) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP       int          __cdecl _setmaxstdio(int _Max);
-  _CRTIMP       unsigned int __cdecl _set_output_format(unsigned int _Format);  /* We provide emu. */
-  _CRTIMP       unsigned int __cdecl _get_output_format(void);                  /* We provide emu. */
+  _CRTIMP       unsigned int __cdecl _set_output_format(unsigned int _Format);
+  _CRTIMP       unsigned int __cdecl _get_output_format(void);
   /* _CRTIMP */ int          __cdecl  setvbuf(FILE * __restrict__ _File, char * __restrict__ _Buf, int _Mode, size_t _Size);
 #if __MSVCRT_VERSION__ >= 0x1400
   __mingw_ovr
@@ -883,7 +883,7 @@ extern "C++" {
 #else  /* __MSVCRT_VERSION__ >= 0x1400 */
   _CRTIMP       int          __cdecl _snprintf_s(char *_DstBuf, size_t _SizeInBytes, size_t _MaxCount, const char *_Format, ...);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2_ARGLIST(int, _snprintf_s, _vsnprintf_s, char, _Dest, size_t, _MaxCount, const char *, _Format)
-  /* _CRTIMP */ int          __cdecl  sprintf_s(char *_DstBuf, size_t _SizeInBytes, const char *_Format, ...);  /* We provide emu. */
+  _CRTIMP       int          __cdecl  sprintf_s(char *_DstBuf, size_t _SizeInBytes, const char *_Format, ...);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1_ARGLIST(int, sprintf_s, vsprintf_s, char, _Dest, const char *, _Format)
   _CRTIMP       int          __cdecl _scprintf(const char * __restrict__ _Format, ...);
   _CRTIMP       int          __cdecl _sscanf_l(const char *_Src, const char *_Format, _locale_t _Locale, ...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
@@ -1049,7 +1049,7 @@ extern "C++" {
   _CRTIMP       int          __cdecl _snprintf(char * __restrict__ _Dest, size_t _Count, const char * __restrict__ _Format, ...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   __attribute__((__format__(ms_printf, 3, 0))) __MINGW_ATTRIB_NONNULL(3)
   _CRTIMP       int          __cdecl _vsnprintf(char * __restrict__ _Dest, size_t _Count, const char * __restrict__ _Format, va_list _Args) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  /* _CRTIMP */ int          __cdecl  vsprintf_s(char *_DstBuf, size_t _SizeInBytes, const char *_Format, va_list _ArgList);  /* We provide emu. */
+  /* _CRTIMP */ int          __cdecl  vsprintf_s(char *_DstBuf, size_t _SizeInBytes, const char *_Format, va_list _ArgList);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(int, vsprintf_s, char, _Dest, const char *, _Format, va_list, _ArgList)
 #if __MSVCRT_VERSION__ >= 0x1200
   /* _CRTIMP */ int          __cdecl  vsscanf_s(const char *_Src, const char *_Format, va_list _ArgList);
@@ -1308,6 +1308,12 @@ extern "C++" {
   _CRTIMP       int          __cdecl _vsnprintf_c_l(char *_DstBuf, size_t _MaxCount, const char *_Format, _locale_t _Locale, va_list _ArgList);
   _CRTIMP       int          __cdecl _vsnprintf_s_l(char *_DstBuf, size_t _DstSize, size_t _MaxCount, const char *_Format, _locale_t _Locale, va_list _ArgList);
 #endif  /* __MSVCRT_VERSION__ >= 0x1400 */
+
+#ifndef __CRT__NO_INLINE
+  __CRT_INLINE int __cdecl _vscprintf_p(const char *_Format, va_list _ArgList) {
+    return _vscprintf_p_l(_Format, NULL, _ArgList);
+  }
+#endif  /* !__CRT__NO_INLINE */
 
 #ifndef _WSTDIO_DEFINED
 
@@ -2054,7 +2060,7 @@ extern "C++" {
   _CRTIMP       int       __cdecl _swprintf_p(wchar_t *_DstBuf, size_t _MaxCount, const wchar_t *_Format, ...);
   _CRTIMP       int       __cdecl _vswprintf_p(wchar_t *_DstBuf, size_t _MaxCount, const wchar_t *_Format, va_list _ArgList);  /* We provide emu. */
   _CRTIMP       int       __cdecl _scwprintf_p(const wchar_t *_Format, ...);
-  _CRTIMP       int       __cdecl _vscwprintf_p(const wchar_t *_Format, va_list _ArgList);
+  _CRTIMP       int       __cdecl _vscwprintf_p(const wchar_t *_Format, va_list _ArgList);  /* We provide emu. */
 
   _CRTIMP       int       __cdecl _wprintf_l(const wchar_t *_Format, _locale_t _Locale, ...);
   _CRTIMP       int       __cdecl _wprintf_p_l(const wchar_t *_Format, _locale_t _Locale, ...);
@@ -2085,6 +2091,15 @@ extern "C++" {
   _CRTIMP       int       __cdecl _vsnwprintf_l(wchar_t *_DstBuf, size_t _MaxCount, const wchar_t *_Format, _locale_t _Locale, va_list _ArgList);
   _CRTIMP       int       __cdecl _vsnwprintf_s_l(wchar_t *_DstBuf, size_t _DstSize, size_t _MaxCount, const wchar_t *_Format, _locale_t _Locale, va_list _ArgList);
 #endif  /* __MSVCRT_VERSION__ >= 0x1400 */
+
+#ifndef __CRT__NO_INLINE
+  __CRT_INLINE int __cdecl _vswprintf_p(wchar_t *_DstBuf, size_t _MaxCount, const wchar_t *_Format, va_list _ArgList) {
+    return _vswprintf_p_l(_DstBuf, _MaxCount, _Format, NULL, _ArgList);
+  }
+  __CRT_INLINE int __cdecl _vscwprintf_p(const wchar_t *_Format, va_list _ArgList) {
+    return _vscwprintf_p_l(_Format, NULL, _ArgList);
+  }
+#endif  /* !__CRT__NO_INLINE */
 
   _CRTIMP       wchar_t * __cdecl _wtempnam(const wchar_t *_Directory, const wchar_t *_FilePrefix);
 

@@ -127,27 +127,27 @@ extern "C" {
   _CRTIMP       errno_t     __cdecl _get_tzname(size_t *_ReturnValue, char *_Buffer, size_t _SizeInBytes, int _Index);
 
   /* _CRTIMP */ char *      __cdecl  asctime(const struct tm *_Tm) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP       errno_t     __cdecl  asctime_s(char *_Buf, size_t _SizeInWords, const struct tm *_Tm);  /* We provide emu. */
+  /* _CRTIMP */ errno_t     __cdecl  asctime_s(char *_Buf, size_t _SizeInWords, const struct tm *_Tm);
 
   _CRTIMP       char *      __cdecl _ctime32(const __time32_t *_Time) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP       errno_t     __cdecl _ctime32_s(char *_Buf, size_t _SizeInBytes, const __time32_t *_Time);  /* We provide emu. */
+  _CRTIMP       errno_t     __cdecl _ctime32_s(char *_Buf, size_t _SizeInBytes, const __time32_t *_Time);
 
   /* _CRTIMP */ clock_t     __cdecl  clock(void);
   _CRTIMP       double      __cdecl _difftime32(__time32_t _Time1, __time32_t _Time2);
 
   _CRTIMP       struct tm * __cdecl _gmtime32(const __time32_t *_Time) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP       errno_t     __cdecl _gmtime32_s(struct tm *_Tm, const __time32_t *_Time);  /* We provide emu. */
+  _CRTIMP       errno_t     __cdecl _gmtime32_s(struct tm *_Tm, const __time32_t *_Time);
 
   _CRTIMP       struct tm * __cdecl _localtime32(const __time32_t *_Time) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP       errno_t     __cdecl _localtime32_s(struct tm *_Tm, const __time32_t *_Time);  /* We provide emu. */
+  _CRTIMP       errno_t     __cdecl _localtime32_s(struct tm *_Tm, const __time32_t *_Time);
 
   /* _CRTIMP */ size_t      __cdecl  strftime(char * __restrict__ _Buf, size_t _SizeInBytes, const char * __restrict__ _Format, const struct tm * __restrict__ _Tm);
   _CRTIMP       size_t      __cdecl _strftime_l(char * __restrict__ _Buf, size_t _Max_size, const char * __restrict__ _Format, const struct tm * __restrict__ _Tm, _locale_t _Locale);
 
-  _CRTIMP       errno_t     __cdecl _strdate_s(char *_Buf, size_t _SizeInBytes);  /* We provide emu. */
+  _CRTIMP       errno_t     __cdecl _strdate_s(char *_Buf, size_t _SizeInBytes);
   _CRTIMP       char *      __cdecl _strdate(char *_Buffer) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 
-  _CRTIMP       errno_t     __cdecl _strtime_s(char *_Buf, size_t _SizeInBytes);  /* We provide emu. */
+  _CRTIMP       errno_t     __cdecl _strtime_s(char *_Buf, size_t _SizeInBytes);
   _CRTIMP       char *      __cdecl _strtime(char *_Buffer) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 
   _CRTIMP       __time32_t  __cdecl _time32(__time32_t *_Time);
@@ -161,13 +161,13 @@ extern "C" {
 
   _CRTIMP       double      __cdecl _difftime64(__time64_t _Time1, __time64_t _Time2);
   _CRTIMP       char *      __cdecl _ctime64(const __time64_t *_Time) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP       errno_t     __cdecl _ctime64_s(char *_Buf, size_t _SizeInBytes, const __time64_t *_Time);  /* We provide emu. */
+  _CRTIMP       errno_t     __cdecl _ctime64_s(char *_Buf, size_t _SizeInBytes, const __time64_t *_Time);
 
   _CRTIMP       struct tm * __cdecl _gmtime64(const __time64_t *_Time) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP       errno_t     __cdecl _gmtime64_s(struct tm *_Tm, const __time64_t *_Time);  /* We provide emu. */
+  _CRTIMP       errno_t     __cdecl _gmtime64_s(struct tm *_Tm, const __time64_t *_Time);
 
   _CRTIMP       struct tm * __cdecl _localtime64(const __time64_t *_Time) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP       errno_t     __cdecl _localtime64_s(struct tm *_Tm, const __time64_t *_Time);  /* We provide emu. */
+  _CRTIMP       errno_t     __cdecl _localtime64_s(struct tm *_Tm, const __time64_t *_Time);
 
   _CRTIMP       __time64_t  __cdecl _mktime64(struct tm *_Tm);
   _CRTIMP       __time64_t  __cdecl _mkgmtime64(struct tm *_Tm);
@@ -179,22 +179,22 @@ extern "C" {
 #ifndef _WTIME_DEFINED
 
   _CRTIMP       wchar_t * __cdecl _wasctime(const struct tm *_Tm) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP       errno_t   __cdecl _wasctime_s(wchar_t *_Buf, size_t _SizeInWords, const struct tm *_Tm);  /* We provide emu. */
+  _CRTIMP       errno_t   __cdecl _wasctime_s(wchar_t *_Buf, size_t _SizeInWords, const struct tm *_Tm);
 
   _CRTIMP       wchar_t * __cdecl _wctime32(const __time32_t *_Time) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP       errno_t   __cdecl _wctime32_s(wchar_t *_Buf, size_t _SizeInWords, const __time32_t *_Time);  /* We provide emu. */
+  _CRTIMP       errno_t   __cdecl _wctime32_s(wchar_t *_Buf, size_t _SizeInWords, const __time32_t *_Time);
 
   /* _CRTIMP */ size_t    __cdecl  wcsftime(wchar_t * __restrict__ _Buf, size_t _SizeInWords, const wchar_t * __restrict__ _Format, const struct tm * __restrict__ _Tm);
   _CRTIMP       size_t    __cdecl _wcsftime_l(wchar_t * __restrict__ _Buf, size_t _SizeInWords, const wchar_t * __restrict__ _Format, const struct tm * __restrict__ _Tm, _locale_t _Locale);
 
-  _CRTIMP       errno_t   __cdecl _wstrdate_s(wchar_t *_Buf, size_t _SizeInWords);  /* We provide emu. */
+  _CRTIMP       errno_t   __cdecl _wstrdate_s(wchar_t *_Buf, size_t _SizeInWords);
   _CRTIMP       wchar_t * __cdecl _wstrdate(wchar_t *_Buffer) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 
-  _CRTIMP       errno_t   __cdecl _wstrtime_s(wchar_t *_Buf, size_t _SizeInWords);  /* We provide emu. */
+  _CRTIMP       errno_t   __cdecl _wstrtime_s(wchar_t *_Buf, size_t _SizeInWords);
   _CRTIMP       wchar_t * __cdecl _wstrtime(wchar_t *_Buffer) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 
   _CRTIMP       wchar_t * __cdecl _wctime64(const __time64_t *_Time) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP       errno_t   __cdecl _wctime64_s(wchar_t *_Buf, size_t _SizeInWords, const __time64_t *_Time);  /* We provide emu. */
+  _CRTIMP       errno_t   __cdecl _wctime64_s(wchar_t *_Buf, size_t _SizeInWords, const __time64_t *_Time);
 
 #if !defined(RC_INVOKED) && !defined(_INC_WTIME_INL)
   _CRTIMP       wchar_t * __cdecl _wctime(const time_t *_Time) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;

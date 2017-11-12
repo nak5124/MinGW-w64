@@ -1376,7 +1376,9 @@ _wcsxfrm_l
 _wctime32
 _wctime32_s
 _wctime64
+_wctime == _wctime64 ; Compatibility with MSVCRT.DLL
 _wctime64_s
+_wctime_s == _wctime64_s ; MSVCR120.DLL does not export this function, so we provide alias
 _wctomb_l
 _wctomb_s_l
 _wctype DATA

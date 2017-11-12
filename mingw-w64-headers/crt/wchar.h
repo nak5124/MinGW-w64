@@ -304,7 +304,7 @@ extern "C" {
 
 #ifndef _WIO_DEFINED
   _CRTIMP int      __cdecl _waccess(const wchar_t *_Filename, int _AccessMode) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t  __cdecl _waccess_s(const wchar_t *_Filename, int _AccessMode);  /* We provide emu. */
+  _CRTIMP errno_t  __cdecl _waccess_s(const wchar_t *_Filename, int _AccessMode);
   _CRTIMP int      __cdecl _wchmod(const wchar_t *_Filename, int _Mode);
   _CRTIMP int      __cdecl _wcreat(const wchar_t *_Filename, int _PermissionMode) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   /* msvcrt 64bit: emu, msvcrt 32bit: alias for _wfindfirst */
@@ -324,7 +324,7 @@ extern "C" {
   _CRTIMP int      __cdecl _wunlink(const wchar_t *_Filename);
   _CRTIMP int      __cdecl _wrename(const wchar_t *_OldFilename, const wchar_t *_NewFilename);
   _CRTIMP wchar_t* __cdecl _wmktemp(wchar_t *_TemplateName) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t  __cdecl _wmktemp_s(wchar_t *_TemplateName, size_t _SizeInWords);  /* We provide emu. */
+  _CRTIMP errno_t  __cdecl _wmktemp_s(wchar_t *_TemplateName, size_t _SizeInWords);
 
   _CRTIMP errno_t  __cdecl _wsopen_s(int *_FileHandle, const wchar_t *_Filename, int _OpenFlag, int _ShareFlag, int _PermissionFlag);
 
@@ -583,7 +583,7 @@ extern "C" {
 #endif  /* !WEOF */
 
   _CRTIMP wchar_t * __cdecl _cgetws(wchar_t *_Buffer) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP errno_t   __cdecl _cgetws_s(wchar_t *_Buffer, size_t _SizeInWords, size_t *_SizeRead);  /* We provide emu. */
+  _CRTIMP errno_t   __cdecl _cgetws_s(wchar_t *_Buffer, size_t _SizeInWords, size_t *_SizeRead);
   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, _cgetws_s, wchar_t, _Buffer, size_t *, _SizeRead)
   _CRTIMP wint_t    __cdecl _getwch(void);
   _CRTIMP wint_t    __cdecl _getwche(void);
@@ -591,21 +591,21 @@ extern "C" {
   _CRTIMP wint_t    __cdecl _ungetwch(wint_t _WCh);
   _CRTIMP int       __cdecl _cputws(const wchar_t *_String);
   _CRTIMP int       __cdecl _cwprintf(const wchar_t * __restrict__ _Format, ...);
-  _CRTIMP int       __cdecl _cwprintf_s(const wchar_t *_Format, ...);  /* We provide emu. */
+  _CRTIMP int       __cdecl _cwprintf_s(const wchar_t *_Format, ...);
   _CRTIMP int       __cdecl _cwscanf(const wchar_t * __restrict__ _Format, ...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP int       __cdecl _cwscanf_l(const wchar_t * __restrict__ _Format, _locale_t _Locale, ...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP int       __cdecl _cwscanf_s(const wchar_t *_Format, ...);
   _CRTIMP int       __cdecl _cwscanf_s_l(const wchar_t *_Format, _locale_t _Locale, ...);
   _CRTIMP int       __cdecl _vcwprintf(const wchar_t * __restrict__ _Format, va_list _ArgList);
-  _CRTIMP int       __cdecl _vcwprintf_s(const wchar_t *_Format, va_list _ArgList);  /* We provide emu. */
+  _CRTIMP int       __cdecl _vcwprintf_s(const wchar_t *_Format, va_list _ArgList);
 
   _CRTIMP int       __cdecl _cwprintf_p(const wchar_t * __restrict__ _Format, ...);
   _CRTIMP int       __cdecl _vcwprintf_p(const wchar_t * __restrict__ _Format, va_list _ArgList);
 
   _CRTIMP int       __cdecl _cwprintf_l(const wchar_t * __restrict__ _Format, _locale_t _Locale, ...);
-  _CRTIMP int       __cdecl _cwprintf_s_l(const wchar_t *_Format, _locale_t _Locale, ...);  /* We provide emu. */
+  _CRTIMP int       __cdecl _cwprintf_s_l(const wchar_t *_Format, _locale_t _Locale, ...);
   _CRTIMP int       __cdecl _vcwprintf_l(const wchar_t * __restrict__ _Format, _locale_t _Locale, va_list _ArgList);
-  _CRTIMP int       __cdecl _vcwprintf_s_l(const wchar_t *_Format, _locale_t _Locale, va_list _ArgList);  /* We provide emu. */
+  _CRTIMP int       __cdecl _vcwprintf_s_l(const wchar_t *_Format, _locale_t _Locale, va_list _ArgList);
   _CRTIMP int       __cdecl _cwprintf_p_l(const wchar_t * __restrict__ _Format, _locale_t _Locale, ...);
   _CRTIMP int       __cdecl _vcwprintf_p_l(const wchar_t * __restrict__ _Format, _locale_t _Locale, va_list _ArgList);
 
@@ -1364,7 +1364,7 @@ extern "C" {
   _CRTIMP       int       __cdecl _swprintf_p(wchar_t *_DstBuf, size_t _MaxCount, const wchar_t *_Format, ...);
   _CRTIMP       int       __cdecl _vswprintf_p(wchar_t *_DstBuf, size_t _MaxCount, const wchar_t *_Format, va_list _ArgList);  /* We provide emu. */
   _CRTIMP       int       __cdecl _scwprintf_p(const wchar_t *_Format, ...);
-  _CRTIMP       int       __cdecl _vscwprintf_p(const wchar_t *_Format, va_list _ArgList);
+  _CRTIMP       int       __cdecl _vscwprintf_p(const wchar_t *_Format, va_list _ArgList);  /* We provide emu. */
 
   _CRTIMP       int       __cdecl _wprintf_l(const wchar_t *_Format, _locale_t _Locale, ...);
   _CRTIMP       int       __cdecl _wprintf_p_l(const wchar_t *_Format, _locale_t _Locale, ...);
@@ -1395,6 +1395,15 @@ extern "C" {
   _CRTIMP       int       __cdecl _vsnwprintf_l(wchar_t *_DstBuf, size_t _MaxCount, const wchar_t *_Format, _locale_t _Locale, va_list _ArgList);
   _CRTIMP       int       __cdecl _vsnwprintf_s_l(wchar_t *_DstBuf, size_t _DstSize, size_t _MaxCount, const wchar_t *_Format, _locale_t _Locale, va_list _ArgList);
 #endif  /* __MSVCRT_VERSION__ >= 0x1400 */
+
+#ifndef __CRT__NO_INLINE
+  __CRT_INLINE int __cdecl _vswprintf_p(wchar_t *_DstBuf, size_t _MaxCount, const wchar_t *_Format, va_list _ArgList) {
+    return _vswprintf_p_l(_DstBuf, _MaxCount, _Format, NULL, _ArgList);
+  }
+  __CRT_INLINE int __cdecl _vscwprintf_p(const wchar_t *_Format, va_list _ArgList) {
+    return _vscwprintf_p_l(_Format, NULL, _ArgList);
+  }
+#endif  /* !__CRT__NO_INLINE */
 
   _CRTIMP       wchar_t * __cdecl _wtempnam(const wchar_t *_Directory, const wchar_t *_FilePrefix);
 
@@ -1790,22 +1799,22 @@ extern "C" {
 #ifndef _WTIME_DEFINED
 
   _CRTIMP       wchar_t * __cdecl _wasctime(const struct tm *_Tm) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP       errno_t   __cdecl _wasctime_s(wchar_t *_Buf, size_t _SizeInWords, const struct tm *_Tm);  /* We provide emu. */
+  _CRTIMP       errno_t   __cdecl _wasctime_s(wchar_t *_Buf, size_t _SizeInWords, const struct tm *_Tm);
 
   _CRTIMP       wchar_t * __cdecl _wctime32(const __time32_t *_Time) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP       errno_t   __cdecl _wctime32_s(wchar_t *_Buf, size_t _SizeInWords, const __time32_t *_Time);  /* We provide emu. */
+  _CRTIMP       errno_t   __cdecl _wctime32_s(wchar_t *_Buf, size_t _SizeInWords, const __time32_t *_Time);
 
   /* _CRTIMP */ size_t    __cdecl  wcsftime(wchar_t * __restrict__ _Buf, size_t _SizeInWords, const wchar_t * __restrict__ _Format, const struct tm * __restrict__ _Tm);
   _CRTIMP       size_t    __cdecl _wcsftime_l(wchar_t * __restrict__ _Buf, size_t _SizeInWords, const wchar_t * __restrict__ _Format, const struct tm * __restrict__ _Tm, _locale_t _Locale);
 
-  _CRTIMP       errno_t   __cdecl _wstrdate_s(wchar_t *_Buf, size_t _SizeInWords);  /* We provide emu. */
+  _CRTIMP       errno_t   __cdecl _wstrdate_s(wchar_t *_Buf, size_t _SizeInWords);
   _CRTIMP       wchar_t * __cdecl _wstrdate(wchar_t *_Buffer) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 
-  _CRTIMP       errno_t   __cdecl _wstrtime_s(wchar_t *_Buf, size_t _SizeInWords);  /* We provide emu. */
+  _CRTIMP       errno_t   __cdecl _wstrtime_s(wchar_t *_Buf, size_t _SizeInWords);
   _CRTIMP       wchar_t * __cdecl _wstrtime(wchar_t *_Buffer) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
 
   _CRTIMP       wchar_t * __cdecl _wctime64(const __time64_t *_Time) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  _CRTIMP       errno_t   __cdecl _wctime64_s(wchar_t *_Buf, size_t _SizeInWords, const __time64_t *_Time);  /* We provide emu. */
+  _CRTIMP       errno_t   __cdecl _wctime64_s(wchar_t *_Buf, size_t _SizeInWords, const __time64_t *_Time);
 
 #if !defined(RC_INVOKED) && !defined(_INC_WTIME_INL)
   _CRTIMP       wchar_t * __cdecl _wctime(const time_t *_Time) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
@@ -1850,8 +1859,8 @@ extern "C" {
 
   /* _CRTIMP */ void *    __cdecl memmove(void *_Dst, const void *_Src, size_t _Size) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
                 void *    __cdecl memcpy(void * __restrict__ _Dst, const void * __restrict__ _Src, size_t _Size) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
-  /* _CRTIMP */ errno_t   __cdecl memcpy_s(void *_Dst, rsize_t _DstSize, const void *_Src, rsize_t _MaxCount);   /* We provide emu. */
-  /* _CRTIMP */ errno_t   __cdecl memmove_s(void *_Dst, rsize_t _DstSize, const void *_Src, rsize_t _MaxCount);  /* We provide emu. */
+  /* _CRTIMP */ errno_t   __cdecl memcpy_s(void *_Dst, rsize_t _DstSize, const void *_Src, rsize_t _MaxCount);
+  /* _CRTIMP */ errno_t   __cdecl memmove_s(void *_Dst, rsize_t _DstSize, const void *_Src, rsize_t _MaxCount);
   /* Provided in libmingwex. */
                 int       __cdecl fwide(FILE *stream, int mode);
                 int       __cdecl mbsinit(const mbstate_t *ps);

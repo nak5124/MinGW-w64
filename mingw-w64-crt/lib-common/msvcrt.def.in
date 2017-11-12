@@ -262,7 +262,7 @@ __RTCastToVoid
 __RTDynamicCast
 __RTtypeid
 __STRINGTOLD
-F_NON_I386(___lc_codepage_func) ; Replaced by emu on i386
+___lc_codepage_func
 ___lc_collate_cp_func
 ___lc_handle_func
 ___mb_cur_max_func
@@ -374,7 +374,7 @@ F_X86_ANY(__winitenv DATA)
 F_I386(_abnormal_termination)
 _abs64 DATA ; Provided in libmingwex
 _access
-; _access_s Replaced by emu
+_access_s
 _acmdln DATA
 #ifdef DEF_I386
 _adj_fdiv_m16i
@@ -424,9 +424,9 @@ _callnewh
 _calloc_dbg
 _cexit
 _cgets
-; _cgets_s Replaced by emu
+_cgets_s
 _cgetws
-; _cgetws_s Replaced by emu
+_cgetws_s
 _chdir
 _chdrive
 _chgsign
@@ -434,24 +434,25 @@ F_NON_I386(_chgsignf)
 F_I386(_chkesp)
 _chmod
 _chsize
-; _chsize_s Replaced by emu
+_chsize_s
 _chvalidator
 _chvalidator_l
 _clearfp
 _close
 _commit
 _commode DATA
+; _configthreadlocale MSVCRT.DLL (Win10) does not export this function, so we provide emu
 _control87
 _controlfp
-; _controlfp_s Replaced by emu
+_controlfp_s
 _copysign
 F_NON_I386(_copysignf)
 _cprintf
 _cprintf_l
 _cprintf_p
 _cprintf_p_l
-; _cprintf_s Replaced by emu
-; _cprintf_s_l Replaced by emu
+_cprintf_s
+_cprintf_s_l
 _cputs
 _cputws
 ; _CRT_RTC_INIT MSVCRT.DLL (Win10) does not provide this function
@@ -465,18 +466,19 @@ _cscanf_l
 _cscanf_s
 _cscanf_s_l
 _ctime32
-; _ctime32_s Replaced by emu
-; ctime_s MSVCRT.DLL (Win10) does not export this function, so we provide alias for _ctime32_s
+_ctime32_s
+F32(ctime_s == _ctime32_s) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias
 _ctime64
-; _ctime64_s Replaced by emu
+_ctime64_s
+F64(ctime_s == _ctime64_s) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias
 _ctype F_X64(DATA)
 _cwait
 _cwprintf
 _cwprintf_l
 _cwprintf_p
 _cwprintf_p_l
-; _cwprintf_s Replaced by emu
-; _cwprintf_s_l Replaced by emu
+_cwprintf_s
+_cwprintf_s_l
 _cwscanf
 _cwscanf_l
 _cwscanf_s
@@ -598,7 +600,7 @@ _get_heap_handle
 _get_osfhandle
 F_X86_ANY(_get_osplatform)
 F_X86_ANY(_get_osver)
-; _get_output_format Replaced by emu
+_get_output_format
 _get_pgmptr
 _get_sbh_threshold
 _get_wenviron
@@ -626,10 +628,11 @@ _getwche
 _getws
 F_I386(_global_unwind2)
 _gmtime32
-; _gmtime32_s Replaced by emu
-; gmtime_s MSVCRT.DLL (Win10) does not export this function, so we provide alias for _gmtime32_s
+_gmtime32_s
+F32(gmtime_s == _gmtime32_s) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias
 _gmtime64
-; _gmtime64_s Replaced by emu
+_gmtime64_s
+F64(gmtime_s == _gmtime64_s) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias
 F32(_heapadd)
 _heapchk
 _heapmin
@@ -766,10 +769,11 @@ _local_unwind4
 #endif
 F_X64(_local_unwind)
 _localtime32
-; _localtime32_s Replaced by emu
-; localtime_s MSVCRT.DLL (Win10) does not export this function, so we provide alias for _localtime32_s
+_localtime32_s
+F32(localtime_s == _localtime32_s) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias
 _localtime64
-; _localtime64_s Replaced by emu
+_localtime64_s
+F64(localtime_s == _localtime64_s) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias
 _lock
 ; _lock_file MSVCRT.DLL (Win10) does not export this function, so we provide emu
 _locking
@@ -936,7 +940,7 @@ _mkgmtime
 _mkgmtime32
 _mkgmtime64
 _mktemp
-; _mktemp_s Replaced by emu
+_mktemp_s
 _mktime32
 _mktime64
 _msize
@@ -1008,7 +1012,7 @@ _set_errno
 _set_error_mode
 _set_fileinfo
 _set_fmode
-; _set_output_format Replaced by emu
+_set_output_format
 ; _set_purecall_handler MSVCRT.DLL (Win10) does not export this function, so we provide emu
 _set_sbh_threshold
 ; _set_security_error_handler MSVCRT.DLL (Win10) does not export this function
@@ -1040,7 +1044,7 @@ _snwscanf_l
 _snwscanf_s
 _snwscanf_s_l
 _sopen
-; _sopen_s Replaced by emu
+_sopen_s
 _spawnl
 _spawnle
 _spawnlp
@@ -1066,7 +1070,7 @@ _statusfp
 _strcmpi
 _strcoll_l
 _strdate
-; _strdate_s Replaced by emu
+_strdate_s
 _strdup
 _strdup_dbg
 _strerror
@@ -1091,7 +1095,7 @@ _strrev
 _strset
 _strset_s
 _strtime
-; _strtime_s Replaced by emu
+_strtime_s
 _strtod_l
 _strtoi64
 _strtoi64_l
@@ -1139,7 +1143,7 @@ _ultoa_s
 _ultow
 _ultow_s
 _umask
-; _umask_s Replaced by emu
+_umask_s
 _ungetch
 _ungetwch
 _unlink
@@ -1153,14 +1157,14 @@ _vcprintf
 _vcprintf_l
 _vcprintf_p
 _vcprintf_p_l
-; _vcprintf_s Replaced by emu
-; _vcprintf_s_l Replaced by emu
+_vcprintf_s
+_vcprintf_s_l
 _vcwprintf
 _vcwprintf_l
 _vcwprintf_p
 _vcwprintf_p_l
-; _vcwprintf_s Replaced by emu
-; _vcwprintf_s_l Replaced by emu
+_vcwprintf_s
+_vcwprintf_s_l
 _vfprintf_l
 _vfprintf_p
 _vfprintf_p_l
@@ -1207,9 +1211,9 @@ _vwprintf_p
 _vwprintf_p_l
 _vwprintf_s_l
 _waccess
-; _waccess_s Replaced by emu
+_waccess_s
 _wasctime
-; _wasctime_s Replaced by emu
+_wasctime_s
 _wassert DATA ; Provided in libmingwex
 _wchdir
 _wchmod
@@ -1256,9 +1260,11 @@ _wcsupr_s_l
 _wcsxfrm_l
 _wctime
 _wctime32
-; _wctime32_s Replaced by emu
+_wctime32_s
+F32(_wctime_s == _wctime32_s) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias
 _wctime64
-; _wctime64_s Replaced by emu
+_wctime64_s
+F64(_wctime_s == _wctime64_s) ; MSVCRT.DLL (Win10) does not export this function, so we provide alias
 _wctomb_l
 _wctomb_s_l
 _wctype F_X64(DATA)
@@ -1303,7 +1309,7 @@ _wmakepath
 _wmakepath_s
 _wmkdir
 _wmktemp
-; _wmktemp_s Replaced by emu
+_wmktemp_s
 _wopen
 _woutput_s
 _wperror
@@ -1343,9 +1349,9 @@ _wsplitpath_s
 ; _wstat32i64 MSVCRT.DLL (Win10) does not export this function, so we provide emu for trailing slash bug
 ; _wstat64i32 MSVCRT.DLL (Win10) does not export this function, so we provide emu for trailing slash bug
 _wstrdate
-; _wstrdate_s Replaced by emu
+_wstrdate_s
 _wstrtime
-; _wstrtime_s Replaced by emu
+_wstrtime_s
 _wsystem
 _wtempnam
 _wtempnam_dbg
@@ -1371,7 +1377,7 @@ abs
 acos
 F_NON_I386(acosf F_X86_ANY(DATA)) ; Provided in libmingwex
 asctime
-; asctime_s Replaced by emu
+asctime_s
 asin
 F_NON_I386(asinf F_X86_ANY(DATA)) ; Provided in libmingwex
 atan
@@ -1497,9 +1503,9 @@ mbtowc
 memchr
 memcmp
 memcpy
-; memcpy_s Replaced by emu
+memcpy_s
 memmove
-; memmove_s Replaced by emu
+memmove_s
 memset
 mktime
 modf DATA ; Provided in libmingwex
@@ -1518,7 +1524,7 @@ qsort
 qsort_s
 raise
 rand
-; rand_s Replaced by emu
+rand_s
 realloc
 remove
 rename
@@ -1535,7 +1541,7 @@ F_NON_I386(sinf F_X86_ANY(DATA)) ; Provided in libmingwex
 sinh
 F_NON_I386(sinhf DATA) ; Provided in libmingwex
 sprintf
-; sprintf_s Replaced by emu
+sprintf_s
 sqrt DATA ; Provided in libmingwex
 F_NON_I386(sqrtf DATA) ; Provided in libmingwex
 srand
@@ -1550,7 +1556,7 @@ strcpy
 strcpy_s
 strcspn
 strerror
-; strerror_s Replaced by emu
+strerror_s
 strftime
 strlen
 strncat
@@ -1598,7 +1604,7 @@ vprintf
 vprintf_s
 vsnprintf
 vsprintf
-; vsprintf_s Replaced by emu
+vsprintf_s
 vswprintf
 vswprintf_s
 vwprintf

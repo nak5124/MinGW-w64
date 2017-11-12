@@ -164,53 +164,14 @@ src_msvcrt=\
   misc/_configthreadlocale.c \
   misc/_get_current_locale.c \
   misc/invalid_parameter_handler.c \
-  misc/output_format.c \
   misc/purecall.c \
   misc/recalloc.c \
   misc/winbs_uint64.c \
   misc/winbs_ulong.c \
   misc/winbs_ushort.c \
-  secapi/_access_s.c \
-  secapi/_cgets_s.c \
-  secapi/_cgetws_s.c \
-  secapi/_chsize_s.c \
-  secapi/_controlfp_s.c \
-  secapi/_cprintf_s.c \
-  secapi/_cprintf_s_l.c \
-  secapi/_ctime32_s.c \
-  secapi/_ctime64_s.c \
-  secapi/_cwprintf_s.c \
-  secapi/_cwprintf_s_l.c \
-  secapi/_gmtime32_s.c \
-  secapi/_gmtime64_s.c \
-  secapi/_localtime32_s.c \
-  secapi/_localtime64_s.c \
-  secapi/_mktemp_s.c \
-  secapi/_sopen_s.c \
-  secapi/_strdate_s.c \
-  secapi/_strtime_s.c \
-  secapi/_umask_s.c \
-  secapi/_vcprintf_s.c \
-  secapi/_vcprintf_s_l.c \
-  secapi/_vcwprintf_s.c \
-  secapi/_vcwprintf_s_l.c \
   secapi/_vscprintf_p.c \
   secapi/_vscwprintf_p.c \
   secapi/_vswprintf_p.c \
-  secapi/_waccess_s.c \
-  secapi/_wasctime_s.c \
-  secapi/_wctime32_s.c \
-  secapi/_wctime64_s.c \
-  secapi/_wstrtime_s.c \
-  secapi/_wmktemp_s.c \
-  secapi/_wstrdate_s.c \
-  secapi/asctime_s.c \
-  secapi/memcpy_s.c \
-  secapi/memmove_s.c \
-  secapi/rand_s.c \
-  secapi/sprintf_s.c \
-  secapi/strerror_s.c \
-  secapi/vsprintf_s.c \
   secapi/wmemcpy_s.c \
   secapi/wmemmove_s.c \
   stdio/_findfirst.c \
@@ -230,8 +191,7 @@ src_ucrtbase=\
   stdio/ucrt_wstat.c
 
 src_msvcrt32=\
-  $(src_msvcrt) \
-  misc/lc_locale_func.c
+  $(src_msvcrt)
 
 src_msvcrt64=\
   $(src_msvcrt) \
@@ -295,7 +255,6 @@ src_libmingwex=\
   math/powi.def.h       math/sqrt.def.h       \
   math/cephes_emath.h   math/cephes_mconf.h math/fp_consts.h     math/abs64.c         \
   \
-  misc/mb_wc_common.h \
   misc/mingw_getsp.S \
   misc/alarm.c                 misc/basename.c        misc/delay-f.c         misc/delay-n.c             misc/delayimp.c         \
   misc/dirent.c                misc/dirname.c         misc/execv.c           misc/execve.c              \

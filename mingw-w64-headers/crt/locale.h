@@ -74,9 +74,7 @@ extern "C" {
 #define _CONFIG_LOCALE_SWT
 #endif  /* !_CONFIG_LOCALE_SWT */
 
-#if __MSVCRT_VERSION__ >= 0x0800
   _CRTIMP       int            __cdecl _configthreadlocale(int _Flag);
-#endif  /* __MSVCRT_VERSION__ >= 0x0800 */
   /* _CRTIMP */ char *         __cdecl setlocale(int _Category, const char *_Locale);
   _CRTIMP       struct lconv * __cdecl localeconv(void);
   _CRTIMP       _locale_t      __cdecl _get_current_locale(void);
@@ -95,6 +93,12 @@ extern "C" {
 #endif  /* __MSVCRT_VERSION__ >= 0x0800 */
 #define _WLOCALE_DEFINED
 #endif  /* _WLOCALE_DEFINED */
+
+#if __MSVCRT_VERSION__ >= 0x0800
+  _CRTIMP wchar_t **   __cdecl ___lc_locale_name_func(void);
+#endif  /* __MSVCRT_VERSION__ >= 0x0800 */
+  _CRTIMP unsigned int __cdecl ___lc_codepage_func(void);
+  _CRTIMP unsigned int __cdecl ___lc_collate_cp_func(void);
 
 #ifdef __cplusplus
 }

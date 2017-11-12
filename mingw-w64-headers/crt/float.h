@@ -232,7 +232,7 @@ extern "C" {
   _CRTIMP unsigned int __cdecl _clearfp(void) __MINGW_NOTHROW;  /* Clear the FPU status word */
   _CRTIMP unsigned int __cdecl _controlfp(unsigned int _NewValue, unsigned int _Mask) __MINGW_NOTHROW __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _CRTIMP void         __cdecl _set_controlfp(unsigned int _NewValue, unsigned int _Mask);
-  _CRTIMP errno_t      __cdecl _controlfp_s(unsigned int *_CurrentState, unsigned int _NewValue, unsigned int _Mask);  /* We provide emu. */
+  _CRTIMP errno_t      __cdecl _controlfp_s(unsigned int *_CurrentState, unsigned int _NewValue, unsigned int _Mask);
   _CRTIMP unsigned int __cdecl _statusfp(void) __MINGW_NOTHROW;  /* Report the FPU status word */
 /*
    MSVCRT.dll _fpreset initializes the control register to 0x27f,

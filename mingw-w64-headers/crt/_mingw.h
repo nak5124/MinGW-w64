@@ -447,10 +447,8 @@ extern "C" {
 
 #ifndef MINGW_SDK_INIT
 
-#ifdef MINGW_HAS_SECURE_API
 #define __STDC_SECURE_LIB__ 200411L
 #define __GOT_SECURE_LIB__  __STDC_SECURE_LIB__
-#endif  /* MINGW_HAS_SECURE_API */
 
 #ifndef __WIDL__
 #include "sdks/_mingw_directx.h"

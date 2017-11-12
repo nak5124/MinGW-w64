@@ -1007,9 +1007,13 @@ _wcsupr_s
 _wcsupr_s_l
 _wcsxfrm_l
 _wctime32
+F32(_wctime == _wctime32) ; Compatibility with MSVCRT.DLL
 _wctime32_s
+F32(_wctime_s == _wctime32_s) ; ucrtbase.dll does not export this function, so we provide alias
 _wctime64
+F64(_wctime == _wctime64) ; Compatibility with MSVCRT.DLL
 _wctime64_s
+F64(_wctime_s == _wctime64_s) ; ucrtbase.dll does not export this function, so we provide alias
 _wctomb_l
 _wctomb_s_l
 _wctype F_X64(DATA)
