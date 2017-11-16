@@ -96,7 +96,7 @@ __current_exception
 __current_exception_context
 __daylight
 __dcrt_get_wide_environment_from_os
-__dcrt_initial_narrow_environment
+__dcrt_initial_narrow_environment DATA
 __doserrno
 __dstbias
 __fpe_flt_rounds
@@ -155,6 +155,7 @@ __report_gsfailure
 __setusermatherr
 __std_exception_copy
 __std_exception_destroy
+__std_terminate
 __std_type_info_compare
 __std_type_info_destroy_list
 __std_type_info_hash
@@ -188,6 +189,7 @@ __tzname
 __unDName
 __unDNameEx
 __uncaught_exception
+__uncaught_exceptions
 __wcserror
 __wcserror_s
 __wcsncnt
