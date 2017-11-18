@@ -1,0 +1,50 @@
+#include "func.def.in"
+
+LIBRARY "api-ms-win-core-console-l2-1-0.dll"
+EXPORTS
+F_ONECORE(AttachConsole)
+F_ONECORE(CreateConsoleScreenBuffer)
+FillConsoleOutputAttribute
+F_ONECORE(FillConsoleOutputCharacterA)
+FillConsoleOutputCharacterW
+#ifdef DEF_ONECORE
+FlushConsoleInputBuffer
+FreeConsole
+GenerateConsoleCtrlEvent
+#endif
+GetConsoleCursorInfo
+GetConsoleScreenBufferInfo
+F_ONECORE(GetConsoleScreenBufferInfoEx)
+GetConsoleTitleW
+GetLargestConsoleWindowSize
+PeekConsoleInputW
+#ifdef DEF_ONECORE
+ReadConsoleOutputA
+ReadConsoleOutputAttribute
+ReadConsoleOutputCharacterA
+ReadConsoleOutputCharacterW
+#endif
+ReadConsoleOutputW
+#ifdef DEF_ONECORE
+ScrollConsoleScreenBufferA
+ScrollConsoleScreenBufferW
+SetConsoleActiveScreenBuffer
+#endif
+SetConsoleCP
+SetConsoleCursorInfo
+SetConsoleCursorPosition
+SetConsoleOutputCP
+F_ONECORE(SetConsoleScreenBufferInfoEx)
+SetConsoleScreenBufferSize
+SetConsoleTextAttribute
+SetConsoleTitleW
+SetConsoleWindowInfo
+#ifdef DEF_ONECORE
+WriteConsoleInputA
+WriteConsoleInputW
+WriteConsoleOutputA
+WriteConsoleOutputAttribute
+WriteConsoleOutputCharacterA
+WriteConsoleOutputCharacterW
+#endif
+WriteConsoleOutputW

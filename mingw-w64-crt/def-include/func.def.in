@@ -7,6 +7,7 @@
 // F_ARM64     - function available only on arm64
 // F_ARM_ANY   - function available on 32 and 64 bit arm
 // F_NON_I386  - function available on everything but i386
+// F_ONECORE   - function available for onecore
 #if defined(DEF_X64)
 #define F64(x) x
 #define F_X64(x) x
@@ -54,4 +55,10 @@
 #endif
 #ifndef F_NON_I386
 #define F_NON_I386(x)
+#endif
+
+#ifdef DEF_ONECORE
+#define F_ONECORE(x) x
+#else
+#define F_ONECORE(x)
 #endif

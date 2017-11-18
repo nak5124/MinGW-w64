@@ -1,0 +1,8 @@
+#include "func.def.in"
+
+LIBRARY "api-ms-win-core-debug-l1-1-0.dll"
+EXPORTS
+F_ONECORE(DebugBreak)
+IsDebuggerPresent
+OutputDebugStringA
+OutputDebugStringW

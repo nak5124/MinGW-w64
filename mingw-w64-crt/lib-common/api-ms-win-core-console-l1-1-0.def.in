@@ -1,0 +1,20 @@
+#include "func.def.in"
+
+LIBRARY "api-ms-win-core-console-l1-1-0.dll"
+EXPORTS
+F_ONECORE(AllocConsole)
+GetConsoleCP
+GetConsoleMode
+GetConsoleOutputCP
+#ifdef DEF_ONECORE
+GetNumberOfConsoleInputEvents
+PeekConsoleInputA
+ReadConsoleA
+ReadConsoleInputA
+#endif
+ReadConsoleInputW
+ReadConsoleW
+SetConsoleCtrlHandler
+SetConsoleMode
+F_ONECORE(WriteConsoleA)
+WriteConsoleW

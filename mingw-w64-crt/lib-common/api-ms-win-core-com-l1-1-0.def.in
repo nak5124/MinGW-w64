@@ -1,0 +1,96 @@
+#include "func.def.in"
+
+LIBRARY "api-ms-win-core-com-l1-1-0.dll"
+EXPORTS
+F_ONECORE(CLSIDFromProgID)
+CLSIDFromString
+#ifdef DEF_ONECORE
+CoAddRefServerProcess
+CoAllowUnmarshalerCLSID
+CoCancelCall
+CoCopyProxy
+#endif
+CoCreateFreeThreadedMarshaler
+CoCreateGuid
+F_ONECORE(CoCreateInstance)
+F_ONECORE(CoCreateInstanceEx)
+CoCreateInstanceFromApp
+#ifdef DEF_ONECORE
+CoDecodeProxy
+CoDecrementMTAUsage
+CoDisableCallCancellation
+CoDisconnectContext
+#endif
+CoDisconnectObject
+F_ONECORE(CoEnableCallCancellation)
+CoFreeUnusedLibraries
+CoFreeUnusedLibrariesEx
+CoGetApartmentType
+#ifdef DEF_ONECORE
+CoGetCallContext
+CoGetCallerTID
+CoGetCancelObject
+CoGetClassObject
+#endif
+CoGetContextToken
+CoGetCurrentLogicalThreadId
+F_ONECORE(CoGetCurrentProcess)
+F_ONECORE(CoGetDefaultContext)
+CoGetInterfaceAndReleaseStream
+F_ONECORE(CoGetMalloc)
+CoGetMarshalSizeMax
+CoGetObjectContext
+F_ONECORE(CoGetPSClsid)
+CoGetStandardMarshal
+#ifdef DEF_ONECORE
+CoGetStdMarshalEx
+CoGetTreatAsClass
+CoImpersonateClient
+CoIncrementMTAUsage
+#endif
+CoInitializeEx
+CoInitializeSecurity
+#ifdef DEF_ONECORE
+CoInvalidateRemoteMachineBindings
+CoIsHandlerConnected
+CoLockObjectExternal
+CoMarshalHresult
+#endif
+CoMarshalInterface
+CoMarshalInterThreadInterfaceInStream
+#ifdef DEF_ONECORE
+CoQueryAuthenticationServices
+CoQueryClientBlanket
+CoQueryProxyBlanket
+#endif
+CoRegisterClassObject
+F_ONECORE(CoRegisterPSClsid)
+F_ONECORE(CoRegisterSurrogate)
+CoReleaseMarshalData
+F_ONECORE(CoReleaseServerProcess)
+CoResumeClassObjects
+F_ONECORE(CoRevertToSelf)
+CoRevokeClassObject
+F_ONECORE(CoSetCancelObject)
+F_ONECORE(CoSetProxyBlanket)
+CoSuspendClassObjects
+CoSwitchCallContext
+CoTaskMemAlloc
+CoTaskMemFree
+CoTaskMemRealloc
+F_ONECORE(CoTestCancel)
+CoUninitialize
+F_ONECORE(CoUnmarshalHresult)
+CoUnmarshalInterface
+F_ONECORE(CoWaitForMultipleHandles)
+F_ONECORE(CoWaitForMultipleObjects)
+CreateStreamOnHGlobal
+FreePropVariantArray
+GetHGlobalFromStream
+IIDFromString
+F_ONECORE(ProgIDFromCLSID)
+PropVariantClear
+PropVariantCopy
+StringFromCLSID
+StringFromGUID2
+StringFromIID
